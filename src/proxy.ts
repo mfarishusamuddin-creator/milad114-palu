@@ -197,6 +197,7 @@ const maintenanceHtml = `<!doctype html>
 
 
       <div class="languages">
+      <h1> Nuju Di Dameul Heula </h1>
         <p>The site is under maintenance. Please check back shortly.</p>
         <p class="ar">الموقع قيد الصيانة. يرجى العودة بعد قليل.</p>
       </div>
