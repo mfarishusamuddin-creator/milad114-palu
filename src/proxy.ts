@@ -14,7 +14,7 @@ const maintenanceHtml = `<!doctype html>
       --teal: #41847d;
       --gold: #d49b0f;
       --kelor: #6dbd25;
-      --ink: #fdfeff;
+      --ink: #000000;
       --paper: #000000;
     }
 
