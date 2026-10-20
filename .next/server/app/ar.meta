@@ -1,0 +1,36 @@
+{
+  "status": 200,
+  "headers": {
+    "link": "</_next/static/media/ElMessiri_VariableFont_wght-s.p.0qtmtf39kw_z-.ttf>; rel=preload; as=\"font\"; crossorigin=\"\"; type=\"font/ttf\", </_next/static/media/FamiljenGrotesk_Italic_VariableFont_wght-s.p.1suk9rdbmsv2f.ttf>; rel=preload; as=\"font\"; crossorigin=\"\"; type=\"font/ttf\", </_next/static/media/FamiljenGrotesk_VariableFont_wght-s.p.0c9m11bqz_-wk.ttf>; rel=preload; as=\"font\"; crossorigin=\"\"; type=\"font/ttf\"",
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/ar/layout,_N_T_/ar/page,_N_T_/ar,kabar-muhammadiyah"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/ar/__PAGE__"
+  ],
+  "prefetchHints": {
+    "hints": 49216,
+    "slots": {
+      "children": {
+        "hints": 49248,
+        "slots": {
+          "children": {
+            "hints": 49312,
+            "slots": null
+          }
+        }
+      }
+    }
+  },
+  "routeCache": {
+    "key": "/route-cache/APP_PAGE/30ced53d35d6779b8c2b8d3113b5ef704709828fd02376609b1a7430a70f7878/$/ar",
+    "owner": {
+      "kind": "APP_PAGE",
+      "sourceRoute": "/ar/page"
+    },
+    "isFallback": false
+  }
+}

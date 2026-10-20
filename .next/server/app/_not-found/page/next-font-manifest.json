@@ -1,0 +1,12 @@
+{
+  "pages": {},
+  "app": {
+    "[project]/src/app/_not-found/page": [
+      "static/media/ElMessiri_VariableFont_wght-s.p.0qtmtf39kw_z-.ttf",
+      "static/media/FamiljenGrotesk_VariableFont_wght-s.p.0c9m11bqz_-wk.ttf",
+      "static/media/FamiljenGrotesk_Italic_VariableFont_wght-s.p.1suk9rdbmsv2f.ttf"
+    ]
+  },
+  "appUsingSizeAdjust": true,
+  "pagesUsingSizeAdjust": false
+}

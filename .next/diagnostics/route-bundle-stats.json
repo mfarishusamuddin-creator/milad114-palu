@@ -1,0 +1,57 @@
+[
+  {
+    "route": "/",
+    "firstLoadUncompressedJsBytes": 673219,
+    "firstLoadChunkPaths": [
+      ".next\\static\\chunks\\2zfto7c_a6cyg.js",
+      ".next\\static\\chunks\\21poqdgvjdll4.js",
+      ".next\\static\\chunks\\1thay_dl4usgl.js",
+      ".next\\static\\chunks\\1kexj4s7oxhs2.js",
+      ".next\\static\\chunks\\2qh-avimhn1oz.js",
+      ".next\\static\\chunks\\0n7oigcjk07p5.js",
+      ".next\\static\\chunks\\29k0lwsa-cdae.js",
+      ".next\\static\\chunks\\turbopack-3-ry682tkyiqk.js"
+    ]
+  },
+  {
+    "route": "/ar",
+    "firstLoadUncompressedJsBytes": 673219,
+    "firstLoadChunkPaths": [
+      ".next\\static\\chunks\\2zfto7c_a6cyg.js",
+      ".next\\static\\chunks\\21poqdgvjdll4.js",
+      ".next\\static\\chunks\\1thay_dl4usgl.js",
+      ".next\\static\\chunks\\1kexj4s7oxhs2.js",
+      ".next\\static\\chunks\\2qh-avimhn1oz.js",
+      ".next\\static\\chunks\\0n7oigcjk07p5.js",
+      ".next\\static\\chunks\\29k0lwsa-cdae.js",
+      ".next\\static\\chunks\\turbopack-3-ry682tkyiqk.js"
+    ]
+  },
+  {
+    "route": "/en",
+    "firstLoadUncompressedJsBytes": 673219,
+    "firstLoadChunkPaths": [
+      ".next\\static\\chunks\\2zfto7c_a6cyg.js",
+      ".next\\static\\chunks\\21poqdgvjdll4.js",
+      ".next\\static\\chunks\\1thay_dl4usgl.js",
+      ".next\\static\\chunks\\1kexj4s7oxhs2.js",
+      ".next\\static\\chunks\\2qh-avimhn1oz.js",
+      ".next\\static\\chunks\\0n7oigcjk07p5.js",
+      ".next\\static\\chunks\\29k0lwsa-cdae.js",
+      ".next\\static\\chunks\\turbopack-3-ry682tkyiqk.js"
+    ]
+  },
+  {
+    "route": "/_not-found",
+    "firstLoadUncompressedJsBytes": 470488,
+    "firstLoadChunkPaths": [
+      ".next\\static\\chunks\\2zfto7c_a6cyg.js",
+      ".next\\static\\chunks\\21poqdgvjdll4.js",
+      ".next\\static\\chunks\\1kexj4s7oxhs2.js",
+      ".next\\static\\chunks\\2qh-avimhn1oz.js",
+      ".next\\static\\chunks\\0n7oigcjk07p5.js",
+      ".next\\static\\chunks\\29k0lwsa-cdae.js",
+      ".next\\static\\chunks\\turbopack-3-ry682tkyiqk.js"
+    ]
+  }
+]
