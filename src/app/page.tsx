@@ -1,19 +1,8 @@
-import { AboutMilad } from "@/components/home/AboutMilad";
-import { Agenda } from "@/components/home/Agenda";
-import { GatewayCards } from "@/components/home/GatewayCards";
-import { GrowingTree } from "@/components/home/GrowingTree";
-import { Hero } from "@/components/home/Hero";
-import { KabarTeaser } from "@/components/home/KabarTeaser";
+import { HomePage } from "@/components/pages/HomePage";
+import { buildMetadata } from "@/lib/metadata";
 
-export default function HomePage() {
-  return (
-    <>
-      <Hero />
-      <GatewayCards />
-      <GrowingTree />
-      <AboutMilad />
-      <Agenda />
-      <KabarTeaser />
-    </>
-  );
+export const metadata = buildMetadata("id");
+
+export default function Page() {
+  return <HomePage lang="id" />;
 }

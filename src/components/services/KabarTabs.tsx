@@ -2,15 +2,17 @@
 
 import { useState } from "react";
 import { KabarCard } from "@/components/shared/KabarCard";
+import type { Dictionary } from "@/i18n/types";
 import { cn } from "@/lib/cn";
 import type { KabarItem } from "@/lib/kabar";
 
 type Props = {
   latest: KabarItem[];
   milad: KabarItem[];
+  dict: Dictionary;
 };
 
-export function KabarTabs({ latest, milad }: Props) {
+export function KabarTabs({ latest, milad, dict }: Props) {
   const [tab, setTab] = useState<"latest" | "milad">("latest");
   const source = tab === "latest" ? latest : milad.length > 0 ? milad : latest;
   const items = source.slice(0, 6);
@@ -20,9 +22,9 @@ export function KabarTabs({ latest, milad }: Props) {
       <div
         className="flex flex-wrap items-center justify-between gap-3"
         role="tablist"
-        aria-label="Kategori kabar"
+        aria-label={dict.kabar.title}
       >
-        <div className="inline-flex rounded-sm border border-line bg-white p-1">
+        <div className="inline-flex rounded-sm border border-line bg-surface p-1">
           <button
             type="button"
             role="tab"
@@ -37,7 +39,7 @@ export function KabarTabs({ latest, milad }: Props) {
                 : "text-ink-soft hover:text-navy"
             )}
           >
-            Terbaru
+            {dict.kabar.tabs.latest}
           </button>
           <button
             type="button"
@@ -53,7 +55,7 @@ export function KabarTabs({ latest, milad }: Props) {
                 : "text-ink-soft hover:text-navy"
             )}
           >
-            Milad &amp; Tanwir
+            {dict.kabar.tabs.milad}
           </button>
         </div>
 
@@ -63,7 +65,7 @@ export function KabarTabs({ latest, milad }: Props) {
           rel="noopener noreferrer"
           className="text-xs font-bold text-teal-deep underline"
         >
-          Buka muhammadiyah.or.id
+          {dict.kabar.source}: muhammadiyah.or.id
         </a>
       </div>
 
@@ -76,32 +78,17 @@ export function KabarTabs({ latest, milad }: Props) {
         {items.length > 0 ? (
           <div className="grid gap-x-8 md:grid-cols-2">
             {items.map((item) => (
-              <KabarCard key={item.id} item={item} variant="compact" />
+              <KabarCard key={item.id} item={item} dict={dict} variant="compact" />
             ))}
           </div>
         ) : (
           <div className="rounded-sm border border-line bg-bg-soft p-6">
-            <p className="text-sm text-ink-soft">
-              Kabar resmi sedang tidak dapat dimuat. Silakan buka langsung{" "}
-              <a
-                href="https://muhammadiyah.or.id/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-semibold text-navy underline"
-              >
-                muhammadiyah.or.id
-              </a>
-              .
-            </p>
+            <p className="text-sm text-ink-soft">{dict.kabar.empty}</p>
           </div>
         )}
       </div>
 
-      <p className="mt-5 text-xs text-ink-soft">
-        Judul, tanggal, dan ringkasan diambil dari kanal resmi Muhammadiyah.
-        Artikel lengkap tetap berada di sumber asli. Cache data satu jam.
-      </p>
+      <p className="mt-5 text-xs text-ink-soft">{dict.kabar.originalNote}</p>
     </div>
   );
 }
-

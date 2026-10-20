@@ -9,12 +9,13 @@ import {
   formatMasehi,
   toIsoDate,
   toWesternDigits,
+  translateHijriString,
   type KhgtSnapshot,
 } from "@/lib/khgt";
+import type { Dictionary } from "@/i18n/types";
 
 type Mode = "hijri" | "masehi";
 
-const WEEKDAYS = ["Ahd", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab"];
 const MILESTONE_DATES = new Set([
   "2026-11-13",
   "2026-11-14",
@@ -22,7 +23,12 @@ const MILESTONE_DATES = new Set([
   "2026-11-18",
 ]);
 
-export function HijriCalendar({ data }: { data: KhgtSnapshot }) {
+type Props = {
+  data: KhgtSnapshot;
+  dict: Dictionary["calendar"];
+};
+
+export function HijriCalendar({ data, dict }: Props) {
   const initialHijri = Math.max(
     0,
     data.hijri.findIndex(
@@ -66,12 +72,12 @@ export function HijriCalendar({ data }: { data: KhgtSnapshot }) {
     setConverter(
       result
         ? {
-            title: formatMasehi(masehiInput),
-            detail: `${result.hijri}${result.pasaran ? ` آ· ${result.pasaran}` : ""}`,
+            title: formatMasehi(masehiInput, dict.gregorianMonthList),
+            detail: `${translateHijriString(result.hijri, dict.hijriMonths)}${result.pasaran ? ` · ${result.pasaran}` : ""}`,
           }
         : {
-            title: formatMasehi(masehiInput),
-            detail: "Tanggal tidak ditemukan dalam snapshot KHGT 2026.",
+            title: formatMasehi(masehiInput, dict.gregorianMonthList),
+            detail: dict.notFound,
           }
     );
   }
@@ -81,15 +87,16 @@ export function HijriCalendar({ data }: { data: KhgtSnapshot }) {
     const year = Number(hijriYear);
     if (!Number.isFinite(day) || !Number.isFinite(year)) return;
     const result = findMasehiForHijri(hijriMonth, day, year);
+    const monthLabel = dict.hijriMonths[hijriMonth] ?? hijriMonth;
     setConverter(
       result
         ? {
-            title: `${day} ${hijriMonth} ${year} H`,
-            detail: `${formatMasehi(result.masehi)}${result.pasaran ? ` آ· ${result.pasaran}` : ""}`,
+            title: `${day} ${monthLabel} ${year} H`,
+            detail: `${formatMasehi(result.masehi, dict.gregorianMonthList)}${result.pasaran ? ` · ${result.pasaran}` : ""}`,
           }
         : {
-            title: `${day} ${hijriMonth} ${year} H`,
-            detail: "Tanggal tidak ditemukan dalam snapshot KHGT.",
+            title: `${day} ${monthLabel} ${year} H`,
+            detail: dict.notFound,
           }
     );
   }
@@ -97,15 +104,15 @@ export function HijriCalendar({ data }: { data: KhgtSnapshot }) {
   if (!month) {
     return (
       <div className="rounded-sm border border-line bg-bg-soft p-6 text-sm text-ink-soft">
-        Data kalender belum tersedia.
+        {dict.noSpecial}
       </div>
     );
   }
 
   return (
-    <div className="overflow-hidden rounded-sm border border-t-2 border-line border-t-navy bg-white">
+    <div className="overflow-hidden rounded-sm border border-t-2 border-line border-t-navy bg-surface">
       <div className="flex flex-col gap-4 border-b border-line bg-bg-soft/70 p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5">
-        <div className="inline-flex rounded-sm border border-line bg-white p-1">
+        <div className="inline-flex rounded-sm border border-line bg-surface p-1">
           <button
             type="button"
             onClick={() => setMode("hijri")}
@@ -117,7 +124,7 @@ export function HijriCalendar({ data }: { data: KhgtSnapshot }) {
             )}
             aria-pressed={mode === "hijri"}
           >
-            Hijriah KHGT
+            {dict.hijriTab}
           </button>
           <button
             type="button"
@@ -130,7 +137,7 @@ export function HijriCalendar({ data }: { data: KhgtSnapshot }) {
             )}
             aria-pressed={mode === "masehi"}
           >
-            Masehi
+            {dict.masehiTab}
           </button>
         </div>
 
@@ -140,7 +147,7 @@ export function HijriCalendar({ data }: { data: KhgtSnapshot }) {
           rel="noopener noreferrer"
           className="text-xs font-bold text-teal-deep underline"
         >
-          Lihat kalender lengkap di KHGT
+          {dict.fullCalendar}
         </a>
       </div>
 
@@ -150,15 +157,18 @@ export function HijriCalendar({ data }: { data: KhgtSnapshot }) {
             type="button"
             onClick={() => setActiveIndex(Math.max(0, activeIndex - 1))}
             disabled={activeIndex === 0}
-            className="flex h-9 w-9 items-center justify-center rounded-sm border border-line bg-white text-navy disabled:opacity-30"
-            aria-label="Bulan sebelumnya"
+            className="flex h-9 w-9 items-center justify-center rounded-sm border border-line bg-surface text-navy disabled:opacity-30"
+            aria-label={dict.prev}
           >
             <ChevronLeft />
           </button>
 
           <div className="text-center">
             <p className="font-serif text-xl font-bold text-ink sm:text-2xl">
-              {month.name} {month.year}
+              {mode === "hijri"
+                ? dict.hijriMonths[month.name] ?? month.name
+                : dict.gregorianMonths[month.name] ?? month.name}{" "}
+              {month.year}
               {mode === "hijri" ? " H" : ""}
             </p>
             <p className="mt-1 text-[0.7rem] font-semibold text-ink-soft">
@@ -172,8 +182,8 @@ export function HijriCalendar({ data }: { data: KhgtSnapshot }) {
               setActiveIndex(Math.min(months.length - 1, activeIndex + 1))
             }
             disabled={activeIndex === months.length - 1}
-            className="flex h-9 w-9 items-center justify-center rounded-sm border border-line bg-white text-navy disabled:opacity-30"
-            aria-label="Bulan berikutnya"
+            className="flex h-9 w-9 items-center justify-center rounded-sm border border-line bg-surface text-navy disabled:opacity-30"
+            aria-label={dict.next}
           >
             <ChevronRight />
           </button>
@@ -182,7 +192,7 @@ export function HijriCalendar({ data }: { data: KhgtSnapshot }) {
         <div className="mt-5">
           <div>
             <div className="calendar-grid">
-              {WEEKDAYS.map((day) => (
+              {dict.weekdays.map((day) => (
                 <div key={day} className="calendar-weekday">
                   {day}
                 </div>
@@ -206,13 +216,14 @@ export function HijriCalendar({ data }: { data: KhgtSnapshot }) {
                     : day.masehi_day ?? String(Number(iso.slice(-2)));
                 const sub =
                   mode === "hijri"
-                    ? day.masehi_short ?? formatMasehi(day.masehi)
+                    ? day.masehi_short ??
+                      formatMasehi(day.masehi, dict.gregorianMonthList)
                     : day.hijriah_short ?? "";
                 const hijriLabel =
                   mode === "hijri"
-                    ? `${toWesternDigits(day.hijri ?? "")} ${month.name} ${month.year} H`
-                    : day.hijriah ?? "";
-                const label = `${formatMasehi(day.masehi)} آ· ${hijriLabel}`;
+                    ? `${toWesternDigits(day.hijri ?? "")} ${dict.hijriMonths[month.name] ?? month.name} ${month.year} H`
+                    : translateHijriString(day.hijriah ?? "", dict.hijriMonths);
+                const label = `${formatMasehi(day.masehi, dict.gregorianMonthList)} · ${hijriLabel}`;
 
                 return (
                   <div
@@ -232,7 +243,7 @@ export function HijriCalendar({ data }: { data: KhgtSnapshot }) {
                     <span className="calendar-day-sub">{sub}</span>
                     {isMilestone ? (
                       <span className="text-[0.52rem] font-bold uppercase tracking-[0.08em] text-gold-text">
-                        Milad
+                        {dict.miladLabel}
                       </span>
                     ) : null}
                   </div>
@@ -245,7 +256,7 @@ export function HijriCalendar({ data }: { data: KhgtSnapshot }) {
         <div className="mt-6 grid gap-5 lg:grid-cols-[1fr_1fr]">
           <div>
             <h3 className="text-[0.68rem] font-bold uppercase tracking-[0.16em] text-teal-deep">
-              Hari istimewa
+              {dict.specialDays}
             </h3>
             {month.hariIstimewa?.length ? (
               <ul className="mt-3 space-y-2">
@@ -255,24 +266,23 @@ export function HijriCalendar({ data }: { data: KhgtSnapshot }) {
                     className="rounded-sm border border-line bg-bg-soft/60 px-3 py-2.5"
                   >
                     <p className="text-[0.7rem] font-bold text-navy">
-                      {event.tanggal_hijri} آ· {formatMasehi(event.tanggal_masehi)}
+                      {translateHijriString(event.tanggal_hijri, dict.hijriMonths)} ·{" "}
+                      {formatMasehi(event.tanggal_masehi, dict.gregorianMonthList)}
                     </p>
                     <p className="mt-0.5 text-xs text-ink-soft">
-                      {event.keterangan}
+                      {dict.eventNames[event.keterangan] ?? event.keterangan}
                     </p>
                   </li>
                 ))}
               </ul>
             ) : (
-              <p className="mt-3 text-xs text-ink-soft">
-                Tidak ada hari istimewa pada bulan ini.
-              </p>
+              <p className="mt-3 text-xs text-ink-soft">{dict.noSpecial}</p>
             )}
           </div>
 
           <div>
             <h3 className="text-[0.68rem] font-bold uppercase tracking-[0.16em] text-teal-deep">
-              Konverter tanggal
+              {dict.converter}
             </h3>
 
             <form
@@ -283,7 +293,7 @@ export function HijriCalendar({ data }: { data: KhgtSnapshot }) {
               }}
             >
               <label className="sr-only" htmlFor="masehi-input">
-                Tanggal Masehi
+                {dict.masehiLabel}
               </label>
               <input
                 id="masehi-input"
@@ -292,10 +302,10 @@ export function HijriCalendar({ data }: { data: KhgtSnapshot }) {
                 max="2026-12-31"
                 value={masehiInput}
                 onChange={(event) => setMasehiInput(event.target.value)}
-                className="h-10 rounded-sm border border-line bg-white px-3 text-sm text-ink"
+                className="h-10 rounded-sm border border-line bg-surface px-3 text-sm text-ink"
               />
               <button type="submit" className="btn btn-primary btn-sm">
-                Cari Hijriah
+                {dict.masehiButton}
               </button>
             </form>
 
@@ -307,23 +317,23 @@ export function HijriCalendar({ data }: { data: KhgtSnapshot }) {
               }}
             >
               <label className="sr-only" htmlFor="hijri-month">
-                Bulan Hijriah
+                {dict.hijriMonthLabel}
               </label>
               <select
                 id="hijri-month"
                 value={hijriMonth}
                 onChange={(event) => setHijriMonth(event.target.value)}
-                className="h-10 rounded-sm border border-line bg-white px-2 text-sm text-ink"
+                className="h-10 rounded-sm border border-line bg-surface px-2 text-sm text-ink"
               >
                 {data.hijri.map((item) => (
                   <option key={`${item.name}-${item.year}`} value={item.name}>
-                    {item.name}
+                    {dict.hijriMonths[item.name] ?? item.name}
                   </option>
                 ))}
               </select>
 
               <label className="sr-only" htmlFor="hijri-day">
-                Tanggal
+                {dict.hijriDayLabel}
               </label>
               <input
                 id="hijri-day"
@@ -332,17 +342,17 @@ export function HijriCalendar({ data }: { data: KhgtSnapshot }) {
                 max={30}
                 value={hijriDay}
                 onChange={(event) => setHijriDay(event.target.value)}
-                className="h-10 rounded-sm border border-line bg-white px-2 text-sm text-ink"
+                className="h-10 rounded-sm border border-line bg-surface px-2 text-sm text-ink"
               />
 
               <label className="sr-only" htmlFor="hijri-year">
-                Tahun
+                {dict.hijriYearLabel}
               </label>
               <select
                 id="hijri-year"
                 value={hijriYear}
                 onChange={(event) => setHijriYear(event.target.value)}
-                className="h-10 rounded-sm border border-line bg-white px-2 text-sm text-ink"
+                className="h-10 rounded-sm border border-line bg-surface px-2 text-sm text-ink"
               >
                 {years.map((year) => (
                   <option key={year} value={year}>
@@ -352,7 +362,7 @@ export function HijriCalendar({ data }: { data: KhgtSnapshot }) {
               </select>
 
               <button type="submit" className="btn btn-gold btn-sm">
-                Cari Masehi
+                {dict.hijriButton}
               </button>
             </form>
 
@@ -370,16 +380,14 @@ export function HijriCalendar({ data }: { data: KhgtSnapshot }) {
                   </p>
                 </>
               ) : (
-                <p className="text-xs text-ink-soft">
-                  Pilih tanggal untuk melihat padanan Masehiâ€“Hijriah.
-                </p>
+                <p className="text-xs text-ink-soft">{dict.placeholder}</p>
               )}
             </div>
           </div>
         </div>
 
         <p className="mt-5 text-[0.68rem] leading-relaxed text-ink-soft">
-          Sumber:{" "}
+          {dict.source}:{" "}
           <a
             href={data.source}
             target="_blank"
@@ -388,8 +396,8 @@ export function HijriCalendar({ data }: { data: KhgtSnapshot }) {
           >
             khgt.muhammadiyah.or.id
           </a>{" "}
-          آ· snapshot {formatFetchedAt(data.fetchedAt)}. Kalender ini bukan
-          pengganti kalender resmi KHGT.
+          · {dict.snapshot} {formatFetchedAt(data.fetchedAt, dict.locale)}.{" "}
+          {dict.disclaimer}
         </p>
       </div>
     </div>
@@ -408,6 +416,7 @@ function ChevronLeft() {
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"
+      className="rtl:rotate-180"
     >
       <path d="M15 18l-6-6 6-6" />
     </svg>
@@ -426,10 +435,9 @@ function ChevronRight() {
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"
+      className="rtl:rotate-180"
     >
       <path d="M9 6l6 6-6 6" />
     </svg>
   );
 }
-
-

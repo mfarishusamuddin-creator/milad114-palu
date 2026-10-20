@@ -1,48 +1,28 @@
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { SourceNote } from "@/components/shared/SourceNote";
 import { SITE } from "@/data/site";
+import type { Dictionary } from "@/i18n/types";
 
-const AGENDA = [
-  {
-    date: "13–15 Nov 2026",
-    title: "Tanwir dan Milad ke-114",
-    description:
-      "Palu, Sulawesi Tengah. Rangkaian utama Tanwir dan Milad, bertepatan dengan 4–6 Jumadilakhir 1448 H.",
-    tag: "Palu",
-  },
-  {
-    date: "18 Nov 2026",
-    title: "Milad ke-114 Muhammadiyah",
-    description:
-      "Milad historis, mengenang pendirian Muhammadiyah pada 18 November 1912 / 8 Dzulhijjah 1330 H.",
-    tag: "Milad",
-  },
-  {
-    date: "2027",
-    title: "Muktamar ke-49",
-    description:
-      "Medan, Sumatera Utara. Tanwir 2026 menjadi forum evaluasi dan persiapan menuju Muktamar.",
-    tag: "2027",
-  },
-];
-
-export function Agenda() {
+export function Agenda({ dict }: { dict: Dictionary }) {
   return (
     <section className="section scroll-mt-20 bg-bg-soft" id="agenda">
       <div className="container-page">
         <div className="grid gap-6 lg:grid-cols-[1fr_0.8fr] lg:items-end">
-          <SectionHeading eyebrow="Agenda" title="Tiga penanda waktu" />
+          <SectionHeading
+            eyebrow={dict.agenda.eyebrow}
+            title={dict.agenda.title}
+          />
           <p className="max-w-md text-sm leading-relaxed text-ink-soft lg:pb-1">
-            Tanggal acara, tanggal historis, dan arah berikutnya. Jadwal rinci
-            mengikuti Edaran PP Muhammadiyah No. 19/EDR/I.0/B/2026.
+            {dict.agenda.description}
           </p>
         </div>
 
         <div className="mt-10 border-t border-line">
-          {AGENDA.map((item) => (
+          {dict.agenda.items.map((item) => (
             <article
               key={item.title}
               className="grid gap-2 border-b border-line py-5 sm:grid-cols-[10rem_1fr_auto] sm:items-baseline sm:gap-6"
+              data-reveal
             >
               <p className="font-serif text-lg font-bold text-navy">
                 {item.date}
@@ -64,6 +44,7 @@ export function Agenda() {
 
         <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <SourceNote
+            title={dict.common.source}
             items={[
               { label: "Edaran 19/2026", url: SITE.links.edaran },
               { label: "Program 25 Tahun", url: SITE.links.program25 },
@@ -76,7 +57,7 @@ export function Agenda() {
             rel="noopener noreferrer"
             className="btn btn-ghost btn-sm shrink-0 no-underline"
           >
-            Buka Edaran
+            {dict.agenda.button}
             <ArrowIcon />
           </a>
         </div>
@@ -97,6 +78,7 @@ function ArrowIcon() {
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"
+      className="rtl:rotate-180"
     >
       <path d="M7 17L17 7M9 7h8v8" />
     </svg>

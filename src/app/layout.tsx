@@ -1,9 +1,9 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import localFont from "next/font/local";
 import "./globals.css";
-import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
 import { SITE } from "@/data/site";
+import { getDictionary } from "@/i18n";
 
 const display = localFont({
   src: "./fonts/ElMessiri-VariableFont_wght.ttf",
@@ -29,15 +29,13 @@ const body = localFont({
   display: "swap",
 });
 
+const idDict = getDictionary("id");
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
-  title: {
-    default: `${SITE.title} — ${SITE.tagline}`,
-    template: `%s — ${SITE.name}`,
-  },
-  description: SITE.description,
-  applicationName: SITE.name,
-  authors: [{ name: "Karya independen untuk lomba website" }],
+  title: idDict.meta.title,
+  description: idDict.meta.description,
+  applicationName: "Milad 114",
   keywords: [
     "Milad Muhammadiyah 114",
     "Tanwir Muhammadiyah 2026",
@@ -46,36 +44,35 @@ export const metadata: Metadata = {
     "Sulawesi Tengah",
     "KHGT",
     "Muhammadiyah",
+    "PCIM",
   ],
   alternates: {
     canonical: "/",
+    languages: { id: "/", en: "/en", ar: "/ar" },
   },
   openGraph: {
     type: "website",
-    locale: SITE.locale,
+    locale: "id_ID",
     url: "/",
-    siteName: SITE.name,
-    title: `${SITE.title} — ${SITE.tagline}`,
-    description: SITE.description,
+    siteName: "Milad 114",
+    title: idDict.meta.title,
+    description: idDict.meta.description,
     images: [
       {
         url: "/og/og-milad114.jpg",
         width: 1200,
         height: 630,
-        alt: "Tanwir dan Milad ke-114 Muhammadiyah — Bersama Satukan Bangsa",
+        alt: idDict.hero.plate.logoAlt,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE.title} — ${SITE.tagline}`,
-    description: SITE.description,
+    title: idDict.meta.title,
+    description: idDict.meta.description,
     images: ["/og/og-milad114.jpg"],
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  robots: { index: true, follow: true },
   icons: {
     icon: [
       {
@@ -97,14 +94,19 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#1C469E",
-  colorScheme: "light",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#1C469E" },
+    { media: "(prefers-color-scheme: dark)", color: "#081226" },
+  ],
+  colorScheme: "light dark",
 };
+
+const themeScript = `(function(){try{var t=localStorage.getItem("m114:theme");if(t!=="dark"&&t!=="light"){t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}document.documentElement.dataset.theme=t;document.documentElement.classList.add("js-reveal");}catch(e){}})();`;
 
 const eventJsonLd = {
   "@context": "https://schema.org",
   "@type": "Event",
-  name: SITE.title,
+  name: "Tanwir dan Milad ke-114 Muhammadiyah",
   startDate: SITE.startISO,
   endDate: SITE.endISO,
   eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
@@ -120,30 +122,29 @@ const eventJsonLd = {
     },
   },
   image: [`${SITE.url}/og/og-milad114.jpg`],
-  description: SITE.description,
+  description: idDict.meta.description,
   organizer: {
     "@type": "Organization",
     name: SITE.organizer,
     url: SITE.links.muhammadiyah,
   },
+  inLanguage: "id",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="id"
+      dir="ltr"
+      suppressHydrationWarning
       data-scroll-behavior="smooth"
       className={`${display.variable} ${body.variable}`}
     >
-      <body className="flex min-h-screen flex-col bg-bg text-ink antialiased">
-        <a href="#konten" className="skip-link">
-          Lewati ke konten
-        </a>
-        <Navbar />
-        <main id="konten" className="flex-1">
-          {children}
-        </main>
-        <Footer />
+      <body className="min-h-screen bg-bg text-ink antialiased">
+        <Script id="theme-init" strategy="beforeInteractive">
+          {themeScript}
+        </Script>
+        {children}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

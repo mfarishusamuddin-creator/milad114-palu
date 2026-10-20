@@ -1,8 +1,9 @@
 ﻿import Image from "next/image";
-import Link from "next/link";
+import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
 import { SITE } from "@/data/site";
+import type { Dictionary } from "@/i18n/types";
 
-export function Footer() {
+export function Footer({ dict }: { dict: Dictionary }) {
   return (
     <footer className="relative overflow-hidden bg-navy-deep text-white">
       <div className="pattern-strip h-2.5 w-full opacity-90" aria-hidden="true" />
@@ -11,48 +12,52 @@ export function Footer() {
           <div>
             <Image
               src="/logo/horizontal-white.png"
-              alt="Tanwir dan Milad ke-114 Muhammadiyah"
+              alt={dict.meta.title}
               width={1600}
               height={900}
               className="h-auto w-[230px]"
             />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/65">
-              Satu pohon, tiga pintu: Milad, Sejarah, dan Layanan. Dibangun
-              sebagai karya independen untuk lomba website.
+              {dict.footer.tagline}
             </p>
-            <p className="mt-5 inline-flex rounded-sm border border-white/15 bg-white/8 px-3 py-1.5 text-[0.68rem] font-bold uppercase tracking-[0.14em] text-gold-light">
-              {SITE.tagline}
-            </p>
+            <div className="mt-5">
+              <p className="text-[0.6rem] font-bold uppercase tracking-[0.16em] text-white/40">
+                {dict.footer.language}
+              </p>
+              <div className="mt-2">
+                <LanguageSwitcher lang={dict.lang} />
+              </div>
+            </div>
           </div>
 
           <div>
             <h2 className="text-[0.7rem] font-bold uppercase tracking-[0.18em] text-gold-light">
-              Jelajahi
+              {dict.footer.explore}
             </h2>
             <ul className="mt-4 space-y-2.5">
-              {SITE.nav.map((item) => (
+              {dict.nav.links.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="footer-link">
+                  <a href={item.href} className="footer-link">
                     {item.label}
-                  </Link>
+                  </a>
                 </li>
               ))}
               <li>
-                <Link href="/layanan#kalender" className="footer-link">
-                  Kalender KHGT
-                </Link>
+                <a href="#kabar" className="footer-link">
+                  {dict.kabar.title}
+                </a>
               </li>
               <li>
-                <Link href="/layanan#kuis" className="footer-link">
-                  Kuis Milad 114
-                </Link>
+                <a href="#kuis" className="footer-link">
+                  {dict.quiz.title}
+                </a>
               </li>
             </ul>
           </div>
 
           <div>
             <h2 className="text-[0.7rem] font-bold uppercase tracking-[0.18em] text-gold-light">
-              Sumber resmi
+              {dict.footer.sources}
             </h2>
             <ul className="mt-4 space-y-2.5">
               <li>
@@ -92,7 +97,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                   className="footer-link"
                 >
-                  Sejarah Muhammadiyah
+                  {dict.history.title}
                 </a>
               </li>
             </ul>
@@ -100,31 +105,26 @@ export function Footer() {
 
           <div>
             <h2 className="text-[0.7rem] font-bold uppercase tracking-[0.18em] text-gold-light">
-              Milad ke-114
+              {dict.footer.event}
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-white/70">
-              Palu, {SITE.province}
-              <br />
-              13â€“15 November 2026
-              <br />
-              4â€“6 Jumadilakhir 1448 H
+              {dict.footer.eventLines.map((line) => (
+                <span key={line} className="block">
+                  {line}
+                </span>
+              ))}
             </p>
             <p className="mt-4 text-xs leading-relaxed text-white/50">
-              Logo dan identitas visual milik PP Muhammadiyah. Font El Messiri
-              dan Familjen Grotesk berlisensi OFL.
+              {dict.footer.credit}
             </p>
           </div>
         </div>
 
         <div className="mt-12 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-white/45 sm:flex-row sm:items-center sm:justify-between">
-          <p>آ© 2026 Milad 114 â€” karya independen untuk lomba website.</p>
-          <p>
-            Data kalender: KHGT. Data kabar: muhammadiyah.or.id. Diverifikasi
-            ulang sebelum publikasi.
-          </p>
+          <p>{dict.footer.copyright}</p>
+          <p>{dict.footer.dataNote}</p>
         </div>
       </div>
     </footer>
   );
 }
-

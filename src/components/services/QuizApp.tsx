@@ -1,57 +1,36 @@
 ﻿"use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ShareButton } from "@/components/shared/ShareButton";
-import { quizQuestions } from "@/data/quiz";
+import type { Dictionary } from "@/i18n/types";
 import { cn } from "@/lib/cn";
 
 const BEST_KEY = "m114:quiz-best";
 
-function computeScore(answers: number[]): number {
+function computeScore(
+  answers: number[],
+  questions: Dictionary["quiz"]["questions"]
+): number {
   return answers.reduce(
     (total, answer, index) =>
-      total + (quizQuestions[index]?.answerIndex === answer ? 10 : 0),
+      total + (questions[index]?.answerIndex === answer ? 10 : 0),
     0
   );
 }
 
-function getBadge(score: number) {
-  if (score === 100) {
-    return {
-      title: "Pohon Lengkap",
-      description: "Semua jawaban tepat. Akar, batang, dan kanopi seimbang.",
-    };
-  }
-  if (score >= 80) {
-    return {
-      title: "Akar Kuat",
-      description: "Pengetahuanmu sudah dalam. Sedikit lagi menuju sempurna.",
-    };
-  }
-  if (score >= 50) {
-    return {
-      title: "Tunas",
-      description: "Sudah tumbuh. Baca lagi bab-bab sejarah untuk menguatkan akar.",
-    };
-  }
-  return {
-    title: "Ayo Tumbuh",
-    description: "Tidak apa-apa. Mulai dari akar: 1912 dan Kauman.",
-  };
-}
-
-export function QuizApp() {
+export function QuizApp({ dict }: { dict: Dictionary }) {
   const [started, setStarted] = useState(false);
   const [index, setIndex] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
   const [answers, setAnswers] = useState<number[]>([]);
   const [finished, setFinished] = useState(false);
   const [best, setBest] = useState<number | null>(null);
-
-  const current = quizQuestions[index];
-  const score = computeScore(answers);
-  const badge = getBadge(score);
+  const questions = dict.quiz.questions;
+  const current = questions[index];
+  const score = computeScore(answers, questions);
+  const badge =
+    dict.quiz.badges.find((item) => score >= item.min) ??
+    dict.quiz.badges[dict.quiz.badges.length - 1];
 
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => {
@@ -72,15 +51,15 @@ export function QuizApp() {
   }
 
   function next() {
-    if (index === quizQuestions.length - 1) {
-      const finalScore = computeScore(answers);
+    if (index === questions.length - 1) {
+      const finalScore = computeScore(answers, questions);
       setBest((previous) => {
         const nextBest =
           previous === null ? finalScore : Math.max(previous, finalScore);
         try {
           window.localStorage.setItem(BEST_KEY, String(nextBest));
         } catch {
-          // localStorage can be unavailable in private contexts.
+          // localStorage may be unavailable.
         }
         return nextBest;
       });
@@ -102,7 +81,7 @@ export function QuizApp() {
 
   if (!started) {
     return (
-      <div className="relative overflow-hidden rounded-sm border border-l-2 border-line border-l-gold bg-white p-6 sm:p-9">
+      <div className="relative overflow-hidden rounded-sm border border-line bg-surface p-6 sm:p-9">
         <div
           className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-gold/15 blur-2xl"
           aria-hidden="true"
@@ -110,27 +89,24 @@ export function QuizApp() {
         <div className="relative z-10 max-w-2xl">
           <p className="eyebrow">
             <span className="eyebrow-dot" aria-hidden="true" />
-            Kuis Milad 114
+            {dict.quiz.eyebrow}
           </p>
           <h3 className="mt-3 font-serif text-3xl font-bold text-ink">
-            Seberapa dalam akar pengetahuanmu?
+            {dict.quiz.startTitle}
           </h3>
           <p className="mt-3 text-sm leading-relaxed text-ink-soft">
-            Sepuluh soal tentang sejarah, logo, Palu, dan tema Milad ke-114.
-            Setiap jawaban diberi penjelasan dan tautan sumber. Skor terbaik
-            disimpan di perangkatmu.
+            {dict.quiz.startDescription}
           </p>
 
           <div className="mt-5 flex flex-wrap gap-2">
-            <span className="rounded-sm bg-bg-soft px-3 py-1.5 text-[0.68rem] font-bold text-teal-deep">
-              10 soal
-            </span>
-            <span className="rounded-sm bg-bg-soft px-3 py-1.5 text-[0.68rem] font-bold text-teal-deep">
-              Pilihan ganda
-            </span>
-            <span className="rounded-sm bg-bg-soft px-3 py-1.5 text-[0.68rem] font-bold text-teal-deep">
-              Tanpa backend
-            </span>
+            {dict.quiz.tags.map((tag) => (
+              <span
+                key={tag}
+                className="rounded-sm bg-bg-soft px-3 py-1.5 text-[0.68rem] font-bold text-teal-deep"
+              >
+                {tag}
+              </span>
+            ))}
           </div>
 
           <div className="mt-6 flex flex-wrap items-center gap-3">
@@ -139,12 +115,12 @@ export function QuizApp() {
               className="btn btn-primary"
               onClick={() => setStarted(true)}
             >
-              Mulai Kuis
+              {dict.quiz.startButton}
               <ArrowIcon />
             </button>
             {best !== null ? (
               <span className="text-xs font-semibold text-ink-soft">
-                Rekormu:{" "}
+                {dict.quiz.best}:{" "}
                 <span className="text-gold-text">{best}/100</span>
               </span>
             ) : null}
@@ -156,7 +132,7 @@ export function QuizApp() {
 
   if (finished) {
     return (
-      <div className="relative overflow-hidden rounded-sm border border-l-2 border-line border-l-gold bg-white p-6 sm:p-9">
+      <div className="relative overflow-hidden rounded-sm border border-line bg-surface p-6 sm:p-9">
         <div
           className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-gold/20 blur-2xl"
           aria-hidden="true"
@@ -164,7 +140,7 @@ export function QuizApp() {
         <div className="relative z-10">
           <p className="eyebrow">
             <span className="eyebrow-dot" aria-hidden="true" />
-            Hasil
+            {dict.quiz.resultEyebrow}
           </p>
           <div className="mt-4 flex flex-wrap items-end gap-4">
             <p className="font-serif text-7xl font-bold leading-none text-navy">
@@ -181,26 +157,23 @@ export function QuizApp() {
 
           {best !== null ? (
             <p className="mt-3 text-xs font-semibold text-ink-soft">
-              Rekor terbaik: <span className="text-gold-text">{best}/100</span>
+              {dict.quiz.resultBest}:{" "}
+              <span className="text-gold-text">{best}/100</span>
             </p>
           ) : null}
 
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <ShareButton
-              text={`Saya mendapat ${score}/100 di Kuis Milad 114 Muhammadiyah. Berani coba?`}
-              label="Bagikan skor"
+              text={dict.quiz.shareText.replace("{score}", String(score))}
+              label={dict.quiz.share}
               className="btn-primary"
             />
-            <button
-              type="button"
-              className="btn btn-ghost"
-              onClick={restart}
-            >
-              Ulangi
+            <button type="button" className="btn btn-ghost" onClick={restart}>
+              {dict.quiz.retry}
             </button>
-            <Link href="/sejarah" className="btn btn-ghost no-underline">
-              Baca Sejarah
-            </Link>
+            <a href="#sejarah" className="btn btn-ghost no-underline">
+              {dict.quiz.readHistory}
+            </a>
           </div>
         </div>
       </div>
@@ -208,14 +181,16 @@ export function QuizApp() {
   }
 
   return (
-    <div className="rounded-sm border border-l-2 border-line border-l-gold bg-white p-5 sm:p-8">
+    <div className="rounded-sm border border-line bg-surface p-5 sm:p-8">
       <div className="flex items-center justify-between gap-4">
         <p className="text-[0.68rem] font-bold uppercase tracking-[0.16em] text-teal-deep">
-          Soal {index + 1} dari {quizQuestions.length}
+          {dict.quiz.questionOf
+            .replace("{current}", String(index + 1))
+            .replace("{total}", String(questions.length))}
         </p>
         {best !== null ? (
           <p className="text-[0.68rem] font-semibold text-ink-soft">
-            Rekor {best}/100
+            {dict.quiz.bestShort} {best}/100
           </p>
         ) : null}
       </div>
@@ -224,7 +199,7 @@ export function QuizApp() {
         <div
           className="h-full rounded-full bg-gold transition-[width] duration-300"
           style={{
-            width: `${((index + (selected !== null ? 1 : 0)) / quizQuestions.length) * 100}%`,
+            width: `${((index + (selected !== null ? 1 : 0)) / questions.length) * 100}%`,
           }}
         />
       </div>
@@ -280,14 +255,17 @@ export function QuizApp() {
             className={cn(
               "rounded-sm border px-4 py-3 text-sm",
               selected === current.answerIndex
-                ? "border-kelor-deep/30 bg-[#f0fbf4] text-ink"
-                : "border-red-200 bg-[#fff4f2] text-ink"
+                ? "border-kelor-deep/30 bg-[var(--color-correct-bg)] text-ink"
+                : "border-red-200 bg-[var(--color-wrong-bg)] text-ink"
             )}
           >
             <p className="font-bold">
               {selected === current.answerIndex
-                ? "Tepat."
-                : `Belum tepat. Jawaban yang benar: ${current.options[current.answerIndex]}.`}
+                ? dict.quiz.correct
+                : dict.quiz.wrong.replace(
+                    "{answer}",
+                    current.options[current.answerIndex]
+                  )}
             </p>
             <p className="mt-1 text-ink-soft">{current.explanation}</p>
             <a
@@ -296,23 +274,23 @@ export function QuizApp() {
               rel="noopener noreferrer"
               className="mt-2 inline-block text-[0.7rem] font-bold text-teal-deep underline"
             >
-              Sumber: {current.source}
+              {dict.quiz.source}: {current.source}
             </a>
           </div>
         ) : null}
       </div>
 
       <div className="mt-5 flex items-center justify-between gap-3">
-        <p className="text-[0.68rem] text-ink-soft">
-          Pilih satu jawaban untuk melanjutkan.
-        </p>
+        <p className="text-[0.68rem] text-ink-soft">{dict.quiz.choose}</p>
         <button
           type="button"
           className="btn btn-primary btn-sm"
           onClick={next}
           disabled={selected === null}
         >
-          {index === quizQuestions.length - 1 ? "Lihat Hasil" : "Lanjut"}
+          {index === questions.length - 1
+            ? dict.quiz.seeResult
+            : dict.quiz.next}
           <ArrowIcon />
         </button>
       </div>
@@ -370,10 +348,10 @@ function ArrowIcon() {
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"
+      className="rtl:rotate-180"
     >
       <path d="M5 12h14M13 6l6 6-6 6" />
     </svg>
   );
 }
-
 

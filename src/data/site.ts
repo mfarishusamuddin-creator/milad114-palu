@@ -15,9 +15,10 @@ export const SITE = {
   miladDate: "18 November 2026",
   organizer: "Pimpinan Pusat Muhammadiyah",
   nav: [
-    { href: "/", label: "Milad" },
-    { href: "/sejarah", label: "Sejarah" },
-    { href: "/layanan", label: "Layanan" },
+    { href: "#jelajah", label: "Jelajah" },
+    { href: "#sejarah", label: "Sejarah" },
+    { href: "#layanan", label: "Layanan" },
+    { href: "#peta", label: "Peta" },
   ],
   links: {
     muhammadiyah: "https://muhammadiyah.or.id/",

@@ -1,32 +1,11 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { SpaceTree } from "@/components/shared/SpaceTree";
+import type { Dictionary } from "@/i18n/types";
 import { cn } from "@/lib/cn";
 
-const LEGEND = [
-  {
-    number: "01",
-    label: "Akar",
-    title: "Jejak 114 Tahun",
-    href: "/sejarah",
-  },
-  {
-    number: "02",
-    label: "Batang",
-    title: "Layanan Muhammadiyah",
-    href: "/layanan",
-  },
-  {
-    number: "03",
-    label: "Kanopi",
-    title: "Milad 114",
-    href: "/",
-  },
-];
-
-export function GrowingTree() {
+export function GrowingTree({ dict }: { dict: Dictionary }) {
   const stageRef = useRef<HTMLDivElement | null>(null);
   const [grown, setGrown] = useState(false);
 
@@ -62,24 +41,23 @@ export function GrowingTree() {
       <div className="pattern-strip h-2.5 w-full opacity-90" aria-hidden="true" />
       <div className="container-page py-10">
         <div className="grid gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-center lg:gap-14">
-          <div>
+          <div data-reveal>
             <p className="eyebrow eyebrow--light">
               <span className="eyebrow-dot" aria-hidden="true" />
-              Satu pohon
+              {dict.tree.eyebrow}
             </p>
             <h2 className="section-title mt-3 text-white">
-              Tumbuh dari
-              <span className="block text-gold-light">akar yang sama.</span>
+              {dict.tree.titleLine1}{" "}
+              <span className="block text-gold-light">{dict.tree.titleLine2}</span>
             </h2>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-white/65">
-              Akar menyimpan sejarah. Batang menopang layanan. Kanopi merangkul
-              masa depan. Tiga cabang ini adalah tiga pintu yang bisa Anda buka.
+              {dict.tree.description}
             </p>
 
             <div className="mt-7 border-t border-white/10">
-              {LEGEND.map((item) => (
-                <Link
-                  key={item.label}
+              {dict.tree.legend.map((item) => (
+                <a
+                  key={item.number}
                   href={item.href}
                   className="group flex items-center gap-4 border-b border-white/10 py-3.5 no-underline"
                 >
@@ -94,16 +72,15 @@ export function GrowingTree() {
                       {item.title}
                     </span>
                   </span>
-                  <span className="text-white/40 transition-transform group-hover:translate-x-1 group-hover:text-gold-light">
+                  <span className="text-white/40 transition-transform group-hover:translate-x-1 group-hover:text-gold-light rtl:group-hover:-translate-x-1">
                     <ArrowIcon />
                   </span>
-                </Link>
+                </a>
               ))}
             </div>
 
             <p className="mt-5 text-[0.64rem] leading-relaxed text-white/35">
-              Ilustrasi pohon dihasilkan dengan algoritma space colonization
-              (Runions dkk., 2007), diimplementasikan ulang untuk proyek ini.
+              {dict.tree.caption}
             </p>
           </div>
 
@@ -113,55 +90,56 @@ export function GrowingTree() {
               "tree-stage relative mx-auto w-full max-w-3xl",
               grown && "is-grown"
             )}
+            data-reveal
           >
             <div className="relative px-3 py-6 sm:px-6 sm:py-8">
               <SpaceTree showGround />
 
               <div className="pointer-events-none absolute inset-0 hidden lg:block">
-                <Link
-                  href="/"
+                <a
+                  href="#peta"
                   className="tree-annotation pointer-events-auto absolute left-1/2 top-[10%] -translate-x-1/2"
                 >
                   <span className="h-1.5 w-1.5 rounded-full bg-gold-light" />
-                  Kanopi — Milad 114
-                </Link>
-                <Link
-                  href="/sejarah"
+                  {dict.tree.annotations.kanopi}
+                </a>
+                <a
+                  href="#sejarah"
                   className="tree-annotation pointer-events-auto absolute left-[4%] top-[54%]"
                 >
                   <span className="h-1.5 w-1.5 rounded-full bg-teal" />
-                  Akar — Sejarah
-                </Link>
-                <Link
-                  href="/layanan"
+                  {dict.tree.annotations.akar}
+                </a>
+                <a
+                  href="#layanan"
                   className="tree-annotation pointer-events-auto absolute right-[4%] top-[54%]"
                 >
                   <span className="h-1.5 w-1.5 rounded-full bg-kelor" />
-                  Batang — Layanan
-                </Link>
+                  {dict.tree.annotations.batang}
+                </a>
               </div>
 
               <div className="absolute left-1/2 top-[31%] -translate-x-1/2 -translate-y-1/2">
                 <div className="rounded-sm border border-gold-light/35 bg-navy-deep/85 px-4 py-2.5 text-center shadow-lg backdrop-blur">
                   <span className="font-serif text-3xl font-bold text-gold-light sm:text-4xl">
-                    114
+                    {dict.tree.stampTop}
                   </span>
                   <span className="mt-0.5 block text-[0.52rem] font-bold uppercase tracking-[0.2em] text-white/65">
-                    tahun
+                    {dict.tree.stampBottom}
                   </span>
                 </div>
               </div>
             </div>
 
             <div className="grid gap-2 border-t border-white/10 p-4 sm:grid-cols-3 lg:hidden">
-              {LEGEND.map((item) => (
-                <Link
-                  key={item.label}
+              {dict.tree.legend.map((item) => (
+                <a
+                  key={item.number}
                   href={item.href}
                   className="tree-annotation justify-center"
                 >
                   {item.label} — {item.title}
-                </Link>
+                </a>
               ))}
             </div>
           </div>
@@ -184,6 +162,7 @@ function ArrowIcon() {
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"
+      className="rtl:rotate-180"
     >
       <path d="M5 12h14M13 6l6 6-6 6" />
     </svg>

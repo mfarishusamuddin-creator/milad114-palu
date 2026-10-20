@@ -1,42 +1,27 @@
 ﻿"use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
-import { SITE } from "@/data/site";
+import { useState } from "react";
+import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
+import { BrandLogo } from "@/components/theme/BrandLogo";
+import { ThemeToggle } from "@/components/theme/ThemeToggle";
+import { languagePath } from "@/i18n";
+import type { Dictionary } from "@/i18n/types";
 import { cn } from "@/lib/cn";
 
-const VISITED_KEYS: Record<string, string> = {
-  "/": "m114:kanopi",
-  "/sejarah": "m114:akar",
-  "/layanan": "m114:batang",
-};
-
-export function Navbar() {
-  const pathname = usePathname();
+export function Navbar({ dict }: { dict: Dictionary }) {
   const [open, setOpen] = useState(false);
 
-  useEffect(() => {
-    const key = VISITED_KEYS[pathname];
-    if (!key) return;
-    try {
-      window.localStorage.setItem(key, "1");
-    } catch {
-      // localStorage can be unavailable in private contexts.
-    }
-  }, [pathname]);
-
   return (
-    <header className="sticky top-0 z-50 border-b border-line/80 bg-white/90 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-line/80 bg-surface/90 backdrop-blur-xl">
       <div className="container-page flex h-16 items-center justify-between gap-4">
         <Link
-          href="/"
+          href={languagePath(dict.lang)}
           className="flex items-center gap-2.5 no-underline"
-          aria-label={`${SITE.name} â€” beranda`}
+          aria-label={`${dict.meta.tagline} — home`}
         >
-          <Image
-            src="/logo/logogram-color.png"
+          <BrandLogo
+            variant="logogram"
             alt=""
             width={40}
             height={40}
@@ -52,45 +37,29 @@ export function Navbar() {
           </span>
         </Link>
 
-        <nav
-          aria-label="Navigasi utama"
-          className="hidden items-center gap-7 md:flex"
-        >
-          {SITE.nav.map((item) => {
-            const active =
-              item.href === "/"
-                ? pathname === "/"
-                : pathname.startsWith(item.href);
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="nav-link"
-                data-active={active ? "true" : "false"}
-                aria-current={active ? "page" : undefined}
-              >
-                {item.label}
-              </Link>
-            );
-          })}
+        <nav aria-label="Primary" className="hidden items-center gap-6 lg:flex">
+          {dict.nav.links.map((item) => (
+            <a key={item.href} href={item.href} className="nav-link">
+              {item.label}
+            </a>
+          ))}
         </nav>
 
-        <div className="hidden items-center gap-3 md:flex">
-          <Link href="/layanan#kabar" className="btn btn-ghost btn-sm">
-            Kabar
-          </Link>
-          <Link href="/sejarah" className="btn btn-gold btn-sm">
-            Jelajahi Jejak
+        <div className="hidden items-center gap-2 lg:flex">
+          <LanguageSwitcher lang={dict.lang} />
+          <ThemeToggle dict={dict} />
+          <a href="#sejarah" className="btn btn-gold btn-sm">
+            {dict.nav.cta}
             <ArrowIcon />
-          </Link>
+          </a>
         </div>
 
         <button
           type="button"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line bg-white text-navy md:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-sm border border-line bg-surface text-navy lg:hidden"
           aria-expanded={open}
           aria-controls="menu-mobile"
-          aria-label={open ? "Tutup menu" : "Buka menu"}
+          aria-label={open ? dict.nav.menuClose : dict.nav.menuOpen}
           onClick={() => setOpen((value) => !value)}
         >
           {open ? <CloseIcon /> : <MenuIcon />}
@@ -100,52 +69,36 @@ export function Navbar() {
       <div
         id="menu-mobile"
         className={cn(
-          "border-t border-line bg-white md:hidden",
+          "border-t border-line bg-surface lg:hidden",
           open ? "block" : "hidden"
         )}
       >
         <nav
-          aria-label="Navigasi seluler"
+          aria-label="Mobile"
           className="container-page flex flex-col gap-1 py-4"
         >
-          {SITE.nav.map((item) => {
-            const active =
-              item.href === "/"
-                ? pathname === "/"
-                : pathname.startsWith(item.href);
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={cn(
-                  "rounded-sm px-3 py-3 text-sm font-semibold no-underline",
-                  active
-                    ? "bg-bg-soft text-navy"
-                    : "text-ink-soft hover:bg-bg-soft hover:text-navy"
-                )}
-                aria-current={active ? "page" : undefined}
-                onClick={() => setOpen(false)}
-              >
-                {item.label}
-              </Link>
-            );
-          })}
-          <div className="mt-3 grid grid-cols-2 gap-2">
-            <Link
-              href="/layanan#kabar"
-              className="btn btn-ghost btn-sm"
+          {dict.nav.links.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="rounded-sm px-3 py-3 text-sm font-semibold text-ink-soft no-underline hover:bg-bg-soft hover:text-navy"
               onClick={() => setOpen(false)}
             >
-              Kabar
-            </Link>
-            <Link
-              href="/sejarah"
-              className="btn btn-gold btn-sm"
-              onClick={() => setOpen(false)}
-            >
-              Jejak 114
-            </Link>
+              {item.label}
+            </a>
+          ))}
+          <div className="mt-3 flex items-center justify-between gap-3">
+            <LanguageSwitcher lang={dict.lang} large />
+            <ThemeToggle dict={dict} />
           </div>
+          <a
+            href="#sejarah"
+            className="btn btn-gold mt-2"
+            onClick={() => setOpen(false)}
+          >
+            {dict.nav.cta}
+            <ArrowIcon />
+          </a>
         </nav>
       </div>
     </header>
@@ -198,9 +151,9 @@ function ArrowIcon() {
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"
+      className="rtl:rotate-180"
     >
       <path d="M5 12h14M13 6l6 6-6 6" />
     </svg>
   );
 }
-

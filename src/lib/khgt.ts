@@ -96,11 +96,25 @@ export function toIsoDate(value: string): string {
   return `${year}-${String(monthIndex + 1).padStart(2, "0")}-${day.padStart(2, "0")}`;
 }
 
-export function formatMasehi(value: string): string {
+export function formatMasehi(
+  value: string,
+  months: string[] = MONTHS_ID
+): string {
   const iso = toIsoDate(value);
   const [year, month, day] = iso.split("-").map(Number);
   if (!year || !month || !day) return value;
-  return `${day} ${MONTHS_ID[month - 1]} ${year}`;
+  return `${day} ${months[month - 1] ?? MONTHS_ID[month - 1]} ${year}`;
+}
+
+export function translateHijriString(
+  value: string,
+  months: Record<string, string>
+): string {
+  let translated = value;
+  for (const [key, label] of Object.entries(months)) {
+    translated = translated.replace(key, label);
+  }
+  return translated;
 }
 
 export function findHijriForMasehi(
@@ -148,8 +162,8 @@ export function findMonthIndexForDate(
   );
 }
 
-export function formatFetchedAt(value: string): string {
-  return new Intl.DateTimeFormat("id-ID", {
+export function formatFetchedAt(value: string, locale = "id-ID"): string {
+  return new Intl.DateTimeFormat(locale, {
     day: "numeric",
     month: "long",
     year: "numeric",

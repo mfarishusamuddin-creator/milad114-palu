@@ -1,62 +1,37 @@
-import Link from "next/link";
 import { SectionHeading } from "@/components/shared/SectionHeading";
+import type { Dictionary } from "@/i18n/types";
 
-const GATES = [
-  {
-    number: "01",
-    label: "Kanopi",
-    title: "Milad 114",
-    description:
-      "Tema, makna logo, Palu, agenda, dan kabar terbaru seputar Milad ke-114.",
-    href: "/#tentang",
-    color: "bg-navy",
-  },
-  {
-    number: "02",
-    label: "Akar",
-    title: "Jejak 114 Tahun",
-    description:
-      "Dari Kauman 1912 ke Palu 2026, dibaca dalam enam bab yang saling menyambung.",
-    href: "/sejarah",
-    color: "bg-teal-deep",
-  },
-  {
-    number: "03",
-    label: "Batang",
-    title: "Layanan",
-    description:
-      "Kalender KHGT, kabar resmi Muhammadiyah, dan kuis Milad 114.",
-    href: "/layanan",
-    color: "bg-gold",
-  },
-];
+const ACCENT: Record<string, string> = {
+  teal: "bg-teal-deep",
+  navy: "bg-navy",
+  gold: "bg-gold",
+};
 
-export function GatewayCards() {
+export function GatewayCards({ dict }: { dict: Dictionary }) {
   return (
-    <section className="section scroll-mt-20" id="pintu">
+    <section className="section scroll-mt-20" id="jelajah">
       <div className="container-page">
         <div className="grid gap-6 lg:grid-cols-[1fr_0.8fr] lg:items-end">
           <SectionHeading
-            eyebrow="Indeks pintu"
-            title="Satu pohon, tiga cara menjelajah"
+            eyebrow={dict.gates.eyebrow}
+            title={dict.gates.title}
           />
           <p className="body-lead max-w-md lg:pb-1">
-            Pilih pintu yang paling ingin dibuka. Setiap pintu menuntun ke satu
-            bagian pohon yang sama—tanpa halaman yang saling mengulang.
+            {dict.gates.description}
           </p>
         </div>
 
         <div className="mt-10">
-          {GATES.map((gate) => (
-            <Link
+          {dict.gates.items.map((gate) => (
+            <a
               key={gate.number}
               href={gate.href}
               className="group grid gap-3 border-t border-line py-6 no-underline transition-colors last:border-b hover:bg-bg-soft/70 sm:grid-cols-[4.5rem_0.7fr_1.3fr_auto] sm:items-center sm:gap-6 sm:px-3"
-              aria-label={`${gate.label} — ${gate.title}`}
+              data-reveal
             >
               <div className="flex items-center gap-3">
                 <span
-                  className={`h-2.5 w-2.5 rounded-full ${gate.color}`}
+                  className={`h-2.5 w-2.5 rounded-full ${ACCENT[gate.accent] ?? "bg-navy"}`}
                   aria-hidden="true"
                 />
                 <span className="font-serif text-xl font-bold text-ink">
@@ -78,12 +53,12 @@ export function GatewayCards() {
               </p>
 
               <span className="inline-flex items-center gap-2 text-[0.7rem] font-bold uppercase tracking-[0.12em] text-navy">
-                Buka
-                <span className="transition-transform group-hover:translate-x-1">
+                {dict.gates.open}
+                <span className="transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1">
                   <ArrowIcon />
                 </span>
               </span>
-            </Link>
+            </a>
           ))}
         </div>
       </div>
@@ -103,6 +78,7 @@ function ArrowIcon() {
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"
+      className="rtl:rotate-180"
     >
       <path d="M5 12h14M13 6l6 6-6 6" />
     </svg>

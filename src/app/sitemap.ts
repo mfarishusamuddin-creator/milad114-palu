@@ -12,15 +12,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${SITE.url}/sejarah`,
+      url: `${SITE.url}/en`,
       lastModified: LAST_MODIFIED,
-      changeFrequency: "monthly",
-      priority: 0.8,
+      changeFrequency: "weekly",
+      priority: 0.9,
     },
     {
-      url: `${SITE.url}/layanan`,
+      url: `${SITE.url}/ar`,
       lastModified: LAST_MODIFIED,
-      changeFrequency: "daily",
+      changeFrequency: "weekly",
       priority: 0.9,
     },
   ];
