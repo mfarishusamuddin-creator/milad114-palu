@@ -6,7 +6,7 @@ const maintenanceHtml = `<!doctype html>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>Milad 114 — Sedang Dalam Perbaikan</title>
+  <title>Milad 114 — Santuy heula atuh Bro...</title>
   <style>
     :root {
       --navy: #1c469e;
@@ -14,8 +14,8 @@ const maintenanceHtml = `<!doctype html>
       --teal: #41847d;
       --gold: #d49b0f;
       --kelor: #6dbd25;
-      --ink: #1a2138;
-      --paper: #f0f3f8;
+      --ink: #fdfeff;
+      --paper: #000000;
     }
 
     * { box-sizing: border-box; }
@@ -73,7 +73,7 @@ const maintenanceHtml = `<!doctype html>
     .brand strong {
       display: block;
       color: var(--navy);
-      font-family: Georgia, "Times New Roman", serif;
+      font-family: Georgia, "Ink Free", serif;
       font-size: 20px;
       line-height: 1;
       letter-spacing: -0.01em;
@@ -101,7 +101,7 @@ const maintenanceHtml = `<!doctype html>
     h1 {
       margin: 10px 0 0;
       color: var(--ink);
-      font-family: Georgia, "Times New Roman", serif;
+      font-family: Georgia, "Ink Free", serif;
       font-size: clamp(32px, 6vw, 48px);
       line-height: 1.08;
       letter-spacing: -0.03em;
@@ -138,7 +138,7 @@ const maintenanceHtml = `<!doctype html>
     .languages .ar {
       direction: rtl;
       text-align: right;
-      font-family: "Segoe UI", Tahoma, sans-serif;
+      font-family: "Segoe UI", Ink Free, sans-serif;
     }
 
     .status {
@@ -195,21 +195,13 @@ const maintenanceHtml = `<!doctype html>
         </div>
       </div>
 
-      <p class="eyebrow">Milad 114 · Palu 2026</p>
-      <h1>Sedang dalam<span>perbaikan.</span></h1>
-      <p class="lead">
-        Kami sedang memperbarui laman ini. Silakan kembali beberapa saat lagi.
-        Terima kasih atas kesabaran Anda.
-      </p>
 
       <div class="languages">
         <p>The site is under maintenance. Please check back shortly.</p>
         <p class="ar">الموقع قيد الصيانة. يرجى العودة بعد قليل.</p>
       </div>
 
-      <div class="status">
-        <span class="dot" aria-hidden="true"></span>
-        Pemeliharaan terjadwal
+     
       </div>
     </div>
   </main>
