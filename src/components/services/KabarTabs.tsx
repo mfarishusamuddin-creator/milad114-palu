@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { KabarCard } from "@/components/shared/KabarCard";
@@ -22,7 +22,7 @@ export function KabarTabs({ latest, milad }: Props) {
         role="tablist"
         aria-label="Kategori kabar"
       >
-        <div className="inline-flex rounded-full border border-line bg-white p-1">
+        <div className="inline-flex rounded-sm border border-line bg-white p-1">
           <button
             type="button"
             role="tab"
@@ -31,7 +31,7 @@ export function KabarTabs({ latest, milad }: Props) {
             aria-controls="panel-kabar"
             onClick={() => setTab("latest")}
             className={cn(
-              "rounded-full px-4 py-1.5 text-xs font-bold transition-colors",
+              "rounded-sm px-4 py-1.5 text-xs font-bold transition-colors",
               tab === "latest"
                 ? "bg-navy text-white"
                 : "text-ink-soft hover:text-navy"
@@ -47,7 +47,7 @@ export function KabarTabs({ latest, milad }: Props) {
             aria-controls="panel-kabar"
             onClick={() => setTab("milad")}
             className={cn(
-              "rounded-full px-4 py-1.5 text-xs font-bold transition-colors",
+              "rounded-sm px-4 py-1.5 text-xs font-bold transition-colors",
               tab === "milad"
                 ? "bg-navy text-white"
                 : "text-ink-soft hover:text-navy"
@@ -74,13 +74,13 @@ export function KabarTabs({ latest, milad }: Props) {
         className="mt-6"
       >
         {items.length > 0 ? (
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-x-8 md:grid-cols-2">
             {items.map((item) => (
-              <KabarCard key={item.id} item={item} />
+              <KabarCard key={item.id} item={item} variant="compact" />
             ))}
           </div>
         ) : (
-          <div className="rounded-2xl border border-line bg-bg-soft p-6">
+          <div className="rounded-sm border border-line bg-bg-soft p-6">
             <p className="text-sm text-ink-soft">
               Kabar resmi sedang tidak dapat dimuat. Silakan buka langsung{" "}
               <a
@@ -104,3 +104,4 @@ export function KabarTabs({ latest, milad }: Props) {
     </div>
   );
 }
+

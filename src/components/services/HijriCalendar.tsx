@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { cn } from "@/lib/cn";
@@ -67,7 +67,7 @@ export function HijriCalendar({ data }: { data: KhgtSnapshot }) {
       result
         ? {
             title: formatMasehi(masehiInput),
-            detail: `${result.hijri}${result.pasaran ? ` · ${result.pasaran}` : ""}`,
+            detail: `${result.hijri}${result.pasaran ? ` آ· ${result.pasaran}` : ""}`,
           }
         : {
             title: formatMasehi(masehiInput),
@@ -85,7 +85,7 @@ export function HijriCalendar({ data }: { data: KhgtSnapshot }) {
       result
         ? {
             title: `${day} ${hijriMonth} ${year} H`,
-            detail: `${formatMasehi(result.masehi)}${result.pasaran ? ` · ${result.pasaran}` : ""}`,
+            detail: `${formatMasehi(result.masehi)}${result.pasaran ? ` آ· ${result.pasaran}` : ""}`,
           }
         : {
             title: `${day} ${hijriMonth} ${year} H`,
@@ -96,21 +96,21 @@ export function HijriCalendar({ data }: { data: KhgtSnapshot }) {
 
   if (!month) {
     return (
-      <div className="rounded-2xl border border-line bg-bg-soft p-6 text-sm text-ink-soft">
+      <div className="rounded-sm border border-line bg-bg-soft p-6 text-sm text-ink-soft">
         Data kalender belum tersedia.
       </div>
     );
   }
 
   return (
-    <div className="overflow-hidden rounded-[1.5rem] border border-line bg-white shadow-[0_16px_44px_rgba(28,70,158,0.08)]">
+    <div className="overflow-hidden rounded-sm border border-t-2 border-line border-t-navy bg-white">
       <div className="flex flex-col gap-4 border-b border-line bg-bg-soft/70 p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5">
-        <div className="inline-flex rounded-full border border-line bg-white p-1">
+        <div className="inline-flex rounded-sm border border-line bg-white p-1">
           <button
             type="button"
             onClick={() => setMode("hijri")}
             className={cn(
-              "rounded-full px-4 py-1.5 text-xs font-bold transition-colors",
+              "rounded-sm px-4 py-1.5 text-xs font-bold transition-colors",
               mode === "hijri"
                 ? "bg-navy text-white"
                 : "text-ink-soft hover:text-navy"
@@ -123,7 +123,7 @@ export function HijriCalendar({ data }: { data: KhgtSnapshot }) {
             type="button"
             onClick={() => setMode("masehi")}
             className={cn(
-              "rounded-full px-4 py-1.5 text-xs font-bold transition-colors",
+              "rounded-sm px-4 py-1.5 text-xs font-bold transition-colors",
               mode === "masehi"
                 ? "bg-navy text-white"
                 : "text-ink-soft hover:text-navy"
@@ -150,7 +150,7 @@ export function HijriCalendar({ data }: { data: KhgtSnapshot }) {
             type="button"
             onClick={() => setActiveIndex(Math.max(0, activeIndex - 1))}
             disabled={activeIndex === 0}
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-line bg-white text-navy disabled:opacity-30"
+            className="flex h-9 w-9 items-center justify-center rounded-sm border border-line bg-white text-navy disabled:opacity-30"
             aria-label="Bulan sebelumnya"
           >
             <ChevronLeft />
@@ -172,7 +172,7 @@ export function HijriCalendar({ data }: { data: KhgtSnapshot }) {
               setActiveIndex(Math.min(months.length - 1, activeIndex + 1))
             }
             disabled={activeIndex === months.length - 1}
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-line bg-white text-navy disabled:opacity-30"
+            className="flex h-9 w-9 items-center justify-center rounded-sm border border-line bg-white text-navy disabled:opacity-30"
             aria-label="Bulan berikutnya"
           >
             <ChevronRight />
@@ -212,7 +212,7 @@ export function HijriCalendar({ data }: { data: KhgtSnapshot }) {
                   mode === "hijri"
                     ? `${toWesternDigits(day.hijri ?? "")} ${month.name} ${month.year} H`
                     : day.hijriah ?? "";
-                const label = `${formatMasehi(day.masehi)} · ${hijriLabel}`;
+                const label = `${formatMasehi(day.masehi)} آ· ${hijriLabel}`;
 
                 return (
                   <div
@@ -252,10 +252,10 @@ export function HijriCalendar({ data }: { data: KhgtSnapshot }) {
                 {month.hariIstimewa.map((event) => (
                   <li
                     key={`${event.tanggal_masehi}-${event.keterangan}`}
-                    className="rounded-xl border border-line bg-bg-soft/60 px-3 py-2.5"
+                    className="rounded-sm border border-line bg-bg-soft/60 px-3 py-2.5"
                   >
                     <p className="text-[0.7rem] font-bold text-navy">
-                      {event.tanggal_hijri} · {formatMasehi(event.tanggal_masehi)}
+                      {event.tanggal_hijri} آ· {formatMasehi(event.tanggal_masehi)}
                     </p>
                     <p className="mt-0.5 text-xs text-ink-soft">
                       {event.keterangan}
@@ -292,7 +292,7 @@ export function HijriCalendar({ data }: { data: KhgtSnapshot }) {
                 max="2026-12-31"
                 value={masehiInput}
                 onChange={(event) => setMasehiInput(event.target.value)}
-                className="h-10 rounded-xl border border-line bg-white px-3 text-sm text-ink"
+                className="h-10 rounded-sm border border-line bg-white px-3 text-sm text-ink"
               />
               <button type="submit" className="btn btn-primary btn-sm">
                 Cari Hijriah
@@ -313,7 +313,7 @@ export function HijriCalendar({ data }: { data: KhgtSnapshot }) {
                 id="hijri-month"
                 value={hijriMonth}
                 onChange={(event) => setHijriMonth(event.target.value)}
-                className="h-10 rounded-xl border border-line bg-white px-2 text-sm text-ink"
+                className="h-10 rounded-sm border border-line bg-white px-2 text-sm text-ink"
               >
                 {data.hijri.map((item) => (
                   <option key={`${item.name}-${item.year}`} value={item.name}>
@@ -332,7 +332,7 @@ export function HijriCalendar({ data }: { data: KhgtSnapshot }) {
                 max={30}
                 value={hijriDay}
                 onChange={(event) => setHijriDay(event.target.value)}
-                className="h-10 rounded-xl border border-line bg-white px-2 text-sm text-ink"
+                className="h-10 rounded-sm border border-line bg-white px-2 text-sm text-ink"
               />
 
               <label className="sr-only" htmlFor="hijri-year">
@@ -342,7 +342,7 @@ export function HijriCalendar({ data }: { data: KhgtSnapshot }) {
                 id="hijri-year"
                 value={hijriYear}
                 onChange={(event) => setHijriYear(event.target.value)}
-                className="h-10 rounded-xl border border-line bg-white px-2 text-sm text-ink"
+                className="h-10 rounded-sm border border-line bg-white px-2 text-sm text-ink"
               >
                 {years.map((year) => (
                   <option key={year} value={year}>
@@ -357,7 +357,7 @@ export function HijriCalendar({ data }: { data: KhgtSnapshot }) {
             </form>
 
             <div
-              className="mt-3 min-h-[4.2rem] rounded-xl border border-line bg-bg-soft/60 px-3 py-3"
+              className="mt-3 min-h-[4.2rem] rounded-sm border border-line bg-bg-soft/60 px-3 py-3"
               aria-live="polite"
             >
               {converter ? (
@@ -371,7 +371,7 @@ export function HijriCalendar({ data }: { data: KhgtSnapshot }) {
                 </>
               ) : (
                 <p className="text-xs text-ink-soft">
-                  Pilih tanggal untuk melihat padanan Masehi–Hijriah.
+                  Pilih tanggal untuk melihat padanan Masehiâ€“Hijriah.
                 </p>
               )}
             </div>
@@ -388,7 +388,7 @@ export function HijriCalendar({ data }: { data: KhgtSnapshot }) {
           >
             khgt.muhammadiyah.or.id
           </a>{" "}
-          · snapshot {formatFetchedAt(data.fetchedAt)}. Kalender ini bukan
+          آ· snapshot {formatFetchedAt(data.fetchedAt)}. Kalender ini bukan
           pengganti kalender resmi KHGT.
         </p>
       </div>
@@ -431,3 +431,5 @@ function ChevronRight() {
     </svg>
   );
 }
+
+

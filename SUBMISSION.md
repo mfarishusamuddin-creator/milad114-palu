@@ -15,12 +15,13 @@
 **Eksekusi.**
 - Tiga rute dengan identitas visual resmi: El Messiri, Familjen Grotesk, palet navy–teal–gold, dan supergraphic kelor.
 - Beranda memuat countdown, tiga kartu pintu, pohon interaktif, agenda, dan kabar.
-- Sejarah disusun dalam enam bab dengan sumber resmi di setiap bab.
+- Sejarah disusun dalam enam bab dengan sumber resmi di setiap bab; scrollytelling memakai **Scrollama** (MIT).
+- Ilustrasi pohon memakai algoritma **space colonization** (Runions dkk., 2007) yang diimplementasikan ulang, bukan salinan kode repo.
 - Layanan memakai data resmi: kalender KHGT (snapshot tersinkron) dan kabar Muhammadiyah (WP REST API, cache satu jam, fallback).
 - Kuis 10 soal dengan penjelasan dan tautan sumber.
 - Progres 3/3 disimpan di perangkat; tidak ada backend, login, atau database.
 
-**Teknologi.** Next.js 16 App Router, TypeScript, Tailwind CSS v4, Cache Components, font lokal OFL. Tanpa library peta/animasi berat.
+**Teknologi.** Next.js 16 App Router, TypeScript, Tailwind CSS v4, Cache Components, font lokal OFL, Scrollama. Tanpa library peta/animasi berat. Layout mengikuti template identitas resmi (plate logo, pattern strip, proporsi tipografi), bukan template landing page generik.
 
 **Konten.** Fakta diverifikasi di `CONTENT-VERIFIED.md`. Tanggal acara 13–15 November 2026 / 4–6 Jumadilakhir 1448 H; milad historis 18 November 2026. Angka amal usaha yang belum seragam tidak ditampilkan.
 

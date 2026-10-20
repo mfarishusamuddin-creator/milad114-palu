@@ -54,14 +54,20 @@ Siapkan ulang aset dari folder sumber:
 npm run prepare:assets
 ```
 
+Buat ulang ilustrasi pohon:
+
+```bash
+npm run generate:tree
+```
+
 ## Struktur penting
 
 ```text
 src/app/                 layout, beranda, sejarah, layanan, sitemap, robots
 src/components/          layout, home, history, services, quiz, shared
-src/data/                site, milestones, quiz, calendar, kabar, khgt snapshot
+src/data/                site, milestones, quiz, calendar, kabar, khgt, tree
 src/lib/                 kabar, khgt, date, cn
-scripts/                 sync-khgt, sync-kabar, prepare-assets
+scripts/                 sync-khgt, sync-kabar, prepare-assets, generate-tree
 public/logo/             logo horizontal, vertikal, logogram
 public/pattern/          supergraphic kelor
 public/og/               gambar Open Graph 1200x630
@@ -75,6 +81,14 @@ public/og/               gambar Open Graph 1200x630
 - Jangan menampilkan angka amal usaha yang belum seragam atau tanpa sumber resmi.
 - Setiap bab sejarah dan soal kuis memiliki tautan sumber.
 - Logo tidak boleh diberi shadow, glow, 3D, opacity, rotasi, atau diubah warnanya.
+
+## Referensi dan lisensi
+
+- **Scrollama** (`russellsamora/scrollama`, MIT) — dipakai untuk scrollytelling di `/sejarah`. Lisensi disalin ke `public/licenses/Scrollama-MIT.txt`.
+- **Space colonization** (Runions dkk., 2007; daftar referensi menyertakan `jasonwebb/2d-space-colonization-experiments`) — algoritma diimplementasikan ulang dari paper di `scripts/generate-tree.mjs`. Tidak ada kode repo yang disalin.
+- **GSAP** dan **folio-2019** — tidak dipakai. Animasi berat/WebGL tidak sepadan dengan target performa mobile; pohon memakai SVG + CSS.
+- **Peta 38 provinsi** — tidak dipakai karena fitur peta berada di luar scope MVP.
+- **Template identitas resmi** dari folder `drive-download-...` — dipakai untuk plate logo, pattern strip, tipografi, dan proporsi layout, bukan sebagai halaman jadi.
 
 ## Uji
 

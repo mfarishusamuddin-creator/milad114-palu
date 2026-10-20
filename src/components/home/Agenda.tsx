@@ -30,41 +30,39 @@ export function Agenda() {
   return (
     <section className="section scroll-mt-20 bg-bg-soft" id="agenda">
       <div className="container-page">
-        <SectionHeading
-          eyebrow="Agenda"
-          title="Tiga penanda waktu"
-          description="Tanggal acara, tanggal historis, dan arah berikutnya. Jadwal rinci mengikuti Edaran PP Muhammadiyah No. 19/EDR/I.0/B/2026."
-        />
+        <div className="grid gap-6 lg:grid-cols-[1fr_0.8fr] lg:items-end">
+          <SectionHeading eyebrow="Agenda" title="Tiga penanda waktu" />
+          <p className="max-w-md text-sm leading-relaxed text-ink-soft lg:pb-1">
+            Tanggal acara, tanggal historis, dan arah berikutnya. Jadwal rinci
+            mengikuti Edaran PP Muhammadiyah No. 19/EDR/I.0/B/2026.
+          </p>
+        </div>
 
-        <div className="mt-10 grid gap-4 lg:grid-cols-3">
+        <div className="mt-10 border-t border-line">
           {AGENDA.map((item) => (
             <article
               key={item.title}
-              className="relative overflow-hidden rounded-[1.35rem] border border-line bg-white p-6 shadow-[0_10px_32px_rgba(28,70,158,0.06)]"
+              className="grid gap-2 border-b border-line py-5 sm:grid-cols-[10rem_1fr_auto] sm:items-baseline sm:gap-6"
             >
-              <div className="flex items-center justify-between gap-3">
-                <span className="font-serif text-lg font-bold text-navy">
-                  {item.date}
-                </span>
-                <span className="rounded-full bg-bg-soft px-2.5 py-1 text-[0.6rem] font-bold uppercase tracking-[0.14em] text-teal-deep">
-                  {item.tag}
-                </span>
-              </div>
-              <h3 className="mt-4 font-serif text-xl font-bold text-ink">
-                {item.title}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-ink-soft">
-                {item.description}
+              <p className="font-serif text-lg font-bold text-navy">
+                {item.date}
               </p>
-              <div
-                className="mt-5 h-1 w-12 rounded-full bg-gold"
-                aria-hidden="true"
-              />
+              <div>
+                <h3 className="font-serif text-xl font-bold text-ink">
+                  {item.title}
+                </h3>
+                <p className="mt-1 max-w-2xl text-sm leading-relaxed text-ink-soft">
+                  {item.description}
+                </p>
+              </div>
+              <span className="text-[0.6rem] font-bold uppercase tracking-[0.16em] text-teal-deep">
+                {item.tag}
+              </span>
             </article>
           ))}
         </div>
 
-        <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+        <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <SourceNote
             items={[
               { label: "Edaran 19/2026", url: SITE.links.edaran },

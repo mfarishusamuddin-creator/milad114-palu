@@ -1,4 +1,4 @@
-@import "tailwindcss";
+﻿@import "tailwindcss";
 
 @theme {
   --color-navy: #1c469e;
@@ -8,7 +8,7 @@
   --color-gold: #d49b0f;
   --color-gold-mid: #dfae1c;
   --color-gold-light: #eab749;
-  --color-gold-text: #8a6206;
+  --color-gold-text: #a66f05;
   --color-kelor: #6dbd25;
   --color-kelor-deep: #009c49;
   --color-bg: #ffffff;
@@ -17,7 +17,7 @@
   --color-ink-soft: #525b73;
   --color-line: #dde3ee;
   --shadow-soft: 0 8px 32px rgba(28, 70, 158, 0.1);
-  --radius-card: 1.25rem;
+  --radius-card: 0.5rem;
 }
 
 @theme inline {
@@ -164,6 +164,11 @@
     color: transparent;
   }
 
+  .outline-number {
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(212, 155, 15, 0.82);
+  }
+
   .btn {
     display: inline-flex;
     align-items: center;
@@ -171,7 +176,7 @@
     gap: 0.55rem;
     min-height: 2.9rem;
     padding: 0.72rem 1.35rem;
-    border-radius: 999px;
+    border-radius: 0.45rem;
     border: 1px solid transparent;
     font-family: var(--font-body), system-ui, sans-serif;
     font-size: 0.88rem;
@@ -245,7 +250,7 @@
   .card {
     background: #fff;
     border: 1px solid var(--color-line);
-    border-radius: var(--radius-card);
+    border-radius: 0.5rem;
     box-shadow: var(--shadow-soft);
   }
 
@@ -297,19 +302,19 @@
     pointer-events: none;
   }
 
-  .hero-card {
+  .hero-plate {
     position: relative;
     overflow: hidden;
     background: #fff;
-    border: 1px solid rgba(28, 70, 158, 0.12);
-    border-radius: 1.75rem;
-    box-shadow: 0 28px 70px rgba(28, 70, 158, 0.16);
+    border: 1px solid var(--color-line);
+    border-radius: 0.5rem;
+    box-shadow: 0 22px 60px rgba(28, 70, 158, 0.13);
   }
 
   .countdown-shell {
     background: var(--grad-navy);
     border: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: 1.25rem;
+    border-radius: 0.5rem;
     color: #fff;
     box-shadow: 0 18px 46px rgba(28, 70, 158, 0.22);
   }
@@ -320,7 +325,7 @@
     align-items: center;
     justify-content: center;
     padding: 0.85rem 0.35rem;
-    border-radius: 0.9rem;
+    border-radius: 0.25rem;
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.1);
   }
@@ -348,7 +353,7 @@
     overflow: hidden;
     min-height: 15.5rem;
     padding: 1.5rem;
-    border-radius: 1.4rem;
+    border-radius: 0.5rem;
     border: 1px solid rgba(28, 70, 158, 0.12);
     background: #fff;
     box-shadow: var(--shadow-soft);
@@ -394,71 +399,71 @@
   .tree-stage {
     position: relative;
     overflow: hidden;
-    border-radius: 1.75rem;
+    border-radius: 0.5rem;
     background:
-      radial-gradient(80% 80% at 50% 10%, rgba(109, 189, 37, 0.18) 0%, rgba(0, 0, 0, 0) 58%),
+      radial-gradient(80% 80% at 50% 10%, rgba(109, 189, 37, 0.16) 0%, rgba(0, 0, 0, 0) 58%),
       var(--grad-navy);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.14);
   }
 
-  .tree-path {
-    stroke-dasharray: 900;
-    stroke-dashoffset: 900;
-    transition: stroke-dashoffset 1.8s cubic-bezier(0.22, 1, 0.36, 1);
+  .space-tree-branches {
+    transition: clip-path 1.8s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
-  .tree-stage.is-grown .tree-path {
-    stroke-dashoffset: 0;
+  .tree-stage:not(.is-grown) .space-tree-branches {
+    clip-path: inset(100% 0 0 0);
   }
 
-  .tree-leaf {
-    opacity: 0;
-    transform: scale(0.72);
-    transform-box: fill-box;
-    transform-origin: center;
+  .tree-stage.is-grown .space-tree-branches {
+    clip-path: inset(0 0 0 0);
+  }
+
+  .space-tree-leaves {
+    transform-origin: 50% 70%;
     transition:
-      opacity 600ms ease,
-      transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+      opacity 700ms ease 280ms,
+      transform 900ms cubic-bezier(0.22, 1, 0.36, 1) 220ms;
   }
 
-  .tree-stage.is-grown .tree-leaf {
+  .tree-stage:not(.is-grown) .space-tree-leaves {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+
+  .tree-stage.is-grown .space-tree-leaves {
     opacity: 1;
     transform: scale(1);
   }
 
-  .tree-stage.is-grown .tree-leaf:nth-child(3n + 1) {
-    transition-delay: 0.25s;
+  .space-leaf {
+    transition: opacity 320ms ease;
   }
 
-  .tree-stage.is-grown .tree-leaf:nth-child(3n + 2) {
-    transition-delay: 0.4s;
-  }
-
-  .tree-stage.is-grown .tree-leaf:nth-child(3n + 3) {
-    transition-delay: 0.55s;
-  }
-
-  .tree-link {
+  .tree-annotation {
     display: inline-flex;
     align-items: center;
-    gap: 0.35rem;
-    padding: 0.45rem 0.75rem;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    gap: 0.45rem;
+    padding: 0.4rem 0.6rem;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 2px;
+    background: rgba(12, 30, 72, 0.62);
     color: #fff;
-    font-size: 0.72rem;
+    font-size: 0.62rem;
     font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     text-decoration: none;
     backdrop-filter: blur(8px);
     transition:
       background-color 180ms ease,
-      transform 180ms ease;
+      color 180ms ease,
+      border-color 180ms ease;
   }
 
-  .tree-link:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateY(-1px);
+  .tree-annotation:hover {
+    background: #fff;
+    color: var(--color-navy);
+    border-color: #fff;
   }
 
   .timeline-rail {
@@ -602,7 +607,7 @@
     align-items: center;
     justify-content: center;
     min-height: 2rem;
-    border-radius: 0.55rem;
+    border-radius: 0.2rem;
     background: var(--color-navy);
     color: #fff;
     font-size: 0.62rem;
@@ -620,7 +625,7 @@
     justify-content: space-between;
     padding: 0.4rem;
     border: 1px solid var(--color-line);
-    border-radius: 0.7rem;
+    border-radius: 0.2rem;
     background: #fff;
   }
 
@@ -680,7 +685,7 @@
     gap: 1rem;
     padding: 0.9rem 1rem;
     border: 1px solid var(--color-line);
-    border-radius: 0.9rem;
+    border-radius: 0.3rem;
     background: #fff;
     text-align: left;
     color: var(--color-ink);
@@ -784,7 +789,7 @@
     gap: 0.7rem;
     padding: 1.2rem;
     border: 1px solid var(--color-line);
-    border-radius: 1rem;
+    border-radius: 0.35rem;
     background: #fff;
     transition:
       border-color 180ms ease,
@@ -914,12 +919,15 @@
     transition-duration: 0.01ms !important;
   }
 
-  .tree-path {
-    stroke-dashoffset: 0 !important;
+  .tree-stage:not(.is-grown) .space-tree-branches,
+  .tree-stage.is-grown .space-tree-branches {
+    clip-path: inset(0 0 0 0) !important;
   }
 
-  .tree-leaf {
+  .tree-stage:not(.is-grown) .space-tree-leaves,
+  .tree-stage.is-grown .space-tree-leaves {
     opacity: 1 !important;
     transform: none !important;
   }
 }
+

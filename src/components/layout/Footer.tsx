@@ -1,4 +1,4 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import Link from "next/link";
 import { SITE } from "@/data/site";
 
@@ -20,7 +20,7 @@ export function Footer() {
               Satu pohon, tiga pintu: Milad, Sejarah, dan Layanan. Dibangun
               sebagai karya independen untuk lomba website.
             </p>
-            <p className="mt-5 inline-flex rounded-full border border-white/15 bg-white/8 px-3 py-1.5 text-[0.68rem] font-bold uppercase tracking-[0.14em] text-gold-light">
+            <p className="mt-5 inline-flex rounded-sm border border-white/15 bg-white/8 px-3 py-1.5 text-[0.68rem] font-bold uppercase tracking-[0.14em] text-gold-light">
               {SITE.tagline}
             </p>
           </div>
@@ -105,9 +105,9 @@ export function Footer() {
             <p className="mt-4 text-sm leading-relaxed text-white/70">
               Palu, {SITE.province}
               <br />
-              13–15 November 2026
+              13â€“15 November 2026
               <br />
-              4–6 Jumadilakhir 1448 H
+              4â€“6 Jumadilakhir 1448 H
             </p>
             <p className="mt-4 text-xs leading-relaxed text-white/50">
               Logo dan identitas visual milik PP Muhammadiyah. Font El Messiri
@@ -117,7 +117,7 @@ export function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-white/45 sm:flex-row sm:items-center sm:justify-between">
-          <p>© 2026 Milad 114 — karya independen untuk lomba website.</p>
+          <p>آ© 2026 Milad 114 â€” karya independen untuk lomba website.</p>
           <p>
             Data kalender: KHGT. Data kabar: muhammadiyah.or.id. Diverifikasi
             ulang sebelum publikasi.
@@ -127,3 +127,4 @@ export function Footer() {
     </footer>
   );
 }
+

@@ -13,6 +13,7 @@ export async function KabarTeaser() {
       all.findIndex((candidate) => candidate.id === item.id) === index
   );
   const items = merged.slice(0, 3);
+  const [lead, ...rest] = items;
 
   return (
     <section className="section scroll-mt-20" id="kabar">
@@ -32,14 +33,17 @@ export async function KabarTeaser() {
           </Link>
         </div>
 
-        {items.length > 0 ? (
-          <div className="mt-9 grid gap-4 md:grid-cols-3">
-            {items.map((item) => (
-              <KabarCard key={item.id} item={item} />
-            ))}
+        {lead ? (
+          <div className="mt-9 grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
+            <KabarCard item={lead} variant="lead" />
+            <div className="lg:border-l lg:border-line lg:pl-8">
+              {rest.map((item) => (
+                <KabarCard key={item.id} item={item} variant="compact" />
+              ))}
+            </div>
           </div>
         ) : (
-          <div className="mt-9 rounded-2xl border border-line bg-bg-soft p-6">
+          <div className="mt-9 border-y border-line py-6">
             <p className="text-sm text-ink-soft">
               Kabar resmi sedang tidak dapat dimuat. Buka langsung{" "}
               <a

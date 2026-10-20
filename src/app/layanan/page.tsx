@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { HijriCalendar } from "@/components/services/HijriCalendar";
 import { KabarTabs } from "@/components/services/KabarTabs";
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     canonical: "/layanan",
   },
   openGraph: {
-    title: "Layanan Muhammadiyah — Milad 114",
+    title: "Layanan Muhammadiyah â€” Milad 114",
     description:
       "Kalender KHGT, kabar resmi Muhammadiyah, dan kuis Milad ke-114.",
     url: "/layanan",
@@ -64,11 +64,11 @@ export default async function LayananPage() {
 
             <p className="eyebrow">
               <span className="eyebrow-dot" aria-hidden="true" />
-              Batang — Layanan
+              Batang â€” Layanan
             </p>
             <h1 className="display-title mt-4">
               Layanan
-              <span className="block text-gradient-gold">Muhammadiyah</span>
+              <span className="block text-gold-text">Muhammadiyah</span>
             </h1>
             <p className="body-lead mt-5 max-w-xl">
               Tiga layanan yang menopang pohon: kalender resmi KHGT, kabar
@@ -81,7 +81,7 @@ export default async function LayananPage() {
                 <a
                   key={anchor.href}
                   href={anchor.href}
-                  className="rounded-full border border-line bg-white px-3.5 py-2 text-[0.7rem] font-bold text-ink-soft no-underline transition-colors hover:border-navy/25 hover:text-navy"
+                  className="rounded-sm border border-line bg-white px-3.5 py-2 text-[0.7rem] font-bold text-ink-soft no-underline transition-colors hover:border-navy/25 hover:text-navy"
                 >
                   {anchor.label}
                 </a>
@@ -89,38 +89,37 @@ export default async function LayananPage() {
             </div>
           </div>
 
-          <div className="relative overflow-hidden rounded-[1.5rem] border border-line bg-white p-4 shadow-[0_20px_55px_rgba(28,70,158,0.12)] sm:p-6">
-            <div className="flex items-center justify-between gap-3 border-b border-line pb-4">
-              <p className="text-[0.64rem] font-bold uppercase tracking-[0.16em] text-teal-deep">
-                Tiga layanan
+          <div className="border-t border-line">
+            <div className="flex items-center justify-between gap-3 border-b border-line py-3">
+              <p className="text-[0.62rem] font-bold uppercase tracking-[0.16em] text-teal-deep">
+                Indeks layanan
               </p>
-              <span className="rounded-full bg-navy px-3 py-1 text-[0.6rem] font-bold uppercase tracking-[0.14em] text-white">
+              <span className="text-[0.58rem] font-bold uppercase tracking-[0.14em] text-ink-soft">
                 Sumber resmi
               </span>
             </div>
 
-            <div className="mt-4 space-y-2.5">
-              <ServiceRow
-                href="#kalender"
-                title="Kalender KHGT"
-                description="Hijriah global tunggal, konverter, dan hari istimewa."
-                icon="calendar"
-              />
-              <ServiceRow
-                href="#kabar"
-                title="Kabar Muhammadiyah"
-                description="Kabar terbaru dan sorotan Tanwir–Milad."
-                icon="news"
-              />
-              <ServiceRow
-                href="#kuis"
-                title="Kuis Milad 114"
-                description="Sepuluh soal, penjelasan, dan skor terbaik."
-                icon="quiz"
-              />
-            </div>
-
-            <div className="pattern-strip mt-4 h-2.5 rounded-full" aria-hidden="true" />
+            <ServiceRow
+              href="#kalender"
+              number="01"
+              title="Kalender KHGT"
+              description="Hijriah global tunggal, konverter, dan hari istimewa."
+              icon="calendar"
+            />
+            <ServiceRow
+              href="#kabar"
+              number="02"
+              title="Kabar Muhammadiyah"
+              description="Kabar terbaru dan sorotan Tanwirâ€“Milad."
+              icon="news"
+            />
+            <ServiceRow
+              href="#kuis"
+              number="03"
+              title="Kuis Milad 114"
+              description="Sepuluh soal, penjelasan, dan skor terbaik."
+              icon="quiz"
+            />
           </div>
         </div>
       </section>
@@ -130,14 +129,14 @@ export default async function LayananPage() {
           <SectionHeading
             eyebrow="Kalender"
             title="Kalender Hijriah Global Tunggal"
-            description="Data kalender disinkronkan dari KHGT. Tampilan bulan, hari istimewa, dan konverter Masehi–Hijriah memakai snapshot resmi, bukan library generik."
+            description="Data kalender disinkronkan dari KHGT. Tampilan bulan, hari istimewa, dan konverter Masehiâ€“Hijriah memakai snapshot resmi, bukan library generik."
           />
 
           <div className="mt-8">
             <HijriCalendar data={khgtSnapshot} />
           </div>
 
-          <div className="mt-6 rounded-[1.35rem] border border-line bg-white p-5 sm:p-6">
+          <div className="mt-6 rounded-sm border border-line bg-white p-5 sm:p-6">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <h3 className="font-serif text-xl font-bold text-ink">
                 Penanda Milad
@@ -155,7 +154,7 @@ export default async function LayananPage() {
               {calendarHighlights.map((item) => (
                 <li
                   key={`${item.date}-${item.title}`}
-                  className="rounded-xl border border-line bg-bg-soft/60 px-3 py-3"
+                  className="rounded-sm border border-line bg-bg-soft/60 px-3 py-3"
                 >
                   <p className="text-[0.62rem] font-bold uppercase tracking-[0.12em] text-gold-text">
                     {formatDateID(item.date)}
@@ -201,7 +200,7 @@ export default async function LayananPage() {
 
       <section className="pb-16">
         <div className="container-page">
-          <div className="rounded-[1.35rem] border border-line bg-bg-soft p-6 sm:p-8">
+          <div className="rounded-sm border border-line bg-bg-soft p-6 sm:p-8">
             <p className="eyebrow">
               <span className="eyebrow-dot" aria-hidden="true" />
               Catatan sumber
@@ -228,11 +227,13 @@ export default async function LayananPage() {
 
 function ServiceRow({
   href,
+  number,
   title,
   description,
   icon,
 }: {
   href: string;
+  number: string;
   title: string;
   description: string;
   icon: "calendar" | "news" | "quiz";
@@ -240,20 +241,21 @@ function ServiceRow({
   return (
     <a
       href={href}
-      className="flex items-center gap-3 rounded-xl border border-line bg-bg-soft/50 px-3 py-3 no-underline transition-colors hover:border-navy/20 hover:bg-white"
+      className="group grid grid-cols-[2.2rem_1fr_auto] items-center gap-3 border-b border-line py-4 no-underline"
     >
-      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white text-navy">
-        <ServiceIcon name={icon} />
+      <span className="font-serif text-sm font-bold text-gold-text">
+        {number}
       </span>
       <span className="min-w-0">
-        <span className="block font-serif text-base font-bold text-ink">
+        <span className="block font-serif text-base font-bold text-ink transition-colors group-hover:text-navy">
           {title}
         </span>
         <span className="mt-0.5 block text-[0.7rem] leading-snug text-ink-soft">
           {description}
         </span>
       </span>
-      <span className="ml-auto text-navy" aria-hidden="true">
+      <span className="flex items-center gap-2 text-navy" aria-hidden="true">
+        <ServiceIcon name={icon} />
         <svg
           width="14"
           height="14"
@@ -330,3 +332,5 @@ function ServiceIcon({ name }: { name: "calendar" | "news" | "quiz" }) {
     </svg>
   );
 }
+
+

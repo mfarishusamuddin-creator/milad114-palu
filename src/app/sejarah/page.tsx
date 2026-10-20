@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { HistoryExperience } from "@/components/history/HistoryExperience";
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     canonical: "/sejarah",
   },
   openGraph: {
-    title: "Jejak 114 Tahun — Milad 114",
+    title: "Jejak 114 Tahun â€” Milad 114",
     description:
       "Perjalanan Muhammadiyah dari Kauman 1912 ke Palu 2026 dalam enam bab.",
     url: "/sejarah",
@@ -60,11 +60,11 @@ export default function SejarahPage() {
 
             <p className="eyebrow eyebrow--light">
               <span className="eyebrow-dot" aria-hidden="true" />
-              Akar — 1868–2026
+              Akar â€” 1868â€“2026
             </p>
             <h1 className="display-title mt-4 text-white">
               Jejak
-              <span className="block text-gradient-gold">114 Tahun</span>
+              <span className="block text-gold-light">114 Tahun</span>
             </h1>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-white/65">
               Dari ruang tamu di Kauman sampai kanopi yang menaungi Palu.
@@ -83,14 +83,14 @@ export default function SejarahPage() {
           </div>
 
           <div className="relative">
-            <div className="rounded-[1.5rem] border border-white/15 bg-white/8 p-6 backdrop-blur-sm">
+            <div className="rounded-sm border border-white/15 bg-white/8 p-6 backdrop-blur-sm">
               <div className="flex items-center justify-between gap-4">
                 <div>
                   <p className="text-[0.62rem] font-bold uppercase tracking-[0.18em] text-gold-light">
                     Perjalanan
                   </p>
                   <p className="mt-2 font-serif text-3xl font-bold text-white">
-                    1912 <span className="text-gold-light">→</span> 2026
+                    1912 <span className="text-gold-light">â†’</span> 2026
                   </p>
                 </div>
                 <Image
@@ -106,7 +106,7 @@ export default function SejarahPage() {
                 {STATS.map((stat) => (
                   <div
                     key={stat.value}
-                    className="rounded-xl border border-white/10 bg-white/5 px-3 py-3"
+                    className="rounded-sm border border-white/10 bg-white/5 px-3 py-3"
                   >
                     <p className="font-serif text-2xl font-bold text-gold-light">
                       {stat.value}
@@ -128,7 +128,7 @@ export default function SejarahPage() {
 
       <section className="pb-16">
         <div className="container-page">
-          <div className="rounded-[1.35rem] border border-line bg-bg-soft p-6 sm:p-8">
+          <div className="rounded-sm border border-line bg-bg-soft p-6 sm:p-8">
             <p className="eyebrow">
               <span className="eyebrow-dot" aria-hidden="true" />
               Catatan sumber
@@ -153,3 +153,4 @@ export default function SejarahPage() {
     </>
   );
 }
+

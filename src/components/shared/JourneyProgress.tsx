@@ -41,7 +41,7 @@ export function JourneyProgress() {
   const complete = count === STOPS.length;
 
   return (
-    <div className="flex flex-wrap items-center gap-3 rounded-2xl border border-line bg-white/80 px-4 py-3">
+    <div className="flex flex-wrap items-center gap-3 border-l border-gold py-2 pl-4">
       <div
         className="flex items-center gap-2"
         aria-label={`Progres penjelajahan: ${count} dari ${STOPS.length}`}

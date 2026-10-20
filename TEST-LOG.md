@@ -31,14 +31,21 @@ Elemen dekoratif (orb/pattern) dan area scroll internal kalender/timeline tidak 
 
 ## Fungsional
 
-- Beranda: H1 `Bersama Satukan Bangsa`; countdown menampilkan angka; pohon berubah `is-grown` setelah masuk viewport.
-- Sejarah: enam tombol timeline; klik tahun terakhir mengaktifkan `2026–2027 / Buah`.
+- Beranda: H1 `Bersama Satukan Bangsa`; countdown menampilkan angka; ilustrasi space colonization berubah `is-grown` setelah masuk viewport.
+- Sejarah: Scrollama mengaktifkan tahun `1868–1911 / Akar` saat bab pertama terlihat; enam tombol timeline; klik tahun terakhir mengaktifkan `2026–2027 / Buah`.
 - Kalender: Masehi `2026-11-13` → `4 Jumadilakhir 1448 H · Wage`.
 - Kalender: Hijriah `4 Jumadilakhir 1448` → `13 November 2026 · Wage`.
-- Kabar: tab `Milad & Tanwir` menampilkan 6 kartu.
+- Kabar: tab `Milad & Tanwir` menampilkan 6 item kompak.
 - Kuis: 10 jawaban benar → skor `100`.
 - Menu mobile: terbuka, navigasi ke `/sejarah`, lalu tertutup.
+- Pohon: 321 cabang + 288 daun, SVG inline; tidak ada request gambar tambahan.
 - Console error: tidak ada.
+
+## Referensi desain
+
+- Scrollytelling: `scrollama@3.2.0` (MIT); lisensi di `public/licenses/Scrollama-MIT.txt`.
+- Ilustrasi pohon: algoritma space colonization (Runions dkk., 2007), diimplementasikan ulang di `scripts/generate-tree.mjs`; data kompak di `src/data/tree.ts`.
+- Layout: mengikuti template identitas resmi (plate logo, pattern strip, proporsi tipografi), bukan template landing page generik.
 
 ## Catatan
 

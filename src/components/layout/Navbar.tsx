@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -33,7 +33,7 @@ export function Navbar() {
         <Link
           href="/"
           className="flex items-center gap-2.5 no-underline"
-          aria-label={`${SITE.name} — beranda`}
+          aria-label={`${SITE.name} â€” beranda`}
         >
           <Image
             src="/logo/logogram-color.png"
@@ -118,7 +118,7 @@ export function Navbar() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "rounded-xl px-3 py-3 text-sm font-semibold no-underline",
+                  "rounded-sm px-3 py-3 text-sm font-semibold no-underline",
                   active
                     ? "bg-bg-soft text-navy"
                     : "text-ink-soft hover:bg-bg-soft hover:text-navy"
@@ -203,3 +203,4 @@ function ArrowIcon() {
     </svg>
   );
 }
+

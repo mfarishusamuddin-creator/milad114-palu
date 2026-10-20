@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -102,7 +102,7 @@ export function QuizApp() {
 
   if (!started) {
     return (
-      <div className="relative overflow-hidden rounded-[1.5rem] border border-line bg-white p-6 shadow-[0_16px_44px_rgba(28,70,158,0.08)] sm:p-9">
+      <div className="relative overflow-hidden rounded-sm border border-l-2 border-line border-l-gold bg-white p-6 sm:p-9">
         <div
           className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-gold/15 blur-2xl"
           aria-hidden="true"
@@ -122,13 +122,13 @@ export function QuizApp() {
           </p>
 
           <div className="mt-5 flex flex-wrap gap-2">
-            <span className="rounded-full bg-bg-soft px-3 py-1.5 text-[0.68rem] font-bold text-teal-deep">
+            <span className="rounded-sm bg-bg-soft px-3 py-1.5 text-[0.68rem] font-bold text-teal-deep">
               10 soal
             </span>
-            <span className="rounded-full bg-bg-soft px-3 py-1.5 text-[0.68rem] font-bold text-teal-deep">
+            <span className="rounded-sm bg-bg-soft px-3 py-1.5 text-[0.68rem] font-bold text-teal-deep">
               Pilihan ganda
             </span>
-            <span className="rounded-full bg-bg-soft px-3 py-1.5 text-[0.68rem] font-bold text-teal-deep">
+            <span className="rounded-sm bg-bg-soft px-3 py-1.5 text-[0.68rem] font-bold text-teal-deep">
               Tanpa backend
             </span>
           </div>
@@ -156,7 +156,7 @@ export function QuizApp() {
 
   if (finished) {
     return (
-      <div className="relative overflow-hidden rounded-[1.5rem] border border-line bg-white p-6 shadow-[0_16px_44px_rgba(28,70,158,0.08)] sm:p-9">
+      <div className="relative overflow-hidden rounded-sm border border-l-2 border-line border-l-gold bg-white p-6 sm:p-9">
         <div
           className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-gold/20 blur-2xl"
           aria-hidden="true"
@@ -208,7 +208,7 @@ export function QuizApp() {
   }
 
   return (
-    <div className="rounded-[1.5rem] border border-line bg-white p-5 shadow-[0_16px_44px_rgba(28,70,158,0.08)] sm:p-8">
+    <div className="rounded-sm border border-l-2 border-line border-l-gold bg-white p-5 sm:p-8">
       <div className="flex items-center justify-between gap-4">
         <p className="text-[0.68rem] font-bold uppercase tracking-[0.16em] text-teal-deep">
           Soal {index + 1} dari {quizQuestions.length}
@@ -278,7 +278,7 @@ export function QuizApp() {
         {selected !== null ? (
           <div
             className={cn(
-              "rounded-xl border px-4 py-3 text-sm",
+              "rounded-sm border px-4 py-3 text-sm",
               selected === current.answerIndex
                 ? "border-kelor-deep/30 bg-[#f0fbf4] text-ink"
                 : "border-red-200 bg-[#fff4f2] text-ink"
@@ -375,3 +375,5 @@ function ArrowIcon() {
     </svg>
   );
 }
+
+

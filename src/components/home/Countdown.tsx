@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 import { SITE } from "@/data/site";
@@ -26,7 +26,7 @@ function getPhase(now: number): Phase {
     return {
       target: start,
       label: "Menuju Tanwir & Milad",
-      note: "Palu · 13–15 November 2026",
+      note: "Palu آ· 13â€“15 November 2026",
       finished: false,
     };
   }
@@ -34,7 +34,7 @@ function getPhase(now: number): Phase {
     return {
       target: end,
       label: "Tanwir & Milad sedang berlangsung",
-      note: "Palu · 13–15 November 2026",
+      note: "Palu آ· 13â€“15 November 2026",
       finished: false,
     };
   }
@@ -100,7 +100,7 @@ export function Countdown() {
         <p className="text-[0.68rem] font-bold uppercase tracking-[0.16em] text-gold-light">
           {phase?.label ?? "Menghitung waktu"}
         </p>
-        <span className="rounded-full border border-white/15 bg-white/8 px-2.5 py-1 text-[0.6rem] font-bold uppercase tracking-[0.14em] text-white/70">
+        <span className="rounded-sm border border-white/15 bg-white/8 px-2.5 py-1 text-[0.6rem] font-bold uppercase tracking-[0.14em] text-white/70">
           WITA
         </span>
       </div>
@@ -133,3 +133,4 @@ function TimeCell({ value, label }: { value: string; label: string }) {
     </div>
   );
 }
+
