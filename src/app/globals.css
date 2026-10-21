@@ -1114,3 +1114,16 @@
 [data-theme="dark"] .hero-logo-area {
   background: #000000;
 }
+
+.language-glide .glide-select__trigger {
+  border-radius: 3px;
+}
+
+.language-glide .glide-select__menu {
+  border: 1px solid var(--color-line);
+  border-radius: 7px;
+}
+
+.language-glide .glide-select__option {
+  border-radius: 3px;
+}

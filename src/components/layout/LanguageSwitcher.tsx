@@ -1,5 +1,9 @@
-import Link from "next/link";
-import { languagePath } from "@/i18n";
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import GlideSelect from "@/components/shared/GlideSelect";
+import { isLanguage, languagePath } from "@/i18n";
 import type { LanguageCode } from "@/i18n/types";
 import { cn } from "@/lib/cn";
 
@@ -20,34 +24,41 @@ type Props = {
 };
 
 export function LanguageSwitcher({ lang, className, large = false }: Props) {
+  const router = useRouter();
+  const [value, setValue] = useState(lang);
+  const [prevLang, setPrevLang] = useState(lang);
+
+  if (prevLang !== lang) {
+    setPrevLang(lang);
+    setValue(lang);
+  }
+
   return (
-    <div
-      dir="ltr"
-      className={cn(
-        "inline-flex items-center rounded-sm border border-line bg-surface p-0.5",
-        className
-      )}
-      aria-label="Language"
-    >
-      {LANGUAGES.map((item) => (
-        <Link
-          key={item.code}
-          href={languagePath(item.code)}
-          lang={item.code}
-          hrefLang={item.code}
-          aria-label={item.name}
-          aria-current={item.code === lang ? "page" : undefined}
-          className={cn(
-            "inline-flex items-center justify-center rounded-[2px] font-bold no-underline transition-colors",
-            large ? "h-8 px-3 text-[0.72rem]" : "h-7 px-2 text-[0.62rem]",
-            item.code === lang
-              ? "bg-navy text-white"
-              : "text-ink-soft hover:text-navy"
-          )}
-        >
-          {item.short}
-        </Link>
-      ))}
+    <div dir="ltr" className={cn("language-glide", className)}>
+      <GlideSelect
+        value={value}
+        options={LANGUAGES.map((item) => ({
+          value: item.code,
+          label: item.short,
+          tag: item.name,
+        }))}
+        onChange={(next) => {
+          if (!isLanguage(next)) return;
+          setValue(next);
+          if (next !== lang) router.push(languagePath(next));
+        }}
+        ariaLabel="Language"
+        size={large ? "md" : "sm"}
+        accentColor="var(--color-gold)"
+        surfaceColor="var(--color-surface)"
+        highlightColor="var(--color-bg-soft)"
+        textColor="var(--color-ink)"
+        menuWidth={188}
+        align="left"
+        placement="bottom"
+        rememberPosition
+        showTags
+      />
     </div>
   );
 }
