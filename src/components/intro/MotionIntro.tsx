@@ -5,8 +5,6 @@ import { BrandLogo } from "@/components/theme/BrandLogo";
 import { useTheme } from "@/components/theme/useTheme";
 import type { Dictionary } from "@/i18n/types";
 
-const INTRO_KEY = "m114:intro-seen";
-
 export function MotionIntro({ dict }: { dict: Dictionary }) {
   const theme = useTheme();
   const [visible, setVisible] = useState(true);
@@ -21,13 +19,6 @@ export function MotionIntro({ dict }: { dict: Dictionary }) {
     if (finishedRef.current) return;
     finishedRef.current = true;
     setClosing(true);
-
-    try {
-      window.sessionStorage.setItem(INTRO_KEY, "1");
-    } catch {
-      // sessionStorage may be unavailable.
-    }
-
     document.documentElement.dataset.intro = "skip";
 
     window.setTimeout(() => {

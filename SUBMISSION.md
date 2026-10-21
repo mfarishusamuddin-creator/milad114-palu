@@ -20,7 +20,6 @@
 - Enam bab sejarah dengan Scrollama dan sumber resmi.
 - Kalender KHGT (snapshot tersinkron) dan kabar Muhammadiyah (WP REST API, cache satu jam, fallback).
 - Peta dunia Natural Earth yang menyorot 29 PCIM dengan marker kota.
-- Kuis 10 soal, penjelasan, sumber, dan skor lokal.
 - Scroll reveal, reduced motion, dan satu momen wow: pohon space colonization.
 
 **Teknologi.** Next.js 16 App Router, TypeScript, Tailwind CSS v4, Cache Components, Scrollama, world-atlas/topojson-client/d3-geo, font lokal OFL. Tanpa WebGL, tanpa database, tanpa login.
@@ -33,9 +32,8 @@
 2. 10–20 detik: indeks Jelajah dan pohon; sorot Akar, Batang, Kanopi.
 3. 20–38 detik: scroll ke `#sejarah`; timeline dan satu bab dengan sumber.
 4. 38–55 detik: `#layanan`; kalender KHGT, konverter, tab kabar.
-5. 55–70 detik: kuis; jawab satu soal, tunjukkan hasil.
-6. 70–82 detik: `#peta`; 29 negara dan marker; ganti tema.
-7. 82–90 detik: ganti bahasa ke EN/AR; penutup “Bersama Satukan Bangsa”‌.
+5. 55–70 detik: `#peta`; 29 negara dan marker; ganti tema.
+6. 70–82 detik: ganti bahasa ke EN/AR; penutup “Bersama Satukan Bangsa”‌.
 
 ## Alur demo
 
@@ -44,9 +42,8 @@
 3. Gulir satu bab; tunjukkan tautan sumber.
 4. Buka `#layanan`; coba konverter 19 Nov 2026.
 5. Buka tab `Milad & Tanwir`.
-6. Mulai kuis; jawab satu soal.
-7. Buka `#peta`; tunjukkan 29 PCIM.
-8. Ganti tema dan bahasa.
+6. Buka `#peta`; tunjukkan 29 PCIM.
+7. Ganti tema dan bahasa.
 
 ## Payload QR
 

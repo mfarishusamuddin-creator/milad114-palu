@@ -181,24 +181,7 @@ Yang dipertahankan:
 
 **Aset:** WP REST API, `kabar-fallback.json`.
 
-## 10. Kuis
-
-**File:** `src/components/services/QuizApp.tsx`, `src/data/quiz*.ts`.
-
-**Tujuan:** lembar ujian editorial, bukan card SaaS.
-
-**Prompt:**
-
-> Pertahankan 10 soal, feedback, sumber, skor, dan localStorage. Perbaiki tipografi soal, opsi, dan hasil. Pastikan jawaban benar/salah tidak hanya dibedakan warna. Jangan mengubah jawaban benar. Tambahkan progress yang halus. Uji 10 jawaban benar → 100.
-
-**Kriteria selesai:**
-
-- [ ] Skor 100 untuk semua jawaban benar.
-- [ ] Feedback menampilkan sumber.
-- [ ] Mobile nyaman.
-- [ ] Mode gelap kontras.
-
-## 11. Peta 29 PCIM
+## 10. Peta 29 PCIM
 
 **File:** `src/components/map/MapSection.tsx`, `src/components/map/WorldMap.tsx`, `src/data/pcim.ts`.
 
@@ -219,7 +202,7 @@ Yang dipertahankan:
 
 **Aset:** `pcim.ts`, `world-atlas`, Natural Earth, daftar PCIM.
 
-## 12. Tema dan bahasa
+## 11. Tema dan bahasa
 
 **File:** `src/components/theme/*`, `src/components/layout/LanguageSwitcher.tsx`, `src/i18n/*`, `src/app/layout.tsx`, `src/app/globals.css`.
 
@@ -234,7 +217,7 @@ Yang dipertahankan:
 - [ ] `/en` dan `/ar` punya `lang`/`dir` benar.
 - [ ] Tidak ada teks yang tetap Indonesia di halaman EN/AR kecuali kutipan/sumber resmi.
 
-## 13. Scroll reveal
+## 12. Scroll reveal
 
 **File:** `src/components/shared/ScrollReveal.tsx`, `src/app/globals.css`.
 
@@ -248,7 +231,7 @@ Yang dipertahankan:
 - [ ] Tidak ada elemen yang tetap opacity 0 setelah 1,6 detik.
 - [ ] Reduced motion langsung menampilkan konten.
 
-## 14. Footer dan kolofon
+## 13. Footer dan kolofon
 
 **File:** `src/components/layout/Footer.tsx`.
 
@@ -262,7 +245,7 @@ Yang dipertahankan:
 - [ ] Kredit logo/font benar.
 - [ ] Mode gelap dan RTL rapi.
 
-## 15. Aset yang diperlukan
+## 14. Aset yang diperlukan
 
 ### Sudah tersedia
 
@@ -314,7 +297,7 @@ Gunakan hanya El Messiri dan Familjen Grotesk dari folder proyek. Jangan memakai
 - `d3-geo`.
 - Data 29 PCIM di `src/data/pcim.ts`.
 
-## 16. Checklist akhir
+## 15. Checklist akhir
 
 - [ ] Tidak ada konten placeholder.
 - [ ] Tiga bahasa lengkap dan RTL benar.

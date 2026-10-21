@@ -53,19 +53,20 @@ Lingkungan: Windows, Node.js 22.23.2, Next.js 16.4.2, Edge headless.
 - Kalender: Masehi `2026-11-19` → `10 Jumadilakhir 1448 H · Wage`.
 - Kalender: Hijriah `10 Jumadilakhir 1448` → `19 November 2026 · Wage`.
 - Kabar: tab `Milad & Tanwir` menampilkan 6 item kompak.
-- Kuis: 10 jawaban benar → skor `100`.
 - Menu mobile: terbuka, navigasi anchor, lalu tertutup.
 - Console error: tidak ada.
 
 ## Motion logo intro
 
-- Default `/`: intro tampil sekali per sesi (`sessionStorage` `m114:intro-seen`).
-- Paksa `/?intro=1`: intro tetap tampil.
+- Default `/`: intro tampil setiap refresh.
+- Refresh setelah skip → intro tampil lagi.
+- Navigasi internal → intro tidak muncul lagi.
+- Reduced motion → intro dilewati.
 - Desktop terang: `horizontal-light.mp4`; waktu uji 3,0 detik; video berjalan.
 - Mobile terang: `vertical-light.mp4`; video berjalan.
 - Desktop gelap: `horizontal-dark.mp4`; video berjalan.
 - Reduced motion: intro dilewati.
-- Tombol Lewati: overlay hilang, `sessionStorage` terisi, body scroll kembali normal.
+- Tombol Lewati: overlay hilang, body scroll kembali normal.
 - Ukuran video: 131–157 KB; poster: 112–204 KB.
 - Video, situs, logo horizontal, dan OG sudah diselaraskan ke 19–21 November 2026 / 10–12 Jumadilakhir 1448 H. Logo statis di folder sumber masih 13–15 dan tidak dipakai untuk hero/OG.
 

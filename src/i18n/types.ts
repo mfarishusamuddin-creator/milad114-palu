@@ -1,6 +1,5 @@
 import type { CalendarHighlight } from "@/data/calendar-highlights";
 import type { Milestone } from "@/data/milestones";
-import type { QuizQuestion } from "@/data/quiz";
 
 export type LanguageCode = "id" | "en" | "ar";
 export type Direction = "ltr" | "rtl";
@@ -31,12 +30,6 @@ export type AgendaItem = {
   title: string;
   description: string;
   tag: string;
-};
-
-export type QuizBadge = {
-  min: number;
-  title: string;
-  description: string;
 };
 
 export type CalendarMonthMap = Record<string, string>;
@@ -174,8 +167,6 @@ export type Dictionary = {
     highlightsLink: string;
     kabarTitle: string;
     kabarDescription: string;
-    quizTitle: string;
-    quizDescription: string;
     sourceTitle: string;
     sourceDescription: string;
   };
@@ -221,32 +212,6 @@ export type Dictionary = {
       latest: string;
       milad: string;
     };
-  };
-  quiz: {
-    eyebrow: string;
-    title: string;
-    description: string;
-    startTitle: string;
-    startDescription: string;
-    tags: string[];
-    startButton: string;
-    best: string;
-    bestShort: string;
-    questionOf: string;
-    correct: string;
-    wrong: string;
-    source: string;
-    next: string;
-    seeResult: string;
-    choose: string;
-    resultEyebrow: string;
-    resultBest: string;
-    share: string;
-    shareText: string;
-    retry: string;
-    readHistory: string;
-    badges: QuizBadge[];
-    questions: QuizQuestion[];
   };
   map: {
     eyebrow: string;

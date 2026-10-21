@@ -16,10 +16,9 @@ Seluruh konten berada dalam satu halaman panjang per bahasa:
 |---|---|
 | `#jelajah` | Indeks Akar, Batang, Kanopi |
 | `#sejarah` | Enam bab sejarah 1868–2027 dengan Scrollama |
-| `#layanan` | Kalender KHGT, Kabar, dan Kuis |
+| `#layanan` | Kalender KHGT dan Kabar |
 | `#peta` | Peta dunia 29 PCIM |
 | `#kabar` | Kabar resmi Muhammadiyah |
-| `#kuis` | Kuis Milad 114 |
 
 Rute lama `/sejarah` dan `/layanan` sudah dihapus. QR fisik sekarang menjadi gerbang bahasa: `/`, `/en`, `/ar`.
 
@@ -28,11 +27,10 @@ Rute lama `/sejarah` dan `/layanan` sudah dihapus. QR fisik sekarang menjadi ger
 - Tema terang/gelap dengan penyimpanan `localStorage` dan preferensi sistem.
 - Bahasa Indonesia, Inggris, dan Arab dengan layout RTL.
 - Scroll reveal untuk section dan kartu.
-- Motion logo intro (horizontal/vertical, terang/gelap) — aktif sekali per sesi; preview paksa dengan `?intro=1`.
+- Motion logo intro (horizontal/vertical, terang/gelap) — tampil setiap refresh; reduced motion/saveData otomatis dilewati.
 - Peta dunia Natural Earth yang menyorot 29 Pimpinan Cabang Istimewa.
 - Kalender KHGT dengan konverter Masehi–Hijriah.
 - Kabar live dari kanal resmi Muhammadiyah, cache satu jam, fallback snapshot.
-- Kuis 10 soal dengan penjelasan dan sumber.
 - Ilustrasi pohon space colonization yang dihasilkan dari skrip.
 
 ## Stack
@@ -75,7 +73,7 @@ npm run generate:tree
 src/app/                 layout, /, /en, /ar, sitemap, robots
 src/components/          pages, layout, home, history, services, map, theme, shared
 src/i18n/                types, id, en, ar, getDictionary
-src/data/                site, milestones, quiz, calendar, pcim, tree, khgt, kabar
+src/data/                site, milestones, calendar, pcim, tree, khgt, kabar
 src/lib/                 kabar, khgt, date, metadata, cn
 scripts/                 sync-kabar, sync-khgt, generate-tree, prepare-assets
 public/                  logo, pattern, og, licenses

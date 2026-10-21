@@ -1,6 +1,5 @@
 import { HijriCalendar } from "@/components/services/HijriCalendar";
 import { KabarTabs } from "@/components/services/KabarTabs";
-import { QuizApp } from "@/components/services/QuizApp";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { SourceNote } from "@/components/shared/SourceNote";
 import { SITE } from "@/data/site";
@@ -95,21 +94,6 @@ export function ServicesSection({
           />
           <div className="mt-7">
             <KabarTabs latest={latest} milad={milad} dict={dict} />
-          </div>
-        </div>
-
-        <div
-          className="mt-16 scroll-mt-20 border-t border-line pt-10"
-          id="kuis"
-          data-reveal
-        >
-          <SectionHeading
-            eyebrow={dict.quiz.eyebrow}
-            title={dict.services.quizTitle}
-            description={dict.services.quizDescription}
-          />
-          <div className="mt-7">
-            <QuizApp dict={dict} />
           </div>
         </div>
 

@@ -1,6 +1,5 @@
 import { calendarHighlights } from "@/data/calendar-highlights";
 import { milestones } from "@/data/milestones";
-import { quizQuestions } from "@/data/quiz";
 import type { Dictionary } from "./types";
 
 const hijriMonths: Record<string, string> = {
@@ -44,7 +43,7 @@ export const id: Dictionary = {
   meta: {
     title: "Tanwir dan Milad ke-114 Muhammadiyah — Bersama Satukan Bangsa",
     description:
-      "Website interaktif Tanwir dan Milad ke-114 Muhammadiyah. Palu, 19–21 November 2026 M | 10–12 Jumadilakhir 1448 H. Jejak 114 tahun, kalender KHGT, kabar resmi, peta persebaran, dan kuis.",
+      "Website interaktif Tanwir dan Milad ke-114 Muhammadiyah. Palu, 19–21 November 2026 M | 10–12 Jumadilakhir 1448 H. Jejak 114 tahun, kalender KHGT, kabar resmi, dan peta persebaran.",
     tagline: "Bersama Satukan Bangsa",
   },
   common: {
@@ -139,7 +138,7 @@ export const id: Dictionary = {
         label: "Batang",
         title: "Layanan Muhammadiyah",
         description:
-          "Kalender KHGT, kabar resmi, dan kuis Milad 114 dalam satu meja layanan.",
+          "Kalender KHGT dan kabar resmi dalam satu meja layanan.",
         href: "#layanan",
         accent: "navy",
       },
@@ -173,7 +172,7 @@ export const id: Dictionary = {
         number: "02",
         label: "Batang",
         title: "Layanan Muhammadiyah",
-        description: "Kalender, kabar, dan kuis.",
+        description: "Kalender dan kabar.",
         href: "#layanan",
         accent: "navy",
       },
@@ -256,7 +255,7 @@ export const id: Dictionary = {
     ctaEyebrow: "Lanjut dari akar",
     ctaTitle: "Pohon ini punya batang yang menopang layanan.",
     ctaDescription:
-      "Buka kalender KHGT, kabar resmi Muhammadiyah, dan kuis Milad 114 di bagian Layanan.",
+      "Buka kalender KHGT dan kabar resmi Muhammadiyah di bagian Layanan.",
     ctaButton: "Buka Layanan",
     chapters: milestones,
   },
@@ -264,7 +263,7 @@ export const id: Dictionary = {
     eyebrow: "Batang",
     title: "Layanan Muhammadiyah",
     description:
-      "Tiga layanan yang menopang pohon: kalender resmi KHGT, kabar terbaru dari Muhammadiyah, dan kuis untuk menguji jejak pengetahuanmu.",
+      "Dua layanan yang menopang pohon: kalender resmi KHGT dan kabar terbaru dari Muhammadiyah.",
     calendarTitle: "Kalender Hijriah Global Tunggal",
     calendarDescription:
       "Data kalender disinkronkan dari KHGT. Tampilan bulan, hari istimewa, dan konverter Masehi–Hijriah memakai snapshot resmi, bukan library generik.",
@@ -273,9 +272,6 @@ export const id: Dictionary = {
     kabarTitle: "Kabar resmi Muhammadiyah",
     kabarDescription:
       "Ditarik dari kanal resmi Muhammadiyah, dengan cache satu jam dan fallback snapshot. Artikel lengkap tetap di sumber asli.",
-    quizTitle: "Kuis Milad 114",
-    quizDescription:
-      "Uji pengetahuan tentang sejarah, logo, Palu, dan tema Milad. Setiap jawaban disertai penjelasan dan sumber.",
     sourceTitle: "Catatan sumber",
     sourceDescription:
       "Kalender bersumber dari KHGT; kabar dari kanal resmi Muhammadiyah. Jika data resmi tidak dapat dimuat, halaman menampilkan snapshot terakhir dan tautan ke sumber asli.",
@@ -331,56 +327,6 @@ export const id: Dictionary = {
       latest: "Terbaru",
       milad: "Milad & Tanwir",
     },
-  },
-  quiz: {
-    eyebrow: "Kuis",
-    title: "Kuis Milad 114",
-    description:
-      "Uji pengetahuan tentang sejarah, logo, Palu, dan tema Milad. Setiap jawaban disertai penjelasan dan sumber.",
-    startTitle: "Seberapa dalam akar pengetahuanmu?",
-    startDescription:
-      "Sepuluh soal tentang sejarah, logo, Palu, dan tema Milad ke-114. Setiap jawaban diberi penjelasan dan tautan sumber. Skor terbaik disimpan di perangkatmu.",
-    tags: ["10 soal", "Pilihan ganda", "Tanpa backend"],
-    startButton: "Mulai Kuis",
-    best: "Rekormu",
-    bestShort: "Rekor",
-    questionOf: "Soal {current} dari {total}",
-    correct: "Tepat.",
-    wrong: "Belum tepat. Jawaban yang benar: {answer}.",
-    source: "Sumber",
-    next: "Lanjut",
-    seeResult: "Lihat Hasil",
-    choose: "Pilih satu jawaban untuk melanjutkan.",
-    resultEyebrow: "Hasil",
-    resultBest: "Rekor terbaik",
-    share: "Bagikan skor",
-    shareText:
-      "Saya mendapat {score}/100 di Kuis Milad 114 Muhammadiyah. Berani coba?",
-    retry: "Ulangi",
-    readHistory: "Baca Sejarah",
-    badges: [
-      {
-        min: 100,
-        title: "Pohon Lengkap",
-        description: "Semua jawaban tepat. Akar, batang, dan kanopi seimbang.",
-      },
-      {
-        min: 80,
-        title: "Akar Kuat",
-        description: "Pengetahuanmu sudah dalam. Sedikit lagi menuju sempurna.",
-      },
-      {
-        min: 50,
-        title: "Tunas",
-        description: "Sudah tumbuh. Baca lagi bab-bab sejarah untuk menguatkan akar.",
-      },
-      {
-        min: 0,
-        title: "Ayo Tumbuh",
-        description: "Tidak apa-apa. Mulai dari akar: 1912 dan Kauman.",
-      },
-    ],
-    questions: quizQuestions,
   },
   map: {
     eyebrow: "Kanopi",

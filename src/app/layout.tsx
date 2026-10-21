@@ -101,7 +101,7 @@ export const viewport: Viewport = {
   colorScheme: "light dark",
 };
 
-const themeScript = `(function(){try{var t=localStorage.getItem("m114:theme");if(t!=="dark"&&t!=="light"){t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}document.documentElement.dataset.theme=t;document.documentElement.setAttribute("data-js-reveal","true");var seen=sessionStorage.getItem("m114:intro-seen");var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;var save=!!(navigator.connection&&navigator.connection.saveData);var force=new URLSearchParams(location.search).get("intro")==="1";document.documentElement.dataset.intro=(!reduce&&!save&&(force||!seen))?"play":"skip";}catch(e){document.documentElement.setAttribute("data-js-reveal","true");document.documentElement.dataset.intro="skip";}})();`;
+const themeScript = `(function(){try{var t=localStorage.getItem("m114:theme");if(t!=="dark"&&t!=="light"){t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}document.documentElement.dataset.theme=t;document.documentElement.setAttribute("data-js-reveal","true");var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;var save=!!(navigator.connection&&navigator.connection.saveData);document.documentElement.dataset.intro=(!reduce&&!save)?"play":"skip";}catch(e){document.documentElement.setAttribute("data-js-reveal","true");document.documentElement.dataset.intro="skip";}})();`;
 
 const eventJsonLd = {
   "@context": "https://schema.org",

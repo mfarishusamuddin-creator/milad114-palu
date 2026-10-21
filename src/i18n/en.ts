@@ -1,6 +1,5 @@
 import { calendarHighlightsEn } from "@/data/calendar-highlights.en";
 import { milestonesEn } from "@/data/milestones.en";
-import { quizQuestionsEn } from "@/data/quiz.en";
 import type { Dictionary } from "./types";
 
 const hijriMonths: Record<string, string> = {
@@ -55,7 +54,7 @@ export const en: Dictionary = {
   meta: {
     title: "Tanwir and the 114th Milad of Muhammadiyah — Together, Unite the Nation",
     description:
-      "An interactive site for Tanwir and the 114th Milad of Muhammadiyah. Palu, 19–21 November 2026 CE | 10–12 Jumada al-Thani 1448 AH. A 114-year trail, the KHGT calendar, official news, a global map, and a quiz.",
+      "An interactive site for Tanwir and the 114th Milad of Muhammadiyah. Palu, 19–21 November 2026 CE | 10–12 Jumada al-Thani 1448 AH. A 114-year trail, the KHGT calendar, official news, and a global map.",
     tagline: "Together, Unite the Nation",
   },
   common: {
@@ -150,7 +149,7 @@ export const en: Dictionary = {
         label: "Trunk",
         title: "Muhammadiyah Services",
         description:
-          "The KHGT calendar, official news, and the 114th Milad quiz in one service desk.",
+          "The KHGT calendar and official news in one service desk.",
         href: "#layanan",
         accent: "navy",
       },
@@ -184,7 +183,7 @@ export const en: Dictionary = {
         number: "02",
         label: "Trunk",
         title: "Muhammadiyah Services",
-        description: "Calendar, news, and quiz.",
+        description: "Calendar and news.",
         href: "#layanan",
         accent: "navy",
       },
@@ -267,7 +266,7 @@ export const en: Dictionary = {
     ctaEyebrow: "Onward from the root",
     ctaTitle: "This tree has a trunk that supports services.",
     ctaDescription:
-      "Open the KHGT calendar, official Muhammadiyah news, and the 114th Milad quiz in the Services section.",
+      "Open the KHGT calendar and official Muhammadiyah news in the Services section.",
     ctaButton: "Open Services",
     chapters: milestonesEn,
   },
@@ -275,7 +274,7 @@ export const en: Dictionary = {
     eyebrow: "Trunk",
     title: "Muhammadiyah Services",
     description:
-      "Three services support the tree: the official KHGT calendar, the latest news from Muhammadiyah, and a quiz to test your knowledge.",
+      "Two services support the tree: the official KHGT calendar and the latest news from Muhammadiyah.",
     calendarTitle: "Global Unified Hijri Calendar",
     calendarDescription:
       "Calendar data is synchronised from KHGT. Month views, special days, and the Gregorian–Hijri converter use an official snapshot, not a generic library.",
@@ -284,9 +283,6 @@ export const en: Dictionary = {
     kabarTitle: "Official Muhammadiyah News",
     kabarDescription:
       "Pulled from Muhammadiyah's official channel, cached for one hour, with a snapshot fallback. Full articles remain at the original source.",
-    quizTitle: "114th Milad Quiz",
-    quizDescription:
-      "Test your knowledge of history, the logo, Palu, and the Milad theme. Every answer includes an explanation and a source.",
     sourceTitle: "Source notes",
     sourceDescription:
       "The calendar comes from KHGT; news comes from Muhammadiyah's official channel. If official data cannot load, the page shows the latest snapshot and a link to the source.",
@@ -342,56 +338,6 @@ export const en: Dictionary = {
       latest: "Latest",
       milad: "Milad & Tanwir",
     },
-  },
-  quiz: {
-    eyebrow: "Quiz",
-    title: "114th Milad Quiz",
-    description:
-      "Test your knowledge of history, the logo, Palu, and the Milad theme. Every answer includes an explanation and a source.",
-    startTitle: "How deep are your roots?",
-    startDescription:
-      "Ten questions on the history, logo, Palu, and theme of the 114th Milad. Every answer comes with an explanation and a source link. Your best score is stored on this device.",
-    tags: ["10 questions", "Multiple choice", "No backend"],
-    startButton: "Start the Quiz",
-    best: "Your best",
-    bestShort: "Best",
-    questionOf: "Question {current} of {total}",
-    correct: "Correct.",
-    wrong: "Not quite. The correct answer is: {answer}.",
-    source: "Source",
-    next: "Next",
-    seeResult: "See Result",
-    choose: "Choose one answer to continue.",
-    resultEyebrow: "Result",
-    resultBest: "Best score",
-    share: "Share score",
-    shareText:
-      "I scored {score}/100 in the 114th Muhammadiyah Milad Quiz. Want to try?",
-    retry: "Try Again",
-    readHistory: "Read the History",
-    badges: [
-      {
-        min: 100,
-        title: "Complete Tree",
-        description: "Every answer is correct. Root, trunk, and canopy in balance.",
-      },
-      {
-        min: 80,
-        title: "Strong Root",
-        description: "Your knowledge runs deep. Almost perfect.",
-      },
-      {
-        min: 50,
-        title: "Sprout",
-        description: "You are growing. Revisit the history chapters to strengthen your roots.",
-      },
-      {
-        min: 0,
-        title: "Time to Grow",
-        description: "No problem. Start from the root: 1912 and Kauman.",
-      },
-    ],
-    questions: quizQuestionsEn,
   },
   map: {
     eyebrow: "Canopy",

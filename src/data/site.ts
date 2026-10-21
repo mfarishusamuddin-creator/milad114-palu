@@ -3,7 +3,7 @@ export const SITE = {
   title: "Tanwir dan Milad ke-114 Muhammadiyah",
   tagline: "Bersama Satukan Bangsa",
   description:
-    "Website interaktif Tanwir dan Milad ke-114 Muhammadiyah. Palu, 19–21 November 2026 M | 10–12 Jumadilakhir 1448 H. Jejak 114 tahun, kalender KHGT, kabar resmi, dan kuis.",
+    "Website interaktif Tanwir dan Milad ke-114 Muhammadiyah. Palu, 19–21 November 2026 M | 10–12 Jumadilakhir 1448 H. Jejak 114 tahun, kalender KHGT, kabar resmi, dan peta persebaran.",
   url: "https://milad114-palu.vercel.app",
   locale: "id_ID",
   city: "Palu",

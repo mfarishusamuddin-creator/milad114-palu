@@ -26,7 +26,6 @@ Terjemahan Arab di proyek ini adalah **draf AI**. Sebelum submit, wajib diperiks
 | Layanan | `src/i18n/ar.ts` bagian `services` | Draf | Judul dan deskripsi |
 | Kalender | `src/i18n/ar.ts` bagian `calendar` | Draf | Nama bulan, hari, event |
 | Kabar | `src/i18n/ar.ts` bagian `kabar` | Draf | Label dan catatan sumber |
-| Kuis | `src/i18n/ar.ts` + `src/data/quiz.ar.ts` | Draf | 10 soal dan penjelasan |
 | Peta | `src/i18n/ar.ts` bagian `map` + `src/data/pcim.ts` | Draf | Nama negara/kota |
 | Footer | `src/i18n/ar.ts` bagian `footer` | Draf | Kredit dan copyright |
 | 404 | `src/i18n/ar.ts` bagian `notFound` | Draf | Pesan 404 |
@@ -63,7 +62,6 @@ Terjemahan Arab di proyek ini adalah **draf AI**. Sebelum submit, wajib diperiks
 
 - [ ] Semua teks di `src/i18n/ar.ts` sudah dibaca.
 - [ ] Enam bab di `src/data/milestones.ar.ts` sudah dibaca.
-- [ ] Sepuluh soal di `src/data/quiz.ar.ts` sudah dibaca.
 - [ ] Nama 29 negara/kota di `src/data/pcim.ts` sudah dicek.
 - [ ] Tidak ada campuran dialek.
 - [ ] Tidak ada terjemahan yang mengubah fakta.
@@ -76,11 +74,10 @@ Terjemahan Arab di proyek ini adalah **draf AI**. Sebelum submit, wajib diperiks
 
 1. Edit `src/i18n/ar.ts` untuk UI.
 2. Edit `src/data/milestones.ar.ts` untuk sejarah.
-3. Edit `src/data/quiz.ar.ts` untuk kuis.
-4. Edit `src/data/calendar-highlights.ar.ts` untuk penanda kalender.
-5. Edit `src/data/pcim.ts` untuk nama negara/kota.
-6. Jalankan `npm run typecheck`, `npm run lint`, `npm run build`.
-7. Buka `/ar` dan periksa ulang.
+3. Edit `src/data/calendar-highlights.ar.ts` untuk penanda kalender.
+4. Edit `src/data/pcim.ts` untuk nama negara/kota.
+5. Jalankan `npm run typecheck`, `npm run lint`, `npm run build`.
+6. Buka `/ar` dan periksa ulang.
 
 ## Catatan kejujuran
 

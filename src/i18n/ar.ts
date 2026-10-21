@@ -1,6 +1,5 @@
 import { calendarHighlightsAr } from "@/data/calendar-highlights.ar";
 import { milestonesAr } from "@/data/milestones.ar";
-import { quizQuestionsAr } from "@/data/quiz.ar";
 import type { Dictionary } from "./types";
 
 const hijriMonths: Record<string, string> = {
@@ -55,7 +54,7 @@ export const ar: Dictionary = {
   meta: {
     title: "تنوير والذكرى الـ114 للمحمدية — معًا نوحّد الأمة",
     description:
-      "موقع تفاعلي لتنوير والذكرى الـ114 لجمعية المحمدية. بالو، 19–21 نوفمبر 2026م | 10–12 جمادى الآخرة 1448هـ. مسار 114 عامًا، وتقويم KHGT، وأخبار رسمية، وخريطة عالمية، واختبار.",
+      "موقع تفاعلي لتنوير والذكرى الـ114 لجمعية المحمدية. بالو، 19–21 نوفمبر 2026م | 10–12 جمادى الآخرة 1448هـ. مسار 114 عامًا، وتقويم KHGT، وأخبار رسمية، وخريطة عالمية.",
     tagline: "معًا نوحّد الأمة",
   },
   common: {
@@ -150,7 +149,7 @@ export const ar: Dictionary = {
         label: "الساق",
         title: "خدمات المحمدية",
         description:
-          "تقويم KHGT والأخبار الرسمية واختبار ذكرى 114 في مكتب خدمات واحد.",
+          "تقويم KHGT والأخبار الرسمية في مكتب خدمات واحد.",
         href: "#layanan",
         accent: "navy",
       },
@@ -184,7 +183,7 @@ export const ar: Dictionary = {
         number: "02",
         label: "الساق",
         title: "خدمات المحمدية",
-        description: "التقويم والأخبار والاختبار.",
+        description: "التقويم والأخبار.",
         href: "#layanan",
         accent: "navy",
       },
@@ -267,7 +266,7 @@ export const ar: Dictionary = {
     ctaEyebrow: "من الجذر إلى الأمام",
     ctaTitle: "لهذه الشجرة ساق تحمل الخدمات.",
     ctaDescription:
-      "افتح تقويم KHGT وأخبار المحمدية الرسمية واختبار ذكرى 114 في قسم الخدمات.",
+      "افتح تقويم KHGT وأخبار المحمدية الرسمية في قسم الخدمات.",
     ctaButton: "افتح الخدمات",
     chapters: milestonesAr,
   },
@@ -275,7 +274,7 @@ export const ar: Dictionary = {
     eyebrow: "الساق",
     title: "خدمات المحمدية",
     description:
-      "ثلاث خدمات تحمل الشجرة: تقويم KHGT الرسمي، وأحدث أخبار المحمدية، واختبار لمعرفة مدى عمق معرفتك.",
+      "خدمتان تحملان الشجرة: تقويم KHGT الرسمي وأحدث أخبار المحمدية.",
     calendarTitle: "التقويم الهجري العالمي الموحد",
     calendarDescription:
       "تُزامن بيانات التقويم من KHGT. عرض الشهر والأيام المميزة ومحول الميلادي–الهجري يستخدم نسخة رسمية، لا مكتبة عامة.",
@@ -284,9 +283,6 @@ export const ar: Dictionary = {
     kabarTitle: "أخبار المحمدية الرسمية",
     kabarDescription:
       "تُجلب من القناة الرسمية للمحمدية، مع تخزين مؤقت لساعة ونسخة احتياطية. تبقى المقالات الكاملة في المصدر الأصلي.",
-    quizTitle: "اختبار ذكرى 114",
-    quizDescription:
-      "اختبر معرفتك بالتاريخ والشعار وبالو وشعار الذكرى. كل إجابة مصحوبة بشرح ومصدر.",
     sourceTitle: "ملاحظات المصادر",
     sourceDescription:
       "التقويم من KHGT؛ والأخبار من القناة الرسمية للمحمدية. وإذا تعذر تحميل البيانات الرسمية، تعرض الصفحة آخر نسخة محفوظة ورابطًا إلى المصدر.",
@@ -342,56 +338,6 @@ export const ar: Dictionary = {
       latest: "الأحدث",
       milad: "الذكرى وتنوير",
     },
-  },
-  quiz: {
-    eyebrow: "اختبار",
-    title: "اختبار ذكرى 114",
-    description:
-      "اختبر معرفتك بالتاريخ والشعار وبالو وشعار الذكرى. كل إجابة مصحوبة بشرح ومصدر.",
-    startTitle: "ما مدى عمق جذورك؟",
-    startDescription:
-      "عشرة أسئلة عن تاريخ وشعار وبالو وشعار الذكرى الـ114. كل إجابة مع شرح ورابط مصدر. تُحفظ أفضل نتيجة على جهازك.",
-    tags: ["10 أسئلة", "اختيار من متعدد", "بدون خادم"],
-    startButton: "ابدأ الاختبار",
-    best: "أفضل نتيجة",
-    bestShort: "الأفضل",
-    questionOf: "السؤال {current} من {total}",
-    correct: "صحيح.",
-    wrong: "ليس صحيحًا تمامًا. الإجابة الصحيحة: {answer}.",
-    source: "المصدر",
-    next: "التالي",
-    seeResult: "اعرض النتيجة",
-    choose: "اختر إجابة واحدة للمتابعة.",
-    resultEyebrow: "النتيجة",
-    resultBest: "أفضل نتيجة",
-    share: "شارك النتيجة",
-    shareText:
-      "حصلت على {score}/100 في اختبار ذكرى المحمدية الـ114. هل تجرؤ على المحاولة؟",
-    retry: "أعد المحاولة",
-    readHistory: "اقرأ التاريخ",
-    badges: [
-      {
-        min: 100,
-        title: "شجرة مكتملة",
-        description: "كل الإجابات صحيحة. الجذر والساق والظلة في توازن.",
-      },
-      {
-        min: 80,
-        title: "جذر قوي",
-        description: "معرفتك عميقة. اقتربت من الكمال.",
-      },
-      {
-        min: 50,
-        title: "برعم",
-        description: "أنت تنمو. راجع فصول التاريخ لتقوية جذورك.",
-      },
-      {
-        min: 0,
-        title: "وقت النمو",
-        description: "لا بأس. ابدأ من الجذر: 1912 وكاومان.",
-      },
-    ],
-    questions: quizQuestionsAr,
   },
   map: {
     eyebrow: "الظلة",

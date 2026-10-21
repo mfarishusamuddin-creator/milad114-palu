@@ -57,11 +57,6 @@ export function Footer({ dict }: { dict: Dictionary }) {
                   {dict.kabar.title}
                 </a>
               </li>
-              <li>
-                <a href="#kuis" className="footer-link">
-                  {dict.quiz.title}
-                </a>
-              </li>
             </ul>
           </div>
 

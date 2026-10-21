@@ -72,7 +72,6 @@ src/components/
   services/ServicesSection.tsx
   services/HijriCalendar.tsx
   services/KabarTabs.tsx
-  services/QuizApp.tsx
   map/MapSection.tsx
   map/WorldMap.tsx
   shared/                 komponen kecil (KabarCard, SourceNote, SpaceTree, dll.)
@@ -87,9 +86,6 @@ src/data/
   milestones.ts           ع¤onten sejarah Indonesia
   milestones.en.ts        konten sejarah Inggris
   milestones.ar.ts        konten sejarah Arab
-  quiz.ts                 soal kuis Indonesia
-  quiz.en.ts              soal kuis Inggris
-  quiz.ar.ts              soal kuis Arab
   calendar-highlights.ts  penanda kalender Indonesia
   calendar-highlights.en.ts
   calendar-highlights.ar.ts
@@ -145,7 +141,6 @@ Bagian penting:
 - `services` — judul/label layanan.
 - `calendar` — semua label kalender, nama bulan, hari, event.
 - `kabar` — label kabar.
-- `quiz` — label kuis, badge, dan soal.
 - `map` — judul peta dan nama kawasan.
 - `footer` — footer.
 - `notFound` — halaman 404.
@@ -182,37 +177,13 @@ Aturan:
 - Jika menambah bab, tambahkan di ketiga bahasa dan pastikan urutannya sama.
 - Jika ingin mengubah jumlah bab, sesuaikan juga `dict.history.chapters` (otomatis mengikuti file) dan animasi pohon.
 
-### 3.3 Kuis
-
-File:
-
-- `src/data/quiz.ts`
-- `src/data/quiz.en.ts`
-- `src/data/quiz.ar.ts`
-
-Satu soal:
-
-```ts
-{
-  id: 1,
-  question: "...",
-  options: ["A", "B", "C", "D"],
-  answerIndex: 1,
-  explanation: "...",
-  source: "...",
-  sourceUrl: "https://...",
-}
-```
-
-`answerIndex` dimulai dari 0. Pastikan urutan opsi dan jawaban benar di ketiga bahasa sama.
-
-### 3.4 Agenda dan penanda kalender
+### 3.3 Agenda dan penanda kalender
 
 - Agenda: `src/i18n/*.ts` bagian `agenda.items`.
 - Penanda kalender: `src/data/calendar-highlights*.ts`.
 - Tanggal memakai format `YYYY-MM-DD`; label boleh berbeda per bahasa.
 
-### 3.5 Peta PCIM
+### 3.4 Peta PCIM
 
 File `src/data/pcim.ts`. Satu negara:
 
@@ -234,7 +205,7 @@ File `src/data/pcim.ts`. Satu negara:
 - Jika menambah negara, tambahkan juga nama kota dan terjemahannya.
 - Peta dunia memakai `world-atlas` (Natural Earth). Tidak perlu mengunduh peta manual.
 
-### 3.6 Metadata dan tautan resmi
+### 3.5 Metadata dan tautan resmi
 
 - `src/data/site.ts` — URL situs, tanggal, tautan resmi, daftar nav internal.
 - `src/lib/metadata.ts` — metadata per bahasa.
@@ -416,11 +387,10 @@ Untuk menambah menu:
 
 ### 5.7 Section layanan
 
-- `ServicesSection.tsx` — kalender, penanda, kabar, kuis.
+- `ServicesSection.tsx` — kalender, penanda, kabar.
 - `HijriCalendar.tsx` — kalender dan konverter.
 - `KabarTabs.tsx` — tab kabar.
-- `QuizApp.tsx` — kuis.
-- Anchor `#kabar` dan `#kuis` berada di dalam section ini.
+- Anchor `#kabar` berada di dalam section ini.
 
 ### 5.8 Peta
 
@@ -555,39 +525,22 @@ Komponen: `src/components/intro/MotionIntro.tsx`.
 Aset: `public/media/intro/`.
 Pemicu awal: `data-intro` yang diatur oleh script di `src/app/layout.tsx`.
 
-**Status default: aktif sekali per sesi.** Video motion logo dan situs sama-sama memakai **19–21 November 2026 / 10–12 Jumadilakhir 1448 H**.
+**Status default: aktif setiap refresh.** Video motion logo dan situs sama-sama memakai **19–21 November 2026 / 10–12 Jumadilakhir 1448 H**.
 
 Catatan aset: logo statis di folder sumber (`HORIZONTAL-...-01/02/03`) masih mencantumkan **13–15 November 2026**. Karena itu `public/logo/horizontal-color-1921.png` dan `horizontal-white-1921.png` diturunkan dari **frame motion logo 19–21**, bukan dari PNG statis tersebut. Footer memakai logogram putih tanpa tanggal.
 
-Preview paksa:
-
-```text
-http://localhost:3000/?intro=1
-```
-
 Perilaku intro:
 
+- Refresh penuh (F5, Ctrl+R, Ctrl+Shift+R) → intro tampil lagi.
+- Navigasi internal antar-anchor atau antar-bahasa → tidak tampil ulang, karena setelah intro selesai `MotionIntro` mengubah `document.documentElement.dataset.intro` menjadi `skip`.
+- `prefers-reduced-motion` dan `saveData` otomatis melewati intro.
 - Desktop memakai video horizontal; ponsel memakai vertikal.
 - Mode terang memakai varian `light`; mode gelap `dark`.
 - Video 5 detik, muted, autoplay, `playsInline`.
 - Tombol “Lewati intro” selalu tersedia; tombol Escape juga menutup.
-- `prefers-reduced-motion` dan `saveData` otomatis melewati intro.
-- Setelah selesai, `sessionStorage` menyimpan `m114:intro-seen`.
 - Body scroll dikunci selama intro.
 
-Mengaktifkan setiap kali halaman dibuka (bukan sekali per sesi):
-
-Ubah baris di `themeScript`:
-
-```js
-(!reduce&&!save&&(force||!seen))?"play":"skip"
-```
-
-menjadi:
-
-```js
-(!reduce&&!save)?"play":"skip"
-```
+Jika ingin opsi “sekali per sesi” (intro hanya tampil sekali hingga tab ditutup), itu memerlukan penambahan `sessionStorage` secara manual di `themeScript` (`src/app/layout.tsx`) dan `MotionIntro.tsx`; default proyek sekarang **setiap refresh**.
 
 Mengganti video:
 
@@ -651,7 +604,7 @@ Arab      : https://milad114-palu.vercel.app/ar
 
 - Jangan memakai URL preview Vercel.
 - Setelah domain final, jangan mengganti nama project.
-- Anchors: `#jelajah`, `#sejarah`, `#layanan`, `#peta`, `#kabar`, `#kuis`.
+- Anchors: `#jelajah`, `#sejarah`, `#layanan`, `#peta`, `#kabar`.
 - Metadata per bahasa: `src/lib/metadata.ts`.
 - Sitemap: `src/app/sitemap.ts`.
 - Robots: `src/app/robots.ts`.
@@ -710,7 +663,7 @@ Bandingkan struktur `id.ts`, `en.ts`, `ar.ts`. Semua kunci harus sama.
 - [ ] Gambar OG 1200أ—630.
 - [ ] Favicon 512أ—512.
 - [ ] Tidak ada `bg-white` yang membuat kartu terang di mode gelap.
-- [ ] Anchor `#sejarah`, `#layanan`, `#peta`, `#kabar`, `#kuis` ada.
+- [ ] Anchor `#sejarah`, `#layanan`, `#peta`, `#kabar` ada.
 - [ ] Peta menampilkan jumlah negara yang benar.
 - [ ] `npm run lint`, `npm run typecheck`, `npm run build` lolos.
 - [ ] Uji `/`, `/en`, `/ar` di 390 px, 768 px, 1440 px.
