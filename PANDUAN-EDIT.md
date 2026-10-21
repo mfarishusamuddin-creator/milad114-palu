@@ -509,8 +509,9 @@ Mengganti sumber peta:
 
 - Komponen: `src/components/shared/ScrollReveal.tsx`.
 - Atribut: `data-reveal` pada elemen.
-- CSS: `.js-reveal [data-reveal]` di `globals.css`.
-- Fallback: semua elemen ditampilkan setelah 5 detik agar konten tidak pernah hilang.
+- CSS: `[data-js-reveal] [data-reveal]` di `globals.css`; status terlihat ditandai `data-revealed`.
+- Konten **default terlihat**. Animasi hanya diputar saat `data-revealed` ditambahkan; jika React re-render dan atribut itu hilang, konten tetap terlihat.
+- Fallback: semua elemen ditampilkan setelah 1,6 detik.
 - Reduced motion: konten langsung tampil.
 
 Menambah elemen reveal:
@@ -633,7 +634,7 @@ Pastikan `dir="rtl"` aktif dan font El Messiri termuat. Periksa `LocaleEffect` d
 Cek `iso` tiga digit dan apakah `world-atlas` memiliki negara tersebut. Buka DevTools dan cari `.map-country--pcim`.
 
 **Animasi tidak muncul**
-Pastikan elemen memiliki `data-reveal` dan `ScrollReveal` terpasang di `SiteShell`. Fallback menampilkan semua setelah 5 detik.
+Pastikan elemen memiliki `data-reveal` dan `ScrollReveal` terpasang di `SiteShell`. Fallback menampilkan semua setelah 1,6 detik.
 
 **Terjemahan TypeScript error**
 Bandingkan struktur `id.ts`, `en.ts`, `ar.ts`. Semua kunci harus sama.
@@ -652,4 +653,5 @@ Bandingkan struktur `id.ts`, `en.ts`, `ar.ts`. Semua kunci harus sama.
 - [ ] Uji `/`, `/en`, `/ar` di 390 px, 768 px, 1440 px.
 - [ ] Uji mode terang dan gelap.
 - [ ] Uji QR dari layar dan cetak.
+
 

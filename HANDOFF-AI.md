@@ -1,4 +1,4 @@
-# Handoff untuk AI Lain — Penyempurnaan Halaman dan Fitur
+﻿# Handoff untuk AI Lain — Penyempurnaan Halaman dan Fitur
 
 Dokumen ini adalah brief eksekusi untuk AI pembangun berikutnya. Fokusnya bukan menambah fitur baru, tetapi membuat halaman yang sudah ada terasa lebih matang, tidak kaku, dan tidak seperti template. Setiap bagian memuat file, tujuan, perubahan yang diminta, kriteria selesai, dan aset yang diperlukan.
 
@@ -45,7 +45,7 @@ Yang dipertahankan:
 **Kriteria selesai:**
 
 - [ ] Logo resmi tidak diubah/diberi efek.
-- [ ] H1 terbaca “Bersama Satukan Bangsa” (dengan spasi) di accessibility tree.
+- [ ] H1 terbaca “Bersama Satukan Bangsa”‌ (dengan spasi) di accessibility tree.
 - [ ] Mode gelap memakai logo putih.
 - [ ] Tidak ada overflow horizontal.
 - [ ] Countdown tetap akurat.
@@ -150,7 +150,7 @@ Yang dipertahankan:
 
 **Prompt:**
 
-> Pertahankan data KHGT dan konverter. Perbaiki keterbacaan sel di mobile. Pastikan 13–15 November 2026 bertanda “Milad” dan menampilkan 4–6 Jumadilakhir 1448 H. Jangan memakai library hijriah generik. Jangan mengubah data snapshot. Tambahkan catatan sumber dan tanggal snapshot.
+> Pertahankan data KHGT dan konverter. Perbaiki keterbacaan sel di mobile. Pastikan 13–15 November 2026 bertanda “Milad”‌ dan menampilkan 4–6 Jumadilakhir 1448 H. Jangan memakai library hijriah generik. Jangan mengubah data snapshot. Tambahkan catatan sumber dan tanggal snapshot.
 
 **Kriteria selesai:**
 
@@ -240,12 +240,12 @@ Yang dipertahankan:
 
 **Prompt:**
 
-> Pertahankan reveal dari bawah ke atas. Jangan membuat elemen masuk dari samping. Pastikan konten tidak pernah permanen tersembunyi: fallback 5 detik sudah ada. Hormati reduced motion. Jangan menambahkan animasi ke elemen yang sudah punya animasi hero.
+> Pertahankan reveal dari bawah ke atas. Jangan membuat elemen masuk dari samping. Pastikan konten tidak pernah permanen tersembunyi: fallback 1,6 detik sudah ada. Hormati reduced motion. Jangan menambahkan animasi ke elemen yang sudah punya animasi hero.
 
 **Kriteria selesai:**
 
 - [ ] Semua section muncul saat scroll.
-- [ ] Tidak ada elemen yang tetap opacity 0 setelah 5 detik.
+- [ ] Tidak ada elemen yang tetap opacity 0 setelah 1,6 detik.
 - [ ] Reduced motion langsung menampilkan konten.
 
 ## 14. Footer dan kolofon
@@ -326,3 +326,4 @@ Gunakan hanya El Messiri dan Familjen Grotesk dari folder proyek. Jangan memakai
 - [ ] Uji 390/768/1440 px.
 - [ ] Uji reduced motion.
 - [ ] QR `/`, `/en`, `/ar` tetap valid.
+
