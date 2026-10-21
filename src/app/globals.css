@@ -1037,7 +1037,12 @@
   justify-content: center;
   gap: 18px;
   padding: 24px;
+  background: #fff;
   transition: opacity 240ms ease;
+}
+
+[data-theme="dark"] .motion-intro__static {
+  background: #000;
 }
 
 .motion-intro__static.is-fading {

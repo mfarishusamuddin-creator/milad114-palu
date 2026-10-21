@@ -65,11 +65,21 @@ export function MotionIntro({ dict }: { dict: Dictionary }) {
     video.defaultPlaybackRate = INTRO_PLAYBACK_RATE;
     video.playbackRate = INTRO_PLAYBACK_RATE;
 
+    let videoFrameId = 0;
+    if (typeof video.requestVideoFrameCallback === "function") {
+      videoFrameId = video.requestVideoFrameCallback(() =>
+        setVideoReady(true),
+      );
+    }
+
     const playPromise = video.play();
     if (playPromise) playPromise.catch(() => undefined);
 
     const fallback = window.setTimeout(() => finish(), 8000);
-    return () => window.clearTimeout(fallback);
+    return () => {
+      window.clearTimeout(fallback);
+      if (videoFrameId) video.cancelVideoFrameCallback(videoFrameId);
+    };
   }, [playing, finish]);
 
   if (!visible) return null;
@@ -112,7 +122,6 @@ export function MotionIntro({ dict }: { dict: Dictionary }) {
             preload="auto"
             onEnded={finish}
             onError={finish}
-            onLoadedData={() => setVideoReady(true)}
             onPlaying={() => setVideoReady(true)}
             onLoadedMetadata={(event) => {
               const video = event.currentTarget;
