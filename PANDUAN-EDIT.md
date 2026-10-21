@@ -53,7 +53,7 @@ src/app/
   robots.ts               aturan crawler
   icon.png                favicon
 src/components/
-  pages/SiteShell.tsx     navbar + footer + locale + scroll reveal
+  pages/SiteShell.tsx     navbar + footer + locale
   pages/HomePage.tsx      urutan seluruh section di satu index
   layout/Navbar.tsx       navigasi, bahasa, tema
   layout/Footer.tsx       footer, sumber, kredit
@@ -475,22 +475,24 @@ Mengganti sumber peta:
 
 ## 9. Animasi
 
-### 9.1 Scroll reveal
+### 9.1 Animated content (GSAP)
 
-- Komponen: `src/components/shared/ScrollReveal.tsx`.
-- Atribut: `data-reveal` pada elemen.
-- CSS: `[data-js-reveal] [data-reveal]` di `globals.css`; status terlihat ditandai `data-revealed`.
-- Konten **default terlihat**. Animasi hanya diputar saat `data-revealed` ditambahkan; jika React re-render dan atribut itu hilang, konten tetap terlihat.
-- Fallback: semua elemen ditampilkan setelah 1,6 detik.
-- Reduced motion: konten langsung tampil.
+- Komponen: `src/components/animation/AnimatedContent.tsx` (GSAP + ScrollTrigger) dan wrapper `src/components/animation/Reveal.tsx`.
+- Default Reveal: `distance=48`, `duration=0.8`, `ease="power3.out"`, `threshold=0.12`, `direction="vertical"`, `reverse=false`, `blur=false`, `wipe=false`, `stagger=0.08`, `scale=1`, `trigger="once"` (diputar **sekali** per elemen, tidak mengulang saat scroll naik), `triggerOnMount=false`.
+- Wrapper memakai atribut `data-animated-content` dengan `visibility: hidden` awal di `globals.css`; ScrollTrigger menampilkan dan menganimasikannya.
+- Fallback tanpa JS: aturan `@media (scripting: none)` di `globals.css` dan `<noscript>` di `layout.tsx` memaksa semua konten terlihat.
+- Reduced motion: konten langsung tampil tanpa animasi.
+- Scope: section dan konten utama saja. Navbar, Footer, MotionIntro, `not-found.tsx`, sidebar sticky history, timeline, pohon, kalender, dan tab kabar tidak dianimasikan.
 
-Menambah elemen reveal:
+Menambah animasi:
 
 ```tsx
-<div data-reveal>...</div>
+import { Reveal } from "@/components/animation/Reveal";
+
+<Reveal>...</Reveal>
 ```
 
-Menghapus animasi dari elemen: hapus `data-reveal`.
+Menghapus animasi: hapus pembungkus `<Reveal>` (attrs tidak ada; elemen tanpa wrapper tidak dianimasikan).
 
 ### 9.2 Pohon
 
@@ -650,7 +652,7 @@ Pastikan `dir="rtl"` aktif dan font El Messiri termuat. Periksa `LocaleEffect` d
 Cek `iso` tiga digit dan apakah `world-atlas` memiliki negara tersebut. Buka DevTools dan cari `.map-country--pcim`.
 
 **Animasi tidak muncul**
-Pastikan elemen memiliki `data-reveal` dan `ScrollReveal` terpasang di `SiteShell`. Fallback menampilkan semua setelah 1,6 detik.
+Pastikan elemen dibungkus `<Reveal>` dari `src/components/animation/Reveal.tsx`. Jika JS nonaktif, fallback `@media (scripting: none)` menampilkan semuanya begitu saja.
 
 **Terjemahan TypeScript error**
 Bandingkan struktur `id.ts`, `en.ts`, `ar.ts`. Semua kunci harus sama.

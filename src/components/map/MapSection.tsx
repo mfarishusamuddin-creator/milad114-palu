@@ -1,3 +1,4 @@
+import { Reveal } from "@/components/animation/Reveal";
 import { WorldMap } from "@/components/map/WorldMap";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { SourceNote } from "@/components/shared/SourceNote";
@@ -16,26 +17,23 @@ export function MapSection({ dict }: { dict: Dictionary }) {
   return (
     <section className="section scroll-mt-20 bg-bg-soft" id="peta">
       <div className="container-page">
-        <div data-reveal>
+        <Reveal>
           <SectionHeading
             eyebrow={dict.map.eyebrow}
             title={dict.map.title}
             description={dict.map.description}
           />
-        </div>
+        </Reveal>
 
         <div className="mt-9 grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-          <div data-reveal>
+          <Reveal>
             <WorldMap dict={dict} />
             <p className="mt-3 text-xs leading-relaxed text-ink-soft">
               {dict.map.note}
             </p>
-          </div>
+          </Reveal>
 
-          <div
-            className="rounded-sm border border-line bg-surface p-5 sm:p-6 lg:max-h-[560px] lg:overflow-y-auto"
-            data-reveal
-          >
+          <Reveal className="rounded-sm border border-line bg-surface p-5 sm:p-6 lg:max-h-[560px] lg:overflow-y-auto">
             <h3 className="font-serif text-xl font-bold text-ink">
               {dict.map.countryList}
             </h3>
@@ -69,7 +67,7 @@ export function MapSection({ dict }: { dict: Dictionary }) {
                 );
               })}
             </div>
-          </div>
+          </Reveal>
         </div>
 
         <SourceNote

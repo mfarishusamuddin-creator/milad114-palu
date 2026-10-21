@@ -48,7 +48,7 @@ Lingkungan: Windows, Node.js 22.23.2, Next.js 16.4.2, Edge headless.
 
 - Tema: tombol mengubah `data-theme` menjadi `dark`; pilihan disimpan di `localStorage`.
 - Logo: varian putih tampil di mode gelap.
-- Scroll reveal: elemen `data-reveal` dianimasikan saat scroll; konten default terlihat dan tidak pernah disembunyikan permanen; fallback 1,6 detik.
+- Animated content: elemen `<Reveal>` (GSAP/ScrollTrigger) dianimasikan sekali dari bawah saat scroll; konten di-`visibility: hidden` awal dan ditampilkan oleh ScrollTrigger; fallback `scripting: none`/`noscript`; reduced motion langsung tampil.
 - Sejarah: Scrollama mengaktifkan tahun sesuai bab.
 - Kalender: Masehi `2026-11-19` → `10 Jumadilakhir 1448 H · Wage`.
 - Kalender: Hijriah `10 Jumadilakhir 1448` → `19 November 2026 · Wage`.

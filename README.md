@@ -26,7 +26,7 @@ Rute lama `/sejarah` dan `/layanan` sudah dihapus. QR fisik sekarang menjadi ger
 
 - Tema terang/gelap dengan penyimpanan `localStorage` dan preferensi sistem.
 - Bahasa Indonesia, Inggris, dan Arab dengan layout RTL.
-- Scroll reveal untuk section dan kartu.
+- Animated content (GSAP/ScrollTrigger), sekali per viewport, dari bawah; reduced motion langsung menampilkan konten.
 - Motion logo intro (horizontal/vertical, terang/gelap) — tampil setiap refresh; reduced motion/saveData otomatis dilewati.
 - Peta dunia Natural Earth yang menyorot 29 Pimpinan Cabang Istimewa.
 - Kalender KHGT dengan konverter Masehi–Hijriah.
@@ -37,6 +37,7 @@ Rute lama `/sejarah` dan `/layanan` sudah dihapus. QR fisik sekarang menjadi ger
 
 - Next.js 16 App Router + TypeScript + Cache Components
 - Tailwind CSS v4
+- GSAP (ScrollTrigger) untuk animated content
 - Scrollama (MIT)
 - world-atlas + topojson-client + d3-geo untuk peta
 - Font lokal: El Messiri dan Familjen Grotesk (OFL)
@@ -105,7 +106,7 @@ Mulai dari bagian:
 - **Scrollama** (`russellsamora/scrollama`, MIT) — scrollytelling di bagian sejarah. Lisensi: `public/licenses/Scrollama-MIT.txt`.
 - **Space colonization** (Runions dkk., 2007; referensi `jasonwebb/2d-space-colonization-experiments`) — algoritma diimplementasikan ulang di `scripts/generate-tree.mjs`; tidak menyalin kode repo.
 - **world-atlas** (ISC) dan **Natural Earth** (public domain) — geometri peta dunia.
-- **GSAP** dan **folio-2019** tidak dipakai; animasi berat/WebGL tidak sepadan dengan target performa mobile.
+- **GSAP** (Standard License "no charge") — AnimatedContent/ScrollTrigger untuk animated content sekali per viewport. **folio-2019** tidak dipakai; WebGL tidak sepadan dengan target performa mobile.
 - **Peta 38 provinsi Indonesia** tidak dipakai karena fokus peta adalah persebaran global PCIM.
 - **Template identitas resmi** dari folder `drive-download-...` dipakai untuk plate logo, pattern strip, tipografi, dan proporsi layout.
 

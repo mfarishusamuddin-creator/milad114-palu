@@ -1,3 +1,4 @@
+import { Reveal } from "@/components/animation/Reveal";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { SourceNote } from "@/components/shared/SourceNote";
 import { SITE } from "@/data/site";
@@ -7,7 +8,7 @@ export function Agenda({ dict }: { dict: Dictionary }) {
   return (
     <section className="section scroll-mt-20 bg-bg-soft" id="agenda">
       <div className="container-page">
-        <div className="grid gap-6 lg:grid-cols-[1fr_0.8fr] lg:items-end">
+        <Reveal className="grid gap-6 lg:grid-cols-[1fr_0.8fr] lg:items-end">
           <SectionHeading
             eyebrow={dict.agenda.eyebrow}
             title={dict.agenda.title}
@@ -15,14 +16,13 @@ export function Agenda({ dict }: { dict: Dictionary }) {
           <p className="max-w-md text-sm leading-relaxed text-ink-soft lg:pb-1">
             {dict.agenda.description}
           </p>
-        </div>
+        </Reveal>
 
-        <div className="mt-10 border-t border-line">
+        <Reveal className="mt-10 border-t border-line" stagger={0.07}>
           {dict.agenda.items.map((item) => (
             <article
               key={item.title}
               className="grid gap-2 border-b border-line py-5 sm:grid-cols-[10rem_1fr_auto] sm:items-baseline sm:gap-6"
-              data-reveal
             >
               <p className="font-serif text-lg font-bold text-navy">
                 {item.date}
@@ -40,7 +40,7 @@ export function Agenda({ dict }: { dict: Dictionary }) {
               </span>
             </article>
           ))}
-        </div>
+        </Reveal>
 
         <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <SourceNote

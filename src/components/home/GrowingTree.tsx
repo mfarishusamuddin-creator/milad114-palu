@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { SpaceTree } from "@/components/shared/SpaceTree";
+import { Reveal } from "@/components/animation/Reveal";
 import type { Dictionary } from "@/i18n/types";
 import { cn } from "@/lib/cn";
 
@@ -40,8 +41,11 @@ export function GrowingTree({ dict }: { dict: Dictionary }) {
     <section className="section scroll-mt-20 bg-navy text-white" id="pohon">
       <div className="pattern-strip h-2.5 w-full opacity-90" aria-hidden="true" />
       <div className="container-page py-10">
-        <div className="grid gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-center lg:gap-14">
-          <div data-reveal>
+        <Reveal
+          className="grid gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-center lg:gap-14"
+          stagger={0.12}
+        >
+          <div>
             <p className="eyebrow eyebrow--light">
               <span className="eyebrow-dot" aria-hidden="true" />
               {dict.tree.eyebrow}
@@ -90,7 +94,6 @@ export function GrowingTree({ dict }: { dict: Dictionary }) {
               "tree-stage relative mx-auto w-full max-w-3xl",
               grown && "is-grown"
             )}
-            data-reveal
           >
             <div className="relative px-3 py-6 sm:px-6 sm:py-8">
               <SpaceTree showGround />
@@ -143,7 +146,7 @@ export function GrowingTree({ dict }: { dict: Dictionary }) {
               ))}
             </div>
           </div>
-        </div>
+        </Reveal>
       </div>
       <div className="pattern-strip h-2.5 w-full opacity-90" aria-hidden="true" />
     </section>

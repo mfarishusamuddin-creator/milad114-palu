@@ -20,7 +20,7 @@
 - Enam bab sejarah dengan Scrollama dan sumber resmi.
 - Kalender KHGT (snapshot tersinkron) dan kabar Muhammadiyah (WP REST API, cache satu jam, fallback).
 - Peta dunia Natural Earth yang menyorot 29 PCIM dengan marker kota.
-- Scroll reveal, reduced motion, dan satu momen wow: pohon space colonization.
+- Animated content (GSAP), reduced motion, dan satu momen wow: pohon space colonization.
 
 **Teknologi.** Next.js 16 App Router, TypeScript, Tailwind CSS v4, Cache Components, Scrollama, world-atlas/topojson-client/d3-geo, font lokal OFL. Tanpa WebGL, tanpa database, tanpa login.
 

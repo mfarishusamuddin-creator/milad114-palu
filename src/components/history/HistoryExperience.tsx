@@ -2,6 +2,7 @@
 
 import scrollama from "scrollama";
 import { useEffect, useRef, useState } from "react";
+import { Reveal } from "@/components/animation/Reveal";
 import { SourceNote } from "@/components/shared/SourceNote";
 import { SpaceTree } from "@/components/shared/SpaceTree";
 import type { Milestone } from "@/data/milestones";
@@ -130,7 +131,6 @@ export function HistoryExperience({ chapters, dict }: Props) {
                 chapterRefs.current[index] = node;
               }}
               className="history-step relative border-t border-line py-8 lg:py-10"
-              data-reveal
             >
               <span
                 className="pointer-events-none absolute right-0 top-6 select-none font-serif text-7xl font-bold leading-none text-line/70 rtl:left-0 rtl:right-auto"
@@ -139,52 +139,54 @@ export function HistoryExperience({ chapters, dict }: Props) {
                 0{index + 1}
               </span>
 
-              <div className="flex flex-wrap items-center gap-3">
-                <span className="chapter-year">{chapter.year}</span>
-                <span className="rounded-sm border border-line bg-bg-soft px-2 py-0.5 text-[0.58rem] font-bold uppercase tracking-[0.14em] text-teal-deep">
-                  {chapter.kicker}
-                </span>
-                {chapter.verified ? (
-                  <span className="text-[0.58rem] font-bold uppercase tracking-[0.12em] text-kelor-deep">
-                    {dict.verified}
+              <Reveal>
+                <div className="flex flex-wrap items-center gap-3">
+                  <span className="chapter-year">{chapter.year}</span>
+                  <span className="rounded-sm border border-line bg-bg-soft px-2 py-0.5 text-[0.58rem] font-bold uppercase tracking-[0.14em] text-teal-deep">
+                    {chapter.kicker}
                   </span>
-                ) : null}
-              </div>
+                  {chapter.verified ? (
+                    <span className="text-[0.58rem] font-bold uppercase tracking-[0.12em] text-kelor-deep">
+                      {dict.verified}
+                    </span>
+                  ) : null}
+                </div>
 
-              <h2 className="mt-3 max-w-2xl font-serif text-2xl font-bold text-ink sm:text-3xl">
-                {chapter.title}
-              </h2>
+                <h2 className="mt-3 max-w-2xl font-serif text-2xl font-bold text-ink sm:text-3xl">
+                  {chapter.title}
+                </h2>
 
-              <div className="prose-milad mt-4 max-w-2xl text-[0.95rem]">
-                {chapter.paragraphs.map((paragraph) => (
-                  <p key={paragraph.slice(0, 40)}>{paragraph}</p>
-                ))}
-              </div>
-
-              {chapter.facts?.length ? (
-                <ul className="mt-6 grid max-w-2xl gap-x-6 gap-y-2 sm:grid-cols-2">
-                  {chapter.facts.map((fact) => (
-                    <li
-                      key={fact}
-                      className="flex items-start gap-2 border-t border-line pt-2 text-xs leading-relaxed text-ink-soft"
-                    >
-                      <LeafBullet />
-                      <span>{fact}</span>
-                    </li>
+                <div className="prose-milad mt-4 max-w-2xl text-[0.95rem]">
+                  {chapter.paragraphs.map((paragraph) => (
+                    <p key={paragraph.slice(0, 40)}>{paragraph}</p>
                   ))}
-                </ul>
-              ) : null}
+                </div>
 
-              <SourceNote
-                title={dict.source}
-                items={chapter.sources}
-                className="mt-5 max-w-xl"
-              />
+                {chapter.facts?.length ? (
+                  <ul className="mt-6 grid max-w-2xl gap-x-6 gap-y-2 sm:grid-cols-2">
+                    {chapter.facts.map((fact) => (
+                      <li
+                        key={fact}
+                        className="flex items-start gap-2 border-t border-line pt-2 text-xs leading-relaxed text-ink-soft"
+                      >
+                        <LeafBullet />
+                        <span>{fact}</span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+
+                <SourceNote
+                  title={dict.source}
+                  items={chapter.sources}
+                  className="mt-5 max-w-xl"
+                />
+              </Reveal>
             </article>
           ))}
         </div>
 
-        <div className="mt-4 border-t border-line pt-8">
+        <Reveal className="mt-4 border-t border-line pt-8">
           <p className="eyebrow">
             <span className="eyebrow-dot" aria-hidden="true" />
             {dict.ctaEyebrow}
@@ -198,7 +200,7 @@ export function HistoryExperience({ chapters, dict }: Props) {
           <a href="#layanan" className="btn btn-primary mt-5 no-underline">
             {dict.ctaButton}
           </a>
-        </div>
+        </Reveal>
       </div>
     </div>
   );

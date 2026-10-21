@@ -101,7 +101,7 @@ export const viewport: Viewport = {
   colorScheme: "light dark",
 };
 
-const themeScript = `(function(){try{var t=localStorage.getItem("m114:theme");if(t!=="dark"&&t!=="light"){t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}document.documentElement.dataset.theme=t;document.documentElement.setAttribute("data-js-reveal","true");var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;var save=!!(navigator.connection&&navigator.connection.saveData);document.documentElement.dataset.intro=(!reduce&&!save)?"play":"skip";}catch(e){document.documentElement.setAttribute("data-js-reveal","true");document.documentElement.dataset.intro="skip";}})();`;
+const themeScript = `(function(){try{var t=localStorage.getItem("m114:theme");if(t!=="dark"&&t!=="light"){t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}document.documentElement.dataset.theme=t;var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;var save=!!(navigator.connection&&navigator.connection.saveData);document.documentElement.dataset.intro=(!reduce&&!save)?"play":"skip";}catch(e){document.documentElement.dataset.intro="skip";}})();`;
 
 const eventJsonLd = {
   "@context": "https://schema.org",
@@ -145,7 +145,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           {themeScript}
         </Script>
         <noscript>
-          <style>{`.motion-intro{display:none!important}`}</style>
+          <style>{`.motion-intro{display:none!important}[data-animated-content]{visibility:visible!important}`}</style>
         </noscript>
         {children}
         <script

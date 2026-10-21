@@ -1,3 +1,4 @@
+import { Reveal } from "@/components/animation/Reveal";
 import { HijriCalendar } from "@/components/services/HijriCalendar";
 import { KabarTabs } from "@/components/services/KabarTabs";
 import { SectionHeading } from "@/components/shared/SectionHeading";
@@ -28,15 +29,15 @@ export function ServicesSection({
   return (
     <section className="section scroll-mt-20" id="layanan">
       <div className="container-page">
-        <div data-reveal>
+        <Reveal>
           <SectionHeading
             eyebrow={dict.services.eyebrow}
             title={dict.services.title}
             description={dict.services.description}
           />
-        </div>
+        </Reveal>
 
-        <div className="mt-10" data-reveal>
+        <Reveal className="mt-10" stagger={0.06}>
           <div className="mb-5">
             <h3 className="font-serif text-2xl font-bold text-ink">
               {dict.services.calendarTitle}
@@ -80,24 +81,25 @@ export function ServicesSection({
               ))}
             </ul>
           </div>
-        </div>
+        </Reveal>
 
         <div
           className="mt-16 scroll-mt-20 border-t border-line pt-10"
           id="kabar"
-          data-reveal
         >
-          <SectionHeading
-            eyebrow={dict.kabar.eyebrow}
-            title={dict.services.kabarTitle}
-            description={dict.services.kabarDescription}
-          />
-          <div className="mt-7">
-            <KabarTabs latest={latest} milad={milad} dict={dict} />
-          </div>
+          <Reveal>
+            <SectionHeading
+              eyebrow={dict.kabar.eyebrow}
+              title={dict.services.kabarTitle}
+              description={dict.services.kabarDescription}
+            />
+            <div className="mt-7">
+              <KabarTabs latest={latest} milad={milad} dict={dict} />
+            </div>
+          </Reveal>
         </div>
 
-        <div className="mt-12 rounded-sm border border-line bg-bg-soft p-6 sm:p-8">
+        <Reveal className="mt-12 rounded-sm border border-line bg-bg-soft p-6 sm:p-8">
           <p className="eyebrow">
             <span className="eyebrow-dot" aria-hidden="true" />
             {dict.services.sourceTitle}
@@ -114,7 +116,7 @@ export function ServicesSection({
               { label: "Edaran 19/2026", url: SITE.links.edaran },
             ]}
           />
-        </div>
+        </Reveal>
       </div>
     </section>
   );

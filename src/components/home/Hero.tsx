@@ -1,3 +1,4 @@
+import { Reveal } from "@/components/animation/Reveal";
 import { Countdown } from "@/components/home/Countdown";
 import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
 import { ShareButton } from "@/components/shared/ShareButton";
@@ -14,8 +15,12 @@ export function Hero({ dict }: { dict: Dictionary }) {
           <span>{dict.hero.dateLine}</span>
         </div>
 
-        <div className="grid gap-12 py-12 lg:grid-cols-[1.04fr_0.96fr] lg:items-center lg:gap-16 lg:py-16">
-          <div className="animate-fade-up">
+        <Reveal
+          trigger="mount"
+          stagger={0.1}
+          className="grid gap-12 py-12 lg:grid-cols-[1.04fr_0.96fr] lg:items-center lg:gap-16 lg:py-16"
+        >
+          <div>
             <p className="eyebrow">
               <span className="eyebrow-dot" aria-hidden="true" />
               {dict.hero.eyebrow}
@@ -57,8 +62,8 @@ export function Hero({ dict }: { dict: Dictionary }) {
             </div>
           </div>
 
-          <div className="relative animate-fade-up [animation-delay:120ms]">
-            <div className="hero-plate" data-reveal>
+          <div className="relative">
+            <div className="hero-plate">
               <div className="flex items-center justify-between gap-3 border-b border-line px-4 py-2.5 text-[0.58rem] font-bold uppercase tracking-[0.16em] text-ink-soft">
                 <span>{dict.hero.plate.identity}</span>
                 <span className="text-teal-deep">{dict.hero.plate.city}</span>
@@ -103,11 +108,11 @@ export function Hero({ dict }: { dict: Dictionary }) {
               {dict.hero.plate.caption}
             </p>
           </div>
-        </div>
+        </Reveal>
 
-        <div className="border-t border-line py-5" data-reveal>
+        <Reveal trigger="mount" stagger={0} className="border-t border-line py-5">
           <Countdown dict={dict} />
-        </div>
+        </Reveal>
       </div>
     </section>
   );

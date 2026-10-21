@@ -1,3 +1,4 @@
+import { Reveal } from "@/components/animation/Reveal";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import type { Dictionary } from "@/i18n/types";
 
@@ -10,7 +11,7 @@ const ACCENT: Record<string, string> = {
 export function GatewayCards({ dict }: { dict: Dictionary }) {
   return (
     <section className="section scroll-mt-20" id="jelajah">
-      <div className="container-page">
+      <Reveal className="container-page">
         <div className="grid gap-6 lg:grid-cols-[1fr_0.8fr] lg:items-end">
           <SectionHeading
             eyebrow={dict.gates.eyebrow}
@@ -21,13 +22,12 @@ export function GatewayCards({ dict }: { dict: Dictionary }) {
           </p>
         </div>
 
-        <div className="mt-10">
+        <Reveal className="mt-10" stagger={0.08}>
           {dict.gates.items.map((gate) => (
             <a
               key={gate.number}
               href={gate.href}
               className="group grid gap-3 border-t border-line py-6 no-underline transition-colors last:border-b hover:bg-bg-soft/70 sm:grid-cols-[4.5rem_0.7fr_1.3fr_auto] sm:items-center sm:gap-6 sm:px-3"
-              data-reveal
             >
               <div className="flex items-center gap-3">
                 <span
@@ -60,8 +60,8 @@ export function GatewayCards({ dict }: { dict: Dictionary }) {
               </span>
             </a>
           ))}
-        </div>
-      </div>
+        </Reveal>
+      </Reveal>
     </section>
   );
 }

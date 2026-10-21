@@ -217,18 +217,18 @@ Yang dipertahankan:
 - [ ] `/en` dan `/ar` punya `lang`/`dir` benar.
 - [ ] Tidak ada teks yang tetap Indonesia di halaman EN/AR kecuali kutipan/sumber resmi.
 
-## 12. Scroll reveal
+## 12. Animated content (GSAP)
 
-**File:** `src/components/shared/ScrollReveal.tsx`, `src/app/globals.css`.
+**File:** `src/components/animation/AnimatedContent.tsx`, `src/components/animation/Reveal.tsx`, `src/app/globals.css`.
 
 **Prompt:**
 
-> Pertahankan reveal dari bawah ke atas. Jangan membuat elemen masuk dari samping. Pastikan konten tidak pernah permanen tersembunyi: fallback 1,6 detik sudah ada. Hormati reduced motion. Jangan menambahkan animasi ke elemen yang sudah punya animasi hero.
+> Pertahankan reveal dari bawah ke atas memakai AnimatedContent (GSAP + ScrollTrigger). Setiap elemen hanya dianimasikan sekali; jangan mengulang saat scroll naik. Jangan membuat elemen masuk dari samping dan jangan menambah blur/tilt/scrub. Pastikan konten tidak pernah permanen tersembunyi: fallback `@media (scripting: none)` dan `<noscript>` sudah ada. Hormati reduced motion.
 
 **Kriteria selesai:**
 
-- [ ] Semua section muncul saat scroll.
-- [ ] Tidak ada elemen yang tetap opacity 0 setelah 1,6 detik.
+- [ ] Section utama muncul saat scroll (Hero, GatewayCards, GrowingTree, AboutMilad, History, Services, Map).
+- [ ] Tidak ada elemen yang tetap `visibility: hidden` atau opacity 0.
 - [ ] Reduced motion langsung menampilkan konten.
 
 ## 13. Footer dan kolofon
@@ -304,7 +304,7 @@ Gunakan hanya El Messiri dan Familjen Grotesk dari folder proyek. Jangan memakai
 - [ ] Tema terang/gelap benar.
 - [ ] Peta 29 negara.
 - [ ] Pohon mengikuti prompt animasi (jika dieksekusi).
-- [ ] Scroll reveal halus dan tidak menyembunyikan konten permanen.
+- [ ] Animated content halus dan tidak menyembunyikan konten permanen.
 - [ ] Semua tautan internal dan eksternal berfungsi.
 - [ ] `npm run lint`, `npm run typecheck`, `npm run build` lolos.
 - [ ] Uji 390/768/1440 px.

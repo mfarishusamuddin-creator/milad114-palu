@@ -1,3 +1,4 @@
+import { Reveal } from "@/components/animation/Reveal";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { SourceNote } from "@/components/shared/SourceNote";
 import { BrandLogo } from "@/components/theme/BrandLogo";
@@ -8,8 +9,11 @@ export function AboutMilad({ dict }: { dict: Dictionary }) {
   return (
     <section className="section scroll-mt-20" id="tentang">
       <div className="container-page">
-        <div className="grid gap-10 lg:grid-cols-[0.86fr_1.14fr] lg:gap-16">
-          <div className="relative border-l border-gold pl-6 sm:pl-8" data-reveal>
+        <Reveal
+          className="grid gap-10 lg:grid-cols-[0.86fr_1.14fr] lg:gap-16"
+          stagger={0.12}
+        >
+          <div className="relative border-l border-gold pl-6 sm:pl-8">
             <div className="flex items-center justify-between gap-4">
               <BrandLogo
                 variant="logogram"
@@ -49,7 +53,7 @@ export function AboutMilad({ dict }: { dict: Dictionary }) {
             </div>
           </div>
 
-          <div data-reveal>
+          <div>
             <SectionHeading
               eyebrow={dict.about.eyebrow}
               title={dict.about.title}
@@ -88,7 +92,7 @@ export function AboutMilad({ dict }: { dict: Dictionary }) {
               ]}
             />
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );
