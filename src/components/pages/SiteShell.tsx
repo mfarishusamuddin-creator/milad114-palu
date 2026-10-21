@@ -1,3 +1,4 @@
+import { MotionIntro } from "@/components/intro/MotionIntro";
 import { Footer } from "@/components/layout/Footer";
 import { LocaleEffect } from "@/components/layout/LocaleEffect";
 import { Navbar } from "@/components/layout/Navbar";
@@ -20,6 +21,7 @@ export function SiteShell({
       <a href="#konten" className="skip-link">
         {dict.common.skipToContent}
       </a>
+      <MotionIntro dict={dict} />
       <Navbar dict={dict} />
       <main id="konten" className="flex-1">
         {children}

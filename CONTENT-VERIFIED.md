@@ -14,9 +14,9 @@ Akses sumber: 20 Oktober 2026.
 | Kongres Budi Utomo 1917 | Di rumah KH Ahmad Dahlan; cita-cita menjangkau nusantara | https://muhammadiyah.or.id/sejarah-singkat-muhammadiyah/ |
 | Tema Milad 114 | Bersama Satukan Bangsa | https://muhammadiyah.or.id/2026/09/semangat-menyatukan-bangsa-terpancar-dari-logo-milad-ke-114-muhammadiyah/ |
 | Logo | Daun kelor menyatu dengan angka 114; lambang Muhammadiyah di puncak | https://muhammadiyah.or.id/2026/09/makna-di-balik-logo-tanwir-dan-milad-ke-114-muhammadiyah/ |
-| Tanggal acara | Palu, 13–15 November 2026 M / 4–6 Jumadilakhir 1448 H | Logo resmi + template 1920×1080 + KHGT |
+| Tanggal acara | Palu, 19–21 November 2026 M / 10–12 Jumadilakhir 1448 H | Motion logo resmi 19–21 + catatan identitas visual + KHGT |
 | Milad historis | 18 November 2026 | Logo/template |
-| Padanan KHGT | 13 Nov = 4 Jumadilakhir; 14 Nov = 5; 15 Nov = 6; 18 Nov = 9 Jumadilakhir 1448 | https://khgt.muhammadiyah.or.id/ |
+| Padanan KHGT | 19 Nov = 10 Jumadilakhir; 20 Nov = 11; 21 Nov = 12; 18 Nov = 9 Jumadilakhir 1448 | https://khgt.muhammadiyah.or.id/ |
 | 114 pohon kelor | Ditaman di Palu | https://muhammadiyah.or.id/2026/10/sambut-tanwir-dan-milad-ke-114-muhammadiyah-tanam-114-pohon-kelor-di-palu/ |
 | Program 25 tahun | Tanwir di Palu menyusun program 25 tahun | https://muhammadiyah.or.id/2026/09/tanwir-di-palu-akan-susun-program-muhammadiyah-untuk-25-tahun-mendatang/ |
 | Muktamar 2027 | Muktamar ke-49, Medan, 2027 | https://muhammadiyah.or.id/2026/09/tanwir-muhammadiyah-jadi-forum-evaluasi-dan-persiapan-muktamar-2027/ |
@@ -26,7 +26,7 @@ Akses sumber: 20 Oktober 2026.
 
 - 27 Rajab 1330 H sebagai tanggal berdiri. Yang benar 8 Dzulhijjah 1330 H.
 - 1911 sebagai tahun berdirinya organisasi. 1911 adalah peresmian madrasah.
-- 19–21 November 2026. Aset logo, template, dan KHGT konsisten 13–15 November 2026.
+- 13–15 November 2026. Aset logo statis/template di folder sumber masih memakai 13–15; situs memakai 19–21 sesuai motion logo dan catatan identitas visual. Logo horizontal dan OG situs diturunkan dari frame motion logo 19–21.
 - Angka amal usaha yang belum seragam (rumah sakit, perguruan tinggi).
 - “114 = jumlah surah”.
 - Foto/arsip tanpa izin.

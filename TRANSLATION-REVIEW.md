@@ -53,7 +53,7 @@ Terjemahan Arab di proyek ini adalah **draf AI**. Sebelum submit, wajib diperiks
 3. **Nama tokoh**: KH Ahmad Dahlan, KH Ibrahim, KH Hisyam, KH Mas Mansur, Ki Bagus Hadikusuma.
 4. **Nama lembaga**: Madrasah Ibtidaiyah Diniyah Islamiyah, Universitas Muhammadiyah Palu, Muktamar ke-49.
 5. **Ayat**: QS Al-Hujurat 10 dan 13 — jangan menulis ulang ayat; cukup rujukannya.
-6. **Tanggal Hijriah**: 4–6 Jumadilakhir 1448 H; 9 Jumadilakhir 1448 H.
+6. **Tanggal Hijriah**: 10–12 Jumadilakhir 1448 H; 9 Jumadilakhir 1448 H.
 7. **Angka**: 114, 29, 1912, 2026, 2027.
 8. **Nama event**: Tanwir, Milad, Muktamar.
 9. **Nada**: hormat, informatif, tidak bombastis.

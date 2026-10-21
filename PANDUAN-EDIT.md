@@ -252,11 +252,11 @@ File yang dipakai:
 
 | File | Fungsi |
 |---|---|
-| `public/logo/horizontal-color.png` | Hero/plate mode terang |
-| `public/logo/horizontal-white.png` | Hero/plate mode gelap dan footer |
+| `public/logo/horizontal-color-1921.png` | Hero/plate mode terang (frame motion 19–21) |
+| `public/logo/horizontal-white-1921.png` | Hero/plate mode gelap (frame motion 19–21) |
 | `public/logo/logogram-color.png` | Navbar mode terang, favicon |
-| `public/logo/logogram-white.png` | Navbar mode gelap |
-| `public/logo/vertical-color.png` | Cadangan/OG vertikal |
+| `public/logo/logogram-white.png` | Navbar mode gelap, footer |
+| `public/logo/vertical-color.png` | Cadangan/OG vertikal; masih versi 13–15, tidak dipakai |
 
 Cara mengganti:
 
@@ -279,8 +279,8 @@ Dipakai di hero, section pohon, dan footer. Ganti dengan gambar pattern resmi; j
 
 ### 4.3 Gambar Open Graph
 
-- `public/og/og-milad114.jpg`
-- `public/og/og-milad114.png`
+- `public/og/og-milad114-1921.jpg`
+- `public/og/og-milad114-1921.png`
 
 Ukuran 1200 أ— 630 px. Dipakai di WhatsApp, X, LinkedIn. Ganti dengan komposisi logo + tagline + tanggal. Metadata ada di `src/lib/metadata.ts`.
 
@@ -548,6 +548,69 @@ File `src/data/tree.ts` dihasilkan ulang. Jangan mengedit file itu manual; edit 
 - Jangan membalik arah highlight akar/batang/kanopi.
 - Hormati `prefers-reduced-motion`.
 - Uji di ponsel kelas menengah; hindari animasi berat.
+
+### 9.5 Motion logo intro
+
+Komponen: `src/components/intro/MotionIntro.tsx`.
+Aset: `public/media/intro/`.
+Pemicu awal: `data-intro` yang diatur oleh script di `src/app/layout.tsx`.
+
+**Status default: aktif sekali per sesi.** Video motion logo dan situs sama-sama memakai **19–21 November 2026 / 10–12 Jumadilakhir 1448 H**.
+
+Catatan aset: logo statis di folder sumber (`HORIZONTAL-...-01/02/03`) masih mencantumkan **13–15 November 2026**. Karena itu `public/logo/horizontal-color-1921.png` dan `horizontal-white-1921.png` diturunkan dari **frame motion logo 19–21**, bukan dari PNG statis tersebut. Footer memakai logogram putih tanpa tanggal.
+
+Preview paksa:
+
+```text
+http://localhost:3000/?intro=1
+```
+
+Perilaku intro:
+
+- Desktop memakai video horizontal; ponsel memakai vertikal.
+- Mode terang memakai varian `light`; mode gelap `dark`.
+- Video 5 detik, muted, autoplay, `playsInline`.
+- Tombol “Lewati intro” selalu tersedia; tombol Escape juga menutup.
+- `prefers-reduced-motion` dan `saveData` otomatis melewati intro.
+- Setelah selesai, `sessionStorage` menyimpan `m114:intro-seen`.
+- Body scroll dikunci selama intro.
+
+Mengaktifkan setiap kali halaman dibuka (bukan sekali per sesi):
+
+Ubah baris di `themeScript`:
+
+```js
+(!reduce&&!save&&(force||!seen))?"play":"skip"
+```
+
+menjadi:
+
+```js
+(!reduce&&!save)?"play":"skip"
+```
+
+Mengganti video:
+
+- Timpa file dengan nama yang sama:
+  - `horizontal-light.mp4`
+  - `horizontal-dark.mp4`
+  - `vertical-light.mp4`
+  - `vertical-dark.mp4`
+  - poster `.jpg` dengan nama yang sama.
+- Video yang dipakai sudah dikompres: 131–157 KB; poster 112–204 KB.
+- Jika membuat ulang dari sumber 3124×1440 / 1242×1596, gunakan H.264, `-crf 27`, `-preset slow`, `-an`, `-movflags +faststart`.
+
+Menonaktifkan total:
+
+- Hapus `<MotionIntro dict={dict} />` dari `src/components/pages/SiteShell.tsx`, atau biarkan default `skip`.
+
+Catatan merek:
+
+- Video, situs, logo horizontal, dan OG sekarang sama-sama 19–21.
+- Logo statis di folder sumber masih 13–15; jangan memakainya untuk hero/OG.
+- Jangan mengubah teks/tanggal di dalam video resmi.
+- Jika nanti tersedia logo statis resmi 19–21 (PNG/vektor), ganti `horizontal-color-1921.png`, `horizontal-white-1921.png`, dan OG dengan aset resmi tersebut.
+- `prepare:assets` mengambil logo horizontal/OG dari PNG statis 13–15; jangan jalankan setelah penyelarasan 19–21 kecuali script diperbarui.
 
 ## 10. Data dinamis
 

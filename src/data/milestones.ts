@@ -126,11 +126,11 @@ export const milestones: Milestone[] = [
     kicker: "Buah",
     title: "Bersama satukan bangsa",
     paragraphs: [
-      "Tanwir dan Milad ke-114 berlangsung di Palu pada 13–15 November 2026; Milad historis diperingati 18 November 2026. Tema “Bersama Satukan Bangsa” mengajak kebersamaan yang diarahkan pada keadilan, kemakmuran, kesejahteraan, moralitas, ilmu, dan teknologi.",
+      "Tanwir dan Milad ke-114 berlangsung di Palu pada 19–21 November 2026; Milad historis diperingati 18 November 2026. Tema “Bersama Satukan Bangsa” mengajak kebersamaan yang diarahkan pada keadilan, kemakmuran, kesejahteraan, moralitas, ilmu, dan teknologi.",
       "Tanwir menyusun program Muhammadiyah untuk 25 tahun ke depan dan menjadi forum evaluasi menuju Muktamar ke-49 di Medan pada 2027.",
     ],
     facts: [
-      "Tanwir & Milad: 13–15 November 2026",
+      "Tanwir & Milad: 19–21 November 2026",
       "Milad: 18 November 2026",
       "Muktamar ke-49: Medan, 2027",
     ],

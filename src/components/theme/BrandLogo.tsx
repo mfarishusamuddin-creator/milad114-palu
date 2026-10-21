@@ -7,8 +7,8 @@ type Variant = "horizontal" | "logogram";
 
 const SOURCES: Record<Variant, { light: string; dark: string }> = {
   horizontal: {
-    light: "/logo/horizontal-color.png",
-    dark: "/logo/horizontal-white.png",
+    light: "/logo/horizontal-color-1921.png",
+    dark: "/logo/horizontal-white-1921.png",
   },
   logogram: {
     light: "/logo/logogram-color.png",

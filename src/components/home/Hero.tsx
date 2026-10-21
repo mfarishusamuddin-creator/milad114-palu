@@ -64,7 +64,7 @@ export function Hero({ dict }: { dict: Dictionary }) {
                 <span className="text-teal-deep">{dict.hero.plate.city}</span>
               </div>
 
-              <div className="relative bg-surface px-4 py-5 sm:px-6 sm:py-6">
+              <div className="hero-logo-area relative">
                 <BrandLogo
                   variant="horizontal"
                   alt={dict.hero.plate.logoAlt}

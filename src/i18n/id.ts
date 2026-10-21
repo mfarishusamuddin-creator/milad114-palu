@@ -44,7 +44,7 @@ export const id: Dictionary = {
   meta: {
     title: "Tanwir dan Milad ke-114 Muhammadiyah — Bersama Satukan Bangsa",
     description:
-      "Website interaktif Tanwir dan Milad ke-114 Muhammadiyah. Palu, 13–15 November 2026 M | 4–6 Jumadilakhir 1448 H. Jejak 114 tahun, kalender KHGT, kabar resmi, peta persebaran, dan kuis.",
+      "Website interaktif Tanwir dan Milad ke-114 Muhammadiyah. Palu, 19–21 November 2026 M | 10–12 Jumadilakhir 1448 H. Jejak 114 tahun, kalender KHGT, kabar resmi, peta persebaran, dan kuis.",
     tagline: "Bersama Satukan Bangsa",
   },
   common: {
@@ -57,6 +57,7 @@ export const id: Dictionary = {
     light: "Terang",
     dark: "Gelap",
     skipToContent: "Lewati ke konten",
+    skipIntro: "Lewati intro",
   },
   nav: {
     links: [
@@ -76,7 +77,7 @@ export const id: Dictionary = {
   hero: {
     edition: "Edisi 114 · Palu 2026",
     eventLine: "Tanwir & Milad ke-114 Muhammadiyah",
-    dateLine: "13–15 Nov 2026 · 4–6 Jumadilakhir 1448 H",
+    dateLine: "19–21 Nov 2026 · 10–12 Jumadilakhir 1448 H",
     eyebrow: "Tanwir & Milad ke-114 Muhammadiyah",
     titleLine1: "Bersama",
     titleLine2: "Satukan Bangsa",
@@ -87,13 +88,13 @@ export const id: Dictionary = {
     ctaSecondary: "Buka Layanan",
     share: "Bagikan",
     shareText:
-      "Tanwir dan Milad ke-114 Muhammadiyah — Bersama Satukan Bangsa. Palu, 13–15 November 2026.",
+      "Tanwir dan Milad ke-114 Muhammadiyah — Bersama Satukan Bangsa. Palu, 19–21 November 2026.",
     languageLine: "Baca dalam",
     plate: {
       identity: "Identitas resmi",
       city: "Palu 2026",
       logoAlt:
-        "Logo Tanwir dan Milad ke-114 Muhammadiyah — Bersama Satukan Bangsa, Palu 13–15 November 2026",
+        "Logo Tanwir dan Milad ke-114 Muhammadiyah — Bersama Satukan Bangsa, Palu 19–21 November 2026",
       caption: "Logo resmi · Tanwir & Milad ke-114",
       statLeft: "Akar 1912",
       statCenter: "Kanopi 2026",
@@ -107,8 +108,8 @@ export const id: Dictionary = {
     duringLabel: "Tanwir & Milad sedang berlangsung",
     miladLabel: "Menuju Milad ke-114",
     doneLabel: "Milad ke-114 telah berlangsung",
-    beforeNote: "Palu · 13–15 November 2026",
-    duringNote: "Palu · 13–15 November 2026",
+    beforeNote: "Palu · 19–21 November 2026",
+    duringNote: "Palu · 19–21 November 2026",
     miladNote: "18 November 2026",
     doneNote: "Terima kasih telah menjelajah",
     wita: "WITA",
@@ -206,8 +207,8 @@ export const id: Dictionary = {
     ],
     facts: [
       { label: "Tuan rumah", value: "Palu, Sulawesi Tengah" },
-      { label: "Tanggal", value: "13–15 November 2026" },
-      { label: "Hijriah", value: "4–6 Jumadilakhir 1448 H" },
+      { label: "Tanggal", value: "19–21 November 2026" },
+      { label: "Hijriah", value: "10–12 Jumadilakhir 1448 H" },
       { label: "Simbol", value: "Daun kelor & angka 114" },
     ],
     quote:
@@ -221,10 +222,10 @@ export const id: Dictionary = {
       "Tanggal acara, tanggal historis, dan arah berikutnya. Jadwal rinci mengikuti Edaran PP Muhammadiyah No. 19/EDR/I.0/B/2026.",
     items: [
       {
-        date: "13–15 Nov 2026",
+        date: "19–21 Nov 2026",
         title: "Tanwir dan Milad ke-114",
         description:
-          "Palu, Sulawesi Tengah. Rangkaian utama Tanwir dan Milad, bertepatan dengan 4–6 Jumadilakhir 1448 H.",
+          "Palu, Sulawesi Tengah. Rangkaian utama Tanwir dan Milad, bertepatan dengan 10–12 Jumadilakhir 1448 H.",
         tag: "Palu",
       },
       {
@@ -408,8 +409,8 @@ export const id: Dictionary = {
     event: "Milad ke-114",
     eventLines: [
       "Palu, Sulawesi Tengah",
-      "13–15 November 2026",
-      "4–6 Jumadilakhir 1448 H",
+      "19–21 November 2026",
+      "10–12 Jumadilakhir 1448 H",
     ],
     credit:
       "Logo dan identitas visual milik PP Muhammadiyah. Font El Messiri dan Familjen Grotesk berlisensi OFL.",

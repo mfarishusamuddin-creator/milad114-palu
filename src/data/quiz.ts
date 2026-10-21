@@ -51,10 +51,10 @@ export const quizQuestions: QuizQuestion[] = [
   {
     id: 5,
     question: "Kapan Tanwir dan Milad ke-114 di Palu?",
-    options: ["13–15 November 2026", "20–22 November 2026", "18–20 November 2026", "13–15 Desember 2026"],
+    options: ["19–21 November 2026", "20–22 November 2026", "18–20 November 2026", "19–21 Desember 2026"],
     answerIndex: 0,
     explanation:
-      "Tanwir dan Milad ke-114 berlangsung di Palu pada 13–15 November 2026, bertepatan dengan 4–6 Jumadilakhir 1448 H.",
+      "Tanwir dan Milad ke-114 berlangsung di Palu pada 19–21 November 2026, bertepatan dengan 10–12 Jumadilakhir 1448 H.",
     source: "Logo resmi + KHGT",
     sourceUrl: "https://khgt.muhammadiyah.or.id/",
   },
@@ -91,10 +91,10 @@ export const quizQuestions: QuizQuestion[] = [
   },
   {
     id: 9,
-    question: "13–15 November 2026 bertepatan dengan tanggal Hijriah apa?",
-    options: ["4–6 Jumadilakhir 1448 H", "10–12 Jumadilakhir 1448 H", "4–6 Dzulhijjah 1448 H", "4–6 Rabiulakhir 1448 H"],
+    question: "19–21 November 2026 bertepatan dengan tanggal Hijriah apa?",
+    options: ["10–12 Jumadilakhir 1448 H", "4–6 Jumadilakhir 1448 H", "4–6 Dzulhijjah 1448 H", "4–6 Rabiulakhir 1448 H"],
     answerIndex: 0,
-    explanation: "Data KHGT mencatat 13–15 November 2026 sebagai 4–6 Jumadilakhir 1448 H.",
+    explanation: "Data KHGT mencatat 19–21 November 2026 sebagai 10–12 Jumadilakhir 1448 H.",
     source: "Kalender Hijriah Global Tunggal",
     sourceUrl: "https://khgt.muhammadiyah.or.id/",
   },

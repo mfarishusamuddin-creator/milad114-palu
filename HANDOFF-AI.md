@@ -119,7 +119,7 @@ Yang dipertahankan:
 **Kriteria selesai:**
 
 - [ ] Tiga baris rapi di desktop dan mobile.
-- [ ] Tanggal 13–15 Nov, 18 Nov, dan 2027 benar.
+- [ ] Tanggal 19–21 Nov, 18 Nov, dan 2027 benar.
 - [ ] Tautan Edaran berfungsi.
 
 ## 7. Sejarah dan Scrollama
@@ -150,12 +150,12 @@ Yang dipertahankan:
 
 **Prompt:**
 
-> Pertahankan data KHGT dan konverter. Perbaiki keterbacaan sel di mobile. Pastikan 13–15 November 2026 bertanda “Milad”‌ dan menampilkan 4–6 Jumadilakhir 1448 H. Jangan memakai library hijriah generik. Jangan mengubah data snapshot. Tambahkan catatan sumber dan tanggal snapshot.
+> Pertahankan data KHGT dan konverter. Perbaiki keterbacaan sel di mobile. Pastikan 19–21 November 2026 bertanda “Milad”‌ dan menampilkan 10–12 Jumadilakhir 1448 H. Jangan memakai library hijriah generik. Jangan mengubah data snapshot. Tambahkan catatan sumber dan tanggal snapshot.
 
 **Kriteria selesai:**
 
 - [ ] 7 kolom muat di 390 px.
-- [ ] Konverter 13 Nov 2026 → 4 Jumadilakhir 1448 H.
+- [ ] Konverter 19 Nov 2026 → 10 Jumadilakhir 1448 H.
 - [ ] Konverter sebaliknya benar.
 - [ ] Nama bulan mengikuti bahasa.
 - [ ] Mode gelap kontras.
@@ -266,13 +266,14 @@ Yang dipertahankan:
 
 ### Sudah tersedia
 
-- `public/logo/horizontal-color.png`
-- `public/logo/horizontal-white.png`
+- `public/logo/horizontal-color-1921.png`
+- `public/logo/horizontal-white-1921.png`
+- Catatan: PNG/JPG statis di folder sumber masih memakai 13–15; jangan dipakai untuk hero/OG. Logo horizontal/OG situs diturunkan dari frame motion logo 19–21.
 - `public/logo/logogram-color.png`
 - `public/logo/logogram-white.png`
 - `public/logo/vertical-color.png`
 - `public/pattern/kelor-strip.png` + `.webp`
-- `public/og/og-milad114.jpg` + `.png`
+- `public/og/og-milad114-1921.jpg` + `.png`
 - `src/app/fonts/ElMessiri-VariableFont_wght.ttf`
 - `src/app/fonts/FamiljenGrotesk-VariableFont_wght.ttf`
 - `src/app/fonts/FamiljenGrotesk-Italic-VariableFont_wght.ttf`

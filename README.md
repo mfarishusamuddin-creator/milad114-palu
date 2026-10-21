@@ -4,7 +4,7 @@ Website interaktif Tanwir dan Milad ke-114 Muhammadiyah.
 
 - **Tema:** Bersama Satukan Bangsa
 - **Tempat:** Palu, Sulawesi Tengah
-- **Tanggal:** 13–15 November 2026 M | 4–6 Jumadilakhir 1448 H
+- **Tanggal:** 19–21 November 2026 M | 10–12 Jumadilakhir 1448 H
 - **URL:** https://milad114-palu.vercel.app
 - **Gerbang bahasa:** `/` (Indonesia), `/en` (English), `/ar` (العربية)
 
@@ -28,6 +28,7 @@ Rute lama `/sejarah` dan `/layanan` sudah dihapus. QR fisik sekarang menjadi ger
 - Tema terang/gelap dengan penyimpanan `localStorage` dan preferensi sistem.
 - Bahasa Indonesia, Inggris, dan Arab dengan layout RTL.
 - Scroll reveal untuk section dan kartu.
+- Motion logo intro (horizontal/vertical, terang/gelap) — aktif sekali per sesi; preview paksa dengan `?intro=1`.
 - Peta dunia Natural Earth yang menyorot 29 Pimpinan Cabang Istimewa.
 - Kalender KHGT dengan konverter Masehi–Hijriah.
 - Kabar live dari kanal resmi Muhammadiyah, cache satu jam, fallback snapshot.

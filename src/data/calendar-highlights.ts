@@ -8,9 +8,9 @@ export type CalendarHighlight = {
 
 export const calendarHighlights: CalendarHighlight[] = [
   {
-    date: "2026-11-13",
+    date: "2026-11-19",
     title: "Tanwir dan Milad ke-114",
-    note: "Palu, 13–15 November 2026 · 4–6 Jumadilakhir 1448 H",
+    note: "Palu, 19–21 November 2026 · 10–12 Jumadilakhir 1448 H",
     source: "Logo resmi + KHGT",
     sourceUrl: "https://khgt.muhammadiyah.or.id/",
   },

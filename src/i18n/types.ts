@@ -60,6 +60,7 @@ export type Dictionary = {
     light: string;
     dark: string;
     skipToContent: string;
+    skipIntro: string;
   };
   nav: {
     links: NavLink[];

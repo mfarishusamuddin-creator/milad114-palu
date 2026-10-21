@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { SITE } from "@/data/site";
 import { getDictionary } from "@/i18n";
 import type { LanguageCode } from "@/i18n/types";
@@ -34,7 +34,7 @@ export function buildMetadata(lang: LanguageCode): Metadata {
       description: dict.meta.description,
       images: [
         {
-          url: "/og/og-milad114.jpg",
+          url: "/og/og-milad114-1921.jpg",
           width: 1200,
           height: 630,
           alt: dict.hero.plate.logoAlt,
@@ -45,7 +45,7 @@ export function buildMetadata(lang: LanguageCode): Metadata {
       card: "summary_large_image",
       title: dict.meta.title,
       description: dict.meta.description,
-      images: ["/og/og-milad114.jpg"],
+      images: ["/og/og-milad114-1921.jpg"],
     },
     robots: {
       index: true,
@@ -53,3 +53,4 @@ export function buildMetadata(lang: LanguageCode): Metadata {
     },
   };
 }
+

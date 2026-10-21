@@ -2,9 +2,9 @@ import type { CalendarHighlight } from "@/data/calendar-highlights";
 
 export const calendarHighlightsAr: CalendarHighlight[] = [
   {
-    date: "2026-11-13",
+    date: "2026-11-19",
     title: "تنوير والذكرى الـ114",
-    note: "بالو، 13–15 نوفمبر 2026 · 4–6 جمادى الآخرة 1448هـ",
+    note: "بالو، 19–21 نوفمبر 2026 · 10–12 جمادى الآخرة 1448هـ",
     source: "الشعار الرسمي + KHGT",
     sourceUrl: "https://khgt.muhammadiyah.or.id/",
   },

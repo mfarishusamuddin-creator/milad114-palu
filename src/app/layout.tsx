@@ -1,4 +1,4 @@
-import type { Metadata, Viewport } from "next";
+﻿import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     description: idDict.meta.description,
     images: [
       {
-        url: "/og/og-milad114.jpg",
+        url: "/og/og-milad114-1921.jpg",
         width: 1200,
         height: 630,
         alt: idDict.hero.plate.logoAlt,
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: idDict.meta.title,
     description: idDict.meta.description,
-    images: ["/og/og-milad114.jpg"],
+    images: ["/og/og-milad114-1921.jpg"],
   },
   robots: { index: true, follow: true },
   icons: {
@@ -101,7 +101,7 @@ export const viewport: Viewport = {
   colorScheme: "light dark",
 };
 
-const themeScript = `(function(){try{var t=localStorage.getItem("m114:theme");if(t!=="dark"&&t!=="light"){t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}document.documentElement.dataset.theme=t;document.documentElement.setAttribute("data-js-reveal","true");}catch(e){}})();`;
+const themeScript = `(function(){try{var t=localStorage.getItem("m114:theme");if(t!=="dark"&&t!=="light"){t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}document.documentElement.dataset.theme=t;document.documentElement.setAttribute("data-js-reveal","true");var seen=sessionStorage.getItem("m114:intro-seen");var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;var save=!!(navigator.connection&&navigator.connection.saveData);var force=new URLSearchParams(location.search).get("intro")==="1";document.documentElement.dataset.intro=(!reduce&&!save&&(force||!seen))?"play":"skip";}catch(e){document.documentElement.setAttribute("data-js-reveal","true");document.documentElement.dataset.intro="skip";}})();`;
 
 const eventJsonLd = {
   "@context": "https://schema.org",
@@ -121,7 +121,7 @@ const eventJsonLd = {
       addressCountry: "ID",
     },
   },
-  image: [`${SITE.url}/og/og-milad114.jpg`],
+  image: [`${SITE.url}/og/og-milad114-1921.jpg`],
   description: idDict.meta.description,
   organizer: {
     "@type": "Organization",
@@ -144,6 +144,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Script id="theme-init" strategy="beforeInteractive">
           {themeScript}
         </Script>
+        <noscript>
+          <style>{`.motion-intro{display:none!important}`}</style>
+        </noscript>
         {children}
         <script
           type="application/ld+json"
@@ -155,3 +158,4 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     </html>
   );
 }
+

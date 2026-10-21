@@ -43,10 +43,10 @@ export const quizQuestionsEn: QuizQuestion[] = [
   {
     id: 5,
     question: "When is Tanwir and the 114th Milad in Palu?",
-    options: ["13–15 November 2026", "20–22 November 2026", "18–20 November 2026", "13–15 December 2026"],
+    options: ["19–21 November 2026", "20–22 November 2026", "18–20 November 2026", "19–21 December 2026"],
     answerIndex: 0,
     explanation:
-      "Tanwir and the 114th Milad take place in Palu on 13–15 November 2026, corresponding to 4–6 Jumada al Thani 1448 AH.",
+      "Tanwir and the 114th Milad take place in Palu on 19–21 November 2026, corresponding to 10–12 Jumada al-Thani 1448 AH.",
     source: "Official logo + KHGT",
     sourceUrl: "https://khgt.muhammadiyah.or.id/",
   },
@@ -83,10 +83,10 @@ export const quizQuestionsEn: QuizQuestion[] = [
   },
   {
     id: 9,
-    question: "13–15 November 2026 corresponds to which Hijri date?",
-    options: ["4–6 Jumada al-Thani 1448 AH", "10–12 Jumada al-Thani 1448 AH", "4–6 Dhu al-Hijjah 1448 AH", "4–6 Rabi al-Thani 1448 AH"],
+    question: "19–21 November 2026 corresponds to which Hijri date?",
+    options: ["10–12 Jumada al-Thani 1448 AH", "4–6 Jumada al-Thani 1448 AH", "4–6 Dhu al-Hijjah 1448 AH", "4–6 Rabi al-Thani 1448 AH"],
     answerIndex: 0,
-    explanation: "KHGT records 13–15 November 2026 as 4–6 Jumada al-Thani 1448 AH.",
+    explanation: "KHGT records 19–21 November 2026 as 10–12 Jumada al-Thani 1448 AH.",
     source: "Global Unified Hijri Calendar",
     sourceUrl: "https://khgt.muhammadiyah.or.id/",
   },

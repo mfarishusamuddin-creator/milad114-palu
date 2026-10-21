@@ -1068,3 +1068,132 @@
     animation: none !important;
   }
 }
+
+[data-intro="skip"] .motion-intro {
+  display: none;
+}
+
+.motion-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  background: #fff;
+  color: var(--color-ink);
+  transition: opacity 520ms ease;
+}
+
+[data-theme="dark"] .motion-intro {
+  background: #000;
+  color: #f4f6fb;
+}
+
+.motion-intro.is-closing {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.motion-intro__stage {
+  position: relative;
+  min-height: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.motion-intro__video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 500ms ease;
+}
+
+.motion-intro__video.is-ready {
+  opacity: 1;
+}
+
+.motion-intro__static {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 24px;
+}
+
+.motion-intro__mark {
+  width: clamp(96px, 18vw, 160px);
+  height: auto;
+}
+
+.motion-intro__loading {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.55;
+}
+
+.motion-intro__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+[data-theme="dark"] .motion-intro__meta {
+  border-top-color: rgba(255, 255, 255, 0.14);
+}
+
+.motion-intro__meta button {
+  padding: 8px 12px;
+  border: 1px solid currentColor;
+  border-radius: 3px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  opacity: 0.72;
+}
+
+.motion-intro__meta button:hover {
+  opacity: 1;
+}
+
+@media (max-width: 767px) {
+  .motion-intro__mark {
+    width: 100px;
+  }
+
+  .motion-intro__meta {
+    padding: 12px 14px;
+    font-size: 9px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-intro {
+    display: none !important;
+  }
+}
+
+.hero-logo-area {
+  background: #ffffff;
+}
+
+[data-theme="dark"] .hero-logo-area {
+  background: #000000;
+}

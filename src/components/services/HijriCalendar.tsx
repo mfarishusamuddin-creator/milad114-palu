@@ -17,9 +17,9 @@ import type { Dictionary } from "@/i18n/types";
 type Mode = "hijri" | "masehi";
 
 const MILESTONE_DATES = new Set([
-  "2026-11-13",
-  "2026-11-14",
-  "2026-11-15",
+  "2026-11-19",
+  "2026-11-20",
+  "2026-11-21",
   "2026-11-18",
 ]);
 
@@ -46,9 +46,9 @@ export function HijriCalendar({ data, dict }: Props) {
   const [hijriIndex, setHijriIndex] = useState(initialHijri);
   const [masehiIndex, setMasehiIndex] = useState(initialMasehi);
 
-  const [masehiInput, setMasehiInput] = useState("2026-11-13");
+  const [masehiInput, setMasehiInput] = useState("2026-11-19");
   const [hijriMonth, setHijriMonth] = useState("Jumadilakhir");
-  const [hijriDay, setHijriDay] = useState("4");
+  const [hijriDay, setHijriDay] = useState("10");
   const [hijriYear, setHijriYear] = useState("1448");
   const [converter, setConverter] = useState<{
     title: string;

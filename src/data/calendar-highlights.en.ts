@@ -2,9 +2,9 @@ import type { CalendarHighlight } from "@/data/calendar-highlights";
 
 export const calendarHighlightsEn: CalendarHighlight[] = [
   {
-    date: "2026-11-13",
+    date: "2026-11-19",
     title: "Tanwir and the 114th Milad",
-    note: "Palu, 13–15 November 2026 · 4–6 Jumada al-Thani 1448 AH",
+    note: "Palu, 19–21 November 2026 · 10–12 Jumada al-Thani 1448 AH",
     source: "Official logo + KHGT",
     sourceUrl: "https://khgt.muhammadiyah.or.id/",
   },

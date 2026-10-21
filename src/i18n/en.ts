@@ -55,7 +55,7 @@ export const en: Dictionary = {
   meta: {
     title: "Tanwir and the 114th Milad of Muhammadiyah — Together, Unite the Nation",
     description:
-      "An interactive site for Tanwir and the 114th Milad of Muhammadiyah. Palu, 13–15 November 2026 CE | 4–6 Jumada al-Thani 1448 AH. A 114-year trail, the KHGT calendar, official news, a global map, and a quiz.",
+      "An interactive site for Tanwir and the 114th Milad of Muhammadiyah. Palu, 19–21 November 2026 CE | 10–12 Jumada al-Thani 1448 AH. A 114-year trail, the KHGT calendar, official news, a global map, and a quiz.",
     tagline: "Together, Unite the Nation",
   },
   common: {
@@ -68,6 +68,7 @@ export const en: Dictionary = {
     light: "Light",
     dark: "Dark",
     skipToContent: "Skip to content",
+    skipIntro: "Skip intro",
   },
   nav: {
     links: [
@@ -87,7 +88,7 @@ export const en: Dictionary = {
   hero: {
     edition: "Edition 114 · Palu 2026",
     eventLine: "Tanwir & the 114th Milad of Muhammadiyah",
-    dateLine: "13–15 Nov 2026 · 4–6 Jumada al-Thani 1448 AH",
+    dateLine: "19–21 Nov 2026 · 10–12 Jumada al-Thani 1448 AH",
     eyebrow: "Tanwir & the 114th Milad of Muhammadiyah",
     titleLine1: "Together",
     titleLine2: "Unite the Nation",
@@ -98,13 +99,13 @@ export const en: Dictionary = {
     ctaSecondary: "Open Services",
     share: "Share",
     shareText:
-      "Tanwir and the 114th Milad of Muhammadiyah — Together, Unite the Nation. Palu, 13–15 November 2026.",
+      "Tanwir and the 114th Milad of Muhammadiyah — Together, Unite the Nation. Palu, 19–21 November 2026.",
     languageLine: "Read in",
     plate: {
       identity: "Official identity",
       city: "Palu 2026",
       logoAlt:
-        "Official logo of Tanwir and the 114th Milad of Muhammadiyah — Together, Unite the Nation, Palu 13–15 November 2026",
+        "Official logo of Tanwir and the 114th Milad of Muhammadiyah — Together, Unite the Nation, Palu 19–21 November 2026",
       caption: "Official logo · Tanwir & the 114th Milad",
       statLeft: "Root 1912",
       statCenter: "Canopy 2026",
@@ -118,8 +119,8 @@ export const en: Dictionary = {
     duringLabel: "Tanwir & the Milad are underway",
     miladLabel: "Towards the 114th Milad",
     doneLabel: "The 114th Milad has passed",
-    beforeNote: "Palu · 13–15 November 2026",
-    duringNote: "Palu · 13–15 November 2026",
+    beforeNote: "Palu · 19–21 November 2026",
+    duringNote: "Palu · 19–21 November 2026",
     miladNote: "18 November 2026",
     doneNote: "Thank you for exploring",
     wita: "WITA",
@@ -217,8 +218,8 @@ export const en: Dictionary = {
     ],
     facts: [
       { label: "Host city", value: "Palu, Central Sulawesi" },
-      { label: "Dates", value: "13–15 November 2026" },
-      { label: "Hijri", value: "4–6 Jumada al-Thani 1448 AH" },
+      { label: "Dates", value: "19–21 November 2026" },
+      { label: "Hijri", value: "10–12 Jumada al-Thani 1448 AH" },
       { label: "Symbol", value: "Moringa leaf & the number 114" },
     ],
     quote:
@@ -232,10 +233,10 @@ export const en: Dictionary = {
       "The event dates, the historic date, and the next direction. Detailed schedules follow PP Muhammadiyah Circular No. 19/EDR/I.0/B/2026.",
     items: [
       {
-        date: "13–15 Nov 2026",
+        date: "19–21 Nov 2026",
         title: "Tanwir and the 114th Milad",
         description:
-          "Palu, Central Sulawesi. The main Tanwir and Milad programme, corresponding to 4–6 Jumada al-Thani 1448 AH.",
+          "Palu, Central Sulawesi. The main Tanwir and Milad programme, corresponding to 10–12 Jumada al-Thani 1448 AH.",
         tag: "Palu",
       },
       {
@@ -419,8 +420,8 @@ export const en: Dictionary = {
     event: "114th Milad",
     eventLines: [
       "Palu, Central Sulawesi",
-      "13–15 November 2026",
-      "4–6 Jumada al-Thani 1448 AH",
+      "19–21 November 2026",
+      "10–12 Jumada al-Thani 1448 AH",
     ],
     credit:
       "Logo and visual identity belong to PP Muhammadiyah. El Messiri and Familjen Grotesk are licensed under the OFL.",

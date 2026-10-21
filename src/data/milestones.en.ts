@@ -109,11 +109,11 @@ export const milestonesEn: Milestone[] = [
     kicker: "Fruit",
     title: "Together, uniting the nation",
     paragraphs: [
-      "Tanwir and the 114th Milad take place in Palu on 13–15 November 2026; the historic Milad is commemorated on 18 November 2026. The theme “Bersama Satukan Bangsa” calls for togetherness directed toward justice, prosperity, welfare, morality, knowledge, and technology.",
+      "Tanwir and the 114th Milad take place in Palu on 19–21 November 2026; the historic Milad is commemorated on 18 November 2026. The theme “Bersama Satukan Bangsa” calls for togetherness directed toward justice, prosperity, welfare, morality, knowledge, and technology.",
       "Tanwir prepares Muhammadiyah's programme for the next 25 years and serves as a forum for evaluation ahead of the 49th Muktamar in Medan in 2027.",
     ],
     facts: [
-      "Tanwir & Milad: 13–15 November 2026",
+      "Tanwir & Milad: 19–21 November 2026",
       "Milad: 18 November 2026",
       "49th Muktamar: Medan, 2027",
     ],

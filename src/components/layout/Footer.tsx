@@ -10,13 +10,23 @@ export function Footer({ dict }: { dict: Dictionary }) {
       <div className="container-page relative z-10 py-14">
         <div className="grid gap-10 lg:grid-cols-[1.15fr_0.7fr_0.9fr_0.9fr]">
           <div>
-            <Image
-              src="/logo/horizontal-white.png"
-              alt={dict.meta.title}
-              width={1600}
-              height={900}
-              className="h-auto w-[230px]"
-            />
+            <div className="flex items-center gap-3">
+              <Image
+                src="/logo/logogram-white.png"
+                alt=""
+                width={512}
+                height={512}
+                className="h-12 w-12 object-contain"
+              />
+              <div>
+                <p className="font-serif text-xl font-bold text-white">
+                  Milad 114
+                </p>
+                <p className="mt-0.5 text-[0.58rem] font-bold uppercase tracking-[0.16em] text-white/50">
+                  Muhammadiyah
+                </p>
+              </div>
+            </div>
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/65">
               {dict.footer.tagline}
             </p>

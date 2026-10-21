@@ -25,7 +25,7 @@
 
 **Teknologi.** Next.js 16 App Router, TypeScript, Tailwind CSS v4, Cache Components, Scrollama, world-atlas/topojson-client/d3-geo, font lokal OFL. Tanpa WebGL, tanpa database, tanpa login.
 
-**Konten.** Fakta diverifikasi di `CONTENT-VERIFIED.md`. Tanggal acara 13–15 November 2026 / 4–6 Jumadilakhir 1448 H; milad historis 18 November 2026. Angka amal usaha yang belum seragam tidak ditampilkan. Terjemahan Arab masih perlu verifikasi native (lihat `TRANSLATION-REVIEW.md`).
+**Konten.** Fakta diverifikasi di `CONTENT-VERIFIED.md`. Tanggal acara 19–21 November 2026 / 10–12 Jumadilakhir 1448 H; milad historis 18 November 2026. Angka amal usaha yang belum seragam tidak ditampilkan. Terjemahan Arab masih perlu verifikasi native (lihat `TRANSLATION-REVIEW.md`).
 
 ## Video demo 60–90 detik
 
@@ -42,7 +42,7 @@
 1. Buka `/`; tunggu countdown.
 2. Klik `Jelajahi Jejak 114 Tahun`.
 3. Gulir satu bab; tunjukkan tautan sumber.
-4. Buka `#layanan`; coba konverter 13 Nov 2026.
+4. Buka `#layanan`; coba konverter 19 Nov 2026.
 5. Buka tab `Milad & Tanwir`.
 6. Mulai kuis; jawab satu soal.
 7. Buka `#peta`; tunjukkan 29 PCIM.
@@ -70,7 +70,7 @@ Gunakan QR hitam-putih, error correction H, quiet zone 4 modul, tanpa logo di te
 - [ ] Rekam video 60–90 detik.
 - [ ] Lampirkan `TEST-LOG.md`, `CONTENT-VERIFIED.md`, dan `TRANSLATION-REVIEW.md`.
 - [ ] Pastikan tidak ada placeholder “sedang disiapkan”.
-- [ ] Pastikan tidak ada teks “27 Rajab 1330 H”‌ atau “19–21 November 2026”‌.
+- [ ] Pastikan tidak ada teks “27 Rajab 1330 H” atau “13–15 November 2026” (versi lama).
 - [ ] Pastikan logo tidak diberi efek.
 
 ## Batasan yang jujur
@@ -81,4 +81,5 @@ Gunakan QR hitam-putih, error correction H, quiet zone 4 modul, tanpa logo di te
 - Jadwal rinci Tanwir menunggu Edaran/agenda resmi.
 - Angka amal usaha nasional tidak ditampilkan karena sumbernya belum seragam.
 - Animasi pohon penuh (bibit → berbuah) masih berupa prompt di `PROMPT-ANIMASI-POHON.md`; pohon sidebar saat ini statis tanpa highlight lobe.
+- Logo horizontal dan OG 19–21 diturunkan dari frame motion logo resmi; logo statis di folder sumber masih 13–15 dan tidak dipakai untuk hero/OG.
 
