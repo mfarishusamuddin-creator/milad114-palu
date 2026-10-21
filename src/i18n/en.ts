@@ -1,5 +1,5 @@
 import { calendarHighlightsEn } from "@/data/calendar-highlights.en";
-import { milestonesEn } from "@/data/milestones.en";
+import { historyEn } from "@/data/history.en";
 import type { Dictionary } from "./types";
 
 const hijriMonths: Record<string, string> = {
@@ -54,7 +54,7 @@ export const en: Dictionary = {
   meta: {
     title: "Tanwir and the 114th Milad of Muhammadiyah — Together, Unite the Nation",
     description:
-      "An interactive site for Tanwir and the 114th Milad of Muhammadiyah. Palu, 19–21 November 2026 CE | 10–12 Jumada al-Thani 1448 AH. A 114-year trail, the KHGT calendar, official news, and a global map.",
+      "An interactive site for Tanwir and the 114th Milad of Muhammadiyah. Palu, 19–21 November 2026 CE | 10–12 Jumada al-Thani 1448 AH. Two historical tracks, the KHGT calendar, official news, and a global PCIM map.",
     tagline: "Together, Unite the Nation",
   },
   common: {
@@ -71,10 +71,9 @@ export const en: Dictionary = {
   },
   nav: {
     links: [
-      { href: "#jelajah", label: "Explore" },
+      { href: "#peta", label: "Map" },
       { href: "#sejarah", label: "History" },
       { href: "#layanan", label: "Services" },
-      { href: "#peta", label: "Map" },
     ],
     cta: "Explore the Trail",
     menuOpen: "Open menu",
@@ -93,7 +92,7 @@ export const en: Dictionary = {
     titleLine2: "Unite the Nation",
     subtitle: "Tanwir and the 114th Milad of Muhammadiyah",
     intro:
-      "For 114 years Muhammadiyah has grown from Kauman into a sheltering tree. Scroll through its trail, then open three directions: History, Services, and Map.",
+      "One hundred and fourteen years. From Kauman in 1912 to Palu in 2026 — the digital home of the Tanwir and 114th Milad of Muhammadiyah. Explore two historical tracks, the agenda, the world map, and its official services.",
     ctaPrimary: "Explore 114 Years",
     ctaSecondary: "Open Services",
     share: "Share",
@@ -106,8 +105,8 @@ export const en: Dictionary = {
       logoAlt:
         "Official logo of Tanwir and the 114th Milad of Muhammadiyah — Together, Unite the Nation, Palu 19–21 November 2026",
       caption: "Official logo · Tanwir & the 114th Milad",
-      statLeft: "Root 1912",
-      statCenter: "Canopy 2026",
+      statLeft: "Kauman 1912",
+      statCenter: "Palu 2026",
       statRight: "114 years",
       stampTop: "114",
       stampBottom: "years",
@@ -128,106 +127,29 @@ export const en: Dictionary = {
     minutes: "Minutes",
     seconds: "Seconds",
   },
-  gates: {
-    eyebrow: "Explore index",
-    title: "One tree, three directions",
-    description:
-      "Choose the part you want to open. Each direction leads to one part of the same tree.",
-    open: "Open",
-    items: [
-      {
-        number: "01",
-        label: "Root",
-        title: "114-Year Trail",
-        description:
-          "From Kauman in 1912 to Palu in 2026, told in six connected chapters.",
-        href: "#sejarah",
-        accent: "teal",
-      },
-      {
-        number: "02",
-        label: "Trunk",
-        title: "Muhammadiyah Services",
-        description:
-          "The KHGT calendar and official news in one service desk.",
-        href: "#layanan",
-        accent: "navy",
-      },
-      {
-        number: "03",
-        label: "Canopy",
-        title: "Global Reach",
-        description:
-          "A map of 29 Special Branch Leaderships of Muhammadiyah around the world.",
-        href: "#peta",
-        accent: "gold",
-      },
-    ],
-  },
-  tree: {
-    eyebrow: "One tree",
-    titleLine1: "Growing from",
-    titleLine2: "the same root.",
-    description:
-      "The root holds history. The trunk supports services. The canopy embraces a global reach. These three branches are three directions you can open.",
-    legend: [
-      {
-        number: "01",
-        label: "Root",
-        title: "114-Year Trail",
-        description: "A long history from Kauman to Palu.",
-        href: "#sejarah",
-        accent: "teal",
-      },
-      {
-        number: "02",
-        label: "Trunk",
-        title: "Muhammadiyah Services",
-        description: "Calendar and news.",
-        href: "#layanan",
-        accent: "navy",
-      },
-      {
-        number: "03",
-        label: "Canopy",
-        title: "Global Reach",
-        description: "29 PCIM across five regions.",
-        href: "#peta",
-        accent: "gold",
-      },
-    ],
-    annotations: {
-      kanopi: "Canopy — Global Map",
-      akar: "Root — History",
-      batang: "Trunk — Services",
-    },
-    stampTop: "114",
-    stampBottom: "years",
-    caption:
-      "The tree illustration is generated with the space colonisation algorithm (Runions et al., 2007), reimplemented for this project.",
-  },
   about: {
-    eyebrow: "About the Milad",
-    title: "Growing from a single leaf",
+    eyebrow: "Logo Meaning",
+    title: "Moringa, 114, and enlightenment",
     description:
-      "The Tanwir and 114th Milad logo combines moringa leaves with the number 114. Moringa is not merely decorative: it grows in Palu, withstands weather, and offers benefits.",
+      "The Tanwir and 114th Milad logo weaves moringa leaflets, a stylised number 114, and the Muhammadiyah sun emblem — the local wisdom of Palu meeting the aspiration of Progressive Islam.",
     paragraphs: [
-      "The theme “Together, Unite the Nation” calls for togetherness directed toward justice, prosperity, welfare, morality, knowledge, and technology. It is linked to Quran 49:10 and 49:13.",
-      "As part of the programme, the committee planted 114 moringa trees in Palu. The number 114 meets root, trunk, and canopy: a long journey that remains grounded in benefit.",
+      "The moringa leaf (Moringa oleifera) is a plant native to Palu that withstands dry ground and is rich in benefit. It stands for resilience, simplicity, and real benefit to creation — rahmatan lil ‘alamin.",
+      "The number 114 marks Muhammadiyah's age from 1912 to 2026, while also resonating with the 114 surahs of the Qur'an as the movement's guide.",
+      "The sun emblem at the crown of the logo affirms the enlightenment of Progressive Islam. The theme “Together, Unite the Nation” is anchored in Quran 49:10 and 49:13 — ukhuwah, ta'aruf, and kalimatun sawa' towards the nation's progress.",
     ],
     facts: [
       { label: "Host city", value: "Palu, Central Sulawesi" },
       { label: "Dates", value: "19–21 November 2026" },
       { label: "Hijri", value: "10–12 Jumada al-Thani 1448 AH" },
-      { label: "Symbol", value: "Moringa leaf & the number 114" },
+      { label: "Symbols", value: "Moringa leaf · the number 114 · the sun" },
     ],
     quote:
-      "Moringa was chosen because it is strong, simple, and useful. It grows in Palu and becomes a symbol of resilience.",
+      "Moringa was chosen because it is strong, simple, and useful — it grows in Palu and stands for resilience.",
     link: "Read the logo meaning",
   },
   agenda: {
     eyebrow: "Agenda",
-    title: "Three markers in time",
+    title: "From Tanwir Palu to the Medan Muktamar",
     description:
       "The event dates, the historic date, and the next direction. Detailed schedules follow PP Muhammadiyah Circular No. 19/EDR/I.0/B/2026.",
     items: [
@@ -253,28 +175,31 @@ export const en: Dictionary = {
         tag: "2027",
       },
     ],
+    pillars: [
+      "Institutional resilience",
+      "AUM resilience",
+      "Pluralism resilience",
+    ],
     button: "Open the Circular",
   },
   history: {
-    eyebrow: "Root",
-    title: "114-Year Trail",
+    eyebrow: "History",
+    title: "Two tracks, one movement",
     description:
-      "From a living room in Kauman to a canopy that shelters Palu. Six chapters trace Muhammadiyah's root, trunk, and canopy, with official sources at every step.",
-    mapEyebrow: "Journey map",
+      "Read the movement from two sides: the chronology of Muhammadiyah and the life journey of its founder, KH Ahmad Dahlan — complete with leadership eras and charitable works in numbers.",
     source: "Source",
-    verified: "Verified",
-    ctaEyebrow: "Onward from the root",
-    ctaTitle: "This tree has a trunk that supports services.",
+    ctaEyebrow: "Onward to benefit",
+    ctaTitle: "This history lives on through services.",
     ctaDescription:
       "Open the KHGT calendar and official Muhammadiyah news in the Services section.",
     ctaButton: "Open Services",
-    chapters: milestonesEn,
+    content: historyEn,
   },
   services: {
-    eyebrow: "Trunk",
+    eyebrow: "Public benefit",
     title: "Muhammadiyah Services",
     description:
-      "Two services support the tree: the official KHGT calendar and the latest news from Muhammadiyah.",
+      "Two windows of benefit: the official KHGT calendar and the latest news from Muhammadiyah.",
     calendarTitle: "Global Unified Hijri Calendar",
     calendarDescription:
       "Calendar data is synchronised from KHGT. Month views, special days, and the Gregorian–Hijri converter use an official snapshot, not a generic library.",
@@ -340,7 +265,7 @@ export const en: Dictionary = {
     },
   },
   map: {
-    eyebrow: "Canopy",
+    eyebrow: "Internationalisation",
     title: "Muhammadiyah Around the World",
     description:
       "Muhammadiyah did not grow only in Indonesia. 29 Special Branch Leaderships are spread across Africa, Asia, Europe, the Americas, and Oceania.",
@@ -360,7 +285,7 @@ export const en: Dictionary = {
   },
   footer: {
     tagline:
-      "One tree, three directions: History, Services, and Map. Built as an independent entry for a website competition.",
+      "An independent site for the Tanwir and 114th Milad of Muhammadiyah: two historical tracks, the KHGT calendar, official news, and a map of PCIM worldwide.",
     explore: "Explore",
     sources: "Official sources",
     event: "114th Milad",
@@ -377,11 +302,11 @@ export const en: Dictionary = {
     language: "Language",
   },
   notFound: {
-    title: "This door is not on the tree yet.",
+    title: "This page is not available yet.",
     description:
-      "Return home, explore the 114-year trail, or open Muhammadiyah services.",
+      "Return home, explore the two historical tracks, or open Muhammadiyah services.",
     home: "Back to the Milad",
-    history: "114-Year Trail",
+    history: "History",
     services: "Services",
   },
   highlights: calendarHighlightsEn,

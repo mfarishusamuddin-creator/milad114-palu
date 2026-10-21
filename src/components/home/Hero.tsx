@@ -1,4 +1,4 @@
-import { Reveal } from "@/components/animation/Reveal";
+﻿import { Reveal } from "@/components/animation/Reveal";
 import { Countdown } from "@/components/home/Countdown";
 import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
 import { ShareButton } from "@/components/shared/ShareButton";
@@ -10,7 +10,7 @@ export function Hero({ dict }: { dict: Dictionary }) {
     <section className="hero-shell">
       <div className="container-page relative z-10">
         <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2 border-b border-line py-3 text-[0.6rem] font-bold uppercase tracking-[0.16em] text-ink-soft">
-          <span className="text-teal-deep">{dict.hero.edition}</span>
+          <span className="text-ocean">{dict.hero.edition}</span>
           <span className="hidden sm:inline">{dict.hero.eventLine}</span>
           <span>{dict.hero.dateLine}</span>
         </div>
@@ -31,7 +31,7 @@ export function Hero({ dict }: { dict: Dictionary }) {
               <span className="block text-gold-text">{dict.hero.titleLine2}</span>
             </h1>
 
-            <p className="mt-4 font-serif text-xl font-semibold text-teal-deep sm:text-2xl">
+            <p className="mt-4 font-serif text-xl font-semibold text-ocean sm:text-2xl">
               {dict.hero.subtitle}
             </p>
 
@@ -66,7 +66,7 @@ export function Hero({ dict }: { dict: Dictionary }) {
             <div className="hero-plate">
               <div className="flex items-center justify-between gap-3 border-b border-line px-4 py-2.5 text-[0.58rem] font-bold uppercase tracking-[0.16em] text-ink-soft">
                 <span>{dict.hero.plate.identity}</span>
-                <span className="text-teal-deep">{dict.hero.plate.city}</span>
+                <span className="text-ocean">{dict.hero.plate.city}</span>
               </div>
 
               <div className="hero-logo-area relative">

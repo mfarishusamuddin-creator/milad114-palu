@@ -18,11 +18,9 @@ Terjemahan Arab di proyek ini adalah **draf AI**. Sebelum submit, wajib diperiks
 | Navigasi | `src/i18n/ar.ts` bagian `nav` | Draf | Menu, CTA, tema |
 | Hero | `src/i18n/ar.ts` bagian `hero` | Draf | Judul, intro, plate, bahasa |
 | Countdown | `src/i18n/ar.ts` bagian `countdown` | Draf | Label hari/jam/menit/detik |
-| Indeks Jelajah | `src/i18n/ar.ts` bagian `gates` | Draf | Akar/Batang/Kanopi |
-| Pohon | `src/i18n/ar.ts` bagian `tree` | Draf | Legenda dan anotasi |
 | Tentang Milad | `src/i18n/ar.ts` bagian `about` | Draf | Paragraf, fakta, kutipan |
-| Agenda | `src/i18n/ar.ts` bagian `agenda` | Draf | Tiga item |
-| Sejarah | `src/i18n/ar.ts` + `src/data/milestones.ar.ts` | Draf | Enam bab |
+| Agenda | `src/i18n/ar.ts` bagian `agenda` | Draf | Tiga item + pilar |
+| Sejarah | `src/i18n/ar.ts` + `src/data/history.ar.ts` | Draf | Dua jalur + dua tabel |
 | Layanan | `src/i18n/ar.ts` bagian `services` | Draf | Judul dan deskripsi |
 | Kalender | `src/i18n/ar.ts` bagian `calendar` | Draf | Nama bulan, hari, event |
 | Kabar | `src/i18n/ar.ts` bagian `kabar` | Draf | Label dan catatan sumber |
@@ -61,7 +59,7 @@ Terjemahan Arab di proyek ini adalah **draf AI**. Sebelum submit, wajib diperiks
 ## Checklist reviewer
 
 - [ ] Semua teks di `src/i18n/ar.ts` sudah dibaca.
-- [ ] Enam bab di `src/data/milestones.ar.ts` sudah dibaca.
+- [ ] Dua jalur dan dua tabel di `src/data/history.ar.ts` sudah dibaca.
 - [ ] Nama 29 negara/kota di `src/data/pcim.ts` sudah dicek.
 - [ ] Tidak ada campuran dialek.
 - [ ] Tidak ada terjemahan yang mengubah fakta.
@@ -73,7 +71,7 @@ Terjemahan Arab di proyek ini adalah **draf AI**. Sebelum submit, wajib diperiks
 ## Cara memperbaiki
 
 1. Edit `src/i18n/ar.ts` untuk UI.
-2. Edit `src/data/milestones.ar.ts` untuk sejarah.
+2. Edit `src/data/history.ar.ts` untuk sejarah.
 3. Edit `src/data/calendar-highlights.ar.ts` untuk penanda kalender.
 4. Edit `src/data/pcim.ts` untuk nama negara/kota.
 5. Jalankan `npm run typecheck`, `npm run lint`, `npm run build`.

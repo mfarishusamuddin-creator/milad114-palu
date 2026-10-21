@@ -29,7 +29,6 @@ npm run build
 npm run start
 npm run sync:kabar
 npm run sync:khgt
-npm run generate:tree
 npm run prepare:assets
 ```
 
@@ -63,18 +62,18 @@ src/components/
   theme/BrandLogo.tsx     logo terang/gelap otomatis
   theme/useTheme.ts
   home/Hero.tsx
-  home/GatewayCards.tsx   indeks Jelajah (Akar/Batang/Kanopi)
-  home/GrowingTree.tsx    section pohon
   home/AboutMilad.tsx
   home/Agenda.tsx
   history/HistorySection.tsx
-  history/HistoryExperience.tsx
+  history/HistoryTimeline.tsx
+  history/HistoryTables.tsx
+  ui/timeline.tsx         timeline Aceternity (adaptasi, dipakai desktop)
   services/ServicesSection.tsx
   services/HijriCalendar.tsx
   services/KabarTabs.tsx
   map/MapSection.tsx
   map/WorldMap.tsx
-  shared/                 komponen kecil (KabarCard, SourceNote, SpaceTree, dll.)
+  shared/                 komponen kecil (KabarCard, SourceNote, dll.)
 src/i18n/
   types.ts                tipe Dictionary
   id.ts                   semua teks Indonesia
@@ -83,26 +82,24 @@ src/i18n/
   index.ts                getDictionary(), languagePath()
 src/data/
   site.ts                 URL, tanggal, tautan resmi
-  milestones.ts           ع¤onten sejarah Indonesia
-  milestones.en.ts        konten sejarah Inggris
-  milestones.ar.ts        konten sejarah Arab
+  history.ts              sejarah dua jalur + tabel (Indonesia)
+  history.en.ts           sejarah Inggris
+  history.ar.ts           sejarah Arab
   calendar-highlights.ts  penanda kalender Indonesia
   calendar-highlights.en.ts
   calendar-highlights.ar.ts
   pcim.ts                 29 negara PCIM + koordinat + nama 3 bahasa
-  tree.ts                 data pohon (hasil generate; jangan diedit manual)
   khgt-2026.json          snapshot kalender (hasil sync)
   kabar-fallback.json     snapshot kabar (hasil sync)
 scripts/
   sync-kabar.mjs
   sync-khgt.mjs
-  generate-tree.mjs
   prepare-assets.ps1
 public/
   logo/                   logo horizontal, logogram, vertikal
   pattern/                supergraphic kelor
   og/                     gambar Open Graph
-  licenses/               lisensi font dan Scrollama
+  licenses/               lisensi font
 ```
 
 ## 3. Mengedit teks
@@ -133,10 +130,8 @@ Bagian penting:
 - `nav` — menu, CTA, label tema.
 - `hero` — hero, plate logo, tombol, bahasa.
 - `countdown` — label hitung waktu.
-- `gates` — indeks Jelajah.
-- `tree` — section pohon.
 - `about` — section Tentang Milad.
-- `agenda` — agenda.
+- `agenda` — agenda dan pilar.
 - `history` — judul/label sejarah.
 - `services` — judul/label layanan.
 - `calendar` — semua label kalender, nama bulan, hari, event.
@@ -149,33 +144,39 @@ Bagian penting:
 
 Setiap bahasa punya file sendiri:
 
-- `src/data/milestones.ts`
-- `src/data/milestones.en.ts`
-- `src/data/milestones.ar.ts`
+- `src/data/history.ts`
+- `src/data/history.en.ts`
+- `src/data/history.ar.ts`
 
-Satu bab berbentuk:
+Struktur: dua jalur (`tracks`) — jalur Muhammadiyah dan jalur KH Ahmad Dahlan — masing-masing berisi entri; lalu dua tabel (`leadership`, `aum`), dan konten section.
+
+Entri timeline berbentuk:
 
 ```ts
 {
-  id: "akar-kauman",
-  year: "1868–1911",
-  kicker: "Akar",
-  title: "Kauman dan ruang tamu yang menjadi sekolah",
-  paragraphs: ["...", "..."],
-  facts: ["...", "..."],
-  sources: [{ label: "...", url: "https://..." }],
-  branch: "akar",
-  verified: true,
+  year: "1912",
+  title: "...",
+  description: "..."
+}
+```
+
+Tabel berbentuk:
+
+```ts
+{
+  title: "...",
+  headings: ["...", "..."],
+  rows: [["...", "..."], ...],
+  note: "..."
 }
 ```
 
 Aturan:
 
-- `id` dipakai sebagai anchor; jangan diubah sembarangan.
-- `branch` harus `akar`, `batang`, atau `kanopi`; dipakai untuk animasi pohon sisi.
-- `sources` wajib berisi URL resmi.
-- Jika menambah bab, tambahkan di ketiga bahasa dan pastikan urutannya sama.
-- Jika ingin mengubah jumlah bab, sesuaikan juga `dict.history.chapters` (otomatis mengikuti file) dan animasi pohon.
+- Urutan entri kronologis; tambahkan di ketiga bahasa dengan urutan sama.
+- Fakta bersumber wajib: Khatib Amin 1890, MIDI 1 Desember 1911, AUM PCIM 29 (halaman resmi Cabang Istimewa Muhammadiyah).
+- `sources` di `HistorySection` menunjuk halaman resmi Muhammadiyah.
+- Judul/label section ada di `dict.history` (tiga file bahasa).
 
 ### 3.3 Agenda dan penanda kalender
 
@@ -246,7 +247,7 @@ Logo otomatis berganti terang/gelap di `src/components/theme/BrandLogo.tsx`. Jik
 - `public/pattern/kelor-strip.png`
 - `public/pattern/kelor-strip.webp`
 
-Dipakai di hero, section pohon, dan footer. Ganti dengan gambar pattern resmi; jaga rasio dan warna. Jika mengganti, buat juga versi WebP agar ringan.
+Dipakai di hero, section tentang, dan footer. Ganti dengan gambar pattern resmi; jaga rasio dan warna. Jika mengganti, buat juga versi WebP agar ringan.
 
 ### 4.3 Gambar Open Graph
 
@@ -308,13 +309,11 @@ Buka `src/components/pages/HomePage.tsx`. Urutan JSX menentukan urutan halaman:
 
 ```tsx
 <Hero dict={dict} />
-<GatewayCards dict={dict} />
-<GrowingTree dict={dict} />
 <AboutMilad dict={dict} />
 <Agenda dict={dict} />
+<MapSection dict={dict} />
 <HistorySection dict={dict} />
 <ServicesSection dict={dict} latest={latest} milad={milad} />
-<MapSection dict={dict} />
 ```
 
 Untuk memindahkan section, pindahkan barisnya. Untuk menghapus, hapus barisnya. Untuk menambah section baru, buat komponen di `src/components/...`, terima `dict`, lalu tambahkan di sini.
@@ -343,13 +342,13 @@ className="grid gap-12 py-12 lg:grid-cols-[1.2fr_0.8fr]"
 Token ada di `src/app/globals.css` bagian `@theme`:
 
 ```css
---color-navy: #1c469e;
---color-navy-deep: #293a88;
---color-teal: #41847d;
---color-teal-deep: #0b8170;
---color-gold: #d49b0f;
---color-gold-light: #eab749;
---color-kelor: #6dbd25;
+--color-navy: #1c469f;
+--color-navy-deep: #1a2c6f;
+--color-ocean: #195c8d;
+--color-gold: #ca9a00;
+--color-gold-light: #e1b01a;
+--color-kelor: #6dbc25;
+--color-kelor-deep: #009c49;
 --color-bg: #ffffff;
 --color-bg-soft: #f0f3f8;
 --color-surface: #ffffff;
@@ -358,7 +357,7 @@ Token ada di `src/app/globals.css` bagian `@theme`:
 --color-line: #dde3ee;
 ```
 
-Mengubah token akan mengubah seluruh situs. Gunakan warna resmi dari identitas visual. Emas untuk teks kecil sebaiknya memakai `--color-gold-text` agar kontras.
+Mengubah token akan mengubah seluruh situs. Gunakan warna resmi dari identitas visual (navy, emas, kelor). Emas untuk teks kecil sebaiknya memakai `--color-gold-text` agar kontras; colocated `--color-ocean` menggantikan teal lama.
 
 ### 5.4 Sudut, bayangan, dan border
 
@@ -380,10 +379,11 @@ Untuk menambah menu:
 
 ### 5.6 Section sejarah
 
-- `HistorySection.tsx` — header section.
-- `HistoryExperience.tsx` — sidebar sticky, timeline, bab, Scrollama.
-- `chapters` berasal dari `dict.history.chapters`.
-- Jangan mengubah `className="history-step"` pada artikel; Scrollama membutuhkannya.
+- `HistorySection.tsx` — header, timeline, tabel, sumber, CTA.
+- `HistoryTimeline.tsx` — dua jalur (tabs desktop, accordion mobile), memakai `src/components/ui/timeline.tsx`.
+- `HistoryTables.tsx` — tabel kepemimpinan dan AUM.
+- Data: `src/data/history.ts` + `history.en.ts` + `history.ar.ts`.
+- Mobile memakai `<details>`; desktop memakai tabs + timeline with scroll progress (`motion`).
 
 ### 5.7 Section layanan
 
@@ -411,7 +411,7 @@ Cara mengubah warna gelap:
 
 1. Cari `[data-theme="dark"]` di `globals.css`.
 2. Ubah `--color-bg`, `--color-bg-soft`, `--color-surface`, `--color-ink`, `--color-ink-soft`, `--color-line`.
-3. Untuk warna teks brand di atas permukaan gelap, ubah aturan `.text-navy`, `.text-teal-deep`, `.text-gold-text`, `.text-kelor-deep`.
+3. Untuk warna teks brand di atas permukaan gelap, ubah aturan `.text-navy`, `.text-ocean`, `.text-gold-text`, `.text-kelor-deep`.
 4. Uji di `/`, `/en`, `/ar`.
 
 Tema disimpan di `localStorage` dengan kunci `m114:theme`. Jika tidak ada, mengikuti `prefers-color-scheme`.
@@ -482,7 +482,7 @@ Mengganti sumber peta:
 - Wrapper memakai atribut `data-animated-content` dengan `visibility: hidden` awal di `globals.css`; ScrollTrigger menampilkan dan menganimasikannya.
 - Fallback tanpa JS: aturan `@media (scripting: none)` di `globals.css` dan `<noscript>` di `layout.tsx` memaksa semua konten terlihat.
 - Reduced motion: konten langsung tampil tanpa animasi.
-- Scope: section dan konten utama saja. Navbar, Footer, MotionIntro, `not-found.tsx`, sidebar sticky history, timeline, pohon, kalender, dan tab kabar tidak dianimasikan.
+- Scope: section dan konten utama saja. Navbar, Footer, MotionIntro, `not-found.tsx`, timeline sejarah, tabel, kalender, dan tab kabar tidak dianimasikan.
 
 Menambah animasi:
 
@@ -494,19 +494,11 @@ import { Reveal } from "@/components/animation/Reveal";
 
 Menghapus animasi: hapus pembungkus `<Reveal>` (attrs tidak ada; elemen tanpa wrapper tidak dianimasikan).
 
-### 9.2 Pohon
+### 9.2 Timeline sejarah
 
-Status saat ini: ilustrasi pohon memakai `SpaceTree` dan data `src/data/tree.ts`. Pohon sidebar statis tanpa highlight sisi. Animasi bibit → pohon berbuah **belum** dieksekusi. Jangan mengubahnya secara manual jika Anda ingin memakai prompt AI yang sudah disiapkan.
+Desktop memakai progres garis berbasis scroll (`motion/react` di `src/components/ui/timeline.tsx`): `useScroll` pada pembungkus, `useTransform` memetakan `0–1` ke tinggi garis `0%–100%`. Tidak ada pengukuran tinggi dan tidak ada `setState` dalam efek. Mobile memakai `<details>` tanpa animasi khusus.
 
-Prompt lengkap ada di `PROMPT-ANIMASI-POHON.md`. Handoff ada di `HANDOFF-AI.md`. Setelah AI lain mengeksekusi prompt, ganti `SpaceTree`/`HistoryExperience` sesuai hasilnya.
-
-Jika ingin membuat ulang data pohon:
-
-```bash
-npm run generate:tree
-```
-
-File `src/data/tree.ts` dihasilkan ulang. Jangan mengedit file itu manual; edit `scripts/generate-tree.mjs`.
+Jika ingin mengubah warna garis, ubah gradient inline di `src/components/ui/timeline.tsx` (emas `#ca9a00` → navy `#1c469f`).
 
 ### 9.3 Countdown
 
@@ -517,7 +509,6 @@ File `src/data/tree.ts` dihasilkan ulang. Jangan mengedit file itu manual; edit 
 ### 9.4 Prinsip animasi
 
 - Semua animasi masuk dari bawah ke atas, bukan dari samping, kecuali panah.
-- Jangan membalik arah highlight akar/batang/kanopi.
 - Hormati `prefers-reduced-motion`.
 - Uji di ponsel kelas menengah; hindari animasi berat.
 
@@ -606,7 +597,7 @@ Arab      : https://milad114-palu.vercel.app/ar
 
 - Jangan memakai URL preview Vercel.
 - Setelah domain final, jangan mengganti nama project.
-- Anchors: `#jelajah`, `#sejarah`, `#layanan`, `#peta`, `#kabar`.
+- Anchors: `#tentang`, `#agenda`, `#peta`, `#sejarah`, `#layanan`, `#kabar`.
 - Metadata per bahasa: `src/lib/metadata.ts`.
 - Sitemap: `src/app/sitemap.ts`.
 - Robots: `src/app/robots.ts`.

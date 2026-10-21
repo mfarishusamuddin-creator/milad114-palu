@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { getDictionary } from "@/i18n";
 
 export default function NotFound() {
@@ -7,7 +7,7 @@ export default function NotFound() {
   return (
     <section className="relative overflow-hidden bg-bg-soft">
       <div
-        className="absolute -right-24 -top-24 h-80 w-80 rounded-full bg-teal/15 blur-3xl"
+        className="absolute -right-24 -top-24 h-80 w-80 rounded-full bg-ocean/15 blur-3xl"
         aria-hidden="true"
       />
       <div className="container-page relative z-10 flex min-h-[60vh] flex-col items-center justify-center py-20 text-center">

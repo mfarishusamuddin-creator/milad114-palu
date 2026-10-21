@@ -1,7 +1,5 @@
 import { AboutMilad } from "@/components/home/AboutMilad";
 import { Agenda } from "@/components/home/Agenda";
-import { GatewayCards } from "@/components/home/GatewayCards";
-import { GrowingTree } from "@/components/home/GrowingTree";
 import { Hero } from "@/components/home/Hero";
 import { HistorySection } from "@/components/history/HistorySection";
 import { MapSection } from "@/components/map/MapSection";
@@ -21,13 +19,11 @@ export async function HomePage({ lang }: { lang: LanguageCode }) {
   return (
     <SiteShell dict={dict}>
       <Hero dict={dict} />
-      <GatewayCards dict={dict} />
-      <GrowingTree dict={dict} />
       <AboutMilad dict={dict} />
       <Agenda dict={dict} />
+      <MapSection dict={dict} />
       <HistorySection dict={dict} />
       <ServicesSection dict={dict} latest={latest} milad={milad} />
-      <MapSection dict={dict} />
     </SiteShell>
   );
 }

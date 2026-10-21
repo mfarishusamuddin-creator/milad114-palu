@@ -9,7 +9,7 @@ Dokumen ini adalah brief eksekusi untuk AI pembangun berikutnya. Fokusnya bukan 
 3. Jangan mengganti logo resmi, warna brand, atau font resmi.
 4. Jangan menambah dependency berat (Three.js, peta 3D, library animasi baru) tanpa alasan performa yang jelas.
 5. Jangan membuat halaman baru. Semua konten tetap di satu index per bahasa: `/`, `/en`, `/ar`.
-6. Jangan menghapus Scrollama, tema, bahasa, peta, atau QR bahasa.
+6. Jangan menghapus tema, bahasa, peta, atau QR bahasa.
 7. Hormati `prefers-reduced-motion`.
 8. Setelah selesai: `npm run lint`, `npm run typecheck`, `npm run build`, dan uji 390/768/1440 px.
 9. Tulis perubahan di `HANDOFF-RESULT.md` (dibuat oleh AI pelaksana) berisi file yang diubah, keputusan, dan hasil uji.
@@ -21,16 +21,15 @@ Yang dihindari:
 - Hero SaaS dengan gradient orb dan tiga kartu bulat.
 - Card grid seragam untuk semua konten.
 - Teks gradient berlebihan.
-- Animasi yang menyorot sisi kiri/kanan tanpa makna.
-- Ilustrasi pohon yang terlihat seperti cluster anggur.
+- Metafora pohon/akar/batang/kanopi (sudah diganti dua jalur sejarah dan tabel).
 
 Yang dipertahankan:
 
-- Palet navy–teal–gold dari logo.
+- Palet navy–emas–kelor (ocean `#195c8d` untuk aksen biru laut) dari logo.
 - Tipografi El Messiri untuk display dan Familjen Grotesk untuk body.
 - Garis tipis, ruang kosong, nomor besar, dan ritme editorial.
 - Supergraphic kelor sebagai blok, bukan hanya strip.
-- Satu momen wow: pohon.
+- Momen wow: timeline dua jalur dengan progres scroll.
 
 ## 2. Hero dan plate logo
 
@@ -52,42 +51,42 @@ Yang dipertahankan:
 
 **Aset:** logo horizontal color/white, font, pattern, warna brand.
 
-## 3. Indeks Jelajah (Akar/Batang/Kanopi)
+## 3. Tentang, Agenda, Peta
 
-**File:** `src/components/home/GatewayCards.tsx`.
+**File:** `src/components/home/AboutMilad.tsx`, `src/components/home/Agenda.tsx`, `src/components/map/MapSection.tsx`.
 
-**Tujuan:** indeks tiga arah terasa seperti daftar editorial, bukan tiga kartu.
+**Tujuan:** alur naratif jika-sesungguhnya: kisah → agenda → jangkauan dunia.
 
 **Prompt:**
 
-> Pertahankan struktur daftar bernomor. Perbaiki ritme vertikal: nomor, label, judul, deskripsi, dan panah harus sejajar secara optis. Di mobile, susun menjadi blok yang mudah dipindai. Tambahkan garis pemisah tipis dan hover yang halus. Jangan menambah ikon besar atau kartu baru. Pastikan tautan menuju `#sejarah`, `#layanan`, dan `#peta`.
+> Pertahankan struktur About (makna logo, fakta bersumber), Agenda (ledger waktu + pilar aksi), dan Peta (29 PCIM + daftar kawasan). Perbaiki ritme vertikal antar-section. Jangan menambah kartu baru. Pastikan tautan sumber resmi tetap ada, termasuk halaman Cabang Istimewa Muhammadiyah.
 
 **Kriteria selesai:**
 
-- [ ] Tiga baris sejajar di desktop.
-- [ ] Mobile tidak ada teks terpotong.
-- [ ] Hover/focus terlihat.
+- [ ] Urutan section sungguh Hero → About → Agenda → Peta → Sejarah → Layanan.
+- [ ] Pilar agenda tampil.
 - [ ] Tautan anchor benar.
+- [ ] Reduced motion aman.
 
-## 4. Pohon di beranda
+## 4. Timeline sejarah dua jalur
 
-**File:** `src/components/home/GrowingTree.tsx`, `src/components/shared/SpaceTree.tsx`, `src/data/tree.ts`.
+**File:** `src/components/history/HistorySection.tsx`, `HistoryTimeline.tsx`, `HistoryTables.tsx`, `src/components/ui/timeline.tsx`, `src/data/history*.ts`.
 
-**Tujuan:** pohon terasa organik dan menjadi signature, bukan hiasan.
+**Tujuan:** dua jalur sejarah terasa editorial, bukan slideshow.
 
 **Prompt:**
 
-> Pertahankan komposisi teks kiri + pohon kanan. Perhalus transisi tumbuh dari bawah ke atas. Pastikan tiga anotasi (Akar, Batang, Kanopi) tidak menutupi daun. Jangan mengubah arah pertumbuhan menjadi kiri/kanan. Jangan menambahkan highlight lobe. Jika ingin mengganti animasi penuh, ikuti `PROMPT-ANIMASI-POHON.md`.
+> Pertahankan dua tab jalur (Muhammadiyah & KH Ahmad Dahlan) di desktop dan accordion `<details>` di mobile. Garis progres timeline berbasis scroll (motion), muncul sekali, tidak membalik. Tabel kepemimpinan dan AUM tetap overflow-x-auto. Jangan mengubah fakta tanpa sumber baru.
 
 **Kriteria selesai:**
 
-- [ ] Pohon tumbuh dari bawah saat masuk viewport.
-- [ ] Tiga anotasi terbaca.
-- [ ] Tidak ada layout shift.
-- [ ] Reduced motion menampilkan pohon statis.
-- [ ] Mobile tetap proporsional.
+- [ ] Tab bergantian tanpa layout shift.
+- [ ] Accordion mobile terbuka/tutup mulus.
+- [ ] Progres garis tidak jatuh ke 0 saat scroll naik (~(0,1) → ("0%","100%")).
+- [ ] Tabel terbaca di 390 px.
+- [ ] Sumber resmi tampil.
 
-**Aset:** data pohon, warna brand, font, pattern.
+**Aset:** history.ts/history.en.ts/history.ar.ts, warna brand.
 
 ## 5. Tentang Milad
 
@@ -122,25 +121,24 @@ Yang dipertahankan:
 - [ ] Tanggal 19–21 Nov, 18 Nov, dan 2027 benar.
 - [ ] Tautan Edaran berfungsi.
 
-## 7. Sejarah dan Scrollama
+## 7. Sejarah dua jalur
 
-**File:** `src/components/history/HistorySection.tsx`, `src/components/history/HistoryExperience.tsx`.
+**File:** `src/components/history/HistorySection.tsx`, `src/components/history/HistoryTimeline.tsx`.
 
-**Tujuan:** long-form editorial dengan sidebar yang hidup.
+**Tujuan:** long-form editorial dua jalur dengan timeline yang hidup.
 
 **Prompt:**
 
-> Pertahankan Scrollama dan enam langkah. Perhalus sidebar: tahun besar, label cabang, pohon, timeline. Jangan menyorot kiri/kanan; gunakan pertumbuhan bawah→atas sesuai `PROMPT-ANIMASI-POHON.md`. Bab harus terasa seperti artikel, bukan card: nomor besar, judul, paragraf, fakta, sumber. Pastikan `history-step` tetap ada. Uji scroll ke atas.
+> Lihat bagian 4. Section ini sudah selesai; jangan mengganti komponen timeline tanpa alasan performa. Pertahankan anchor `#sejarah` dan urutan dua jalur + dua tabel + sumber.
 
 **Kriteria selesai:**
 
-- [ ] Enam langkah aktif bergantian dengan benar.
-- [ ] Pohon mengikuti fase, bukan lobe.
+- [ ] Tab bekerja dua arah tanpa bug.
 - [ ] Tidak ada lompatan saat scroll naik.
-- [ ] Anchor tiap bab berfungsi.
-- [ ] Sumber tampil di tiap bab.
+- [ ] Anchor `#sejarah` berfungsi.
+- [ ] Sumber tampil di section.
 
-**Aset:** enam bab ID/EN/AR, data pohon, sumber resmi.
+**Aset:** history ID/EN/AR, sumber resmi.
 
 ## 8. Kalender KHGT
 
@@ -227,7 +225,7 @@ Yang dipertahankan:
 
 **Kriteria selesai:**
 
-- [ ] Section utama muncul saat scroll (Hero, GatewayCards, GrowingTree, AboutMilad, History, Services, Map).
+- [ ] Section utama muncul saat scroll (Hero, AboutMilad, Agenda, Map, History, Services).
 - [ ] Tidak ada elemen yang tetap `visibility: hidden` atau opacity 0.
 - [ ] Reduced motion langsung menampilkan konten.
 
@@ -262,7 +260,6 @@ Yang dipertahankan:
 - `src/app/fonts/FamiljenGrotesk-Italic-VariableFont_wght.ttf`
 - `public/licenses/OFL-ElMessiri.txt`
 - `public/licenses/OFL-FamiljenGrotesk.txt`
-- `public/licenses/Scrollama-MIT.txt`
 - Motion logo di folder sumber (belum dipakai): `Motion Logo 114 Horizontal [BG putih].mp4` (2,06 MB), `[BG Hitam]` (1,74 MB), vertikal (1,83/1,57 MB), alpha MOV 88,53 MB (jangan dipakai langsung).
 
 ### Belum tersedia dan perlu diminta ke pemilik
@@ -303,7 +300,7 @@ Gunakan hanya El Messiri dan Familjen Grotesk dari folder proyek. Jangan memakai
 - [ ] Tiga bahasa lengkap dan RTL benar.
 - [ ] Tema terang/gelap benar.
 - [ ] Peta 29 negara.
-- [ ] Pohon mengikuti prompt animasi (jika dieksekusi).
+- [ ] Timeline sejarah dua jalur sesuai arahan bagian 4.
 - [ ] Animated content halus dan tidak menyembunyikan konten permanen.
 - [ ] Semua tautan internal dan eksternal berfungsi.
 - [ ] `npm run lint`, `npm run typecheck`, `npm run build` lolos.

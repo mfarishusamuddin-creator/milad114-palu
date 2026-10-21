@@ -3,6 +3,7 @@ import { WorldMap } from "@/components/map/WorldMap";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { SourceNote } from "@/components/shared/SourceNote";
 import { pcimCountries, type PcimRegion } from "@/data/pcim";
+import { SITE } from "@/data/site";
 import type { Dictionary } from "@/i18n/types";
 
 const REGION_ORDER: PcimRegion[] = [
@@ -73,6 +74,10 @@ export function MapSection({ dict }: { dict: Dictionary }) {
         <SourceNote
           className="mt-6"
           items={[
+            {
+              label: "Cabang Istimewa Muhammadiyah",
+              url: SITE.links.pcim,
+            },
             {
               label: "Natural Earth",
               url: "https://www.naturalearthdata.com/",

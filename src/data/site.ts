@@ -3,7 +3,7 @@ export const SITE = {
   title: "Tanwir dan Milad ke-114 Muhammadiyah",
   tagline: "Bersama Satukan Bangsa",
   description:
-    "Website interaktif Tanwir dan Milad ke-114 Muhammadiyah. Palu, 19–21 November 2026 M | 10–12 Jumadilakhir 1448 H. Jejak 114 tahun, kalender KHGT, kabar resmi, dan peta persebaran.",
+    "Website interaktif Tanwir dan Milad ke-114 Muhammadiyah. Palu, 19–21 November 2026 M | 10–12 Jumadilakhir 1448 H. Dua jalur sejarah, kalender KHGT, kabar resmi, dan peta PCIM dunia.",
   url: "https://milad114-palu.vercel.app",
   locale: "id_ID",
   city: "Palu",
@@ -14,12 +14,6 @@ export const SITE = {
   miladISO: "2026-11-18T00:00:00+08:00",
   miladDate: "18 November 2026",
   organizer: "Pimpinan Pusat Muhammadiyah",
-  nav: [
-    { href: "#jelajah", label: "Jelajah" },
-    { href: "#sejarah", label: "Sejarah" },
-    { href: "#layanan", label: "Layanan" },
-    { href: "#peta", label: "Peta" },
-  ],
   links: {
     muhammadiyah: "https://muhammadiyah.or.id/",
     khgt: "https://khgt.muhammadiyah.or.id/",
@@ -40,7 +34,6 @@ export const SITE = {
     sejarahBerdiri:
       "https://muhammadiyah.or.id/sejarah-berdirinya-muhammadiyah/",
     profil: "https://muhammadiyah.or.id/profil/",
+    pcim: "https://muhammadiyah.or.id/cabang-istimewa/",
   },
 } as const;
-
-export type NavItem = (typeof SITE.nav)[number];

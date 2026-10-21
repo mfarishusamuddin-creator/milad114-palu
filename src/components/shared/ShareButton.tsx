@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useRef, useState } from "react";
 import { SITE } from "@/data/site";
@@ -61,7 +61,7 @@ export function ShareButton({
         {label}
       </button>
       <span
-        className="text-xs font-semibold text-teal-deep"
+        className="text-xs font-semibold text-ocean"
         aria-live="polite"
       >
         {status}

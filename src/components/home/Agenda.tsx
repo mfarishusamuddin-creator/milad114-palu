@@ -1,4 +1,4 @@
-import { Reveal } from "@/components/animation/Reveal";
+﻿import { Reveal } from "@/components/animation/Reveal";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { SourceNote } from "@/components/shared/SourceNote";
 import { SITE } from "@/data/site";
@@ -35,10 +35,27 @@ export function Agenda({ dict }: { dict: Dictionary }) {
                   {item.description}
                 </p>
               </div>
-              <span className="text-[0.6rem] font-bold uppercase tracking-[0.16em] text-teal-deep">
+              <span className="text-[0.6rem] font-bold uppercase tracking-[0.16em] text-ocean">
                 {item.tag}
               </span>
             </article>
+          ))}
+        </Reveal>
+
+        <Reveal className="mt-8 grid gap-3 sm:grid-cols-3" stagger={0.06}>
+          {dict.agenda.pillars.map((pillar) => (
+            <div
+              key={pillar}
+              className="flex items-center gap-3 rounded-sm border border-line bg-surface px-4 py-3"
+            >
+              <span
+                className="h-2 w-2 flex-none rounded-full bg-kelor-deep"
+                aria-hidden="true"
+              />
+              <span className="text-xs font-bold uppercase tracking-[0.08em] text-ink">
+                {pillar}
+              </span>
+            </div>
           ))}
         </Reveal>
 

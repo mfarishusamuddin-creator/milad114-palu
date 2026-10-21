@@ -1,4 +1,4 @@
-# Milad 114 — Satu Pohon, Tiga Arah
+# Milad 114 — Dua Jalur, Satu Gerakan
 
 Website interaktif Tanwir dan Milad ke-114 Muhammadiyah.
 
@@ -14,10 +14,11 @@ Seluruh konten berada dalam satu halaman panjang per bahasa:
 
 | Anchor | Isi |
 |---|---|
-| `#jelajah` | Indeks Akar, Batang, Kanopi |
-| `#sejarah` | Enam bab sejarah 1868–2027 dengan Scrollama |
-| `#layanan` | Kalender KHGT dan Kabar |
+| `#tentang` | Makna logo: kelor, 114, dan pencerahan |
+| `#agenda` | Tanwir Palu, Milad historis, Muktamar Medan |
 | `#peta` | Peta dunia 29 PCIM |
+| `#sejarah` | Dua jalur (Muhammadiyah & KH Ahmad Dahlan) + tabel kepemimpinan dan AUM |
+| `#layanan` | Kalender KHGT dan Kabar |
 | `#kabar` | Kabar resmi Muhammadiyah |
 
 Rute lama `/sejarah` dan `/layanan` sudah dihapus. QR fisik sekarang menjadi gerbang bahasa: `/`, `/en`, `/ar`.
@@ -31,14 +32,14 @@ Rute lama `/sejarah` dan `/layanan` sudah dihapus. QR fisik sekarang menjadi ger
 - Peta dunia Natural Earth yang menyorot 29 Pimpinan Cabang Istimewa.
 - Kalender KHGT dengan konverter Masehi–Hijriah.
 - Kabar live dari kanal resmi Muhammadiyah, cache satu jam, fallback snapshot.
-- Ilustrasi pohon space colonization yang dihasilkan dari skrip.
+- Sejarah dua jalur dengan timeline Aceternity (desktop) dan accordion (mobile).
 
 ## Stack
 
 - Next.js 16 App Router + TypeScript + Cache Components
 - Tailwind CSS v4
 - GSAP (ScrollTrigger) untuk animated content
-- Scrollama (MIT)
+- Motion untuk timeline sejarah (pola Aceternity Timeline)
 - world-atlas + topojson-client + d3-geo untuk peta
 - Font lokal: El Messiri dan Familjen Grotesk (OFL)
 - Tanpa database, login, atau form publik
@@ -61,22 +62,21 @@ npm run sync:kabar
 npm run sync:khgt
 ```
 
-Aset dan pohon:
+Aset:
 
 ```bash
 npm run prepare:assets
-npm run generate:tree
 ```
 
 ## Struktur
 
 ```text
 src/app/                 layout, /, /en, /ar, sitemap, robots
-src/components/          pages, layout, home, history, services, map, theme, shared
+src/components/          pages, layout, home, history, services, map, theme, shared, ui
 src/i18n/                types, id, en, ar, getDictionary
-src/data/                site, milestones, calendar, pcim, tree, khgt, kabar
+src/data/                site, history, calendar, pcim, khgt, kabar
 src/lib/                 kabar, khgt, date, metadata, cn
-scripts/                 sync-kabar, sync-khgt, generate-tree, prepare-assets
+scripts/                 sync-kabar, sync-khgt, prepare-assets
 public/                  logo, pattern, og, licenses
 ```
 
@@ -103,10 +103,10 @@ Mulai dari bagian:
 
 ## Referensi dan lisensi
 
-- **Scrollama** (`russellsamora/scrollama`, MIT) — scrollytelling di bagian sejarah. Lisensi: `public/licenses/Scrollama-MIT.txt`.
-- **Space colonization** (Runions dkk., 2007; referensi `jasonwebb/2d-space-colonization-experiments`) — algoritma diimplementasikan ulang di `scripts/generate-tree.mjs`; tidak menyalin kode repo.
+- **Timeline Aceternity** (pola komponen Timeline) — diadaptasi ulang di `src/components/ui/timeline.tsx` (tanpa gambar, palet proyek, progres scroll `motion`). Komponen demo asli tersimpan sebagai referensi di `src/Contoh Timeline.tsx`.
 - **world-atlas** (ISC) dan **Natural Earth** (public domain) — geometri peta dunia.
 - **GSAP** (Standard License "no charge") — AnimatedContent/ScrollTrigger untuk animated content sekali per viewport. **folio-2019** tidak dipakai; WebGL tidak sepadan dengan target performa mobile.
+- **Motion** (MIT, paket `motion`) — useScroll/useTransform untuk progres garis timeline sejarah.
 - **Peta 38 provinsi Indonesia** tidak dipakai karena fokus peta adalah persebaran global PCIM.
 - **Template identitas resmi** dari folder `drive-download-...` dipakai untuk plate logo, pattern strip, tipografi, dan proporsi layout.
 
@@ -117,7 +117,6 @@ Mulai dari bagian:
 - `SUBMISSION.md` — studi kasus, skrip video, payload QR, dan checklist submit.
 - `TRANSLATION-REVIEW.md` — daftar teks Arab yang perlu diverifikasi penutur asli.
 - `HANDOFF-AI.md` — brief per halaman/fitur untuk AI lain, termasuk daftar aset.
-- `PROMPT-ANIMASI-POHON.md` — prompt lengkap animasi bibit→pohon berbuah.
 
 ## Deploy
 

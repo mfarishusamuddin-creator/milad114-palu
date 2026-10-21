@@ -1,4 +1,4 @@
-import { geoNaturalEarth1, geoPath } from "d3-geo";
+﻿import { geoNaturalEarth1, geoPath } from "d3-geo";
 import type { FeatureCollection, GeoJsonProperties, Geometry } from "geojson";
 import { feature } from "topojson-client";
 import type { GeometryCollection, Topology } from "topojson-specification";
@@ -69,7 +69,7 @@ export function WorldMap({ dict }: { dict: Dictionary }) {
               >
                 <title>
                   {pcim
-                    ? `${pcim.country[dict.lang]} — ${pcim.city[dict.lang]}`
+                    ? `${pcim.country[dict.lang]} â€” ${pcim.city[dict.lang]}`
                     : item.properties?.name as string | undefined}
                 </title>
               </path>
@@ -82,7 +82,7 @@ export function WorldMap({ dict }: { dict: Dictionary }) {
             const point = projection([country.lng, country.lat]);
             if (!point) return null;
             const [x, y] = point;
-            const label = `${country.country[dict.lang]} — ${country.city[dict.lang]}`;
+            const label = `${country.country[dict.lang]} â€” ${country.city[dict.lang]}`;
             return (
               <g key={country.id} className="map-marker">
                 <circle cx={x} cy={y} r="8" className="map-marker-halo" />
@@ -94,7 +94,7 @@ export function WorldMap({ dict }: { dict: Dictionary }) {
         </g>
       </svg>
 
-      <div className="pointer-events-none absolute left-3 top-3 rounded-sm border border-line bg-surface/90 px-2.5 py-1.5 text-[0.58rem] font-bold uppercase tracking-[0.14em] text-teal-deep backdrop-blur">
+      <div className="pointer-events-none absolute left-3 top-3 rounded-sm border border-line bg-surface/90 px-2.5 py-1.5 text-[0.58rem] font-bold uppercase tracking-[0.14em] text-ocean backdrop-blur">
         {dict.map.count}
       </div>
     </div>

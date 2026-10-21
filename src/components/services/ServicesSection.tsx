@@ -1,4 +1,4 @@
-import { Reveal } from "@/components/animation/Reveal";
+﻿import { Reveal } from "@/components/animation/Reveal";
 import { HijriCalendar } from "@/components/services/HijriCalendar";
 import { KabarTabs } from "@/components/services/KabarTabs";
 import { SectionHeading } from "@/components/shared/SectionHeading";
@@ -57,7 +57,7 @@ export function ServicesSection({
                 href={SITE.links.khgt}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs font-bold text-teal-deep underline"
+                className="text-xs font-bold text-ocean underline"
               >
                 {dict.services.highlightsLink}
               </a>

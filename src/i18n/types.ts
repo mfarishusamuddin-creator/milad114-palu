@@ -1,23 +1,13 @@
 import type { CalendarHighlight } from "@/data/calendar-highlights";
-import type { Milestone } from "@/data/milestones";
+import type { HistoryContent } from "@/data/history";
 
 export type LanguageCode = "id" | "en" | "ar";
 export type Direction = "ltr" | "rtl";
-export type Accent = "navy" | "teal" | "gold";
 export type RegionKey = "africa" | "asia" | "europe" | "americas" | "oceania";
 
 export type NavLink = {
   href: string;
   label: string;
-};
-
-export type GateItem = {
-  number: string;
-  label: string;
-  title: string;
-  description: string;
-  href: string;
-  accent: Accent;
 };
 
 export type FactItem = {
@@ -106,28 +96,6 @@ export type Dictionary = {
     minutes: string;
     seconds: string;
   };
-  gates: {
-    eyebrow: string;
-    title: string;
-    description: string;
-    open: string;
-    items: GateItem[];
-  };
-  tree: {
-    eyebrow: string;
-    titleLine1: string;
-    titleLine2: string;
-    description: string;
-    legend: GateItem[];
-    annotations: {
-      kanopi: string;
-      akar: string;
-      batang: string;
-    };
-    stampTop: string;
-    stampBottom: string;
-    caption: string;
-  };
   about: {
     eyebrow: string;
     title: string;
@@ -142,20 +110,19 @@ export type Dictionary = {
     title: string;
     description: string;
     items: AgendaItem[];
+    pillars: string[];
     button: string;
   };
   history: {
     eyebrow: string;
     title: string;
     description: string;
-    mapEyebrow: string;
     source: string;
-    verified: string;
     ctaEyebrow: string;
     ctaTitle: string;
     ctaDescription: string;
     ctaButton: string;
-    chapters: Milestone[];
+    content: HistoryContent;
   };
   services: {
     eyebrow: string;

@@ -1,4 +1,4 @@
-import type { KabarItem } from "@/lib/kabar";
+﻿import type { KabarItem } from "@/lib/kabar";
 import { formatDateID, formatDateShortID } from "@/lib/date";
 import type { Dictionary } from "@/i18n/types";
 
@@ -42,7 +42,7 @@ export function KabarCard({ item, dict, variant = "grid" }: Props) {
         rel="noopener noreferrer"
         className="group flex items-start gap-4 border-b border-line py-3.5 no-underline"
       >
-        <span className="w-24 shrink-0 text-[0.62rem] font-bold uppercase tracking-[0.1em] text-teal-deep">
+        <span className="w-24 shrink-0 text-[0.62rem] font-bold uppercase tracking-[0.1em] text-ocean">
           {formatDateShortID(item.date, dict.locale)}
         </span>
         <span className="flex-1 font-serif text-base font-bold leading-snug text-ink transition-colors group-hover:text-navy">

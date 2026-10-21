@@ -145,7 +145,7 @@ export function HijriCalendar({ data, dict }: Props) {
           href="https://khgt.muhammadiyah.or.id/"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-xs font-bold text-teal-deep underline"
+          className="text-xs font-bold text-ocean underline"
         >
           {dict.fullCalendar}
         </a>
@@ -255,7 +255,7 @@ export function HijriCalendar({ data, dict }: Props) {
 
         <div className="mt-6 grid gap-5 lg:grid-cols-[1fr_1fr]">
           <div>
-            <h3 className="text-[0.68rem] font-bold uppercase tracking-[0.16em] text-teal-deep">
+            <h3 className="text-[0.68rem] font-bold uppercase tracking-[0.16em] text-ocean">
               {dict.specialDays}
             </h3>
             {month.hariIstimewa?.length ? (
@@ -281,7 +281,7 @@ export function HijriCalendar({ data, dict }: Props) {
           </div>
 
           <div>
-            <h3 className="text-[0.68rem] font-bold uppercase tracking-[0.16em] text-teal-deep">
+            <h3 className="text-[0.68rem] font-bold uppercase tracking-[0.16em] text-ocean">
               {dict.converter}
             </h3>
 
@@ -372,7 +372,7 @@ export function HijriCalendar({ data, dict }: Props) {
             >
               {converter ? (
                 <>
-                  <p className="text-[0.68rem] font-bold uppercase tracking-[0.12em] text-teal-deep">
+                  <p className="text-[0.68rem] font-bold uppercase tracking-[0.12em] text-ocean">
                     {converter.title}
                   </p>
                   <p className="mt-1 text-sm font-bold text-ink">
@@ -392,7 +392,7 @@ export function HijriCalendar({ data, dict }: Props) {
             href={data.source}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-semibold text-teal-deep underline"
+            className="font-semibold text-ocean underline"
           >
             khgt.muhammadiyah.or.id
           </a>{" "}

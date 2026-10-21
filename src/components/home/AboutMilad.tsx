@@ -1,4 +1,4 @@
-import { Reveal } from "@/components/animation/Reveal";
+﻿import { Reveal } from "@/components/animation/Reveal";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { SourceNote } from "@/components/shared/SourceNote";
 import { BrandLogo } from "@/components/theme/BrandLogo";
@@ -22,7 +22,7 @@ export function AboutMilad({ dict }: { dict: Dictionary }) {
                 height={512}
                 className="h-12 w-12 object-contain"
               />
-              <span className="text-[0.6rem] font-bold uppercase tracking-[0.18em] text-teal-deep">
+              <span className="text-[0.6rem] font-bold uppercase tracking-[0.18em] text-ocean">
                 {dict.about.eyebrow}
               </span>
             </div>
@@ -72,7 +72,7 @@ export function AboutMilad({ dict }: { dict: Dictionary }) {
                   key={fact.label}
                   className="grid gap-1 border-b border-line py-3 last:border-b-0 sm:grid-cols-[9rem_1fr] sm:items-baseline"
                 >
-                  <dt className="text-[0.6rem] font-bold uppercase tracking-[0.16em] text-teal-deep">
+                  <dt className="text-[0.6rem] font-bold uppercase tracking-[0.16em] text-ocean">
                     {fact.label}
                   </dt>
                   <dd className="font-serif text-base font-bold text-ink">
