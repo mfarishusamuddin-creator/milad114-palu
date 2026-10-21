@@ -1025,12 +1025,6 @@
   height: 100%;
   max-height: 100%;
   object-fit: contain;
-  opacity: 0;
-  transition: opacity 500ms ease;
-}
-
-.motion-intro__video.is-ready {
-  opacity: 1;
 }
 
 .motion-intro__static {
@@ -1043,6 +1037,12 @@
   justify-content: center;
   gap: 18px;
   padding: 24px;
+  transition: opacity 240ms ease;
+}
+
+.motion-intro__static.is-fading {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .motion-intro__mark {

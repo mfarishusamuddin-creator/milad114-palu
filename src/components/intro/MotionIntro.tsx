@@ -5,6 +5,8 @@ import { BrandLogo } from "@/components/theme/BrandLogo";
 import { useTheme } from "@/components/theme/useTheme";
 import type { Dictionary } from "@/i18n/types";
 
+const INTRO_PLAYBACK_RATE = 1.2;
+
 export function MotionIntro({ dict }: { dict: Dictionary }) {
   const theme = useTheme();
   const [visible, setVisible] = useState(true);
@@ -60,6 +62,9 @@ export function MotionIntro({ dict }: { dict: Dictionary }) {
     const video = videoRef.current;
     if (!video) return;
 
+    video.defaultPlaybackRate = INTRO_PLAYBACK_RATE;
+    video.playbackRate = INTRO_PLAYBACK_RATE;
+
     const playPromise = video.play();
     if (playPromise) playPromise.catch(() => undefined);
 
@@ -82,23 +87,23 @@ export function MotionIntro({ dict }: { dict: Dictionary }) {
       aria-label={dict.hero.edition}
     >
       <div className="motion-intro__stage">
-        {!videoReady ? (
-          <div className="motion-intro__static">
-            <BrandLogo
-              variant="logogram"
-              alt={dict.hero.plate.logoAlt}
-              width={512}
-              height={512}
-              className="motion-intro__mark"
-            />
-            <span className="motion-intro__loading">{dict.hero.edition}</span>
-          </div>
-        ) : null}
+        <div
+          className={`motion-intro__static${videoReady ? " is-fading" : ""}`}
+        >
+          <BrandLogo
+            variant="logogram"
+            alt={dict.hero.plate.logoAlt}
+            width={512}
+            height={512}
+            className="motion-intro__mark"
+          />
+          <span className="motion-intro__loading">{dict.hero.edition}</span>
+        </div>
 
         {playing ? (
           <video
             ref={videoRef}
-            className={`motion-intro__video${videoReady ? " is-ready" : ""}`}
+            className="motion-intro__video"
             src={source}
             poster={poster}
             autoPlay
@@ -107,7 +112,14 @@ export function MotionIntro({ dict }: { dict: Dictionary }) {
             preload="auto"
             onEnded={finish}
             onError={finish}
+            onLoadedData={() => setVideoReady(true)}
             onPlaying={() => setVideoReady(true)}
+            onLoadedMetadata={(event) => {
+              const video = event.currentTarget;
+              if (video.playbackRate !== INTRO_PLAYBACK_RATE) {
+                video.playbackRate = INTRO_PLAYBACK_RATE;
+              }
+            }}
             aria-hidden="true"
           />
         ) : null}
