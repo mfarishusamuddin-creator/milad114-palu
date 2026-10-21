@@ -350,6 +350,45 @@
     color: rgba(255, 255, 255, 0.7);
   }
 
+  .countdown-zone-select {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.78);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 0.25rem;
+    padding: 0.32rem 0.55rem;
+    max-width: 9.5rem;
+    cursor: pointer;
+    transition: border-color 160ms ease;
+  }
+
+  .countdown-zone-select:hover {
+    border-color: rgba(255, 255, 255, 0.34);
+  }
+
+  .countdown-zone-select:focus-visible {
+    outline: 2px solid var(--color-gold-light);
+    outline-offset: 2px;
+  }
+
+  .countdown-zone-select option {
+    color: var(--color-ink);
+    background: var(--color-surface);
+  }
+
+  .countdown-target-label {
+    display: inline-block;
+    margin-inline-end: 0.5rem;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+  }
+
   .source-note {
     border-left: 3px solid var(--color-gold);
     padding-left: 0.85rem;

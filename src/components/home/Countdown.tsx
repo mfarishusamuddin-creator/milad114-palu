@@ -1,7 +1,9 @@
 ﻿"use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState, type ChangeEvent } from "react";
+import Counter from "@/components/shared/Counter";
 import { SITE } from "@/data/site";
+import { DEFAULT_TIMEZONE, TIMEZONES } from "@/data/timezones";
 import type { Dictionary } from "@/i18n/types";
 
 type PhaseKey = "before" | "during" | "milad" | "done";
@@ -39,12 +41,10 @@ function getRemaining(target: number, now: number): Remaining {
   };
 }
 
-function pad(value: number): string {
-  return String(value).padStart(2, "0");
-}
-
 export function Countdown({ dict }: { dict: Dictionary }) {
   const [now, setNow] = useState<number | null>(null);
+  const [zone, setZone] = useState<string>(DEFAULT_TIMEZONE);
+  const [replayKey, setReplayKey] = useState(0);
 
   useEffect(() => {
     const tick = () => setNow(Date.now());
@@ -58,9 +58,7 @@ export function Countdown({ dict }: { dict: Dictionary }) {
 
   const phase = now === null ? null : getPhase(now);
   const remaining =
-    now === null || phase === null
-      ? null
-      : getRemaining(phase.target, now);
+    now === null || phase === null ? null : getRemaining(phase.target, now);
 
   const values = remaining ?? {
     days: 0,
@@ -90,23 +88,64 @@ export function Countdown({ dict }: { dict: Dictionary }) {
       }[phase.key]
     : { label: dict.countdown.beforeLabel, note: dict.countdown.beforeNote };
 
+  const activeZone = useMemo(
+    () => TIMEZONES.find((option) => option.value === zone) ?? TIMEZONES[0],
+    [zone]
+  );
+
+  const targetFormatter = useMemo(
+    () =>
+      new Intl.DateTimeFormat(dict.locale, {
+        dateStyle: "medium",
+        timeStyle: "short",
+        timeZone: zone,
+      }),
+    [dict.locale, zone]
+  );
+
+  const targetTime = phase
+    ? `${targetFormatter.format(new Date(phase.target))} · ${activeZone.abbr}`
+    : "—";
+
+  const handleZoneChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    const next = event.target.value;
+    if (next === zone) return;
+    setZone(next);
+    setReplayKey((key) => key + 1);
+  };
+
   return (
     <div className="countdown-shell p-4 sm:p-5">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <p className="text-[0.68rem] font-bold uppercase tracking-[0.16em] text-gold-light">
           {labels.label}
         </p>
-        <span className="rounded-sm border border-white/15 bg-white/8 px-2.5 py-1 text-[0.6rem] font-bold uppercase tracking-[0.14em] text-white/70">
-          {dict.countdown.wita}
-        </span>
+        <select
+          className="countdown-zone-select"
+          value={zone}
+          onChange={handleZoneChange}
+          aria-label={dict.countdown.timezone}
+          title={activeZone.label}
+        >
+          {TIMEZONES.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.abbr}
+            </option>
+          ))}
+        </select>
       </div>
 
-      <div className="mt-4 grid grid-cols-4 gap-2 sm:gap-3">
-        <TimeCell value={pad(values.days)} label={dict.countdown.days} />
-        <TimeCell value={pad(values.hours)} label={dict.countdown.hours} />
-        <TimeCell value={pad(values.minutes)} label={dict.countdown.minutes} />
-        <TimeCell value={pad(values.seconds)} label={dict.countdown.seconds} />
+      <div className="mt-4 grid grid-cols-4 gap-2 sm:gap-3" key={`${zone}-${replayKey}`}>
+        <TimeCell value={values.days} locale={dict.locale} label={dict.countdown.days} />
+        <TimeCell value={values.hours} locale={dict.locale} label={dict.countdown.hours} />
+        <TimeCell value={values.minutes} locale={dict.locale} label={dict.countdown.minutes} />
+        <TimeCell value={values.seconds} locale={dict.locale} label={dict.countdown.seconds} />
       </div>
+
+      <p className="countdown-target mt-3 text-xs text-white/60">
+        <span className="countdown-target-label">{dict.countdown.targetTime}</span>
+        <span>{targetTime}</span>
+      </p>
 
       <p className="mt-3 text-xs text-white/60">{labels.note}</p>
 
@@ -119,10 +158,33 @@ export function Countdown({ dict }: { dict: Dictionary }) {
   );
 }
 
-function TimeCell({ value, label }: { value: string; label: string }) {
+function TimeCell({
+  value,
+  locale,
+  label,
+}: {
+  value: number;
+  locale: string;
+  label: string;
+}) {
   return (
     <div className="countdown-cell" aria-hidden="true">
-      <span className="countdown-value">{value}</span>
+      <span className="countdown-value">
+        <Counter
+          value={value}
+          locale={locale}
+          minDigits={2}
+          fontSize="inherit"
+          fontWeight="inherit"
+          textColor="inherit"
+          duration={0.55}
+          bounce={0.18}
+          stagger={0.03}
+          motionBlur
+          intro
+          tabular
+        />
+      </span>
       <span className="countdown-label">{label}</span>
     </div>
   );

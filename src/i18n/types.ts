@@ -90,7 +90,8 @@ export type Dictionary = {
     duringNote: string;
     miladNote: string;
     doneNote: string;
-    wita: string;
+    timezone: string;
+    targetTime: string;
     days: string;
     hours: string;
     minutes: string;
