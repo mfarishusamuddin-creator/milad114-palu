@@ -21,7 +21,7 @@ Seluruh konten berada dalam satu halaman panjang per bahasa:
 | `#layanan` | Kalender KHGT dan Kabar |
 | `#kabar` | Kabar resmi Muhammadiyah |
 
-Rute lama `/sejarah` dan `/layanan` sudah dihapus. QR fisik sekarang menjadi gerbang bahasa: `/`, `/en`, `/ar`.
+Rute lama `/sejarah` dan `/layanan` sudah dihapus. Rute `/tentang`, `/en/tentang`, dan `/ar/tentang` adalah halaman Tentang situs: semua sumber, lisensi, dan hak cipta terpusat di sini — tautan sumber tidak lagi ditampilkan di header, section, atau footer. QR fisik menjadi gerbang bahasa: `/`, `/en`, `/ar`.
 
 ## Fitur
 
@@ -29,7 +29,10 @@ Rute lama `/sejarah` dan `/layanan` sudah dihapus. QR fisik sekarang menjadi ger
 - Bahasa Indonesia, Inggris, dan Arab dengan layout RTL.
 - Animated content (GSAP/ScrollTrigger), sekali per viewport, dari bawah; reduced motion langsung menampilkan konten.
 - Motion logo intro (horizontal/vertical, terang/gelap) — tampil setiap refresh; reduced motion/saveData otomatis dilewati.
-- Peta dunia Natural Earth yang menyorot 29 Pimpinan Cabang Istimewa.
+- Peta dunia Natural Earth yang menyorot 29 Pimpinan Cabang Istimewa: dot interaktif dengan label nama negara (hover/fokus/tap), Indonesia ditandai sebagai markas Pimpinan Pusat, tanpa nama kota.
+- CountUp (ReactBits): angka 114 di stempel hero dan 29 di section peta dihidupkan saat masuk viewport.
+- Header CardNav (ReactBits, adaptasi): logo + nama situs satu baris, toggle tema, menu kartu tiga jalur, CTA, dan pemilih bahasa di dalam panel; tautan “Tentang” di ujung menu dan footer.
+- Halaman Tentang per bahasa (`/tentang`, `/en/tentang`, `/ar/tentang`): sumber informasi, aset & lisensi, catatan data, dan hak cipta — satu-satunya tempat daftar sumber.
 - Kalender KHGT dengan konverter Masehi–Hijriah.
 - Kabar live dari kanal resmi Muhammadiyah, cache satu jam, fallback snapshot.
 - Sejarah dua jalur dengan timeline Aceternity (desktop) dan accordion (mobile).
@@ -98,7 +101,7 @@ Mulai dari bagian:
 - **Kabar:** WP REST API `https://muhammadiyah.or.id/wp-json/wp/v2/posts`, cache satu jam, fallback snapshot.
 - **Kalender:** snapshot KHGT `https://khgt.muhammadiyah.or.id/`, disinkronkan dengan `npm run sync:khgt`.
 - **Sejarah:** halaman resmi `muhammadiyah.or.id` dan artikel resmi Milad 114.
-- **Peta:** Natural Earth melalui `world-atlas`; daftar 29 PCIM dari data yang diberikan.
+- **Peta:** Natural Earth melalui `world-atlas`; daftar 29 PCIM divalidasi terhadap halaman resmi Cabang Istimewa Muhammadiyah.
 - **Logo/identitas:** aset resmi Tanwir dan Milad ke-114, digunakan apa adanya.
 
 ## Referensi dan lisensi

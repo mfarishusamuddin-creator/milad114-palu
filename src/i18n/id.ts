@@ -47,7 +47,6 @@ export const id: Dictionary = {
     tagline: "Bersama Satukan Bangsa",
   },
   common: {
-    source: "Sumber",
     read: "Baca",
     open: "Buka",
     verified: "Terverifikasi",
@@ -71,12 +70,38 @@ export const id: Dictionary = {
     themeLight: "Mode terang",
     themeDark: "Mode gelap",
     themeToggle: "Ubah tema",
+    brand: "Milad 114 Muhammadiyah",
+    home: "Beranda",
+    menuAria: "Navigasi utama",
+    about: "Tentang",
+    cards: [
+      {
+        label: "Sejarah",
+        description: "Dua jalur satu gerakan: Muhammadiyah dan KH Ahmad Dahlan.",
+        links: [
+          { label: "Dua jalur sejarah", anchor: "#sejarah" },
+          { label: "Agenda Tanwir & Milad", anchor: "#agenda" },
+        ],
+      },
+      {
+        label: "Layanan",
+        description: "Kalender KHGT dan kabar resmi Muhammadiyah.",
+        links: [
+          { label: "Kalender KHGT", anchor: "#layanan" },
+          { label: "Kabar Muhammadiyah", anchor: "#kabar" },
+        ],
+      },
+      {
+        label: "Peta",
+        description: "29 Pimpinan Cabang Istimewa di berbagai negara.",
+        links: [
+          { label: "Persebaran 29 PCIM", anchor: "#peta" },
+          { label: "Tentang situs", about: true },
+        ],
+      },
+    ],
   },
   hero: {
-    edition: "Edisi 114 · Palu 2026",
-    eventLine: "Tanwir & Milad ke-114 Muhammadiyah",
-    dateLine: "19–21 Nov 2026 · 10–12 Jumadilakhir 1448 H",
-    eyebrow: "Tanwir & Milad ke-114 Muhammadiyah",
     titleLine1: "Bersama",
     titleLine2: "Satukan Bangsa",
     subtitle: "Tanwir dan Milad ke-114 Muhammadiyah",
@@ -87,19 +112,6 @@ export const id: Dictionary = {
     share: "Bagikan",
     shareText:
       "Tanwir dan Milad ke-114 Muhammadiyah — Bersama Satukan Bangsa. Palu, 19–21 November 2026.",
-    languageLine: "Baca dalam",
-    plate: {
-      identity: "Identitas resmi",
-      city: "Palu 2026",
-      logoAlt:
-        "Logo Tanwir dan Milad ke-114 Muhammadiyah — Bersama Satukan Bangsa, Palu 19–21 November 2026",
-      caption: "Logo resmi · Tanwir & Milad ke-114",
-      statLeft: "Kauman 1912",
-      statCenter: "Palu 2026",
-      statRight: "114 tahun",
-      stampTop: "114",
-      stampBottom: "tahun",
-    },
   },
   countdown: {
     beforeLabel: "Menuju Tanwir & Milad",
@@ -112,10 +124,29 @@ export const id: Dictionary = {
     doneNote: "Terima kasih telah menjelajah",
     timezone: "Zona waktu",
     targetTime: "Waktu target",
+    modeToggle:
+      "Ganti mode hitungan: Tanwir & Milad atau Ramadhan.",
     days: "Hari",
     hours: "Jam",
     minutes: "Menit",
     seconds: "Detik",
+    ramadhan: {
+      beforeLabel: "Menuju Ramadhan",
+      beforeNote:
+        "Awal Ramadhan 1448 H: 8 Februari 2027. Hitungan menuju maghrib 7 Februari 2027, 18.00 WITA (perkiraan maghrib; tanggal mengikuti KHGT).",
+      farewell1448Label: "Menuju perpisahan Ramadhan",
+      farewell1448Note:
+        "Awal Syawal 1448 H: 9 Maret 2027. Hitungan menuju maghrib 8 Maret 2027, 18.00 WITA (perkiraan maghrib; tanggal mengikuti KHGT).",
+      before1449Label: "Menuju Ramadhan 1449",
+      before1449Note:
+        "Awal Ramadhan 1449 H: 28 Januari 2028. Hitungan menuju maghrib 27 Januari 2028, 18.00 WITA (perkiraan maghrib; tanggal mengikuti KHGT).",
+      farewell1449Label: "Menuju perpisahan Ramadhan 1449",
+      farewell1449Note:
+        "Awal Syawal 1449 H: 26 Februari 2028. Hitungan menuju maghrib 25 Februari 2028, 18.00 WITA (perkiraan maghrib; tanggal mengikuti KHGT).",
+      doneLabel: "Ramadhan 1449 telah berlalu",
+      doneNote:
+        "Ramadhan 1448 dan 1449 telah berlalu. Tanggal mengikuti KHGT.",
+    },
   },
   about: {
     eyebrow: "Makna Logo",
@@ -135,13 +166,10 @@ export const id: Dictionary = {
     ],
     quote:
       "Kelor dipilih karena kuat, sederhana, dan bermanfaat — ia tumbuh di Palu dan menjadi simbol ketangguhan.",
-    link: "Baca makna logo",
   },
   agenda: {
     eyebrow: "Agenda",
     title: "Dari Tanwir Palu menuju Muktamar Medan",
-    description:
-      "Tanggal acara, tanggal historis, dan arah berikutnya. Jadwal rinci mengikuti Edaran PP Muhammadiyah No. 19/EDR/I.0/B/2026.",
     items: [
       {
         date: "19–21 Nov 2026",
@@ -165,24 +193,14 @@ export const id: Dictionary = {
         tag: "2027",
       },
     ],
-    pillars: [
-      "Resiliensi Kelembagaan",
-      "Resiliensi AUM",
-      "Resiliensi Kebinekaan",
-    ],
-    button: "Buka Edaran",
   },
   history: {
     eyebrow: "Sejarah",
     title: "Dua jalur, satu gerakan",
     description:
-      "Baca perjalanan Persyarikatan dari dua sisi: kronologi Muhammadiyah dan perjalanan hidup pendirinya, KH Ahmad Dahlan — lengkap dengan kepemimpinan dan amal usaha dalam angka.",
-    source: "Sumber",
-    ctaEyebrow: "Lanjut ke manfaat",
-    ctaTitle: "Sejarah ini hidup dalam layanan.",
-    ctaDescription:
-      "Buka kalender KHGT dan kabar resmi Muhammadiyah di bagian Layanan.",
-    ctaButton: "Buka Layanan",
+      "Baca perjalanan Persyarikatan dari dua sisi: kronologi Muhammadiyah dan perjalanan hidup pendirinya, KH Ahmad Dahlan ? lengkap dengan kepemimpinan dan amal usaha dalam angka.",
+    tablesShow: "Tampilkan tabel",
+    tablesHide: "Sembunyikan tabel",
     content: historyId,
   },
   services: {
@@ -198,9 +216,8 @@ export const id: Dictionary = {
     kabarTitle: "Kabar resmi Muhammadiyah",
     kabarDescription:
       "Ditarik dari kanal resmi Muhammadiyah, dengan cache satu jam dan fallback snapshot. Artikel lengkap tetap di sumber asli.",
-    sourceTitle: "Catatan sumber",
-    sourceDescription:
-      "Kalender bersumber dari KHGT; kabar dari kanal resmi Muhammadiyah. Jika data resmi tidak dapat dimuat, halaman menampilkan snapshot terakhir dan tautan ke sumber asli.",
+    closingLogoAlt:
+      "Logo Tanwir dan Milad ke-114 Muhammadiyah — Bersama Satukan Bangsa",
   },
   calendar: {
     locale: "id-ID",
@@ -220,7 +237,6 @@ export const id: Dictionary = {
     hijriButton: "Cari Masehi",
     placeholder: "Pilih tanggal untuk melihat padanan Masehi–Hijriah.",
     notFound: "Tanggal tidak ditemukan dalam snapshot KHGT 2026.",
-    source: "Sumber",
     snapshot: "snapshot",
     disclaimer: "Kalender ini bukan pengganti kalender resmi KHGT.",
     weekdays: ["Ahd", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab"],
@@ -242,8 +258,6 @@ export const id: Dictionary = {
     description:
       "Kabar terbaru dari kanal resmi Muhammadiyah. Ringkasan singkat, tautan tetap ke sumber asli.",
     all: "Lihat semua kabar",
-    source: "Sumber",
-    sourceNote: "data diperbarui otomatis dengan cache satu jam.",
     originalNote:
       "Judul dan ringkasan berasal dari sumber resmi; teks asli berbahasa Indonesia.",
     empty:
@@ -258,38 +272,51 @@ export const id: Dictionary = {
     eyebrow: "Internasionalisasi",
     title: "Persebaran Muhammadiyah",
     description:
-      "Muhammadiyah tidak hanya tumbuh di Indonesia. 29 Pimpinan Cabang Istimewa tersebar di Afrika, Asia, Eropa, Amerika, dan Oseania.",
-    count: "29 Pimpinan Cabang Istimewa",
-    note: "Peta dunia memakai data Natural Earth. Titik menandai kota pusat PCIM; batas negara hanya untuk orientasi.",
-    source: "Sumber",
-    aria: "Peta dunia yang menyorot 29 negara PCIM Muhammadiyah.",
-    countryList: "Negara PCIM",
-    cityLabel: "Kota",
-    regions: {
-      africa: "Afrika",
-      asia: "Asia",
-      europe: "Eropa",
-      americas: "Amerika",
-      oceania: "Oseania",
-    },
+      "Muhammadiyah tidak hanya tumbuh di Indonesia. 29 Pimpinan Cabang Istimewa tersebar di Afrika, Asia, Eropa, Amerika, dan Oseania — dan Indonesia adalah markas besar gerakan.",
+    note: "Titik menandai negara PCIM; batas negara hanya untuk orientasi. Ketuk atau arahkan kursor ke titik untuk nama negaranya.",
+    aria: "Peta dunia yang menyorot 29 negara PCIM Muhammadiyah dan Indonesia sebagai markas Pimpinan Pusat.",
+    countries: "Negara PCIM",
+    hq: "Indonesia — Pimpinan Pusat Muhammadiyah",
+    info: "Tentang peta dan sumber",
   },
   footer: {
     tagline:
       "Situs independen Tanwir dan Milad ke-114 Muhammadiyah: dua jalur sejarah, kalender KHGT, kabar resmi, dan peta PCIM dunia.",
     explore: "Jelajahi",
-    sources: "Sumber resmi",
-    event: "Milad ke-114",
-    eventLines: [
-      "Palu, Sulawesi Tengah",
-      "19–21 November 2026",
-      "10–12 Jumadilakhir 1448 H",
+  },
+  aboutPage: {
+    eyebrow: "Halaman Tentang",
+    title: "Tentang situs ini",
+    intro:
+      "Milad 114 adalah karya digital independen untuk persiapan Tanwir dan Milad ke-114 Muhammadiyah di Palu: dua jalur sejarah, agenda, peta dunia, dan layanan resminya.",
+    disclaimer:
+      "Bukan situs resmi Muhammadiyah — tautan resmi di bawah menjadi rujukan utama setiap materi.",
+    sourcesTitle: "Sumber informasi",
+    sources: [
+      { label: "Muhammadiyah.or.id", link: "muhammadiyah" },
+      { label: "Kalender Hijriah Global Tunggal (KHGT)", link: "khgt" },
+      { label: "Edaran Tanwir dan Milad ke-114", link: "edaran" },
+      { label: "Profil Persyarikatan", link: "profil" },
+      { label: "Sejarah singkat Muhammadiyah", link: "sejarahSingkat" },
+      { label: "Sejarah berdirinya Persyarikatan", link: "sejarahBerdiri" },
+      { label: "Cabang Istimewa Muhammadiyah (PCIM)", link: "pcim" },
+      { label: "Logo Milad ke-114 Muhammadiyah", link: "logo" },
+      { label: "Penjelasan makna logo", link: "maknaLogo" },
+      { label: "Program Muhammadiyah 25 tahun", link: "program25" },
+      { label: "Forum dan persiapan Muktamar", link: "muktamar2027" },
+      { label: "Tanam 114 pohon kelor di Palu", link: "tanamKelor" },
     ],
-    credit:
-      "Logo dan identitas visual milik PP Muhammadiyah. Font El Messiri dan Familjen Grotesk berlisensi OFL.",
-    copyright: "© 2026 Milad 114 — karya independen untuk lomba website.",
-    dataNote:
-      "Data kalender: KHGT. Data kabar: muhammadiyah.or.id. Diverifikasi ulang sebelum publikasi.",
-    language: "Bahasa",
+    assetsTitle: "Aset dan identitas",
+    assets: [
+      "Logo dan identitas visual adalah milik Pimpinan Pusat Muhammadiyah.",
+      "Video intro, poster, gambar berbagi, dan pola supergrafik diturunkan dari materi resmi edisi ini; situs adalah karya independen.",
+      "Font: El Messiri dan Familjen Grotesk — SIL Open Font License 1.1 (berkas lisensi di folder /licenses).",
+    ],
+    copyright: "© 2026 Faris Husamuddin. Hak cipta dilindungi.",
+    researchTitle: "Dokumen riset",
+    research: "Narasi sejarah dan filosofi pada situs ini dipersiapkan dari fakta dokumen riset internal developer.",
+    dataNoteTitle: "Catatan data",
+    dataNote: "Halaman kalender, kabar, dan peta memakai data dokumen 2026 yang dapat berubah; data selalu merujuk pada sumber resmi terbitan.",
   },
   notFound: {
     title: "Halaman ini belum tersedia.",

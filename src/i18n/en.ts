@@ -58,7 +58,6 @@ export const en: Dictionary = {
     tagline: "Together, Unite the Nation",
   },
   common: {
-    source: "Source",
     read: "Read",
     open: "Open",
     verified: "Verified",
@@ -82,12 +81,38 @@ export const en: Dictionary = {
     themeLight: "Light mode",
     themeDark: "Dark mode",
     themeToggle: "Change theme",
+    brand: "Milad 114 Muhammadiyah",
+    home: "Home",
+    menuAria: "Primary navigation",
+    about: "About",
+    cards: [
+      {
+        label: "History",
+        description: "Two tracks, one movement: Muhammadiyah and KH Ahmad Dahlan.",
+        links: [
+          { label: "Two historical tracks", anchor: "#sejarah" },
+          { label: "Tanwir & Milad agenda", anchor: "#agenda" },
+        ],
+      },
+      {
+        label: "Services",
+        description: "KHGT calendar and official Muhammadiyah news.",
+        links: [
+          { label: "KHGT calendar", anchor: "#layanan" },
+          { label: "Muhammadiyah news", anchor: "#kabar" },
+        ],
+      },
+      {
+        label: "Map",
+        description: "29 Special Branch Leaderships across nations.",
+        links: [
+          { label: "29 PCIM worldwide", anchor: "#peta" },
+          { label: "About this site", about: true },
+        ],
+      },
+    ],
   },
   hero: {
-    edition: "Edition 114 · Palu 2026",
-    eventLine: "Tanwir & the 114th Milad of Muhammadiyah",
-    dateLine: "19–21 Nov 2026 · 10–12 Jumada al-Thani 1448 AH",
-    eyebrow: "Tanwir & the 114th Milad of Muhammadiyah",
     titleLine1: "Together",
     titleLine2: "Unite the Nation",
     subtitle: "Tanwir and the 114th Milad of Muhammadiyah",
@@ -98,19 +123,6 @@ export const en: Dictionary = {
     share: "Share",
     shareText:
       "Tanwir and the 114th Milad of Muhammadiyah — Together, Unite the Nation. Palu, 19–21 November 2026.",
-    languageLine: "Read in",
-    plate: {
-      identity: "Official identity",
-      city: "Palu 2026",
-      logoAlt:
-        "Official logo of Tanwir and the 114th Milad of Muhammadiyah — Together, Unite the Nation, Palu 19–21 November 2026",
-      caption: "Official logo · Tanwir & the 114th Milad",
-      statLeft: "Kauman 1912",
-      statCenter: "Palu 2026",
-      statRight: "114 years",
-      stampTop: "114",
-      stampBottom: "years",
-    },
   },
   countdown: {
     beforeLabel: "Towards Tanwir & the Milad",
@@ -123,10 +135,28 @@ export const en: Dictionary = {
     doneNote: "Thank you for exploring",
     timezone: "Time zone",
     targetTime: "Target time",
+    modeToggle: "Switch the countdown mode: Tanwir & the Milad, or Ramadan.",
     days: "Days",
     hours: "Hours",
     minutes: "Minutes",
     seconds: "Seconds",
+    ramadhan: {
+      beforeLabel: "Towards Ramadan",
+      beforeNote:
+        "1 Ramadan 1448 AH: 8 February 2027. Counting to sunset on 7 February 2027, 18:00 WITA (approximate sunset; dates follow KHGT).",
+      farewell1448Label: "Towards the Ramadan farewell",
+      farewell1448Note:
+        "1 Shawwal 1448 AH: 9 March 2027. Counting to sunset on 8 March 2027, 18:00 WITA (approximate sunset; dates follow KHGT).",
+      before1449Label: "Towards Ramadan 1449",
+      before1449Note:
+        "1 Ramadan 1449 AH: 28 January 2028. Counting to sunset on 27 January 2028, 18:00 WITA (approximate sunset; dates follow KHGT).",
+      farewell1449Label: "Towards the Ramadan 1449 farewell",
+      farewell1449Note:
+        "1 Shawwal 1449 AH: 26 February 2028. Counting to sunset on 25 February 2028, 18:00 WITA (approximate sunset; dates follow KHGT).",
+      doneLabel: "Ramadan 1449 has passed",
+      doneNote:
+        "Ramadan 1448 and 1449 have passed. Dates follow KHGT.",
+    },
   },
   about: {
     eyebrow: "Logo Meaning",
@@ -146,13 +176,10 @@ export const en: Dictionary = {
     ],
     quote:
       "Moringa was chosen because it is strong, simple, and useful — it grows in Palu and stands for resilience.",
-    link: "Read the logo meaning",
   },
   agenda: {
     eyebrow: "Agenda",
     title: "From Tanwir Palu to the Medan Muktamar",
-    description:
-      "The event dates, the historic date, and the next direction. Detailed schedules follow PP Muhammadiyah Circular No. 19/EDR/I.0/B/2026.",
     items: [
       {
         date: "19–21 Nov 2026",
@@ -176,24 +203,14 @@ export const en: Dictionary = {
         tag: "2027",
       },
     ],
-    pillars: [
-      "Institutional resilience",
-      "AUM resilience",
-      "Pluralism resilience",
-    ],
-    button: "Open the Circular",
   },
   history: {
     eyebrow: "History",
     title: "Two tracks, one movement",
     description:
       "Read the movement from two sides: the chronology of Muhammadiyah and the life journey of its founder, KH Ahmad Dahlan — complete with leadership eras and charitable works in numbers.",
-    source: "Source",
-    ctaEyebrow: "Onward to benefit",
-    ctaTitle: "This history lives on through services.",
-    ctaDescription:
-      "Open the KHGT calendar and official Muhammadiyah news in the Services section.",
-    ctaButton: "Open Services",
+    tablesShow: "Show tables",
+    tablesHide: "Hide tables",
     content: historyEn,
   },
   services: {
@@ -206,12 +223,11 @@ export const en: Dictionary = {
       "Calendar data is synchronised from KHGT. Month views, special days, and the Gregorian–Hijri converter use an official snapshot, not a generic library.",
     highlightsTitle: "Milad Markers",
     highlightsLink: "Open KHGT",
-    kabarTitle: "Official Muhammadiyah News",
+    kabarTitle: "Official Muhammadiyah news",
     kabarDescription:
       "Pulled from Muhammadiyah's official channel, cached for one hour, with a snapshot fallback. Full articles remain at the original source.",
-    sourceTitle: "Source notes",
-    sourceDescription:
-      "The calendar comes from KHGT; news comes from Muhammadiyah's official channel. If official data cannot load, the page shows the latest snapshot and a link to the source.",
+    closingLogoAlt:
+      "Logo of Tanwir and the 114th Milad of Muhammadiyah — Together, Unite the Nation",
   },
   calendar: {
     locale: "en-GB",
@@ -231,7 +247,6 @@ export const en: Dictionary = {
     hijriButton: "Find Gregorian",
     placeholder: "Choose a date to see its Gregorian–Hijri equivalent.",
     notFound: "Date not found in the 2026 KHGT snapshot.",
-    source: "Source",
     snapshot: "snapshot",
     disclaimer: "This calendar is not a replacement for the official KHGT calendar.",
     weekdays: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
@@ -253,8 +268,6 @@ export const en: Dictionary = {
     description:
       "The latest news from Muhammadiyah's official channel. Brief summaries, with links to the original source.",
     all: "View all news",
-    source: "Source",
-    sourceNote: "data refreshes automatically with a one-hour cache.",
     originalNote:
       "Titles and summaries come from the official source; the original text is in Indonesian.",
     empty:
@@ -269,38 +282,53 @@ export const en: Dictionary = {
     eyebrow: "Internationalisation",
     title: "Muhammadiyah Around the World",
     description:
-      "Muhammadiyah did not grow only in Indonesia. 29 Special Branch Leaderships are spread across Africa, Asia, Europe, the Americas, and Oceania.",
-    count: "29 Special Branch Leaderships",
-    note: "The world map uses Natural Earth data. Dots mark PCIM hub cities; country borders are for orientation only.",
-    source: "Source",
-    aria: "World map highlighting the 29 countries of Muhammadiyah PCIM.",
-    countryList: "PCIM countries",
-    cityLabel: "City",
-    regions: {
-      africa: "Africa",
-      asia: "Asia",
-      europe: "Europe",
-      americas: "Americas",
-      oceania: "Oceania",
-    },
+      "Muhammadiyah did not grow only in Indonesia. 29 Special Branch Leaderships are spread across Africa, Asia, Europe, the Americas, and Oceania — and Indonesia is the headquarters of the movement.",
+    note: "Dots mark PCIM countries; country borders are for orientation only. Hover, tap, or focus a dot to see the country name.",
+    aria: "World map highlighting the 29 PCIM countries of Muhammadiyah and Indonesia, the headquarters of the Central Leadership.",
+    countries: "PCIM countries",
+    hq: "Indonesia — Muhammadiyah Central Leadership",
+    info: "About the map and sources",
   },
   footer: {
     tagline:
       "An independent site for the Tanwir and 114th Milad of Muhammadiyah: two historical tracks, the KHGT calendar, official news, and a map of PCIM worldwide.",
     explore: "Explore",
-    sources: "Official sources",
-    event: "114th Milad",
-    eventLines: [
-      "Palu, Central Sulawesi",
-      "19–21 November 2026",
-      "10–12 Jumada al-Thani 1448 AH",
+  },
+  aboutPage: {
+    eyebrow: "About page",
+    title: "About this site",
+    intro:
+      "Milad 114 is an independent digital work for the Tanwir and 114th Milad of Muhammadiyah in Palu: two historical tracks, the agenda, the world map, and its official services.",
+    disclaimer:
+      "Not an official Muhammadiyah website — the official links below are the primary reference for every piece of content.",
+    sourcesTitle: "Information sources",
+    sources: [
+      { label: "Muhammadiyah.or.id", link: "muhammadiyah" },
+      { label: "Global Unified Hijri Calendar (KHGT)", link: "khgt" },
+      { label: "Tanwir & Milad 114 circular letter", link: "edaran" },
+      { label: "Organisation profile", link: "profil" },
+      { label: "A brief history of Muhammadiyah", link: "sejarahSingkat" },
+      { label: "How Muhammadiyah was founded", link: "sejarahBerdiri" },
+      { label: "Special Branch Leadership (PCIM)", link: "pcim" },
+      { label: "Logo of the 114th Milad", link: "logo" },
+      { label: "Meaning behind the logo", link: "maknaLogo" },
+      { label: "Muhammadiyah 25-year programme", link: "program25" },
+      { label: "Forum and Muktamar preparation", link: "muktamar2027" },
+      { label: "Planting 114 moringa trees in Palu", link: "tanamKelor" },
     ],
-    credit:
-      "Logo and visual identity belong to PP Muhammadiyah. El Messiri and Familjen Grotesk are licensed under the OFL.",
-    copyright: "© 2026 Milad 114 — an independent website competition entry.",
+    assetsTitle: "Assets and identity",
+    assets: [
+      "The logo and visual identity belong to Pimpinan Pusat Muhammadiyah.",
+      "Intro videos, posters, share images, and the supergraphic pattern are derived from official assets of this edition; the site remains an independent work.",
+      "Fonts: El Messiri and Familjen Grotesk — SIL Open Font License 1.1 (license files in the /licenses folder).",
+    ],
+    copyright: "© 2026 Faris Husamuddin. All rights reserved.",
+    researchTitle: "Research documents",
+    research:
+      "The historical narrative and philosophy on this site were prepared from documents described as internal developer research.",
+    dataNoteTitle: "Data note",
     dataNote:
-      "Calendar data: KHGT. News data: muhammadiyah.or.id. Verified again before publication.",
-    language: "Language",
+      "Calendar, news, and map pages use 2026 document data that may change; every dataset always refers to its official source.",
   },
   notFound: {
     title: "This page is not available yet.",

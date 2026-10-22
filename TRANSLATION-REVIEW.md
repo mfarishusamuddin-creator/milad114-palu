@@ -15,7 +15,7 @@ Terjemahan Arab di proyek ini adalah **draf AI**. Sebelum submit, wajib diperiks
 | Area | File | Status | Catatan |
 |---|---|---|---|
 | Metadata | `src/i18n/ar.ts` bagian `meta` | Draf | Judul dan deskripsi |
-| Navigasi | `src/i18n/ar.ts` bagian `nav` | Draf | Menu, CTA, tema |
+| Navigasi | `src/i18n/ar.ts` bagian `nav` | Draf | Kartu CardNav (`nav.cards`), label menu, “Tentang” (`nav.about`) |
 | Hero | `src/i18n/ar.ts` bagian `hero` | Draf | Judul, intro, plate, bahasa |
 | Countdown | `src/i18n/ar.ts` bagian `countdown` | Draf | Label hari/jam/menit/detik |
 | Tentang Milad | `src/i18n/ar.ts` bagian `about` | Draf | Paragraf, fakta, kutipan |
@@ -24,8 +24,9 @@ Terjemahan Arab di proyek ini adalah **draf AI**. Sebelum submit, wajib diperiks
 | Layanan | `src/i18n/ar.ts` bagian `services` | Draf | Judul dan deskripsi |
 | Kalender | `src/i18n/ar.ts` bagian `calendar` | Draf | Nama bulan, hari, event |
 | Kabar | `src/i18n/ar.ts` bagian `kabar` | Draf | Label dan catatan sumber |
-| Peta | `src/i18n/ar.ts` bagian `map` + `src/data/pcim.ts` | Draf | Nama negara/kota |
-| Footer | `src/i18n/ar.ts` bagian `footer` | Draf | Kredit dan copyright |
+| Peta | `src/i18n/ar.ts` bagian `map` + `src/data/pcim.ts` | Draf | Nama negara + label markas Indonesia; kota tidak ditampilkan |
+| Halaman Tentang | `src/i18n/ar.ts` bagian `aboutPage` | Draf | Sumber, aset/lisensi, catatan data, hak cipta (`فارس حسام الدين`) |
+| Footer | `src/i18n/ar.ts` bagian `footer` | Draf | Footer ringkas tanpa sumber |
 | 404 | `src/i18n/ar.ts` bagian `notFound` | Draf | Pesan 404 |
 
 ## Istilah kunci
@@ -60,7 +61,8 @@ Terjemahan Arab di proyek ini adalah **draf AI**. Sebelum submit, wajib diperiks
 
 - [ ] Semua teks di `src/i18n/ar.ts` sudah dibaca.
 - [ ] Dua jalur dan dua tabel di `src/data/history.ar.ts` sudah dibaca.
-- [ ] Nama 29 negara/kota di `src/data/pcim.ts` sudah dicek.
+- [ ] Nama 29 negara di `src/data/pcim.ts` sudah dicek, plus string `map.hq` (Indonesia — Pimpinan Pusat Muhammadiyah).
+- [ ] Key i18n baru pada sesi CardNav/Tentang sudah diperiksa: `nav.cards`, `nav.about`, `aboutPage` (khususnya hak cipta Arab `© 2026 فارس حسام الدين. جميع الحقوق محفوظة.`).
 - [ ] Tidak ada campuran dialek.
 - [ ] Tidak ada terjemahan yang mengubah fakta.
 - [ ] Tidak ada teks Inggris/Indonesia yang tertinggal di halaman `/ar` kecuali nama resmi/sumber.
@@ -73,7 +75,7 @@ Terjemahan Arab di proyek ini adalah **draf AI**. Sebelum submit, wajib diperiks
 1. Edit `src/i18n/ar.ts` untuk UI.
 2. Edit `src/data/history.ar.ts` untuk sejarah.
 3. Edit `src/data/calendar-highlights.ar.ts` untuk penanda kalender.
-4. Edit `src/data/pcim.ts` untuk nama negara/kota.
+4. Edit `src/data/pcim.ts` untuk nama negara.
 5. Jalankan `npm run typecheck`, `npm run lint`, `npm run build`.
 6. Buka `/ar` dan periksa ulang.
 

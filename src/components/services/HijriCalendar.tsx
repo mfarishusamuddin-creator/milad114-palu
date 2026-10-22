@@ -387,16 +387,7 @@ export function HijriCalendar({ data, dict }: Props) {
         </div>
 
         <p className="mt-5 text-[0.68rem] leading-relaxed text-ink-soft">
-          {dict.source}:{" "}
-          <a
-            href={data.source}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-semibold text-ocean underline"
-          >
-            khgt.muhammadiyah.or.id
-          </a>{" "}
-          · {dict.snapshot} {formatFetchedAt(data.fetchedAt, dict.locale)}.{" "}
+          {dict.snapshot} {formatFetchedAt(data.fetchedAt, dict.locale)}.{" "}
           {dict.disclaimer}
         </p>
       </div>

@@ -37,7 +37,7 @@ export function buildMetadata(lang: LanguageCode): Metadata {
           url: "/og/og-milad114-1921.jpg",
           width: 1200,
           height: 630,
-          alt: dict.hero.plate.logoAlt,
+          alt: dict.meta.title,
         },
       ],
     },

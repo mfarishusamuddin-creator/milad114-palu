@@ -59,7 +59,7 @@ Yang dipertahankan:
 
 **Prompt:**
 
-> Pertahankan struktur About (makna logo, fakta bersumber), Agenda (ledger waktu + pilar aksi), dan Peta (29 PCIM + daftar kawasan). Perbaiki ritme vertikal antar-section. Jangan menambah kartu baru. Pastikan tautan sumber resmi tetap ada, termasuk halaman Cabang Istimewa Muhammadiyah.
+> Pertahankan struktur About (makna logo, fakta bersumber), Agenda (ledger waktu + pilar aksi), dan Peta (29 PCIM sebagai dot interaktif per negara + Indonesia sebagai markas; tanpa daftar negara/kota). Perbaiki ritme vertikal antar-section. Jangan menambah kartu baru. Semua tautan sumber resmi (termasuk halaman Cabang Istimewa Muhammadiyah) hanya di halaman Tentang — jangan menampilkan daftar sumber di section manapun.
 
 **Kriteria selesai:**
 
@@ -96,7 +96,7 @@ Yang dipertahankan:
 
 **Prompt:**
 
-> Perhalus tipografi dan jarak. Pastikan angka 114 outline tidak terlalu besar di mobile. Susun fakta sebagai definition list dengan garis tipis. Jangan mengubah fakta. Tambahkan tautan sumber yang sudah ada. Buat kutipan terasa seperti catatan margin, bukan card.
+> Perhalus tipografi dan jarak. Pastikan angka 114 outline tidak terlalu besar di mobile. Susun fakta sebagai definition list dengan garis tipis. Jangan mengubah fakta. Jangan menambah tautan sumber di section ini (sudah dipindah ke halaman Tentang). Buat kutipan terasa seperti catatan margin, bukan card.
 
 **Kriteria selesai:**
 
@@ -129,7 +129,7 @@ Yang dipertahankan:
 
 **Prompt:**
 
-> Lihat bagian 4. Section ini sudah selesai; jangan mengganti komponen timeline tanpa alasan performa. Pertahankan anchor `#sejarah` dan urutan dua jalur + dua tabel + sumber.
+> Lihat bagian 4. Section ini sudah selesai; jangan mengganti komponen timeline tanpa alasan performa. Pertahankan anchor `#sejarah` dan urutan dua jalur + dua tabel. Tidak ada blok sumber di section ini.
 
 **Kriteria selesai:**
 
@@ -148,7 +148,7 @@ Yang dipertahankan:
 
 **Prompt:**
 
-> Pertahankan data KHGT dan konverter. Perbaiki keterbacaan sel di mobile. Pastikan 19–21 November 2026 bertanda “Milad”‌ dan menampilkan 10–12 Jumadilakhir 1448 H. Jangan memakai library hijriah generik. Jangan mengubah data snapshot. Tambahkan catatan sumber dan tanggal snapshot.
+> Pertahankan data KHGT dan konverter. Perbaiki keterbacaan sel di mobile. Pastikan 19–21 November 2026 bertanda “Milad”‌ dan menampilkan 10–12 Jumadilakhir 1448 H. Jangan memakai library hijriah generik. Jangan mengubah data snapshot. Pertahankan catatan tanggal snapshot dan disclaimer tanpa tautan sumber inline (sumber hanya di halaman Tentang).
 
 **Kriteria selesai:**
 
@@ -187,13 +187,13 @@ Yang dipertahankan:
 
 **Prompt:**
 
-> Pertahankan 29 negara dan marker. Perbaiki layout agar daftar negara tidak meninggalkan kolom kosong: gunakan panel daftar yang bisa di-scroll atau susun ulang. Pastikan jumlah path PCIM = jumlah marker = 29. Tambahkan tooltip negara/kota. Jangan menambah peta 3D. Jangan mengubah koordinat tanpa data baru.
+> Pertahankan 29 negara dan dot interaktif (label nama negara via hover/klik/fokus/tap; tanpa nama kota). Peta full-bleed tanpa kolom daftar negara; tombol “i” mengarah ke `/tentang`. Indonesia (ISO 360) ditandai sebagai markas Pimpinan Pusat dengan warna dan label tersendiri. Pastikan jumlah path PCIM = jumlah dot = 29. Jangan menambah peta 3D. Jangan mengubah koordinat tanpa data baru.
 
 **Kriteria selesai:**
 
 - [ ] 29 negara tersorot.
-- [ ] 29 marker.
-- [ ] Daftar 29 negara lengkap dan berurutan per kawasan.
+- [ ] 29 dot + 1 dot/mar­ker markas Indonesia.
+- [ ] Label negara muncul via mouse, keyboard, dan sentuh; tidak ada nama kota.
 - [ ] Mode gelap terbaca.
 - [ ] Mobile tidak overflow.
 - [ ] Sumber Natural Earth/world-atlas tampil.
@@ -235,13 +235,40 @@ Yang dipertahankan:
 
 **Prompt:**
 
-> Perhalus footer sebagai kolofon: logo, tagline, bahasa, tautan, sumber, dan kredit. Pastikan tautan bahasa dan anchor benar. Jangan menambah tautan sosial yang belum diverifikasi.
+> Footer ringkas tiga kolom: logo + tagline + tautan “Tentang”, daftar jelajah, dan kolom acara. Bahasa hanya via pemilih bahasa di panel CardNav header (satu pemilih untuk seluruh situs). Sumber/kredit/hak cipta tidak ada di footer — semuanya di halaman Tentang. Pastikan tautan bahasa dan anchor benar. Jangan menambah tautan sosial yang belum diverifikasi.
 
 **Kriteria selesai:**
 
-- [ ] Semua tautan berfungsi.
-- [ ] Kredit logo/font benar.
+- [ ] Semua tautan berfungsi, termasuk tautan Tentang ke `aboutPath`.
+- [ ] Footer tidak menampilkan daftar sumber, bahasa, atau hak cipta.
 - [ ] Mode gelap dan RTL rapi.
+
+## 13a. Halaman Tentang
+
+**File:** `src/components/pages/AboutPage.tsx`, route `/tentang`, `/en/tentang`, `/ar/tentang`.
+
+**Prompt:**
+
+> Halaman Tentang menyatukan seluruh sumber informasi (`dict.aboutPage.sources` → `SITE.links`), aset & lisensi, catatan riset internal, catatan data, dan hak cipta (`© 2026 Faris Husamuddin. Hak cipta dilindungi.` — teks persis di bahasa Indonesia). Halaman ini MINIMALIS dan elegan, tanpa menyebut teknologi/framework/library sama sekali. Setiap bahasa memakai metadata inline di `page.tsx` (jangan sentuh `src/lib/metadata.ts` atau `sitemap.ts`).
+
+**Kriteria selesai:**
+
+- [ ] Daftar sumber lengkap dan terbuka di tab baru.
+- [ ] Hak cipta ID persis: `© 2026 Faris Husamuddin. Hak cipta dilindungi.`
+- [ ] Tidak ada leak teknologi di halaman.
+- [ ] Metadata inline per bahasa; sitemap tidak berubah.
+
+## 13b. Mode Ramadhan, GradientText, minimalisasi, tabel collapsible, logo penutup
+
+**File:** `src/components/home/Countdown.tsx`, `src/components/shared/GradientText.tsx` + `gradient-text.css`, `Hero.tsx`, `Agenda.tsx`, `HistorySection.tsx` + `HistoryTables.tsx`, `ServicesSection.tsx`, `Footer.tsx`, `SectionHeading.tsx`.
+
+**Ringkasan:**
+
+- Judul section memakai komponen `GradientText` (adaptasi ReactBits, warna dari token `--gt-c1..c4` terang/gelap; shell countdown memakai palet terbaca versi gelap).
+- Counter punya dua mode: `event` (Tanwir/Milad) dan `ramadhan` (target KHGT di `RAMADAN_TARGETS`, maghrib perkiraan 18.00 WITA); judul toggle adalah tombol `aria-pressed`; ganti mode/zona memainkan ulang intro Counter.
+- Halaman minimalis: Hero satu kolom, Agenda tanpa pilar/CTA, Sejarah tanpa blok CTA dan catatan sumber, Footer dua kolom; sumber tetap hanya di Tentang.
+- Tabel sejarah: satu tombol (aria-expanded/aria-controls) membuka/menutup KEDUA tabel, tersembunyi default.
+- Logo penutup: BrandLogo `.closing-logo` di akhir Layanan (horizontal desktop, logogram di seluler, alt dari `services.closingLogoAlt`).
 
 ## 14. Aset yang diperlukan
 
@@ -299,7 +326,10 @@ Gunakan hanya El Messiri dan Familjen Grotesk dari folder proyek. Jangan memakai
 - [ ] Tidak ada konten placeholder.
 - [ ] Tiga bahasa lengkap dan RTL benar.
 - [ ] Tema terang/gelap benar.
-- [ ] Peta 29 negara.
+- [ ] Peta 29 negara, tanpa nama kota; label negara interaktif; tombol “i” ke halaman Tentang.
+- [ ] Header: logo + nama satu baris di 390 px, CardNav terbuka dengan tiga kartu, CTA, bahasa, dan “Tentang” di slot footer.
+- [ ] Satu-satunya pemilih bahasa ada di panel CardNav.
+- [ ] Tidak ada daftar sumber di mana pun kecuali halaman Tentang; hak cipta ID persis di sana.
 - [ ] Timeline sejarah dua jalur sesuai arahan bagian 4.
 - [ ] Animated content halus dan tidak menyembunyikan konten permanen.
 - [ ] Semua tautan internal dan eksternal berfungsi.

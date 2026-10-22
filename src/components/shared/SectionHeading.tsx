@@ -1,4 +1,5 @@
 import { cn } from "@/lib/cn";
+import GradientText from "@/components/shared/GradientText";
 
 type Props = {
   eyebrow?: string;
@@ -37,7 +38,9 @@ export function SectionHeading({
           light ? "text-white" : "text-ink"
         )}
       >
-        {title}
+        <GradientText block start animationSpeed={13}>
+          {title}
+        </GradientText>
       </h2>
       {description ? (
         <p

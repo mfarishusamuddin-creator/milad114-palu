@@ -1,8 +1,6 @@
 ﻿import { Reveal } from "@/components/animation/Reveal";
 import { SectionHeading } from "@/components/shared/SectionHeading";
-import { SourceNote } from "@/components/shared/SourceNote";
 import { BrandLogo } from "@/components/theme/BrandLogo";
-import { SITE } from "@/data/site";
 import type { Dictionary } from "@/i18n/types";
 
 export function AboutMilad({ dict }: { dict: Dictionary }) {
@@ -41,15 +39,6 @@ export function AboutMilad({ dict }: { dict: Dictionary }) {
               <p className="text-xs leading-relaxed text-ink-soft">
                 {dict.about.quote}
               </p>
-              <a
-                href={SITE.links.maknaLogo}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-3 inline-flex items-center gap-1.5 text-[0.68rem] font-bold uppercase tracking-[0.12em] text-gold-text no-underline"
-              >
-                {dict.about.link}
-                <ArrowIcon />
-              </a>
             </div>
           </div>
 
@@ -81,38 +70,9 @@ export function AboutMilad({ dict }: { dict: Dictionary }) {
                 </div>
               ))}
             </dl>
-
-            <SourceNote
-              className="mt-6"
-              title={dict.common.source}
-              items={[
-                { label: "Makna di Balik Logo", url: SITE.links.maknaLogo },
-                { label: "114 Pohon Kelor di Palu", url: SITE.links.tanamKelor },
-                { label: "Edaran 19/2026", url: SITE.links.edaran },
-              ]}
-            />
           </div>
         </Reveal>
       </div>
     </section>
-  );
-}
-
-function ArrowIcon() {
-  return (
-    <svg
-      width="12"
-      height="12"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2.2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      className="rtl:rotate-180"
-    >
-      <path d="M5 12h14M13 6l6 6-6 6" />
-    </svg>
   );
 }

@@ -6,7 +6,7 @@
 - English: `https://milad114-palu.vercel.app/en`
 - Arab: `https://milad114-palu.vercel.app/ar`
 - Repo: `https://github.com/mfarishusamuddin-creator/milad114-palu`
-- Satu index per bahasa. Rute lama `/sejarah` dan `/layanan` sudah dihapus; kontennya menjadi anchor `#sejarah` dan `#layanan`.
+- Satu index per bahasa. Rute lama `/sejarah` dan `/layanan` sudah dihapus; kontennya menjadi anchor `#sejarah` dan `#layanan`. Rute `/tentang`, `/en/tentang`, dan `/ar/tentang` adalah halaman Tentang per bahasa: seluruh sumber, lisensi, dan hak cipta terpusat di sana (target tombol “i” di section peta).
 
 ## Studi kasus satu halaman
 
@@ -17,10 +17,11 @@
 **Eksekusi.**
 - Tiga rute bahasa: `/`, `/en`, `/ar`; teks, istilah, dan layout Arab RTL.
 - Tema terang/gelap dengan logo resmi yang berganti varian.
-- Sejarah dua jalur dengan timeline Aceternity (progres scroll) di desktop, accordion di mobile, tabel kepemimpinan dan AUM, sumber resmi.
+- Sejarah dua jalur dengan timeline Aceternity (progres scroll) di desktop, accordion di mobile, tabel kepemimpinan dan AUM.
 - Kalender KHGT (snapshot tersinkron) dan kabar Muhammadiyah (WP REST API, cache satu jam, fallback).
-- Peta dunia Natural Earth yang menyorot 29 PCIM dengan marker kota.
+- Peta dunia Natural Earth yang menyorot 29 PCIM dengan dot interaktif per negara (label muncul saat hover, fokus, atau tap) dan Indonesia ditandai sebagai markas Pimpinan Pusat; angka 114 di hero dan 29 di peta dihidupkan CountUp.
 - Animated content (GSAP dan motion), reduced motion, dan satu momen wow: timeline dua jalur.
+- Header CardNav (adaptasi ReactBits): menu kartu tiga jalur dengan CTA, pemilih bahasa, dan tautan “Tentang” di dalam panel; daftar sumber hanya tampil di halaman Tentang.
 
 **Teknologi.** Next.js 16 App Router, TypeScript, Tailwind CSS v4, Cache Components, GSAP, Motion, world-atlas/topojson-client/d3-geo, font lokal OFL. Tanpa WebGL, tanpa database, tanpa login.
 
@@ -30,7 +31,7 @@
 
 1. 0–10 detik: hero, tagline, tanggal, countdown.
 2. 10–20 detik: `#tentang` (makna logo) dan `#agenda` (tiga momen + pilar).
-3. 20–38 detik: `#peta`; sorot 29 PCIM, lalu `#sejarah`; timeline dua jalur dan tabel.
+3. Buka `#peta`; sorot 29 PCIM, ketuk dot untuk nama negara, tekankan tombol “i”, lalu `#sejarah`; timeline dua jalur dan tabel.
 4. 38–55 detik: `#layanan`; kalender KHGT, konverter, tab kabar.
 5. 55–70 detik: scroll timeline sejarah menunjukkan progres garis; ganti tab jalur.
 6. 70–82 detik: ganti bahasa ke EN/AR; penutup “Bersama Satukan Bangsa”‌.
@@ -39,7 +40,7 @@
 
 1. Buka `/`; tunggu countdown.
 2. Scroll `#tentang` dan `#agenda`; tunjukkan pilar aksi.
-3. Buka `#peta`; tunjukkan 29 PCIM.
+3. Buka `#peta`; tunjukkan 29 PCIM dan ketuk dot untuk nama negara.
 4. Buka `#sejarah`; geser tab dua jalur, tunjukkan progres garis, buka tabel AUM.
 5. Buka `#layanan`; coba konverter 19 Nov 2026.
 6. Buka tab `Milad & Tanwir`.
@@ -76,6 +77,7 @@ Gunakan QR hitam-putih, error correction H, quiet zone 4 modul, tanpa logo di te
 - QR dan lukisan fisik dikelola pemilik proyek.
 - Terjemahan Arab adalah draf AI dan perlu verifikasi penutur asli.
 - Jadwal rinci Tanwir menunggu Edaran/agenda resmi.
+- Eksplorasi penuh halaman Tentang perlu uji visual manual (390/768/1440 px, RTL, tema gelap); tombol “i” di peta mengarah ke sana.
 - Angka amal usaha nasional tidak ditampilkan; tabel AUM PCIM memakai halaman resmi Cabang Istimewa Muhammadiyah (29 negara, catatan "Data dokumen 2026").
 - Tahun kegiatan Khatib Amin (1890) mengikuti tabel dokumen resmi; catat bahwa riset online belum menemukan diverifikasi internet untuk tahun ini (rentang literatur 1888–1896).
 - Logo horizontal dan OG 19–21 diturunkan dari frame motion logo resmi; logo statis di folder sumber masih 13–15 dan tidak dipakai untuk hero/OG.

@@ -94,7 +94,7 @@ export function MotionIntro({ dict }: { dict: Dictionary }) {
       className={`motion-intro${closing ? " is-closing" : ""}`}
       role="dialog"
       aria-modal="true"
-      aria-label={dict.hero.edition}
+      aria-label={dict.hero.subtitle}
     >
       <div className="motion-intro__stage">
         <div
@@ -102,12 +102,12 @@ export function MotionIntro({ dict }: { dict: Dictionary }) {
         >
           <BrandLogo
             variant="logogram"
-            alt={dict.hero.plate.logoAlt}
+            alt={dict.services.closingLogoAlt}
             width={512}
             height={512}
             className="motion-intro__mark"
           />
-          <span className="motion-intro__loading">{dict.hero.edition}</span>
+          <span className="motion-intro__loading">{dict.hero.subtitle}</span>
         </div>
 
         {playing ? (
@@ -135,7 +135,7 @@ export function MotionIntro({ dict }: { dict: Dictionary }) {
       </div>
 
       <div className="motion-intro__meta">
-        <span>{dict.hero.edition}</span>
+        <span>{dict.hero.subtitle}</span>
         <button type="button" onClick={finish} autoFocus>
           {dict.common.skipIntro}
         </button>

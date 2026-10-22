@@ -1,18 +1,10 @@
+import Link from "next/link";
 import { Reveal } from "@/components/animation/Reveal";
 import { WorldMap } from "@/components/map/WorldMap";
+import CountUp from "@/components/shared/CountUp";
 import { SectionHeading } from "@/components/shared/SectionHeading";
-import { SourceNote } from "@/components/shared/SourceNote";
-import { pcimCountries, type PcimRegion } from "@/data/pcim";
-import { SITE } from "@/data/site";
+import { aboutPath } from "@/i18n";
 import type { Dictionary } from "@/i18n/types";
-
-const REGION_ORDER: PcimRegion[] = [
-  "africa",
-  "asia",
-  "europe",
-  "americas",
-  "oceania",
-];
 
 export function MapSection({ dict }: { dict: Dictionary }) {
   return (
@@ -26,68 +18,39 @@ export function MapSection({ dict }: { dict: Dictionary }) {
           />
         </Reveal>
 
-        <div className="mt-9 grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-          <Reveal>
-            <WorldMap dict={dict} />
-            <p className="mt-3 text-xs leading-relaxed text-ink-soft">
-              {dict.map.note}
-            </p>
-          </Reveal>
+        <Reveal className="mt-7 flex flex-wrap items-end justify-between gap-4">
+          <div className="flex items-baseline gap-3">
+            <CountUp
+              from={0}
+              to={29}
+              duration={1.6}
+              easing="easeOut"
+              trigger="view"
+              separator=""
+              className="map-stat-value"
+            />
+            <span className="map-stat-label">{dict.map.countries}</span>
+          </div>
 
-          <Reveal className="rounded-sm border border-line bg-surface p-5 sm:p-6 lg:max-h-[560px] lg:overflow-y-auto">
-            <h3 className="font-serif text-xl font-bold text-ink">
-              {dict.map.countryList}
-            </h3>
-            <div className="mt-4 space-y-5">
-              {REGION_ORDER.map((region) => {
-                const countries = pcimCountries.filter(
-                  (country) => country.region === region
-                );
-                if (countries.length === 0) return null;
-                return (
-                  <div key={region}>
-                    <p className="text-[0.6rem] font-bold uppercase tracking-[0.16em] text-gold-text">
-                      {dict.map.regions[region]}
-                    </p>
-                    <ul className="mt-2 space-y-1.5">
-                      {countries.map((country) => (
-                        <li
-                          key={country.id}
-                          className="flex items-baseline justify-between gap-3 border-b border-line/70 pb-1.5 text-xs"
-                        >
-                          <span className="font-semibold text-ink">
-                            {country.country[dict.lang]}
-                          </span>
-                          <span className="text-right text-ink-soft">
-                            {country.city[dict.lang]}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                );
-              })}
-            </div>
-          </Reveal>
-        </div>
+          <Link
+            href={aboutPath(dict.lang)}
+            className="map-info-button"
+            aria-label={dict.map.info}
+            title={dict.map.info}
+          >
+            <span aria-hidden="true">i</span>
+          </Link>
+        </Reveal>
+      </div>
 
-        <SourceNote
-          className="mt-6"
-          items={[
-            {
-              label: "Cabang Istimewa Muhammadiyah",
-              url: SITE.links.pcim,
-            },
-            {
-              label: "Natural Earth",
-              url: "https://www.naturalearthdata.com/",
-            },
-            {
-              label: "world-atlas",
-              url: "https://github.com/topojson/world-atlas",
-            },
-          ]}
-        />
+      <Reveal>
+        <WorldMap dict={dict} />
+      </Reveal>
+
+      <div className="container-page">
+        <p className="mt-4 text-xs leading-relaxed text-ink-soft">
+          {dict.map.note}
+        </p>
       </div>
     </section>
   );

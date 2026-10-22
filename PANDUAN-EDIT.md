@@ -47,6 +47,9 @@ src/app/
   page.tsx                halaman Indonesia (/)
   en/page.tsx             halaman Inggris (/en)
   ar/page.tsx             halaman Arab (/ar)
+  tentang/page.tsx        halaman Tentang Indonesia (/tentang)
+  en/tentang/page.tsx     halaman Tentang Inggris (/en/tentang)
+  ar/tentang/page.tsx     halaman Tentang Arab (/ar/tentang)
   globals.css             seluruh token warna, tema gelap, layout, animasi
   sitemap.ts              daftar URL
   robots.ts               aturan crawler
@@ -54,8 +57,9 @@ src/app/
 src/components/
   pages/SiteShell.tsx     navbar + footer + locale
   pages/HomePage.tsx      urutan seluruh section di satu index
-  layout/Navbar.tsx       navigasi, bahasa, tema
-  layout/Footer.tsx       footer, sumber, kredit
+  pages/AboutPage.tsx     halaman Tentang (sumber, aset/lisensi, catatan data, hak cipta)
+  layout/Navbar.tsx       header: logo + nama satu baris, ThemeToggle, CardNav
+  layout/Footer.tsx       footer ringkas (brand, jelajahi, acara)
   layout/LanguageSwitcher.tsx
   layout/LocaleEffect.tsx
   theme/ThemeToggle.tsx
@@ -73,7 +77,11 @@ src/components/
   services/KabarTabs.tsx
   map/MapSection.tsx
   map/WorldMap.tsx
-  shared/                 komponen kecil (KabarCard, SourceNote, dll.)
+  shared/                 komponen kecil (KabarCard, dll.)
+  shared/CardNav.tsx      menu kartu ReactBits (adaptasi) untuk header
+  shared/card-nav.css     gaya CardNav + mode compact + slot footer
+  shared/CountUp.tsx      animasi angka ReactBits (stempel hero 114, statistik peta 29)
+  shared/Counter.tsx      mesin angka Counter ReactBits (dipakai Countdown)
 src/i18n/
   types.ts                tipe Dictionary
   id.ts                   semua teks Indonesia
@@ -127,17 +135,18 @@ Ubah juga pasangan yang sama di `en.ts` dan `ar.ts` agar tidak ada teks yang ter
 Bagian penting:
 
 - `meta` — judul/deskripsi halaman.
-- `nav` — menu, CTA, label tema.
+- `nav` — header: `cards` (menu kartu CardNav), `about`, `menuAria`/`menuOpen`/`menuClose`, CTA, tautan footer.
 - `hero` — hero, plate logo, tombol, bahasa.
 - `countdown` — label hitung waktu.
 - `about` — section Tentang Milad.
+- `aboutPage` — halaman Tentang (sumber, aset/lisensi, catatan data, hak cipta).
 - `agenda` — agenda dan pilar.
 - `history` — judul/label sejarah.
 - `services` — judul/label layanan.
 - `calendar` — semua label kalender, nama bulan, hari, event.
 - `kabar` — label kabar.
-- `map` — judul peta dan nama kawasan.
-- `footer` — footer.
+- `map` — judul peta, label markas, tombol info.
+- `footer` — footer ringkas.
 - `notFound` — halaman 404.
 
 ### 3.2 Konten sejarah
@@ -192,18 +201,15 @@ File `src/data/pcim.ts`. Satu negara:
 {
   id: "egypt",
   iso: "818",
-  region: "africa",
-  lat: 30.0444,
-  lng: 31.2357,
-  country: { id: "Mesir", en: "Egypt", ar: "ظ…طµط±" },
-  city: { id: "Kairo", en: "Cairo", ar: "ط§ظ„ظ‚ط§ظ‡ط±ط©" },
+  lat: 26.8,
+  lng: 30.8,
+  country: { id: "Mesir", en: "Egypt", ar: "مصر" },
 }
 ```
 
-- `iso` adalah kode numerik ISO 3166-1 tiga digit. Contoh: Mesir `818`, Inggris `826`, Australia `036`.
-- `lat`/`lng` adalah koordinat kota pusat PCIM.
-- `region` harus `africa`, `asia`, `europe`, `americas`, atau `oceania`.
-- Jika menambah negara, tambahkan juga nama kota dan terjemahannya.
+- `iso` adalah kode numerik ISO 3166-1 tiga digit. Contoh: Mesir `818`, Inggris `826`, Australia `036`. Indonesia `360` dipakai khusus untuk markas Pimpinan Pusat (bukan bagian dari 29 PCIM).
+- `lat`/`lng` adalah titik penanda negara di peta (pusat geografis). Bukan data kota — situs ini tidak menampilkan nama kota PCIM.
+- Daftar resmi: halaman Cabang Istimewa Muhammadiyah (`SITE.links.pcim`), yang memuat tepat 29 PCIM.
 - Peta dunia memakai `world-atlas` (Natural Earth). Tidak perlu mengunduh peta manual.
 
 ### 3.5 Metadata dan tautan resmi
@@ -368,36 +374,44 @@ Mengubah token akan mengubah seluruh situs. Gunakan warna resmi dari identitas v
 
 ### 5.5 Navbar dan footer
 
-- `src/components/layout/Navbar.tsx` — menu, bahasa, tema, CTA.
-- `src/components/layout/Footer.tsx` — kolom footer, sumber, bahasa.
+- `src/components/layout/Navbar.tsx` — header sticky: logo + nama situs satu baris, `ThemeToggle`, dan `CardNav` (mode compact). Tautan jalur, CTA `#sejarah`, pemilih bahasa, dan tautan “Tentang” hidup di dalam panel CardNav (slot footer) — bukan di header.
+- `src/components/shared/CardNav.tsx` + `card-nav.css` — menu kartu (adaptasi ReactBits). Tema panel mengikuti token terang/gelap otomatis. Label menu diambil dari `dict.nav.menuOpen/menuClose`; kartu dari `dict.nav.cards`.
+- `src/components/layout/Footer.tsx` — footer ringkas tiga kolom (brand + tautan Tentang, jelajahi, acara). Sumber/kredit tidak ada di footer.
 - `src/components/pages/SiteShell.tsx` — pembungkus navbar + main + footer.
 
-Untuk menambah menu:
+Untuk menambah menu kartu di header:
 
-1. Tambah `href` dan `label` di `dict.nav.links` pada tiga file bahasa.
-2. Pastikan anchor `id` ada di halaman (`#sejarah`, `#layanan`, `#peta`, dll.).
+1. Edit `dict.nav.cards` di tiga file bahasa (`label`, `description`, `links`).
+2. Untuk tautan menuju halaman Tentang, pakai `about: true`; untuk anchor, pakai `anchor: "#…"`.
+3. Pastikan `id` anchor ada di halaman (`#sejarah`, `#layanan`, `#peta`, dll.).
+
+Untuk memperluas halaman Tentang: edit `dict.aboutPage` di tiga file bahasa dan `src/components/pages/AboutPage.tsx`. Sumber resmi diambil dari `SITE.links` (key cocok dengan `src/data/site.ts`).
 
 ### 5.6 Section sejarah
 
-- `HistorySection.tsx` — header, timeline, tabel, sumber, CTA.
+- `HistorySection.tsx` — header, timeline, tabel, CTA.
 - `HistoryTimeline.tsx` — dua jalur (tabs desktop, accordion mobile), memakai `src/components/ui/timeline.tsx`.
 - `HistoryTables.tsx` — tabel kepemimpinan dan AUM.
 - Data: `src/data/history.ts` + `history.en.ts` + `history.ar.ts`.
 - Mobile memakai `<details>`; desktop memakai tabs + timeline with scroll progress (`motion`).
+- Daftar sumber sejarah kini hanya di halaman Tentang (`/tentang`), bukan di section ini.
 
 ### 5.7 Section layanan
 
 - `ServicesSection.tsx` — kalender, penanda, kabar.
-- `HijriCalendar.tsx` — kalender dan konverter.
-- `KabarTabs.tsx` — tab kabar.
+- `HijriCalendar.tsx` — kalender dan konverter (catatan snapshot + disclaimer; sumber KHGT hanya di halaman Tentang).
+- `KabarTabs.tsx` — tab kabar (item tetap bertaut ke artikel aslinya).
 - Anchor `#kabar` berada di dalam section ini.
 
 ### 5.8 Peta
 
-- `MapSection.tsx` — header, peta, daftar negara.
-- `WorldMap.tsx` — SVG peta dunia.
-- Untuk mengubah tinggi daftar negara, ubah `lg:max-h-[560px]` di `MapSection.tsx`.
-- Untuk mengubah warna peta, cari `.map-country` dan `.map-country--pcim` di `globals.css`.
+- `MapSection.tsx` — header, statistik CountUp `29`, tombol “i” ke halaman Tentang (`aboutPath`).
+- `WorldMap.tsx` — SVG peta dunia (client component): dot interaktif + label negara.
+- Peta dirender full-bleed (rata ke tepi) di luar `container-page`.
+- Interaksi label: hover/klik (mouse), fokus/Tab (`Enter`/`Space`) (keyboard), tap dot (sentuh); ketuk area kosong peta untuk menutup label.
+- Karakter khusus: Indonesia (ISO `360`) berwarna beda (`.map-country--hq`) dengan marker di Yogyakarta dan label `.map-label--hq` yang selalu tampil.
+- Untuk mengubah warna peta, cari `.map-country`, `.map-country--pcim`, `.map-country--hq`, `.map-label` di `globals.css`.
+- Sumber data peta (PCIM page, Natural Earth, world-atlas) hanya tercantum di halaman Tentang.
 
 ## 6. Tema gelap/terang
 
@@ -463,9 +477,10 @@ Terjemahan Arab dibuat sebagai draf. Sebelum submit, minta penutur asli memeriks
 Menambah negara:
 
 1. Tambah objek di `pcimCountries`.
-2. Isi `iso` numerik, `region`, `lat`, `lng`, dan nama 3 bahasa.
+2. Isi `iso` numerik, `lat`, `lng`, dan nama 3 bahasa.
 3. Jalankan `npm run typecheck` dan `npm run build`.
 4. Cek jumlah highlight: buka `/`, scroll ke `#peta`. Jumlah path PCIM dan marker harus sama dengan jumlah data.
+5. Diedit dari halaman resmi Cabang Istimewa Muhammadiyah; daftar 29 PCIM divalidasi terhadap halaman tersebut.
 
 Mengganti sumber peta:
 
@@ -584,6 +599,12 @@ npm run sync:khgt
 ```
 
 Jangan memakai library hijriah generik; data KHGT adalah acuan.
+
+### 10.3 Hitungan Ramadhan
+
+- Kode: `src/components/home/Countdown.tsx` (konstanta `RAMADAN_TARGETS`).
+- Tombolnya adalah judul hitungan itu sendiri; klik untuk berganti mode Tanwir-Milad ke Ramadhan dan sebaliknya.
+- Jika KHGT menerbitkan tanggal baru, perbarui isi `RAMADAN_TARGETS` (format ISO `+08:00`, jam perkiraan maghrib 18.00 WITA) dan ketiga kamus (`countdown.ramadhan`). Jangan mengarang tanggal tanpa KHGT.
 
 ## 11. Rute, QR, dan metadata
 

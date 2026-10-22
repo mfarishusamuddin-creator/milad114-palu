@@ -19,3 +19,7 @@ export function languagePath(lang: LanguageCode, hash = ""): string {
   const base = lang === "id" ? "/" : `/${lang}`;
   return `${base}${hash}`;
 }
+
+export function aboutPath(lang: LanguageCode): string {
+  return lang === "id" ? "/tentang" : `/${lang}/tentang`;
+}

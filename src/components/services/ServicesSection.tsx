@@ -2,7 +2,7 @@
 import { HijriCalendar } from "@/components/services/HijriCalendar";
 import { KabarTabs } from "@/components/services/KabarTabs";
 import { SectionHeading } from "@/components/shared/SectionHeading";
-import { SourceNote } from "@/components/shared/SourceNote";
+import { BrandLogo } from "@/components/theme/BrandLogo";
 import { SITE } from "@/data/site";
 import type { Dictionary } from "@/i18n/types";
 import type { KabarItem } from "@/lib/kabar";
@@ -99,22 +99,22 @@ export function ServicesSection({
           </Reveal>
         </div>
 
-        <Reveal className="mt-12 rounded-sm border border-line bg-bg-soft p-6 sm:p-8">
-          <p className="eyebrow">
-            <span className="eyebrow-dot" aria-hidden="true" />
-            {dict.services.sourceTitle}
-          </p>
-          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-ink-soft">
-            {dict.services.sourceDescription}
-          </p>
-          <SourceNote
-            className="mt-4"
-            title={dict.common.source}
-            items={[
-              { label: "Kalender Hijriah Global Tunggal", url: SITE.links.khgt },
-              { label: "Muhammadiyah.or.id", url: SITE.links.muhammadiyah },
-              { label: "Edaran 19/2026", url: SITE.links.edaran },
-            ]}
+        <Reveal className="closing-logo">
+          <BrandLogo
+            variant="horizontal"
+            alt=""
+            width={1600}
+            height={900}
+            sizes="(max-width: 1024px) 0px, 480px"
+            className="hidden w-auto max-w-md object-contain md:block"
+          />
+          <BrandLogo
+            variant="logogram"
+            alt={dict.services.closingLogoAlt}
+            width={512}
+            height={512}
+            sizes="128px"
+            className="h-20 w-20 object-contain md:hidden"
           />
         </Reveal>
       </div>

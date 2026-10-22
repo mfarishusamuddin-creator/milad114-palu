@@ -1,0 +1,8 @@
+/*
+  CountUp (React Bits, varian JavaScript + CSS).
+
+  Seluruh styling inti komponen memakai inline style dari source React Bits
+  (SLOT_STYLE dan SR_ONLY), jadi tidak ada CSS eksternal yang dibutuhkan oleh
+  logika animasi. File ini dipertahankan sebagai pintu masuk styling tambahan
+  proyek (mis. skala font stempel/statistik melalui string `className`).
+*/

@@ -62,7 +62,7 @@ export const metadata: Metadata = {
         url: "/og/og-milad114-1921.jpg",
         width: 1200,
         height: 630,
-        alt: idDict.hero.plate.logoAlt,
+        alt: idDict.meta.title,
       },
     ],
   },

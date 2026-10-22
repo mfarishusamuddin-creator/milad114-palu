@@ -58,15 +58,6 @@ export function KabarTabs({ latest, milad, dict }: Props) {
             {dict.kabar.tabs.milad}
           </button>
         </div>
-
-        <a
-          href="https://muhammadiyah.or.id/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-xs font-bold text-ocean underline"
-        >
-          {dict.kabar.source}: muhammadiyah.or.id
-        </a>
       </div>
 
       <div

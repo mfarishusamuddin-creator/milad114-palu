@@ -1,9 +1,9 @@
 import type { CalendarHighlight } from "@/data/calendar-highlights";
 import type { HistoryContent } from "@/data/history";
+import type { SITE } from "@/data/site";
 
 export type LanguageCode = "id" | "en" | "ar";
 export type Direction = "ltr" | "rtl";
-export type RegionKey = "africa" | "asia" | "europe" | "americas" | "oceania";
 
 export type NavLink = {
   href: string;
@@ -34,7 +34,6 @@ export type Dictionary = {
     tagline: string;
   };
   common: {
-    source: string;
     read: string;
     open: string;
     verified: string;
@@ -54,12 +53,21 @@ export type Dictionary = {
     themeLight: string;
     themeDark: string;
     themeToggle: string;
+    brand: string;
+    home: string;
+    menuAria: string;
+    about: string;
+    cards: Array<{
+      label: string;
+      description: string;
+      links: Array<{
+        label: string;
+        anchor?: string;
+        about?: boolean;
+      }>;
+    }>;
   };
   hero: {
-    edition: string;
-    eventLine: string;
-    dateLine: string;
-    eyebrow: string;
     titleLine1: string;
     titleLine2: string;
     subtitle: string;
@@ -68,18 +76,6 @@ export type Dictionary = {
     ctaSecondary: string;
     share: string;
     shareText: string;
-    languageLine: string;
-    plate: {
-      identity: string;
-      city: string;
-      logoAlt: string;
-      caption: string;
-      statLeft: string;
-      statCenter: string;
-      statRight: string;
-      stampTop: string;
-      stampBottom: string;
-    };
   };
   countdown: {
     beforeLabel: string;
@@ -92,10 +88,23 @@ export type Dictionary = {
     doneNote: string;
     timezone: string;
     targetTime: string;
+    modeToggle: string;
     days: string;
     hours: string;
     minutes: string;
     seconds: string;
+    ramadhan: {
+      beforeLabel: string;
+      beforeNote: string;
+      farewell1448Label: string;
+      farewell1448Note: string;
+      before1449Label: string;
+      before1449Note: string;
+      farewell1449Label: string;
+      farewell1449Note: string;
+      doneLabel: string;
+      doneNote: string;
+    };
   };
   about: {
     eyebrow: string;
@@ -104,25 +113,18 @@ export type Dictionary = {
     paragraphs: string[];
     facts: FactItem[];
     quote: string;
-    link: string;
   };
   agenda: {
     eyebrow: string;
     title: string;
-    description: string;
     items: AgendaItem[];
-    pillars: string[];
-    button: string;
   };
   history: {
     eyebrow: string;
     title: string;
     description: string;
-    source: string;
-    ctaEyebrow: string;
-    ctaTitle: string;
-    ctaDescription: string;
-    ctaButton: string;
+    tablesShow: string;
+    tablesHide: string;
     content: HistoryContent;
   };
   services: {
@@ -135,8 +137,7 @@ export type Dictionary = {
     highlightsLink: string;
     kabarTitle: string;
     kabarDescription: string;
-    sourceTitle: string;
-    sourceDescription: string;
+    closingLogoAlt: string;
   };
   calendar: {
     locale: string;
@@ -156,7 +157,6 @@ export type Dictionary = {
     hijriButton: string;
     placeholder: string;
     notFound: string;
-    source: string;
     snapshot: string;
     disclaimer: string;
     weekdays: string[];
@@ -171,8 +171,6 @@ export type Dictionary = {
     title: string;
     description: string;
     all: string;
-    source: string;
-    sourceNote: string;
     originalNote: string;
     empty: string;
     read: string;
@@ -185,24 +183,30 @@ export type Dictionary = {
     eyebrow: string;
     title: string;
     description: string;
-    count: string;
     note: string;
-    source: string;
     aria: string;
-    countryList: string;
-    cityLabel: string;
-    regions: Record<RegionKey, string>;
+    countries: string;
+    hq: string;
+    info: string;
   };
   footer: {
     tagline: string;
     explore: string;
-    sources: string;
-    event: string;
-    eventLines: string[];
-    credit: string;
+  };
+  aboutPage: {
+    eyebrow: string;
+    title: string;
+    intro: string;
+    disclaimer: string;
+    sourcesTitle: string;
+    sources: Array<{ label: string; link: keyof typeof SITE.links }>;
+    assetsTitle: string;
+    assets: string[];
     copyright: string;
+    researchTitle: string;
+    research: string;
+    dataNoteTitle: string;
     dataNote: string;
-    language: string;
   };
   notFound: {
     title: string;
