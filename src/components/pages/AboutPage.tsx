@@ -87,7 +87,7 @@ export function AboutPage({ dict }: { dict: Dictionary }) {
 
 function AboutSectionTitle({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className="text-[0.68rem] font-bold uppercase tracking-[0.18em] text-ocean">
+    <h2 className="text-[0.75rem] font-bold uppercase tracking-[0.14em] text-ocean">
       {children}
     </h2>
   );

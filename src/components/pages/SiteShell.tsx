@@ -15,14 +15,14 @@ export function SiteShell({
     <div
       lang={dict.lang}
       dir={dict.dir}
-      className="site-shell flex min-h-screen flex-col bg-bg text-ink"
+      className="site-shell flex min-h-screen min-h-[100dvh] flex-col bg-bg text-ink"
     >
       <a href="#konten" className="skip-link">
         {dict.common.skipToContent}
       </a>
       <MotionIntro dict={dict} />
       <Navbar dict={dict} />
-      <main id="konten" className="flex-1">
+      <main id="konten" className="flex-[1_1_auto]">
         {children}
       </main>
       <Footer dict={dict} />

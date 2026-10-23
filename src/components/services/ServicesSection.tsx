@@ -63,7 +63,7 @@ export function ServicesSection({
                 key={`${item.date}-${item.title}`}
                 className="rounded-sm border border-line bg-bg-soft/60 px-3 py-3"
               >
-                <p className="text-[0.62rem] font-bold uppercase tracking-[0.12em] text-gold-text">
+                <p className="text-[0.75rem] font-bold uppercase tracking-[0.1em] text-gold-text">
                   {formatHighlightDate(item.date, dict.locale)}
                 </p>
                 <p className="mt-1 font-serif text-base font-bold text-ink">

@@ -34,7 +34,7 @@ export function Hero({ dict }: { dict: Dictionary }) {
                 </a>
                 <a
                   href="#layanan"
-                  className="group inline-flex items-center gap-2 text-[0.78rem] font-bold uppercase tracking-[0.12em] text-navy no-underline"
+                  className="group inline-flex min-h-11 items-center gap-2 text-[0.8rem] font-bold uppercase tracking-[0.12em] text-navy no-underline"
                 >
                   {dict.hero.ctaSecondary}
                   <span className="transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1">

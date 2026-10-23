@@ -35,49 +35,96 @@ export function CollapsibleSection({
 }: Props) {
   const panelId = `${id}__panel`;
   const [open, setOpen] = useState(defaultOpen);
-  const rootRef = useRef<HTMLDivElement | null>(null);
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const panelRef = useRef<HTMLDivElement | null>(null);
+  const pendingTargetRef = useRef<HTMLElement | null>(null);
 
-  const revealFromHash = useCallback((): void => {
-    const hash = window.location.hash.slice(1);
-    if (!hash) return;
-    const target = document.getElementById(
-      decodeURIComponent(hash)
-    );
-    if (!target || !rootRef.current) return;
-    const inside =
-      target === rootRef.current ||
-      rootRef.current.contains(target);
-    if (!inside || open) return;
-    if (target === rootRef.current) {
-      setOpen(true);
+  const revealTarget = useCallback((target: HTMLElement): void => {
+    if (!sectionRef.current?.contains(target)) return;
+    pendingTargetRef.current = target;
+    if (open) {
+      requestAnimationFrame(() => {
+        if (pendingTargetRef.current !== target) return;
+        pendingTargetRef.current = null;
+        const reduce =
+          window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
+        target.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+      });
       return;
     }
     setOpen(true);
-    const reduce =
-      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ??
-      false;
-    window.setTimeout(
-      () =>
-        target.scrollIntoView({
-          behavior: reduce ? "auto" : "smooth",
-          block: "start"
-        }),
-      reduce ? 0 : 480
-    );
   }, [open]);
 
+  const revealTargetRef = useRef(revealTarget);
   useEffect(() => {
-    revealFromHash();
+    revealTargetRef.current = revealTarget;
+  }, [revealTarget]);
+
+  useEffect(() => {
+    const revealFromHash = (): void => {
+      const hash = window.location.hash.slice(1);
+      if (!hash) return;
+      const target = document.getElementById(decodeURIComponent(hash));
+      if (target) revealTargetRef.current(target);
+    };
+    const frame = requestAnimationFrame(revealFromHash);
     const onHashChange = (): void => revealFromHash();
     window.addEventListener("hashchange", onHashChange);
-    return () =>
+    return () => {
+      cancelAnimationFrame(frame);
       window.removeEventListener("hashchange", onHashChange);
-  }, [revealFromHash]);
+    };
+  }, []);
+
+  useEffect(() => {
+    const onAnchorNavigation = (event: Event): void => {
+      const targetId = (event as CustomEvent<{ targetId?: string }>).detail
+        ?.targetId;
+      if (!targetId) return;
+      const target = document.getElementById(targetId);
+      if (target) revealTarget(target);
+    };
+    window.addEventListener("site:anchor-navigation", onAnchorNavigation);
+    return () =>
+      window.removeEventListener("site:anchor-navigation", onAnchorNavigation);
+  }, [revealTarget]);
+
+  useEffect(() => {
+    const target = pendingTargetRef.current;
+    if (!open || !target) return;
+
+    const reduce =
+      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
+    const scrollTarget = (): void => {
+      if (pendingTargetRef.current !== target) return;
+      pendingTargetRef.current = null;
+      target.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+    };
+
+    if (reduce || !panelRef.current) {
+      requestAnimationFrame(scrollTarget);
+      return;
+    }
+
+    const panel = panelRef.current;
+    const onTransitionEnd = (event: TransitionEvent): void => {
+      if (event.target === panel && event.propertyName === "grid-template-rows") {
+        panel.removeEventListener("transitionend", onTransitionEnd);
+        scrollTarget();
+      }
+    };
+    panel.addEventListener("transitionend", onTransitionEnd);
+    return () => panel.removeEventListener("transitionend", onTransitionEnd);
+  }, [open]);
 
   return (
-    <section id={id} className={`collapsible scroll-mt-20 ${className}`.trim()}>
+    <section
+      ref={sectionRef}
+      id={id}
+      className={`collapsible scroll-mt-24 ${className}`.trim()}
+    >
       <div className="container-page">
-        <div ref={rootRef} className="collapsible__body" data-open={open ? "" : undefined}>
+        <div className="collapsible__body" data-open={open ? "" : undefined}>
           <h2 className="collapsible__title">
             <button
               type="button"
@@ -93,7 +140,13 @@ export function CollapsibleSection({
             </button>
           </h2>
 
-          <div id={panelId} className="collapsible__panel" aria-hidden={!open} inert={!open}>
+          <div
+            ref={panelRef}
+            id={panelId}
+            className="collapsible__panel"
+            aria-hidden={!open}
+            inert={!open}
+          >
             <div className="collapsible__panel-inner">
               <div className="collapsible__panel-content">
                 {description ? <p className="body-lead max-w-2xl">{description}</p> : null}

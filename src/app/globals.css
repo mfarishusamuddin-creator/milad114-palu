@@ -46,12 +46,15 @@
   }
 
   html {
+    min-height: 100%;
     scroll-behavior: smooth;
     background: var(--color-bg);
   }
 
   body {
     min-height: 100vh;
+    min-height: 100dvh;
+    overflow-x: clip;
     background:
       radial-gradient(70% 70% at 88% 10%, rgba(25, 92, 141, 0.05) 0%, rgba(255, 255, 255, 0) 62%),
       radial-gradient(60% 60% at 6% 90%, rgba(202, 154, 0, 0.06) 0%, rgba(255, 255, 255, 0) 60%),
@@ -333,7 +336,7 @@
 
   .countdown-label {
     margin-top: 0.4rem;
-    font-size: 0.62rem;
+    font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -341,7 +344,8 @@
   }
 
   .countdown-zone-select {
-    font-size: 0.6rem;
+    min-height: 2.75rem;
+    font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -372,7 +376,7 @@
   .countdown-target-label {
     display: inline-block;
     margin-inline-end: 0.5rem;
-    font-size: 0.62rem;
+    font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -583,7 +587,7 @@
 
     .calendar-weekday {
       min-height: 1.7rem;
-      font-size: 0.52rem;
+      font-size: 0.72rem;
       letter-spacing: 0.02em;
     }
 
@@ -592,7 +596,7 @@
     }
 
     .calendar-day-sub {
-      font-size: 0.5rem;
+      font-size: 0.72rem;
     }
 
     .calendar-event-dot {
@@ -611,7 +615,7 @@
     border-radius: 0.2rem;
     background: var(--color-navy);
     color: #fff;
-    font-size: 0.62rem;
+    font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.06em;
     text-transform: uppercase;
@@ -663,7 +667,7 @@
   }
 
   .calendar-day-sub {
-    font-size: 0.58rem;
+    font-size: 0.72rem;
     line-height: 1.25;
     color: var(--color-ink-soft);
   }
@@ -689,12 +693,12 @@
   }
 
   .collapsible {
-    overflow-x: clip;
+    overflow: visible;
   }
 
   .collapsible .map-breakout {
-    width: 100vw;
-    margin-inline: calc(50% - 50vw);
+    width: 100%;
+    margin-inline: 0;
   }
 
 
@@ -1038,8 +1042,8 @@
   color: var(--color-navy);
 }
 
-.map-stat-label {
-  font-size: 0.62rem;
+  .map-stat-label {
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;

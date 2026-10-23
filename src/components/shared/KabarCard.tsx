@@ -42,7 +42,7 @@ export function KabarCard({ item, dict, variant = "grid" }: Props) {
         rel="noopener noreferrer"
         className="group flex items-start gap-4 border-b border-line py-3.5 no-underline"
       >
-        <span className="w-24 shrink-0 text-[0.62rem] font-bold uppercase tracking-[0.1em] text-ocean">
+        <span className="w-24 shrink-0 text-[0.75rem] font-bold uppercase tracking-[0.08em] text-ocean">
           {formatDateShortID(item.date, dict.locale)}
         </span>
         <span className="flex-1 font-serif text-base font-bold leading-snug text-ink transition-colors group-hover:text-navy">

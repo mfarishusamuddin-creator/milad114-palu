@@ -123,7 +123,7 @@ export function WorldMap({ dict }: { dict: Dictionary }) {
   });
 
   return (
-    <div className="map-fullbleed relative overflow-hidden border-y border-line bg-bg-soft p-2 sm:p-4">
+    <div className="map-fullbleed relative overflow-visible border-y border-line bg-bg-soft p-2 sm:p-4">
       <svg
         viewBox={`0 0 ${VIEW.width} ${VIEW.height}`}
         className="map-svg h-auto w-full"

@@ -42,7 +42,7 @@ export function MapSection({ dict }: { dict: Dictionary }) {
         <WorldMap dict={dict} />
       </Reveal>
 
-      <p className="mt-4 text-xs leading-relaxed text-ink-soft">
+      <p className="mt-4 text-sm leading-relaxed text-ink-soft">
         {dict.map.note}
       </p>
     </CollapsibleSection>

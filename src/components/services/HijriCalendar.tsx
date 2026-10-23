@@ -242,7 +242,7 @@ export function HijriCalendar({ data, dict }: Props) {
                     <span className="calendar-day-number">{dayNumber}</span>
                     <span className="calendar-day-sub">{sub}</span>
                     {isMilestone ? (
-                      <span className="text-[0.52rem] font-bold uppercase tracking-[0.08em] text-gold-text">
+                      <span className="text-[0.72rem] font-bold uppercase tracking-[0.06em] text-gold-text">
                         {dict.miladLabel}
                       </span>
                     ) : null}
@@ -255,7 +255,7 @@ export function HijriCalendar({ data, dict }: Props) {
 
         <div className="mt-6 grid gap-5 lg:grid-cols-[1fr_1fr]">
           <div>
-            <h3 className="text-[0.68rem] font-bold uppercase tracking-[0.16em] text-ocean">
+            <h3 className="text-[0.75rem] font-bold uppercase tracking-[0.14em] text-ocean">
               {dict.specialDays}
             </h3>
             {month.hariIstimewa?.length ? (
@@ -281,7 +281,7 @@ export function HijriCalendar({ data, dict }: Props) {
           </div>
 
           <div>
-            <h3 className="text-[0.68rem] font-bold uppercase tracking-[0.16em] text-ocean">
+            <h3 className="text-[0.75rem] font-bold uppercase tracking-[0.14em] text-ocean">
               {dict.converter}
             </h3>
 
@@ -372,7 +372,7 @@ export function HijriCalendar({ data, dict }: Props) {
             >
               {converter ? (
                 <>
-                  <p className="text-[0.68rem] font-bold uppercase tracking-[0.12em] text-ocean">
+                  <p className="text-[0.75rem] font-bold uppercase tracking-[0.1em] text-ocean">
                     {converter.title}
                   </p>
                   <p className="mt-1 text-sm font-bold text-ink">
@@ -386,7 +386,7 @@ export function HijriCalendar({ data, dict }: Props) {
           </div>
         </div>
 
-        <p className="mt-5 text-[0.68rem] leading-relaxed text-ink-soft">
+        <p className="mt-5 text-[0.75rem] leading-relaxed text-ink-soft">
           {dict.snapshot} {formatFetchedAt(data.fetchedAt, dict.locale)}.{" "}
           {dict.disclaimer}
         </p>

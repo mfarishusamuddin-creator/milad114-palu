@@ -26,7 +26,7 @@ export function Agenda({ dict }: { dict: Dictionary }) {
                 {item.description}
               </p>
             </div>
-            <span className="text-[0.6rem] font-bold uppercase tracking-[0.16em] text-ocean">
+            <span className="text-[0.75rem] font-bold uppercase tracking-[0.14em] text-ocean">
               {item.tag}
             </span>
           </article>

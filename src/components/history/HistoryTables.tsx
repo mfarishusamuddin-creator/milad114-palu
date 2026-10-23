@@ -63,7 +63,7 @@ export function HistoryTables({ tables, labels }: Props) {
                     <th
                       key={column}
                       scope="col"
-                      className="border-b border-line bg-bg-soft px-4 py-2.5 text-start text-[0.6rem] font-bold uppercase tracking-[0.14em] text-ink-soft"
+                      className="border-b border-line bg-bg-soft px-4 py-2.5 text-start text-[0.75rem] font-bold uppercase tracking-[0.12em] text-ink-soft"
                     >
                       {column}
                     </th>

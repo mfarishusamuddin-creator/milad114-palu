@@ -8,9 +8,24 @@ import { BrandLogo } from "@/components/theme/BrandLogo";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { aboutPath, languagePath } from "@/i18n";
 import type { Dictionary } from "@/i18n/types";
+import type { MouseEvent } from "react";
 
 export function Navbar({ dict }: { dict: Dictionary }) {
   const pathname = usePathname();
+
+  const handleCardNavLink = (
+    href: string | undefined,
+    event: MouseEvent<HTMLElement>
+  ): void => {
+    if (!href?.startsWith("#")) return;
+    const targetId = decodeURIComponent(href.slice(1));
+    if (!targetId) return;
+    event.preventDefault();
+    window.history.pushState(null, "", href);
+    window.dispatchEvent(
+      new CustomEvent("site:anchor-navigation", { detail: { targetId } })
+    );
+  };
 
   const items = dict.nav.cards.map((card, index) => ({
     label: card.label,
@@ -28,7 +43,7 @@ export function Navbar({ dict }: { dict: Dictionary }) {
 
   return (
     <header className="sticky top-0 z-50 border-b border-line/80 bg-surface/90 backdrop-blur-xl">
-      <div className="container-page flex h-15 items-center justify-between gap-3">
+      <div className="container-page flex min-h-14 items-center justify-between gap-3 py-2">
         <Link
           href={languagePath(dict.lang)}
           className="flex items-center gap-2.5 no-underline"
@@ -56,6 +71,9 @@ export function Navbar({ dict }: { dict: Dictionary }) {
           ariaLabel={dict.nav.menuAria}
           linkComponent={Link}
           compactWidth={720}
+          onLinkClick={(link, _item, event) =>
+            handleCardNavLink(link.href, event)
+          }
         />
       </div>
     </header>

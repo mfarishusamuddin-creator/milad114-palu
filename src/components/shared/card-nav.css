@@ -389,7 +389,8 @@
 /* ---- Tambahan proyek: mode compact (header) ---- */
 
 .card-nav--compact {
-  width: auto;
+  width: var(--cn-bar);
+  flex: 0 0 var(--cn-bar);
   max-width: none;
 }
 
@@ -402,7 +403,7 @@
 }
 
 .card-nav--compact[data-open] .card-nav__panel {
-  width: min(var(--cn-compact-width), calc(100vw - 16px));
+  width: min(var(--cn-compact-width), calc(100vw - 2rem));
 }
 
 .card-nav--compact .card-nav__bar {

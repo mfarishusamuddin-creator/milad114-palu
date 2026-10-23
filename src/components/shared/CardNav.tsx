@@ -614,6 +614,7 @@ export default function CardNav({
           id={contentId}
           className={CONTENT}
           aria-hidden={!open}
+          inert={!open}
         >
           <div className={CARDS}>
             {items.map((item, index) => (

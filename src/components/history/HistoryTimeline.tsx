@@ -91,7 +91,7 @@ export function HistoryTimeline({ content }: Props) {
 function EntryBody({ entry }: { entry: HistoryEntry }) {
   return (
     <div>
-      <p className="text-[0.6rem] font-bold uppercase tracking-[0.16em] text-ocean">
+      <p className="text-[0.75rem] font-bold uppercase tracking-[0.14em] text-ocean">
         {entry.kicker}
       </p>
       <h4 className="mt-1.5 font-serif text-xl font-bold text-ink md:text-2xl">

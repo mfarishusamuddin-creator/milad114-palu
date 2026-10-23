@@ -26,7 +26,7 @@ export function AboutMilad({ dict }: { dict: Dictionary }) {
                 key={fact.label}
                 className="grid gap-1 border-b border-line py-3 last:border-b-0 sm:grid-cols-[9rem_1fr] sm:items-baseline"
               >
-                <dt className="text-[0.6rem] font-bold uppercase tracking-[0.16em] text-ocean">
+                <dt className="text-[0.75rem] font-bold uppercase tracking-[0.14em] text-ocean">
                   {fact.label}
                 </dt>
                 <dd className="font-serif text-base font-bold text-ink">

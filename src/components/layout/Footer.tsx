@@ -20,7 +20,7 @@ export function Footer({ dict }: { dict: Dictionary }) {
               <p className="font-serif text-lg font-bold text-white">
                 Milad 114
               </p>
-              <p className="mt-0.5 text-[0.58rem] font-bold uppercase tracking-[0.16em] text-white/50">
+              <p className="mt-0.5 text-[0.75rem] font-bold uppercase tracking-[0.12em] text-white/50">
                 Muhammadiyah
               </p>
             </div>
