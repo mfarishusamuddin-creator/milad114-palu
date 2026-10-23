@@ -14,7 +14,7 @@ export function Footer({ dict }: { dict: Dictionary }) {
               alt=""
               width={512}
               height={512}
-              className="h-11 w-11 object-contain"
+              className="h-15 w-15 object-contain"
             />
             <div>
               <p className="font-serif text-lg font-bold text-white">
