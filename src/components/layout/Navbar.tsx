@@ -28,7 +28,7 @@ export function Navbar({ dict }: { dict: Dictionary }) {
 
   return (
     <header className="sticky top-0 z-50 border-b border-line/80 bg-surface/90 backdrop-blur-xl">
-      <div className="container-page flex h-16 items-center justify-between gap-3">
+      <div className="container-page flex h-17 items-center justify-between gap-3">
         <Link
           href={languagePath(dict.lang)}
           className="flex items-center gap-2.5 no-underline"
@@ -39,7 +39,7 @@ export function Navbar({ dict }: { dict: Dictionary }) {
             alt=""
             width={40}
             height={40}
-            className="h-8 w-8 shrink-0 object-contain md:h-9 md:w-9"
+            className="h-11 w-11 shrink-0 object-contain md:h-11 md:w-11"
           />
           <span className="navbar-brand whitespace-nowrap font-serif font-bold tracking-tight text-navy">
             {dict.nav.brand}
