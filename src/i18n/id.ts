@@ -64,7 +64,7 @@ export const id: Dictionary = {
     themeLight: "Mode terang",
     themeDark: "Mode gelap",
     themeToggle: "Ubah tema",
-    brand: "Milad 114 Muhammadiyah",
+    brand: "Karya Antarmuka Digital Untuk Milad 114 Muhammadiyah",
     home: "Beranda",
     menuAria: "Navigasi utama",
     about: "Tentang",
