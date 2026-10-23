@@ -1,5 +1,6 @@
 ﻿import { Reveal } from "@/components/animation/Reveal";
 import { Countdown } from "@/components/home/Countdown";
+import { AnchorLink } from "@/components/shared/AnchorLink";
 import GradientText from "@/components/shared/GradientText";
 import { ShareButton } from "@/components/shared/ShareButton";
 import type { Dictionary } from "@/i18n/types";
@@ -28,11 +29,11 @@ export function Hero({ dict }: { dict: Dictionary }) {
               <p className="body-lead max-w-xl">{dict.hero.intro}</p>
 
               <div className="mt-7 flex flex-wrap items-center gap-4">
-                <a href="#sejarah" className="btn btn-primary">
+                <AnchorLink href="#sejarah" className="btn btn-primary">
                   {dict.hero.ctaPrimary}
                   <ArrowIcon />
-                </a>
-                <a
+                </AnchorLink>
+                <AnchorLink
                   href="#layanan"
                   className="group inline-flex min-h-11 items-center gap-2 text-[0.8rem] font-bold uppercase tracking-[0.12em] text-navy no-underline"
                 >
@@ -40,7 +41,7 @@ export function Hero({ dict }: { dict: Dictionary }) {
                   <span className="transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1">
                     <ArrowIcon />
                   </span>
-                </a>
+                </AnchorLink>
                 <ShareButton text={dict.hero.shareText} label={dict.hero.share} />
               </div>
             </div>

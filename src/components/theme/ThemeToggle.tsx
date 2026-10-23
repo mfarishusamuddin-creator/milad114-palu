@@ -14,7 +14,7 @@ export function ThemeToggle({ dict }: { dict: Dictionary }) {
       aria-label={label}
       title={label}
       aria-pressed={theme === "dark"}
-      className="inline-flex h-9 w-9 items-center justify-center rounded-sm border border-line bg-surface text-ink-soft transition-colors hover:border-navy/30 hover:text-navy"
+      className="inline-flex h-11 w-11 items-center justify-center rounded-sm border border-line bg-surface text-ink-soft transition-colors hover:border-navy/30 hover:text-navy"
     >
       {theme === "dark" ? <SunIcon /> : <MoonIcon />}
     </button>
