@@ -12,14 +12,18 @@ import type { Dictionary } from "@/i18n/types";
 export function Navbar({ dict }: { dict: Dictionary }) {
   const pathname = usePathname();
 
-  const items = dict.nav.cards.map((card) => ({
+  const items = dict.nav.cards.map((card, index) => ({
     label: card.label,
     description: card.description,
     links: card.links.map((link) => ({
       label: link.label,
       href: link.about ? aboutPath(dict.lang) : link.anchor,
       ariaLabel: link.label
-    }))
+    })),
+    content:
+      index === dict.nav.cards.length - 1 ? (
+        <PengaturanContent dict={dict} />
+      ) : undefined
   }));
 
   return (
@@ -42,39 +46,34 @@ export function Navbar({ dict }: { dict: Dictionary }) {
           </span>
         </Link>
 
-        <div className="flex shrink-0 items-center gap-2">
-          <ThemeToggle dict={dict} />
-          <CardNav
-            compact
-            key={`${dict.lang}-${pathname}`}
-            items={items}
-            menuLabel={false}
-            menuLabelOpen={dict.nav.menuOpen}
-            menuLabelClose={dict.nav.menuClose}
-            ariaLabel={dict.nav.menuAria}
-            linkComponent={Link}
-            compactWidth={680}
-            footer={
-              <div className="card-nav__footer">
-                <a
-                  href="#sejarah"
-                  className="btn btn-gold btn-sm card-nav__footer-cta"
-                >
-                  {dict.nav.cta}
-                </a>
-                <LanguageSwitcher lang={dict.lang} className="card-nav__footer-lang" />
-                <Link
-                  href={aboutPath(dict.lang)}
-                  className="card-nav__footer-link"
-                  aria-label={dict.nav.about}
-                >
-                  {dict.nav.about}
-                </Link>
-              </div>
-            }
-          />
-        </div>
+        <CardNav
+          compact
+          key={`${dict.lang}-${pathname}`}
+          items={items}
+          menuLabel={false}
+          menuLabelOpen={dict.nav.menuOpen}
+          menuLabelClose={dict.nav.menuClose}
+          ariaLabel={dict.nav.menuAria}
+          linkComponent={Link}
+          compactWidth={720}
+        />
       </div>
     </header>
+  );
+}
+
+function PengaturanContent({ dict }: { dict: Dictionary }) {
+  return (
+    <>
+      <LanguageSwitcher lang={dict.lang} className="w-full" />
+      <ThemeToggle dict={dict} />
+      <Link
+        href={aboutPath(dict.lang)}
+        className="card-nav__footer-link"
+        aria-label={dict.nav.about}
+      >
+        {dict.nav.about}
+      </Link>
+    </>
   );
 }

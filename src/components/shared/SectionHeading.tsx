@@ -2,7 +2,6 @@ import { cn } from "@/lib/cn";
 import GradientText from "@/components/shared/GradientText";
 
 type Props = {
-  eyebrow?: string;
   title: string;
   description?: string;
   align?: "left" | "center";
@@ -11,7 +10,6 @@ type Props = {
 };
 
 export function SectionHeading({
-  eyebrow,
   title,
   description,
   align = "left",
@@ -26,12 +24,6 @@ export function SectionHeading({
         className
       )}
     >
-      {eyebrow ? (
-        <p className={cn("eyebrow", light && "eyebrow--light")}>
-          <span className="eyebrow-dot" aria-hidden="true" />
-          {eyebrow}
-        </p>
-      ) : null}
       <h2
         className={cn(
           "section-title mt-3",

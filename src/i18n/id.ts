@@ -58,12 +58,6 @@ export const id: Dictionary = {
     skipIntro: "Lewati intro",
   },
   nav: {
-    links: [
-      { href: "#peta", label: "Peta" },
-      { href: "#sejarah", label: "Sejarah" },
-      { href: "#layanan", label: "Layanan" },
-    ],
-    cta: "Jelajahi Jejak",
     menuOpen: "Buka menu",
     menuClose: "Tutup menu",
     language: "Bahasa",
@@ -76,28 +70,29 @@ export const id: Dictionary = {
     about: "Tentang",
     cards: [
       {
-        label: "Sejarah",
-        description: "Dua jalur satu gerakan: Muhammadiyah dan KH Ahmad Dahlan.",
+        label: "Jejak & Makna",
+        description: "Dua jalur sejarah dan makna logo Tanwir & Milad.",
         links: [
-          { label: "Dua jalur sejarah", anchor: "#sejarah" },
-          { label: "Agenda Tanwir & Milad", anchor: "#agenda" },
+          { label: "Jejak & Makna", anchor: "#sejarah" },
+          { label: "Makna Logo", anchor: "#tentang" },
+          { label: "Agenda", anchor: "#agenda" },
         ],
       },
       {
         label: "Layanan",
-        description: "Kalender KHGT dan kabar resmi Muhammadiyah.",
+        description:
+          "Kalender KHGT, kabar resmi, peta PCIM, dan hitungan harian.",
         links: [
           { label: "Kalender KHGT", anchor: "#layanan" },
           { label: "Kabar Muhammadiyah", anchor: "#kabar" },
+          { label: "Peta PCIM", anchor: "#peta" },
+          { label: "Counter Tanwir & Ramadhan", anchor: "#countdown" },
         ],
       },
       {
-        label: "Peta",
-        description: "29 Pimpinan Cabang Istimewa di berbagai negara.",
-        links: [
-          { label: "Persebaran 29 PCIM", anchor: "#peta" },
-          { label: "Tentang situs", about: true },
-        ],
+        label: "Pengaturan",
+        description: "Bahasa, tema, dan Tentang situs ini.",
+        links: [],
       },
     ],
   },
@@ -149,7 +144,6 @@ export const id: Dictionary = {
     },
   },
   about: {
-    eyebrow: "Makna Logo",
     title: "Kelor, 114, dan pencerahan",
     description:
       "Logo Tanwir dan Milad ke-114 memadukan helai daun kelor, stilisasi angka 114, dan lambang matahari Muhammadiyah — kearifan lokal Palu yang bertemu cita-cita Islam Berkemajuan.",
@@ -164,11 +158,10 @@ export const id: Dictionary = {
       { label: "Hijriah", value: "10–12 Jumadilakhir 1448 H" },
       { label: "Simbol", value: "Daun kelor · angka 114 · matahari" },
     ],
-    quote:
-      "Kelor dipilih karena kuat, sederhana, dan bermanfaat — ia tumbuh di Palu dan menjadi simbol ketangguhan.",
+    posterAlt:
+      "Poster Tanwir dan Milad ke-114 Muhammadiyah — Bersama Satukan Bangsa",
   },
   agenda: {
-    eyebrow: "Agenda",
     title: "Dari Tanwir Palu menuju Muktamar Medan",
     items: [
       {
@@ -195,16 +188,16 @@ export const id: Dictionary = {
     ],
   },
   history: {
-    eyebrow: "Sejarah",
-    title: "Dua jalur, satu gerakan",
+    title: "Jejak & Makna",
     description:
       "Baca perjalanan Persyarikatan dari dua sisi: kronologi Muhammadiyah dan perjalanan hidup pendirinya, KH Ahmad Dahlan ? lengkap dengan kepemimpinan dan amal usaha dalam angka.",
-    tablesShow: "Tampilkan tabel",
-    tablesHide: "Sembunyikan tabel",
+    tables: {
+      leadership: "Kepemimpinan Pusat Muhammadiyah",
+      aum: "AUM",
+    },
     content: historyId,
   },
   services: {
-    eyebrow: "Kebermanfaatan",
     title: "Layanan Muhammadiyah",
     description:
       "Dua jendela manfaat: kalender resmi KHGT dan kabar terbaru dari Muhammadiyah.",
@@ -253,7 +246,6 @@ export const id: Dictionary = {
     miladLabel: "Milad",
   },
   kabar: {
-    eyebrow: "Kabar",
     title: "Kabar dari Muhammadiyah",
     description:
       "Kabar terbaru dari kanal resmi Muhammadiyah. Ringkasan singkat, tautan tetap ke sumber asli.",
@@ -269,7 +261,6 @@ export const id: Dictionary = {
     },
   },
   map: {
-    eyebrow: "Internasionalisasi",
     title: "Persebaran Muhammadiyah",
     description:
       "Muhammadiyah tidak hanya tumbuh di Indonesia. 29 Pimpinan Cabang Istimewa tersebar di Afrika, Asia, Eropa, Amerika, dan Oseania — dan Indonesia adalah markas besar gerakan.",
@@ -282,11 +273,10 @@ export const id: Dictionary = {
   footer: {
     tagline:
       "Situs independen Tanwir dan Milad ke-114 Muhammadiyah: dua jalur sejarah, kalender KHGT, kabar resmi, dan peta PCIM dunia.",
-    explore: "Jelajahi",
   },
   aboutPage: {
-    eyebrow: "Halaman Tentang",
     title: "Tentang situs ini",
+    back: "Kembali ke Beranda",
     intro:
       "Milad 114 adalah karya digital independen untuk persiapan Tanwir dan Milad ke-114 Muhammadiyah di Palu: dua jalur sejarah, agenda, peta dunia, dan layanan resminya.",
     disclaimer:

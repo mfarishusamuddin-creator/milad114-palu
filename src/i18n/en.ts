@@ -69,12 +69,6 @@ export const en: Dictionary = {
     skipIntro: "Skip intro",
   },
   nav: {
-    links: [
-      { href: "#peta", label: "Map" },
-      { href: "#sejarah", label: "History" },
-      { href: "#layanan", label: "Services" },
-    ],
-    cta: "Explore the Trail",
     menuOpen: "Open menu",
     menuClose: "Close menu",
     language: "Language",
@@ -87,28 +81,29 @@ export const en: Dictionary = {
     about: "About",
     cards: [
       {
-        label: "History",
-        description: "Two tracks, one movement: Muhammadiyah and KH Ahmad Dahlan.",
+        label: "Tracks & Meaning",
+        description:
+          "Two historical tracks and the meaning of the Tanwir & Milad logo.",
         links: [
-          { label: "Two historical tracks", anchor: "#sejarah" },
-          { label: "Tanwir & Milad agenda", anchor: "#agenda" },
+          { label: "Tracks & Meaning", anchor: "#sejarah" },
+          { label: "Logo Meaning", anchor: "#tentang" },
+          { label: "Agenda", anchor: "#agenda" },
         ],
       },
       {
         label: "Services",
-        description: "KHGT calendar and official Muhammadiyah news.",
+        description: "KHGT calendar, official news, the PCIM map, and daily counters.",
         links: [
           { label: "KHGT calendar", anchor: "#layanan" },
           { label: "Muhammadiyah news", anchor: "#kabar" },
+          { label: "PCIM map", anchor: "#peta" },
+          { label: "Tanwir & Ramadan counter", anchor: "#countdown" },
         ],
       },
       {
-        label: "Map",
-        description: "29 Special Branch Leaderships across nations.",
-        links: [
-          { label: "29 PCIM worldwide", anchor: "#peta" },
-          { label: "About this site", about: true },
-        ],
+        label: "Settings",
+        description: "Language, theme, and About this site.",
+        links: [],
       },
     ],
   },
@@ -159,7 +154,6 @@ export const en: Dictionary = {
     },
   },
   about: {
-    eyebrow: "Logo Meaning",
     title: "Moringa, 114, and enlightenment",
     description:
       "The Tanwir and 114th Milad logo weaves moringa leaflets, a stylised number 114, and the Muhammadiyah sun emblem — the local wisdom of Palu meeting the aspiration of Progressive Islam.",
@@ -174,11 +168,10 @@ export const en: Dictionary = {
       { label: "Hijri", value: "10–12 Jumada al-Thani 1448 AH" },
       { label: "Symbols", value: "Moringa leaf · the number 114 · the sun" },
     ],
-    quote:
-      "Moringa was chosen because it is strong, simple, and useful — it grows in Palu and stands for resilience.",
+    posterAlt:
+      "Poster of Tanwir and the 114th Milad of Muhammadiyah — Together, Unite the Nation",
   },
   agenda: {
-    eyebrow: "Agenda",
     title: "From Tanwir Palu to the Medan Muktamar",
     items: [
       {
@@ -205,16 +198,16 @@ export const en: Dictionary = {
     ],
   },
   history: {
-    eyebrow: "History",
-    title: "Two tracks, one movement",
+    title: "Tracks & Meaning",
     description:
       "Read the movement from two sides: the chronology of Muhammadiyah and the life journey of its founder, KH Ahmad Dahlan — complete with leadership eras and charitable works in numbers.",
-    tablesShow: "Show tables",
-    tablesHide: "Hide tables",
+    tables: {
+      leadership: "Muhammadiyah Central Leadership",
+      aum: "AUM",
+    },
     content: historyEn,
   },
   services: {
-    eyebrow: "Public benefit",
     title: "Muhammadiyah Services",
     description:
       "Two windows of benefit: the official KHGT calendar and the latest news from Muhammadiyah.",
@@ -263,7 +256,6 @@ export const en: Dictionary = {
     miladLabel: "Milad",
   },
   kabar: {
-    eyebrow: "News",
     title: "News from Muhammadiyah",
     description:
       "The latest news from Muhammadiyah's official channel. Brief summaries, with links to the original source.",
@@ -279,7 +271,6 @@ export const en: Dictionary = {
     },
   },
   map: {
-    eyebrow: "Internationalisation",
     title: "Muhammadiyah Around the World",
     description:
       "Muhammadiyah did not grow only in Indonesia. 29 Special Branch Leaderships are spread across Africa, Asia, Europe, the Americas, and Oceania — and Indonesia is the headquarters of the movement.",
@@ -292,11 +283,10 @@ export const en: Dictionary = {
   footer: {
     tagline:
       "An independent site for the Tanwir and 114th Milad of Muhammadiyah: two historical tracks, the KHGT calendar, official news, and a map of PCIM worldwide.",
-    explore: "Explore",
   },
   aboutPage: {
-    eyebrow: "About page",
     title: "About this site",
+    back: "Back to Home",
     intro:
       "Milad 114 is an independent digital work for the Tanwir and 114th Milad of Muhammadiyah in Palu: two historical tracks, the agenda, the world map, and its official services.",
     disclaimer:

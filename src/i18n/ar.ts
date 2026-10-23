@@ -69,12 +69,6 @@ export const ar: Dictionary = {
     skipIntro: "تخطي المقدمة",
   },
   nav: {
-    links: [
-      { href: "#peta", label: "الخريطة" },
-      { href: "#sejarah", label: "التاريخ" },
-      { href: "#layanan", label: "الخدمات" },
-    ],
-    cta: "استكشف المسار",
     menuOpen: "افتح القائمة",
     menuClose: "أغلق القائمة",
     language: "اللغة",
@@ -87,28 +81,28 @@ export const ar: Dictionary = {
     about: "حول الموقع",
     cards: [
       {
-        label: "التاريخ",
-        description: "مساران، حركة واحدة: المحمدية وKH أحمد دهلان.",
+        label: "المسار والمعنى",
+        description: "مساران تاريخيان ومعنى شعار تنوير والذكرى.",
         links: [
-          { label: "المساران التاريخيان", anchor: "#sejarah" },
-          { label: "جدول تنوير والذكرى", anchor: "#agenda" },
+          { label: "المسار والمعنى", anchor: "#sejarah" },
+          { label: "معنى الشعار", anchor: "#tentang" },
+          { label: "الأجندة", anchor: "#agenda" },
         ],
       },
       {
         label: "الخدمات",
-        description: "تقويم KHGT وأخبار المحمدية الرسمية.",
+        description: "تقويم KHGT وأخبار رسمية وخريطة PCIM وعدّ يومي.",
         links: [
           { label: "تقويم KHGT", anchor: "#layanan" },
           { label: "أخبار المحمدية", anchor: "#kabar" },
+          { label: "خريطة PCIM", anchor: "#peta" },
+          { label: "عدّاد تنوير ورمضان", anchor: "#countdown" },
         ],
       },
       {
-        label: "الخريطة",
-        description: "29 قيادة فرع خاص في دول العالم.",
-        links: [
-          { label: "انتشار الـ29 لـ PCIM", anchor: "#peta" },
-          { label: "حول الموقع", about: true },
-        ],
+        label: "الإعدادات",
+        description: "اللغة والمظهر وحول هذا الموقع.",
+        links: [],
       },
     ],
   },
@@ -159,7 +153,6 @@ export const ar: Dictionary = {
     },
   },
   about: {
-    eyebrow: "معنى الشعار",
     title: "المورينغا و114 والتنوير",
     description:
       "يجمع شعار تنوير والذكرى الـ114 بين ورقة المورينغا والرقم 114 المنمّق وشعار شمس المحمدية — حكمة محلية من بالو تلتقي تطلّع الإسلام المتقدم.",
@@ -174,11 +167,10 @@ export const ar: Dictionary = {
       { label: "الهجري", value: "10–12 جمادى الآخرة 1448هـ" },
       { label: "الرموز", value: "ورقة المورينغا · الرقم 114 · الشمس" },
     ],
-    quote:
-      "اختيرت المورينغا لأنها قوية وبسيطة ونافعة — تنمو في بالو وتصبح رمزًا للصمود.",
+    posterAlt:
+      "بوستر تنوير والذكرى الـ114 لجمعية المحمدية — معًا نوحّد الأمة",
   },
   agenda: {
-    eyebrow: "الأجندة",
     title: "من تنوير بالو نحو مؤتمر ميدان",
     items: [
       {
@@ -205,16 +197,16 @@ export const ar: Dictionary = {
     ],
   },
   history: {
-    eyebrow: "التاريخ",
-    title: "مساران، حركة واحدة",
+    title: "المسار والمعنى",
     description:
       "اقرأ رحلة الجمعية من جانبين: تسلسل المحمدية ومسيرة حياة مؤسسها KH أحمد دهلان — مع القيادات والأعمال الخيرية بالأرقام.",
-    tablesShow: "اعرض الجداول",
-    tablesHide: "إخفِ الجداول",
+    tables: {
+      leadership: "قيادة قيادة المحمدية المركزية",
+      aum: "الأعمال الخيرية",
+    },
     content: historyAr,
   },
   services: {
-    eyebrow: "المنفعة",
     title: "خدمات المحمدية",
     description:
       "نافذتان للمنفعة: تقويم KHGT الرسمي وأحدث أخبار المحمدية.",
@@ -263,7 +255,6 @@ export const ar: Dictionary = {
     miladLabel: "الذكرى",
   },
   kabar: {
-    eyebrow: "الأخبار",
     title: "أخبار من المحمدية",
     description:
       "أحدث الأخبار من القناة الرسمية للمحمدية. ملخصات قصيرة مع روابط إلى المصدر الأصلي.",
@@ -279,7 +270,6 @@ export const ar: Dictionary = {
     },
   },
   map: {
-    eyebrow: "التدويل",
     title: "المحمدية في العالم",
     description:
       "لم تنمُ المحمدية في إندونيسيا وحدها. تنتشر 29 قيادة فرع خاص في أفريقيا وآسيا وأوروبا والأمريكيتين وأوقيانوسيا — وإندونيسيا هي مقر الحركة.",
@@ -292,11 +282,10 @@ export const ar: Dictionary = {
   footer: {
     tagline:
       "موقع مستقل لتنوير والذكرى الـ114 للمحمدية: مساران تاريخيان، وتقويم KHGT، وأخبار رسمية، وخريطة PCIM العالمية.",
-    explore: "استكشف",
   },
   aboutPage: {
-    eyebrow: "صفحة حول",
     title: "حول هذا الموقع",
+    back: "عودة إلى الرئيسية",
     intro:
       "«ميلاد 114» عمل رقمي مستقل لإعداد تنوير والذكرى الـ114 للمحمدية في بالو: مساران تاريخيان، وجدول أعمال، وخريطة عالمية، وخدماتها الرسمية.",
     disclaimer:

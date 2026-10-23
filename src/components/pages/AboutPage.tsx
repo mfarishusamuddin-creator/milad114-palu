@@ -1,6 +1,8 @@
+import Link from "next/link";
 import { SiteShell } from "@/components/pages/SiteShell";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { SITE } from "@/data/site";
+import { languagePath } from "@/i18n";
 import type { Dictionary } from "@/i18n/types";
 
 export function AboutPage({ dict }: { dict: Dictionary }) {
@@ -8,10 +10,15 @@ export function AboutPage({ dict }: { dict: Dictionary }) {
     <SiteShell dict={dict}>
       <section className="section">
         <div className="container-page">
+          <Link href={languagePath(dict.lang)} className="about-back">
+            <BackArrow />
+            {dict.aboutPage.back}
+          </Link>
+
           <SectionHeading
-            eyebrow={dict.aboutPage.eyebrow}
             title={dict.aboutPage.title}
             description={dict.aboutPage.intro}
+            className="mt-8"
           />
 
           <p className="mt-6 max-w-2xl text-sm leading-relaxed text-ink-soft">
@@ -101,6 +108,25 @@ function ExternalIcon() {
       className="flex-none text-gold-text"
     >
       <path d="M7 17L17 7M9 7h8v8" />
+    </svg>
+  );
+}
+
+function BackArrow() {
+  return (
+    <svg
+      width="15"
+      height="15"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className="flex-none rtl:rotate-180"
+    >
+      <path d="M5 12h14M11 6l-6 6 6 6" />
     </svg>
   );
 }

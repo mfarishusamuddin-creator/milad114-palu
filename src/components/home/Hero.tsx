@@ -8,45 +8,50 @@ export function Hero({ dict }: { dict: Dictionary }) {
   return (
     <section className="hero-shell">
       <div className="container-page relative z-10">
-        <Reveal trigger="mount" stagger={0.1} className="py-12 lg:py-16">
-          <div className="max-w-3xl">
-            <h1 className="display-title mt-5">
-              <GradientText block start animationSpeed={12}>
-                {dict.hero.titleLine1}
-              </GradientText>
-              <GradientText block start animationSpeed={12}>
-                {dict.hero.titleLine2}
-              </GradientText>
-            </h1>
+        <Reveal trigger="mount" stagger={0.1} className="py-10 lg:py-14">
+          <div className="grid gap-8 lg:grid-cols-2 lg:items-start lg:gap-14">
+            <div>
+              <h1 className="display-title">
+                <GradientText block start animationSpeed={12}>
+                  {dict.hero.titleLine1}
+                </GradientText>
+                <GradientText block start animationSpeed={12}>
+                  {dict.hero.titleLine2}
+                </GradientText>
+              </h1>
+              <p className="mt-4 font-serif text-xl font-semibold text-ocean sm:text-2xl">
+                {dict.hero.subtitle}
+              </p>
+            </div>
 
-            <p className="mt-4 font-serif text-xl font-semibold text-ocean sm:text-2xl">
-              {dict.hero.subtitle}
-            </p>
+            <div className="lg:pt-3">
+              <p className="body-lead max-w-xl">{dict.hero.intro}</p>
 
-            <p className="body-lead mt-5 max-w-xl">{dict.hero.intro}</p>
-
-            <div className="mt-7 flex flex-wrap items-center gap-4">
-              <a href="#sejarah" className="btn btn-primary">
-                {dict.hero.ctaPrimary}
-                <ArrowIcon />
-              </a>
-              <a
-                href="#layanan"
-                className="group inline-flex items-center gap-2 text-[0.78rem] font-bold uppercase tracking-[0.12em] text-navy no-underline"
-              >
-                {dict.hero.ctaSecondary}
-                <span className="transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1">
+              <div className="mt-7 flex flex-wrap items-center gap-4">
+                <a href="#sejarah" className="btn btn-primary">
+                  {dict.hero.ctaPrimary}
                   <ArrowIcon />
-                </span>
-              </a>
-              <ShareButton text={dict.hero.shareText} label={dict.hero.share} />
+                </a>
+                <a
+                  href="#layanan"
+                  className="group inline-flex items-center gap-2 text-[0.78rem] font-bold uppercase tracking-[0.12em] text-navy no-underline"
+                >
+                  {dict.hero.ctaSecondary}
+                  <span className="transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1">
+                    <ArrowIcon />
+                  </span>
+                </a>
+                <ShareButton text={dict.hero.shareText} label={dict.hero.share} />
+              </div>
             </div>
           </div>
         </Reveal>
 
-        <Reveal trigger="mount" stagger={0} className="border-t border-line py-5">
-          <Countdown dict={dict} />
-        </Reveal>
+        <div id="countdown" className="scroll-mt-24">
+          <Reveal trigger="mount" stagger={0} className="border-t border-line pt-5 pb-6">
+            <Countdown dict={dict} />
+          </Reveal>
+        </div>
       </div>
     </section>
   );

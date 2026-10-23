@@ -38,6 +38,8 @@ export type CardNavItem = {
   bgColor?: string;
   textColor?: string;
   links: CardNavLink[];
+  /** Slot bebas untuk kontrol interaktif (mis. card Pengaturan). */
+  content?: ReactNode;
 };
 
 export type CardNavCta = {
@@ -634,6 +636,9 @@ export default function CardNav({
                     <p className={DESCRIPTION}>{item.description}</p>
                   )}
                 </div>
+                {item.content && (
+                  <div className="card-nav__card-content">{item.content}</div>
+                )}
                 <ul className={LINKS}>
                   {(item.links ?? []).map((link, linkIndex) => (
                     <li key={`${link.label}-${linkIndex}`}>

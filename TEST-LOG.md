@@ -131,3 +131,23 @@ Lingkungan: Windows, Node.js 22.23.2, Next.js 16.4.2, Edge headless.
 - SSR spot-check `.next/server/app/*.html`: `id/en/ar` masing-masing 44 kejadian `gradient-`, 1 toggle `aria-pressed`, 1 `tables-toggle` dengan `aria-controls`, 2 BrandLogo closing-logo, 0 teks Edisi/plate/statistik dan 0 catatan sumber; tabel tidak dirender default.
 - Belum diuji di browser: interaksi toggle mode/zona waktu, animasi gradient pada judul (terang/gelap/RTL/tilt mouse? semua varian linear/yoyo sesuai pilihan pembuat), Buka/Tutup tabel, tata letak 390 px dan tema gelap dengan versi token gradient yang baru; ditandai di bagian Catatan.
 
+
+
+## Sesi collapsible + peta + CardNav baru 23 Oktober 2026
+
+- CollapsibleSection (baru, src/components/shared/CollapsibleSection.tsx + collapsible-section.css): lima section (tentang/agenda/peta/sejarah/layanan) tertutup default. Judul menjadi tombol (aria-expanded + aria-controls, chevron berputar), deskripsi dan isi di belakang panel grid-template-rows 0fr -> 1fr dengan inert saat tertutup. Hash (#tentang/#agenda/#peta/#sejarah/#layanan) membuka section; #kabar membuka Layanan lalu scroll ke elemen #kabar setelah transisi; hashchange dipantau.
+- SectionHeading tanpa eyebrow; judul/deskripsi pindah ke CollapsibleSection untuk 5 section; Kabar sebagai sub-heading Layanan tanpa eyebrow; halaman Tentang tanpa eyebrow.
+- Key i18n dihapus: about.eyebrow/quote, agenda.eyebrow, history.eyebrow, services.eyebrow, map.eyebrow, kabar.eyebrow, aboutPage.eyebrow, footer.explore, nav.links, nav.cta, history.tablesShow/tablesHide. Key baru: about.posterAlt, aboutPage.back, history.tables.leadership/aum.
+- Hero: lebar penuh, grid dua kolom di lg (kiri judul + subjudul, kanan intro + CTA + Bagikan), max-w-3xl hilang; wrapper #countdown dengan scroll-mt-24.
+- Makna Logo: kolom lama (logogram, eyebrow, angka 114, judul kecil, quote) dihapus; diganti poster public/media/intro (horizontal light/dark desktop, vertical light/dark mobile) via client component MaknaPoster (useTheme + matchMedia max-width 767px), next/image object-contain.
+- Navbar: hanya logo + Milad 114 Muhammadiyah + CardNav. ThemeToggle dan pemilih bahasa pindah ke card Pengaturan dalam CardNav melalui slot item.content (ReactNode, prop tambahan di CardNav); card Peta dan footer CardNav (CTA/language/Tentang) dihapus.
+- Label card: Jejak & Makna (#sejarah, #tentang, #agenda), Layanan (#layanan, #kabar, #peta, #countdown), Pengaturan (bahasa + tema + Tentang). Tiga bahasa disinkron; EN Tracks & Meaning, AR ط§ظ„ظ…ط³ط§ط± ظˆط§ظ„ظ…ط¹ظ†ظ‰.
+- Footer: brand, tagline, dan Tentang saja; Jelajahi dan seluruh tautan di bawahnya dihapus; closing logo dihapus (CSS .closing-logo dihapus juga).
+- Tabel: dua tab (aria-expanded/aria-controls/aria-pressed), default tanpa tabel tampil; klik tab menampilkan tabelnya, klik tab aktif menutup kembali; warna aktif kepemimpinan = ocean, AUM = kelor.
+- Peta: hit circle transparan r=16 pointer-events=all per titik (29 PCIM + HQ); label negara dan label Indonesia hanya muncul saat titik itu aktif; halo marker pulse CSS keyframes (transform-box fill-box), lebih cepat saat aktif, hormati prefers-reduced-motion; klik titik stopPropagation, klik area kosong menutup.
+- Counter: chevron kecil di tombol toggle, underline gradient via ::after pada hover/focus, focus ring jelas; perilaku mode/tanggal tidak diubah.
+- Halaman Tentang: tombol pill Kembali ke Beranda (about-back, panah rtl:rotate-180), heading tanpa eyebrow.
+- Light theme: wash gradient sangat halus (ocean/gold/kelor) pada body; padding .section menjadi clamp(3rem, 5vw, 4.5rem); CSS yatim (hero-plate, hero-orb, tables-toggle, closing-logo, animate-fade-in/float-slow/pulse-soft) dibuang.
+- SSR spot-check id/en/ar + /tentang: 5 collapsible per halaman dengan aria-expanded=false dan inert; footer tanpa Jelajahi/list; 30 hit-circle per peta; /tentang about-back ada, eyebrow 0; dua tab tabel default tertutup; hero dua kolom gradient.
+- npm run typecheck: lolos. npm run lint: 0 error, 12 warning lama. npm run build: lolos, 11 route statis.
+- Belum diuji di browser: interaksi card Pengaturan dalam panel CardNav, tap label peta di perangkat sentuh, perilaku scroll hash (kabar) di perangkat nyata, kontras tema gelap, dan tata letak 390px/1440p.

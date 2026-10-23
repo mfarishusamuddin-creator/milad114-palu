@@ -5,11 +5,6 @@ import type { SITE } from "@/data/site";
 export type LanguageCode = "id" | "en" | "ar";
 export type Direction = "ltr" | "rtl";
 
-export type NavLink = {
-  href: string;
-  label: string;
-};
-
 export type FactItem = {
   label: string;
   value: string;
@@ -45,8 +40,6 @@ export type Dictionary = {
     skipIntro: string;
   };
   nav: {
-    links: NavLink[];
-    cta: string;
     menuOpen: string;
     menuClose: string;
     language: string;
@@ -107,28 +100,26 @@ export type Dictionary = {
     };
   };
   about: {
-    eyebrow: string;
     title: string;
     description: string;
     paragraphs: string[];
     facts: FactItem[];
-    quote: string;
+    posterAlt: string;
   };
   agenda: {
-    eyebrow: string;
     title: string;
     items: AgendaItem[];
   };
   history: {
-    eyebrow: string;
     title: string;
     description: string;
-    tablesShow: string;
-    tablesHide: string;
+    tables: {
+      leadership: string;
+      aum: string;
+    };
     content: HistoryContent;
   };
   services: {
-    eyebrow: string;
     title: string;
     description: string;
     calendarTitle: string;
@@ -167,7 +158,6 @@ export type Dictionary = {
     miladLabel: string;
   };
   kabar: {
-    eyebrow: string;
     title: string;
     description: string;
     all: string;
@@ -180,7 +170,6 @@ export type Dictionary = {
     };
   };
   map: {
-    eyebrow: string;
     title: string;
     description: string;
     note: string;
@@ -191,11 +180,10 @@ export type Dictionary = {
   };
   footer: {
     tagline: string;
-    explore: string;
   };
   aboutPage: {
-    eyebrow: string;
     title: string;
+    back: string;
     intro: string;
     disclaimer: string;
     sourcesTitle: string;

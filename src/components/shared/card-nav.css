@@ -307,6 +307,17 @@
   list-style: none;
 }
 
+.card-nav__card-content {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card-nav__card-content:last-child {
+  margin-top: auto;
+}
+
 .card-nav__link {
   display: inline-flex;
   align-items: center;

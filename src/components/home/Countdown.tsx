@@ -220,6 +220,20 @@ export function Countdown({ dict }: { dict: Dictionary }) {
           <GradientText start animationSpeed={12} angle={90}>
             {labels.label}
           </GradientText>
+          <svg
+            width="13"
+            height="13"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+            className="countdown-toggle-chevron text-white/70"
+          >
+            <path d="M6 9l6 6 6-6" />
+          </svg>
         </button>
         <select
           className="countdown-zone-select"

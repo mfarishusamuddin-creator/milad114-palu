@@ -52,6 +52,7 @@ function normalizeIso(id: string | number | undefined): string {
 
 const VIEW = { width: 900, height: 500 } as const;
 const LABEL_EDGE = 70;
+const HIT_RADIUS = 16;
 
 function clampX(x: number): number {
   return Math.min(VIEW.width - LABEL_EDGE, Math.max(LABEL_EDGE, x));
@@ -77,29 +78,49 @@ export function WorldMap({ dict }: { dict: Dictionary }) {
     ? projection([activeCountry.lng, activeCountry.lat])
     : null;
 
-  const hqLines = dict.map.hq
-    .split("—")
-    .map((part) => part.trim())
-    .filter(Boolean);
+  const activate = (id: string): void => setActiveId(id);
+  const deactivate = (id: string): void =>
+    setActiveId((value) => (value === id ? null : value));
 
-  const handleDotKeyDown = (
+  const handlePointerEnter = (
+    event: PointerEvent<SVGGElement>,
+    id: string
+  ): void => activate(id);
+
+  const handlePointerLeave = (
+    event: PointerEvent<SVGGElement>,
+    id: string
+  ): void => {
+    if (event.pointerType === "mouse") deactivate(id);
+  };
+
+  const handleKeyDown = (
     event: KeyboardEvent<SVGGElement>,
     id: string
   ): void => {
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
-      setActiveId(id);
+      event.stopPropagation();
+      activate(id);
     }
   };
 
-  const handleDotLeave = (
-    event: PointerEvent<SVGGElement>,
-    id: string
-  ): void => {
-    if (event.pointerType === "mouse" && activeId === id) {
-      setActiveId(null);
-    }
-  };
+  const markerProps = (id: string) => ({
+    role: "button" as const,
+    tabIndex: 0,
+    onPointerEnter: (event: PointerEvent<SVGGElement>) =>
+      handlePointerEnter(event, id),
+    onPointerLeave: (event: PointerEvent<SVGGElement>) =>
+      handlePointerLeave(event, id),
+    onFocus: () => activate(id),
+    onBlur: () => deactivate(id),
+    onClick: (event: React.MouseEvent<SVGGElement>) => {
+      event.stopPropagation();
+      activate(id);
+    },
+    onKeyDown: (event: KeyboardEvent<SVGGElement>) =>
+      handleKeyDown(event, id)
+  });
 
   return (
     <div className="map-fullbleed relative overflow-hidden border-y border-line bg-bg-soft p-2 sm:p-4">
@@ -147,21 +168,16 @@ export function WorldMap({ dict }: { dict: Dictionary }) {
                 className={
                   isActive ? "map-marker map-marker--active" : "map-marker"
                 }
-                role="button"
-                tabIndex={0}
                 aria-label={`${country.country[dict.lang]} — ${dict.map.countries}`}
-                onPointerEnter={() => setActiveId(country.id)}
-                onPointerLeave={(event) => handleDotLeave(event, country.id)}
-                onFocus={() => setActiveId(country.id)}
-                onBlur={() => {
-                  if (activeId === country.id) setActiveId(null);
-                }}
-                onClick={(event) => {
-                  event.stopPropagation();
-                  setActiveId(country.id);
-                }}
-                onKeyDown={(event) => handleDotKeyDown(event, country.id)}
+                {...markerProps(country.id)}
               >
+                <circle
+                  cx={x}
+                  cy={y}
+                  r={HIT_RADIUS}
+                  fill="transparent"
+                  pointerEvents="all"
+                />
                 <circle
                   cx={x}
                   cy={y}
@@ -183,20 +199,19 @@ export function WorldMap({ dict }: { dict: Dictionary }) {
 
           {hqPoint && (
             <g
-              className="map-marker map-marker--hq"
-              role="button"
-              tabIndex={0}
+              className={`map-marker map-marker--hq${
+                activeId === "hq" ? " map-marker--active" : ""
+              }`}
               aria-label={`${dict.map.hq} — ${dict.map.countries}`}
-              onFocus={() => setActiveId("hq")}
-              onBlur={() => {
-                if (activeId === "hq") setActiveId(null);
-              }}
-              onClick={(event) => {
-                event.stopPropagation();
-                setActiveId("hq");
-              }}
-              onKeyDown={(event) => handleDotKeyDown(event, "hq")}
+              {...markerProps("hq")}
             >
+              <circle
+                cx={hqX}
+                cy={hqY}
+                r={HIT_RADIUS}
+                fill="transparent"
+                pointerEvents="all"
+              />
               <circle
                 cx={hqX}
                 cy={hqY}
@@ -228,28 +243,20 @@ export function WorldMap({ dict }: { dict: Dictionary }) {
             <text
               className="map-label map-label--active"
               x={clampX(activePoint[0])}
-              y={activePoint[1] - 16}
+              y={Math.max(20, activePoint[1] - 16)}
               textAnchor="middle"
             >
               <tspan>{activeCountry.country[dict.lang]}</tspan>
             </text>
           )}
-          {hqPoint && (
+          {activeId === "hq" && hqPoint && (
             <text
               className="map-label map-label--hq"
               x={clampX(hqX)}
-              y={hqY + 22}
+              y={Math.min(VIEW.height - 12, hqY + 24)}
               textAnchor="middle"
             >
-              {hqLines.map((line, index) => (
-                <tspan
-                  key={index}
-                  x={clampX(hqX)}
-                  dy={index === 0 ? 0 : "1.25em"}
-                >
-                  {line}
-                </tspan>
-              ))}
+              <tspan>{dict.map.hq}</tspan>
             </text>
           )}
         </g>

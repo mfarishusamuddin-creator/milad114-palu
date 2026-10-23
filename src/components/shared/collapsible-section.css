@@ -1,0 +1,75 @@
+/* CollapsibleSection — section yang bisa dibuka/tutup per judul.
+   Animasi memakai grid-template-rows (0fr -> 1fr) agar isi turun/naik
+   halus tanpa mengukur tinggi; prefers-reduced-motion memangkas durasi. */
+
+.collapsible__body {
+  border-top: 1px solid var(--color-line);
+}
+
+.collapsible__title {
+  font-size: inherit;
+}
+
+.collapsible__button {
+  display: flex;
+  width: 100%;
+  max-width: 44rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.15rem 0.25rem;
+  border: 0;
+  border-radius: 0.35rem;
+  background: none;
+  font-family: inherit;
+  text-align: start;
+  cursor: pointer;
+  outline-offset: -3px;
+}
+
+.collapsible__button:focus-visible {
+  outline: 2px solid var(--color-ocean);
+}
+
+.collapsible__button:hover .collapsible__chevron {
+  opacity: 1;
+}
+
+.collapsible__chevron {
+  flex: none;
+  opacity: 0.42;
+  color: var(--color-ocean);
+  transition:
+    transform 380ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 200ms ease;
+}
+
+.collapsible__chevron.is-open {
+  transform: rotate(180deg);
+}
+
+.collapsible__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition:
+    grid-template-rows 460ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 300ms ease,
+    transform 460ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.collapsible__body[data-open] .collapsible__panel {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.collapsible__panel-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.collapsible__panel-content {
+  padding-block: 0.25rem 2.25rem;
+}
