@@ -39,7 +39,7 @@ export function Navbar({ dict }: { dict: Dictionary }) {
             alt=""
             width={40}
             height={40}
-            className="h-11 w-11 shrink-0 object-contain md:h-11 md:w-11"
+            className="h-15 w-15 shrink-0 object-contain md:h-15 md:w-15"
           />
           <span className="navbar-brand whitespace-nowrap font-serif font-bold tracking-tight text-navy">
             {dict.nav.brand}
