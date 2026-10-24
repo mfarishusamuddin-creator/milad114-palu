@@ -1,16 +1,14 @@
-# Milad 114 — Dua Jalur, Satu Gerakan
+# Karya untuk Milad 114 PCIM Libya
 
-Website interaktif Tanwir dan Milad ke-114 Muhammadiyah.
+Website interaktif untuk Tanwir dan Milad ke-114 Muhammadiyah.
 
 - **Tema:** Bersama Satukan Bangsa
 - **Tempat:** Palu, Sulawesi Tengah
 - **Tanggal:** 19–21 November 2026 M | 10–12 Jumadilakhir 1448 H
-- **URL:** https://milad114-palu.vercel.app
+- **URL:** https:/miladmu.husam.it.com
 - **Gerbang bahasa:** `/` (Indonesia), `/en` (English), `/ar` (العربية)
 
 ## Satu index, tiga bahasa
-
-Seluruh konten berada dalam satu halaman panjang per bahasa:
 
 | Anchor | Isi |
 |---|---|
@@ -21,7 +19,7 @@ Seluruh konten berada dalam satu halaman panjang per bahasa:
 | `#layanan` | Kalender KHGT dan Kabar |
 | `#kabar` | Kabar resmi Muhammadiyah |
 
-Rute lama `/sejarah` dan `/layanan` sudah dihapus. Rute `/tentang`, `/en/tentang`, dan `/ar/tentang` adalah halaman Tentang situs: semua sumber, lisensi, dan hak cipta terpusat di sini — tautan sumber tidak lagi ditampilkan di header, section, atau footer. QR fisik menjadi gerbang bahasa: `/`, `/en`, `/ar`.
+ Rute `/tentang`, `/en/tentang`, dan `/ar/tentang` adalah halaman Tentang situs: semua sumber, lisensi, dan hak cipta terpusat di sini.
 
 ## Fitur
 
@@ -83,19 +81,6 @@ scripts/                 sync-kabar, sync-khgt, prepare-assets
 public/                  logo, pattern, og, licenses
 ```
 
-## Panduan edit
-
-Panduan lengkap untuk mengedit teks, terjemahan, gambar, layout, tema, bahasa, peta, animasi, dan deploy ada di **[PANDUAN-EDIT.md](./PANDUAN-EDIT.md)**.
-
-Mulai dari bagian:
-
-- `3. Mengedit teks` untuk semua teks ID/EN/AR.
-- `4. Mengedit gambar` untuk logo, pattern, OG, favicon, foto, dan video.
-- `5. Mengedit layout` untuk urutan section, grid, warna, dan komponen.
-- `7. Bahasa dan RTL` untuk menambah atau mengubah bahasa.
-- `8. Peta dunia` untuk 29 PCIM.
-- `11. Rute, QR, dan metadata` untuk URL gerbang bahasa.
-
 ## Sumber data
 
 - **Kabar:** WP REST API `https://muhammadiyah.or.id/wp-json/wp/v2/posts`, cache satu jam, fallback snapshot.
@@ -110,25 +95,7 @@ Mulai dari bagian:
 - **world-atlas** (ISC) dan **Natural Earth** (public domain) — geometri peta dunia.
 - **GSAP** (Standard License "no charge") — AnimatedContent/ScrollTrigger untuk animated content sekali per viewport. **folio-2019** tidak dipakai; WebGL tidak sepadan dengan target performa mobile.
 - **Motion** (MIT, paket `motion`) — useScroll/useTransform untuk progres garis timeline sejarah.
-- **Peta 38 provinsi Indonesia** tidak dipakai karena fokus peta adalah persebaran global PCIM.
-- **Template identitas resmi** dari folder `drive-download-...` dipakai untuk plate logo, pattern strip, tipografi, dan proporsi layout.
-
-## Uji
-
-- `TEST-LOG.md` — hasil build, rute, viewport, bahasa, tema, peta, dan uji fungsional.
-- `CONTENT-VERIFIED.md` — register fakta dan sumber.
-- `SUBMISSION.md` — studi kasus, skrip video, payload QR, dan checklist submit.
-- `TRANSLATION-REVIEW.md` — daftar teks Arab yang perlu diverifikasi penutur asli.
-- `HANDOFF-AI.md` — brief per halaman/fitur untuk AI lain, termasuk daftar aset.
-
-## Deploy
-
-1. Commit dan push ke GitHub.
-2. Import repo di Vercel.
-3. Nama project: `milad114-palu`.
-4. Framework: Next.js; build: `npm run build`.
-5. Setelah deploy, pastikan `/`, `/en`, `/ar` merespons 200 sebelum QR diserahkan.
 
 ## Kredit
 
-Karya independen untuk lomba website. Logo dan identitas visual milik Pimpinan Pusat Muhammadiyah. Font El Messiri dan Familjen Grotesk berlisensi SIL Open Font License. Data kalender milik KHGT; data kabar milik Muhammadiyah.or.id.
+©️ 2026 Faris Husamuddin. Logo dan identitas visual milik Pimpinan Pusat Muhammadiyah. Font El Messiri dan Familjen Grotesk berlisensi SIL Open Font License. Data kalender milik KHGT; data kabar milik Muhammadiyah.or.id.

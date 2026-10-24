@@ -1,6 +1,0 @@
-File dibuat: src/proxy.ts.
-
-Semua halaman (/, /en, /ar, /sejarah, dll.) → 503 maintenance dengan halaman mandiri (CSS/SVG inline, tanpa aset eksternal).
-Aset statis seperti logo, pattern, dan OG tetap 200.
-Halaman berisi pesan Indonesia, Inggris, dan Arab.
-Menghilangkan maintenance: hapus src/proxy.ts, lalu jalankan ulang npm run dev atau redeploy ke Vercel.
