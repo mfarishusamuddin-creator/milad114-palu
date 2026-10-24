@@ -35,7 +35,7 @@ export function HistoryTimeline({ content }: Props) {
             aria-controls="history-panel"
             onClick={() => setActive(index)}
             className={cn(
-              "rounded-sm border px-4 py-2 text-[0.72rem] font-bold uppercase tracking-[0.1em] transition-colors",
+              "min-h-11 rounded-sm border px-4 py-2 text-[0.72rem] font-bold uppercase tracking-[0.1em] transition-colors",
               index === active
                 ? "border-gold bg-gold text-navy"
                 : "border-line bg-surface text-ink-soft hover:text-ink"

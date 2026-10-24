@@ -52,7 +52,7 @@ function normalizeIso(id: string | number | undefined): string {
 
 const VIEW = { width: 900, height: 500 } as const;
 const LABEL_EDGE = 70;
-const HIT_RADIUS = 16;
+const HIT_RADIUS = 18;
 
 function clampX(x: number): number {
   return Math.min(VIEW.width - LABEL_EDGE, Math.max(LABEL_EDGE, x));

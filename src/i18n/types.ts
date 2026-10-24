@@ -179,7 +179,10 @@ export type Dictionary = {
     info: string;
   };
   footer: {
+    brand: string;
     tagline: string;
+    description: string;
+    eventInfo: string;
   };
   aboutPage: {
     title: string;
@@ -188,13 +191,7 @@ export type Dictionary = {
     disclaimer: string;
     sourcesTitle: string;
     sources: Array<{ label: string; link: keyof typeof SITE.links }>;
-    assetsTitle: string;
-    assets: string[];
     copyright: string;
-    researchTitle: string;
-    research: string;
-    dataNoteTitle: string;
-    dataNote: string;
   };
   notFound: {
     title: string;

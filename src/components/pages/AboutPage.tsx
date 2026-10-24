@@ -21,59 +21,27 @@ export function AboutPage({ dict }: { dict: Dictionary }) {
             className="mt-8"
           />
 
-          <p className="mt-6 max-w-2xl text-sm leading-relaxed text-ink-soft">
+          <p className="mt-6 max-w-2xl text-sm leading-relaxed text-ink-soft sm:text-[0.95rem]">
             {dict.aboutPage.disclaimer}
           </p>
 
-          <div className="mt-14 grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
-            <div>
-              <AboutSectionTitle>{dict.aboutPage.sourcesTitle}</AboutSectionTitle>
-              <ul className="mt-5 divide-y divide-line border-y border-line">
-                {dict.aboutPage.sources.map((source) => (
-                  <li key={source.label}>
-                    <a
-                      href={SITE.links[source.link]}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-between gap-4 py-3 text-sm text-ink no-underline hover:text-navy"
-                    >
-                      <span>{source.label}</span>
-                      <ExternalIcon />
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="space-y-10">
-              <div>
-                <AboutSectionTitle>{dict.aboutPage.assetsTitle}</AboutSectionTitle>
-                <div className="mt-5 space-y-3">
-                  {dict.aboutPage.assets.map((asset) => (
-                    <p
-                      key={asset.slice(0, 30)}
-                      className="text-sm leading-relaxed text-ink-soft"
-                    >
-                      {asset}
-                    </p>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <AboutSectionTitle>{dict.aboutPage.researchTitle}</AboutSectionTitle>
-                <p className="mt-5 text-sm leading-relaxed text-ink-soft">
-                  {dict.aboutPage.research}
-                </p>
-              </div>
-
-              <div>
-                <AboutSectionTitle>{dict.aboutPage.dataNoteTitle}</AboutSectionTitle>
-                <p className="mt-5 text-sm leading-relaxed text-ink-soft">
-                  {dict.aboutPage.dataNote}
-                </p>
-              </div>
-            </div>
+          <div className="mt-14">
+            <AboutSectionTitle>{dict.aboutPage.sourcesTitle}</AboutSectionTitle>
+            <ul className="mt-5 grid border-t border-line gap-x-12 sm:grid-cols-2">
+              {dict.aboutPage.sources.map((source) => (
+                <li key={source.label}>
+                  <a
+                    href={SITE.links[source.link]}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex min-h-11 items-center justify-between gap-4 border-b border-line py-3 text-sm text-ink no-underline transition-colors hover:text-navy"
+                  >
+                    <span>{source.label}</span>
+                    <ExternalIcon />
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
 
           <p className="mt-16 border-t border-line pt-6 text-center font-serif text-sm font-semibold text-ink-soft">

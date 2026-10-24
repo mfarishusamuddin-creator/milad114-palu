@@ -395,7 +395,8 @@
 
 .card-nav--compact {
   width: var(--cn-bar);
-  flex: 0 0 var(--cn-bar);
+  flex: 0 0 auto;
+  min-width: var(--cn-bar);
   margin: 0;
   max-width: none;
 }
@@ -440,6 +441,7 @@
 .card-nav__footer-link {
   display: inline-flex;
   align-items: center;
+  min-height: 44px;
   font-family: inherit;
   font-size: 14px;
   font-weight: 600;

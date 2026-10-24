@@ -46,7 +46,8 @@
   }
 
   html {
-    min-height: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
     scroll-behavior: smooth;
     background: var(--color-bg);
   }
@@ -124,7 +125,7 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.18em;
     text-transform: uppercase;
@@ -151,7 +152,8 @@
   }
 
   .section-title {
-    font-size: clamp(1.9rem, 3.4vw, 3rem);
+    font-size: clamp(2.25rem, 4.5vw, 4rem);
+    line-height: 1.06;
     font-weight: 700;
     letter-spacing: -0.025em;
     text-wrap: balance;
@@ -704,6 +706,19 @@
     margin-inline: 0;
   }
 
+  /* Shell setinggi viewport: fallback 100vh, lalu 100dvh bila didukung.
+     Footer selalu menempel di dasar; tanpa ruang kosong setelahnya. */
+  .site-shell {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
+  .site-shell > main {
+    flex: 1 1 auto;
+  }
+
 
   .skip-link {
     position: fixed;
@@ -1192,7 +1207,8 @@
 }
 
 .motion-intro__meta button {
-  padding: 8px 12px;
+  min-height: 44px;
+  padding: 10px 14px;
   border: 1px solid currentColor;
   border-radius: 3px;
   background: transparent;

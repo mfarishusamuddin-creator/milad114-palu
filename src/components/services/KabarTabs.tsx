@@ -33,7 +33,7 @@ export function KabarTabs({ latest, milad, dict }: Props) {
             aria-controls="panel-kabar"
             onClick={() => setTab("latest")}
             className={cn(
-              "rounded-sm px-4 py-1.5 text-xs font-bold transition-colors",
+              "min-h-11 rounded-sm px-4 py-1.5 text-xs font-bold transition-colors",
               tab === "latest"
                 ? "bg-navy text-white"
                 : "text-ink-soft hover:text-navy"
@@ -49,7 +49,7 @@ export function KabarTabs({ latest, milad, dict }: Props) {
             aria-controls="panel-kabar"
             onClick={() => setTab("milad")}
             className={cn(
-              "rounded-sm px-4 py-1.5 text-xs font-bold transition-colors",
+              "min-h-11 rounded-sm px-4 py-1.5 text-xs font-bold transition-colors",
               tab === "milad"
                 ? "bg-navy text-white"
                 : "text-ink-soft hover:text-navy"
@@ -73,7 +73,7 @@ export function KabarTabs({ latest, milad, dict }: Props) {
             ))}
           </div>
         ) : (
-          <div className="rounded-sm border border-line bg-bg-soft p-6">
+          <div className="rounded-sm border border-line bg-surface p-6">
             <p className="text-sm text-ink-soft">{dict.kabar.empty}</p>
           </div>
         )}

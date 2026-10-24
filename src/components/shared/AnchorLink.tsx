@@ -9,11 +9,11 @@ type Props = AnchorHTMLAttributes<HTMLAnchorElement> & {
 
 /**
  * Tautan anchor in-page (#…) dengan perilaku klik yang konsisten:
- * membuka CollapsibleSection tujuan (mis. #layanan atau #kabar yang
- * berada di dalamnya) lalu scroll halus, tanpa bergantung pada event
- * hashchange sehingga klik hash yang sama berulang tetap bekerja.
- * Perilaku default browser dipertahankan untuk modifier keys (Ctrl/
- * Cmd/klik tengah) dan untuk href non-hash (skip link, URL route).
+ * membuka CollapsibleSection tujuan (mis. #sejarah atau #agenda) lalu
+ * scroll halus, tanpa bergantung pada event hashchange sehingga klik
+ * hash yang sama berulang tetap bekerja. Perilaku default browser
+ * dipertahankan untuk modifier keys (Ctrl/Cmd/klik tengah) dan untuk
+ * href non-hash (skip link, URL route).
  */
 export function AnchorLink({ children, onClick, ...rest }: Props) {
   return (

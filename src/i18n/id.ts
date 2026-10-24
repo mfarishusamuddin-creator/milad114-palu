@@ -271,8 +271,11 @@ export const id: Dictionary = {
     info: "Tentang peta dan sumber",
   },
   footer: {
-    tagline:
-      "Situs independen Tanwir dan Milad ke-114 Muhammadiyah: dua jalur sejarah, kalender KHGT, kabar resmi, dan peta PCIM dunia.",
+    brand: "Milad 114 Muhammadiyah",
+    tagline: "Bersama Satukan Bangsa",
+    description:
+      "Situs independen untuk Tanwir dan Milad ke-114 Muhammadiyah.",
+    eventInfo: "Palu, Sulawesi Tengah · 19–21 November 2026",
   },
   aboutPage: {
     title: "Tentang situs ini",
@@ -296,17 +299,7 @@ export const id: Dictionary = {
       { label: "Forum dan persiapan Muktamar", link: "muktamar2027" },
       { label: "Tanam 114 pohon kelor di Palu", link: "tanamKelor" },
     ],
-    assetsTitle: "Aset dan identitas",
-    assets: [
-      "Logo dan identitas visual adalah milik Pimpinan Pusat Muhammadiyah.",
-      "Video intro, poster, gambar berbagi, dan pola supergrafik diturunkan dari materi resmi edisi ini; situs adalah karya independen.",
-      "Font: El Messiri dan Familjen Grotesk — SIL Open Font License 1.1 (berkas lisensi di folder /licenses).",
-    ],
     copyright: "© 2026 Faris Husamuddin. Hak cipta dilindungi.",
-    researchTitle: "Dokumen riset",
-    research: "Narasi sejarah dan filosofi pada situs ini dipersiapkan dari fakta dokumen riset internal developer.",
-    dataNoteTitle: "Catatan data",
-    dataNote: "Halaman kalender, kabar, dan peta memakai data dokumen 2026 yang dapat berubah; data selalu merujuk pada sumber resmi terbitan.",
   },
   notFound: {
     title: "Halaman ini belum tersedia.",

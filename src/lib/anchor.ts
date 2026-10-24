@@ -10,12 +10,13 @@ type AnchorNavigationDetail = {
  * Dipakai oleh Navbar (CardNav) dan CTA Hero agar klik ke hash:
  *  - tidak bergantung pada event `hashchange` (klik hash yang sama dua
  *    kali tetap membuka/scroll);
- *  - membuka CollapsibleSection (section/judul atau elemen di dalamnya,
- *    mis. #kabar di dalam #layanan) terlebih dahulu, lalu scroll ke
- *    target setelah panel selesai terbuka (dikoordinasikan lewat event
- *    kustom `site:anchor-navigation` yang didengar CollapsibleSection);
- *  - target di luar section collapsible (mis. #countdown di Hero)
- *    langsung di-scroll, menghormati scroll-margin-top target;
+ *  - membuka CollapsibleSection tujuan (section/judul atau elemen di
+ *    dalamnya) terlebih dahulu, lalu scroll ke target setelah panel
+ *    selesai terbuka (dikoordinasikan lewat event kustom
+ *    `site:anchor-navigation` yang didengar CollapsibleSection);
+ *  - target di luar section collapsible (mis. #countdown di Hero,
+ *    #layanan/#kabar yang kini selalu terbuka) langsung di-scroll,
+ *    menghormati scroll-margin-top target;
  *  - menghormati prefers-reduced-motion.
  *
  * Pemanggil bertanggung jawab memanggil event.preventDefault() bila

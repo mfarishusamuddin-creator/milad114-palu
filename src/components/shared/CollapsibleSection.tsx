@@ -22,8 +22,8 @@ type Props = {
 /**
  * Section collapsible: tertutup default, judul sebagai tombol aksesibel.
  * Terbuka otomatis bila URL hash menuju section ini (maupun elemen di
- * dalamnya, mis. #kabar di Layanan). Isi dianimasikan dengan
- * grid-template-rows agar naik/turun halus dan tetap rendah biaya.
+ * dalamnya). Isi dianimasikan dengan grid-template-rows agar naik/turun
+ * halus dan tetap rendah biaya.
  */
 export function CollapsibleSection({
   id,
@@ -35,37 +35,40 @@ export function CollapsibleSection({
 }: Props) {
   const panelId = `${id}__panel`;
   const [open, setOpen] = useState(defaultOpen);
+  const [pendingTarget, setPendingTarget] = useState<HTMLElement | null>(null);
   const sectionRef = useRef<HTMLElement | null>(null);
   const panelRef = useRef<HTMLDivElement | null>(null);
-  const pendingTargetRef = useRef<HTMLElement | null>(null);
+  const openRef = useRef(open);
+  useEffect(() => {
+    openRef.current = open;
+  }, [open]);
 
+  /** Buka section (bila tertutup) lalu scroll ke target di dalamnya. */
   const revealTarget = useCallback((target: HTMLElement): void => {
     if (!sectionRef.current?.contains(target)) return;
-    pendingTargetRef.current = target;
-    if (open) {
+    if (openRef.current) {
+      // Section sudah terbuka: scroll pada frame berikutnya.
       requestAnimationFrame(() => {
-        if (pendingTargetRef.current !== target) return;
-        pendingTargetRef.current = null;
         const reduce =
-          window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
-        target.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+          window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ??
+          false;
+        target.scrollIntoView({
+          behavior: reduce ? "auto" : "smooth",
+          block: "start",
+        });
       });
       return;
     }
+    setPendingTarget(target);
     setOpen(true);
-  }, [open]);
-
-  const revealTargetRef = useRef(revealTarget);
-  useEffect(() => {
-    revealTargetRef.current = revealTarget;
-  }, [revealTarget]);
+  }, []);
 
   useEffect(() => {
     const revealFromHash = (): void => {
       const hash = window.location.hash.slice(1);
       if (!hash) return;
       const target = document.getElementById(decodeURIComponent(hash));
-      if (target) revealTargetRef.current(target);
+      if (target) revealTarget(target);
     };
     const frame = requestAnimationFrame(revealFromHash);
     const onHashChange = (): void => revealFromHash();
@@ -74,7 +77,7 @@ export function CollapsibleSection({
       cancelAnimationFrame(frame);
       window.removeEventListener("hashchange", onHashChange);
     };
-  }, []);
+  }, [revealTarget]);
 
   useEffect(() => {
     const onAnchorNavigation = (event: Event): void => {
@@ -89,33 +92,50 @@ export function CollapsibleSection({
       window.removeEventListener("site:anchor-navigation", onAnchorNavigation);
   }, [revealTarget]);
 
+  /**
+   * Scroll ke target setelah panel selesai terbuka: menunggu
+   * transitionend grid-template-rows, dengan fallback frame agar tetap
+   * berjalan bila transisi tidak terpicu (mis. prefers-reduced-motion).
+   */
   useEffect(() => {
-    const target = pendingTargetRef.current;
-    if (!open || !target) return;
-
+    if (!open || !pendingTarget) return undefined;
+    const target = pendingTarget;
     const reduce =
       window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
+    let done = false;
+    let fallback = 0;
+
     const scrollTarget = (): void => {
-      if (pendingTargetRef.current !== target) return;
-      pendingTargetRef.current = null;
-      target.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+      if (done) return;
+      done = true;
+      setPendingTarget((current) => (current === target ? null : current));
+      target.scrollIntoView({
+        behavior: reduce ? "auto" : "smooth",
+        block: "start",
+      });
     };
 
     if (reduce || !panelRef.current) {
-      requestAnimationFrame(scrollTarget);
-      return;
+      const frame = requestAnimationFrame(scrollTarget);
+      return () => {
+        cancelAnimationFrame(frame);
+        window.clearTimeout(fallback);
+      };
     }
 
     const panel = panelRef.current;
     const onTransitionEnd = (event: TransitionEvent): void => {
       if (event.target === panel && event.propertyName === "grid-template-rows") {
-        panel.removeEventListener("transitionend", onTransitionEnd);
         scrollTarget();
       }
     };
     panel.addEventListener("transitionend", onTransitionEnd);
-    return () => panel.removeEventListener("transitionend", onTransitionEnd);
-  }, [open]);
+    fallback = window.setTimeout(scrollTarget, 700);
+    return () => {
+      panel.removeEventListener("transitionend", onTransitionEnd);
+      window.clearTimeout(fallback);
+    };
+  }, [open, pendingTarget]);
 
   return (
     <section

@@ -7,21 +7,25 @@
 }
 
 .collapsible__title {
-  font-size: inherit;
+  font-size: clamp(2.25rem, 4.5vw, 4rem);
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
 }
 
 .collapsible__button {
   display: flex;
   width: 100%;
-  max-width: 44rem;
+  max-width: 56rem;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 1.15rem 0.25rem;
+  padding: 1.25rem 0.25rem;
   border: 0;
   border-radius: 0.35rem;
   background: none;
   font-family: inherit;
+  font-size: inherit;
   text-align: start;
   cursor: pointer;
   outline-offset: -3px;
@@ -37,6 +41,8 @@
 
 .collapsible__chevron {
   flex: none;
+  width: 0.55em;
+  height: 0.55em;
   opacity: 0.42;
   color: var(--color-ocean);
   transition:

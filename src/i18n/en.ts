@@ -281,8 +281,11 @@ export const en: Dictionary = {
     info: "About the map and sources",
   },
   footer: {
-    tagline:
-      "An independent site for the Tanwir and 114th Milad of Muhammadiyah: two historical tracks, the KHGT calendar, official news, and a map of PCIM worldwide.",
+    brand: "Milad 114 Muhammadiyah",
+    tagline: "Together, Unite the Nation",
+    description:
+      "An independent site for the Tanwir and 114th Milad of Muhammadiyah.",
+    eventInfo: "Palu, Central Sulawesi · 19–21 November 2026",
   },
   aboutPage: {
     title: "About this site",
@@ -306,19 +309,7 @@ export const en: Dictionary = {
       { label: "Forum and Muktamar preparation", link: "muktamar2027" },
       { label: "Planting 114 moringa trees in Palu", link: "tanamKelor" },
     ],
-    assetsTitle: "Assets and identity",
-    assets: [
-      "The logo and visual identity belong to Pimpinan Pusat Muhammadiyah.",
-      "Intro videos, posters, share images, and the supergraphic pattern are derived from official assets of this edition; the site remains an independent work.",
-      "Fonts: El Messiri and Familjen Grotesk — SIL Open Font License 1.1 (license files in the /licenses folder).",
-    ],
     copyright: "© 2026 Faris Husamuddin. All rights reserved.",
-    researchTitle: "Research documents",
-    research:
-      "The historical narrative and philosophy on this site were prepared from documents described as internal developer research.",
-    dataNoteTitle: "Data note",
-    dataNote:
-      "Calendar, news, and map pages use 2026 document data that may change; every dataset always refers to its official source.",
   },
   notFound: {
     title: "This page is not available yet.",
