@@ -34,7 +34,10 @@ type Remaining = {
 };
 
 /* 1 Ramadhan 1448 H = 8 Februari 2027 dan 1 Syawal 1448 H = 9 Maret 2027
-   mengikuti KHGT; waktu maghrib 18.00 WITA adalah perkiraan. */
+   mengikuti KHGT; jam maghrib 18.00 adalah perkiraan. Tanggal pada konstanta
+   di bawah adalah jam dinding acuan (WITA sebagai wilayah acuan KHGT), lalu
+   batas fase dipetakan ke zona waktu aktif pengguna — lihat
+   zonedWallClockToInstant — sehingga pergantian hari tidak terkunci WITA. */
 const RAMADAN_TARGETS = [
   {
     key: "before",
@@ -58,25 +61,99 @@ const RAMADAN_TARGETS = [
   },
 ] as const;
 
-function getPhase(now: number): Phase {
-  const start = new Date(SITE.startISO).getTime();
-  const end = new Date(SITE.endISO).getTime();
-  const milad = new Date(SITE.miladISO).getTime();
+/** Jam dinding (tanggal + jam menit) tanpa keterikatan zona. */
+type WallClock = {
+  year: number;
+  month: number;
+  day: number;
+  hour: number;
+  minute: number;
+};
 
-  if (now < start) return { target: start, key: "before" };
-  if (now < end) return { target: end, key: "during" };
-  if (now < milad) return { target: milad, key: "milad" };
-  return { target: milad, key: "done" };
+const zoneFormatterCache = new Map<string, Intl.DateTimeFormat>();
+
+function getZoneFormatter(timeZone: string): Intl.DateTimeFormat {
+  let formatter = zoneFormatterCache.get(timeZone);
+  if (!formatter) {
+    formatter = new Intl.DateTimeFormat("en-US", {
+      timeZone,
+      hourCycle: "h23",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+    zoneFormatterCache.set(timeZone, formatter);
+  }
+  return formatter;
 }
 
-function getRamadhanPhase(now: number): RamadhanPhase {
-  for (const phase of RAMADAN_TARGETS) {
-    const target = new Date(phase.targetISO).getTime();
-    if (now < target) return { target, key: phase.key };
-  }
-  const last = RAMADAN_TARGETS[RAMADAN_TARGETS.length - 1];
+/** Membaca jam dinding suatu instant pada zona waktu tertentu. */
+function getWallClock(instant: number, timeZone: string): WallClock {
+  const parts = getZoneFormatter(timeZone).formatToParts(new Date(instant));
+  const read = (type: Intl.DateTimeFormatPartTypes): number =>
+    Number(parts.find((part) => part.type === type)?.value ?? 0);
   return {
-    target: new Date(last.targetISO).getTime(),
+    year: read("year"),
+    month: read("month"),
+    day: read("day"),
+    hour: read("hour"),
+    minute: read("minute"),
+  };
+}
+
+const wallClockAsUTC = (clock: WallClock): number =>
+  Date.UTC(clock.year, clock.month - 1, clock.day, clock.hour, clock.minute);
+
+/**
+ * Mengubah jam dinding (mis. maghrib 18.00 tanggal X) menjadi instant (ms
+ * epoch) pada zona waktu aktif. Iterasi maksimal 3 langkah sudah stabil untuk
+ * zona mana pun (termasuk yang punya DST) karena offset zona konstan di sekitar
+ * tanggal target. Dengan ini batas fase hitungan terjadi pada jam yang sama
+ * dengan jam dinding acuan di zona pengguna, bukan hanya di WITA.
+ */
+function zonedWallClockToInstant(clock: WallClock, timeZone: string): number {
+  const asUTC = wallClockAsUTC(clock);
+  let instant = asUTC;
+  for (let i = 0; i < 3; i++) {
+    const offset = instant - wallClockAsUTC(getWallClock(instant, timeZone));
+    const next = asUTC + offset;
+    if (next === instant) break;
+    instant = next;
+  }
+  return instant;
+}
+
+/**
+ * Memecah ISO ber-offset (mis. "2026-11-19T08:00:00+08:00") menjadi jam
+ * dinding acuan tanpa mengubah data: komponen tanggal-jam dipakai apa adanya,
+ * offsetnya dilepas (zona pengguna yang menentukan instant).
+ */
+function parseWallClock(iso: string): WallClock {
+  const [datePart, timePart = ""] = iso.split("T");
+  const [year = 0, month = 0, day = 0] = datePart.split("-").map(Number);
+  const [hour = 0, minute = 0] = timePart.slice(0, 5).split(":").map(Number);
+  return { year, month, day, hour, minute };
+}
+
+type EventBounds = { start: number; end: number; milad: number };
+type RamadhanBound = { key: RamadhanPhaseKey; target: number };
+
+function getPhase(now: number, bounds: EventBounds): Phase {
+  if (now < bounds.start) return { target: bounds.start, key: "before" };
+  if (now < bounds.end) return { target: bounds.end, key: "during" };
+  if (now < bounds.milad) return { target: bounds.milad, key: "milad" };
+  return { target: bounds.milad, key: "done" };
+}
+
+function getRamadhanPhase(now: number, bounds: RamadhanBound[]): RamadhanPhase {
+  for (const phase of bounds) {
+    if (now < phase.target) return { target: phase.target, key: phase.key };
+  }
+  const last = bounds[bounds.length - 1];
+  return {
+    target: last.target,
     key: "done",
   };
 }
@@ -114,6 +191,43 @@ export function Countdown({ dict }: { dict: Dictionary }) {
     };
   }, []);
 
+  // Zona waktu masing-masing: bila zona perangkat tersedia di daftar, pakai
+  // sebagai zona aktif (boleh diganti lewat select). Dipanggil lewat frame
+  // berikutnya agar render pertama selalu cocok dengan SSR (DEFAULT_TIMEZONE).
+  useEffect(() => {
+    const frame = window.requestAnimationFrame(() => {
+      try {
+        const deviceZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        if (TIMEZONES.some((option) => option.value === deviceZone)) {
+          setZone(deviceZone);
+        }
+      } catch {
+        // Biarkan DEFAULT_TIMEZONE bila zona perangkat tidak terbaca.
+      }
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, []);
+
+  // Batas fase dihitung pada jam dinding zona aktif: pergantian hari/fase
+  // mengikuti zona waktu pengguna, bukan terkunci WITA.
+  const eventBounds = useMemo<EventBounds>(
+    () => ({
+      start: zonedWallClockToInstant(parseWallClock(SITE.startISO), zone),
+      end: zonedWallClockToInstant(parseWallClock(SITE.endISO), zone),
+      milad: zonedWallClockToInstant(parseWallClock(SITE.miladISO), zone),
+    }),
+    [zone]
+  );
+
+  const ramadhanBounds = useMemo<RamadhanBound[]>(
+    () =>
+      RAMADAN_TARGETS.map((phase) => ({
+        key: phase.key,
+        target: zonedWallClockToInstant(parseWallClock(phase.targetISO), zone),
+      })),
+    [zone]
+  );
+
   const ramadhan = dict.countdown.ramadhan;
 
   const ramadhanLabels = useMemo<
@@ -138,8 +252,9 @@ export function Countdown({ dict }: { dict: Dictionary }) {
     [ramadhan]
   );
 
-  const phase = now === null ? null : getPhase(now);
-  const ramadhanPhase = now === null ? null : getRamadhanPhase(now);
+  const phase = now === null ? null : getPhase(now, eventBounds);
+  const ramadhanPhase =
+    now === null ? null : getRamadhanPhase(now, ramadhanBounds);
   const activePhase =
     mode === "event" ? phase : (ramadhanPhase as Phase | null);
   const remaining =

@@ -83,10 +83,10 @@ export const id: Dictionary = {
         description:
           "Kalender KHGT, kabar resmi, peta PCIM, dan hitungan harian.",
         links: [
+          { label: "Counter Tanwir & Ramadhan", anchor: "#countdown" },
           { label: "Kalender KHGT", anchor: "#layanan" },
           { label: "Kabar Muhammadiyah", anchor: "#kabar" },
           { label: "Peta PCIM", anchor: "#peta" },
-          { label: "Counter Tanwir & Ramadhan", anchor: "#countdown" },
         ],
       },
       {
