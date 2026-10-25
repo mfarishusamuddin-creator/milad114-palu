@@ -101,7 +101,7 @@ export const id: Dictionary = {
     titleLine2: "Satukan Bangsa",
     subtitle: "Tanwir dan Milad ke-114 Muhammadiyah",
     intro:
-      "Seratus empat belas tahun. Dari Kauman 1912 hingga Palu 2026 — situs digital Tanwir dan Milad ke-114 Muhammadiyah. Jelajahi dua jalur sejarah, agenda, peta dunia, dan layanan resminya.",
+      "Seratus empat belas tahun. Dari Kauman 1912 hingga Palu 2026 — situs digital untuk PCIM Libya dalam rangka Tanwir dan Milad ke-114 Muhammadiyah. Jelajahi dua jalur sejarah ( KH Ahmad Dahlan & Persyarikatan Muhammadiyah ), agenda, peta dunia, dan layanan resminya.",
     ctaPrimary: "Jelajahi Jejak 114 Tahun",
     ctaSecondary: "Buka Layanan",
     share: "Bagikan",
@@ -154,8 +154,7 @@ export const id: Dictionary = {
     ],
     facts: [
       { label: "Tuan rumah", value: "Palu, Sulawesi Tengah" },
-      { label: "Tanggal", value: "19–21 November 2026" },
-      { label: "Hijriah", value: "10–12 Jumadilakhir 1448 H" },
+      { label: "Tanggal", value: "19–21 November 2026 M / 10–12 Jumadilakhir 1448 H" },
       { label: "Simbol", value: "Daun kelor · angka 114 · matahari" },
     ],
     posterAlt:
@@ -190,7 +189,7 @@ export const id: Dictionary = {
   history: {
     title: "Jejak & Makna",
     description:
-      "Baca perjalanan Persyarikatan dari dua sisi: kronologi Muhammadiyah dan perjalanan hidup pendirinya, KH Ahmad Dahlan ? lengkap dengan kepemimpinan dan amal usaha dalam angka.",
+      "Baca perjalanan Persyarikatan dari dua sisi: kronologi Muhammadiyah dan perjalanan hidup pendirinya, KH Ahmad Dahlan, lengkap dengan kepemimpinan dan amal usaha dalam angka.",
     tables: {
       leadership: "Kepemimpinan Pusat Muhammadiyah",
       aum: "AUM",
@@ -200,15 +199,15 @@ export const id: Dictionary = {
   services: {
     title: "Layanan Muhammadiyah",
     description:
-      "Dua jendela manfaat: kalender resmi KHGT dan kabar terbaru dari Muhammadiyah.",
+      "Kalender resmi KHGT dan kabar terbaru dari Muhammadiyah.",
     calendarTitle: "Kalender Hijriah Global Tunggal",
     calendarDescription:
       "Data kalender disinkronkan dari KHGT. Tampilan bulan, hari istimewa, dan konverter Masehi–Hijriah memakai snapshot resmi, bukan library generik.",
-    highlightsTitle: "Penanda Milad",
+    highlightsTitle: "Penanda Saat Milad",
     highlightsLink: "Buka KHGT",
     kabarTitle: "Kabar resmi Muhammadiyah",
     kabarDescription:
-      "Ditarik dari kanal resmi Muhammadiyah, dengan cache satu jam dan fallback snapshot. Artikel lengkap tetap di sumber asli.",
+      "Ditarik dari Muhammadiyah.or.id, dengan update setiap satu jam. Artikel lengkap dapat dibaca di sumber asli.",
     closingLogoAlt:
       "Logo Tanwir dan Milad ke-114 Muhammadiyah — Bersama Satukan Bangsa",
   },
@@ -263,8 +262,8 @@ export const id: Dictionary = {
   map: {
     title: "Persebaran Muhammadiyah",
     description:
-      "Muhammadiyah tidak hanya tumbuh di Indonesia. 29 Pimpinan Cabang Istimewa tersebar di Afrika, Asia, Eropa, Amerika, dan Oseania — dan Indonesia adalah markas besar gerakan.",
-    note: "Titik menandai negara PCIM; batas negara hanya untuk orientasi. Ketuk atau arahkan kursor ke titik untuk nama negaranya.",
+      "Muhammadiyah tidak hanya tumbuh di Indonesia. 29 Pimpinan Cabang Istimewa tersebar di Afrika, Asia, Eropa, Amerika, dan Oseania.",
+    note: "Titik menandai negara PCIM; batas negara hanya untuk orientasi. Ketuk atau arahkan kursor ke titik untuk melihat nama negaranya.",
     aria: "Peta dunia yang menyorot 29 negara PCIM Muhammadiyah dan Indonesia sebagai markas Pimpinan Pusat.",
     countries: "Negara PCIM",
     hq: "Indonesia — Pimpinan Pusat Muhammadiyah",
@@ -274,16 +273,16 @@ export const id: Dictionary = {
     brand: "Milad 114 Muhammadiyah",
     tagline: "Bersama Satukan Bangsa",
     description:
-      "Situs independen untuk Tanwir dan Milad ke-114 Muhammadiyah.",
-    eventInfo: "Palu, Sulawesi Tengah · 19–21 November 2026",
+      "Situs sebagai antarmuka digital karya lukisan untuk perlombaan PCIM Libya dalam rangka Tanwir dan Milad ke-114 Muhammadiyah.",
+    eventInfo: "Dibuat di PCIM Libya, Tripoli · Oktober 2026 M / Jumadil ula 1448 H",
   },
   aboutPage: {
     title: "Tentang situs ini",
     back: "Kembali ke Beranda",
     intro:
-      "Milad 114 adalah karya digital independen untuk persiapan Tanwir dan Milad ke-114 Muhammadiyah di Palu: dua jalur sejarah, agenda, peta dunia, dan layanan resminya.",
+      "Milad 114 adalah karya digital independen sebagai antarmuka digital karya lukisan untuk perlombaan PCIM Libya dalam rangka Tanwir dan Milad ke-114 Muhammadiyah di Palu: dua jalur sejarah, agenda, peta dunia, dan layanan resminya.",
     disclaimer:
-      "Bukan situs resmi Muhammadiyah — tautan resmi di bawah menjadi rujukan utama setiap materi.",
+      "Bukan situs resmi Muhammadiyah",
     sourcesTitle: "Sumber informasi",
     sources: [
       { label: "Muhammadiyah.or.id", link: "muhammadiyah" },
