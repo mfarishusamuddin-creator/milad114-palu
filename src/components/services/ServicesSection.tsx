@@ -31,10 +31,14 @@ export function ServicesSection({
   latest: KabarItem[];
   milad: KabarItem[];
 }) {
+  // Penanda yang sudah kedaluwarsa (lewat dari akhir hari tanggalnya) tidak
+  // dirender; dibandingkan sebagai jam lokal akhir hari agar tanggal berjalan
+  // tetap tampil. Halaman direvalidate tiap 1 jam sehingga daftar ikut segar.
   const now = new Date();
-const highlights = dict.highlights.filter(
-  (item) => new Date(`${item.date}T23:59:59`) >= now // kartu hilang setelah harinya lewat
-);
+  const highlights = dict.highlights.filter(
+    (item) => new Date(`${item.date}T23:59:59`) >= now
+  );
+
   return (
     <section id="layanan" className="section scroll-mt-24 bg-bg-soft">
       <div className="container-page">
