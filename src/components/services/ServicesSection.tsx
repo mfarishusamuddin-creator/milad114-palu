@@ -4,6 +4,7 @@ import { HijriCalendar } from "@/components/services/HijriCalendar";
 import { KabarTabs } from "@/components/services/KabarTabs";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { SITE } from "@/data/site";
+import { cacheLife } from "next/cache";
 import type { Dictionary } from "@/i18n/types";
 import type { KabarItem } from "@/lib/kabar";
 import { khgtSnapshot } from "@/lib/khgt";
@@ -18,11 +19,29 @@ function formatHighlightDate(value: string, locale: string) {
 }
 
 /**
+ * Penanda yang sudah kedaluwarsa (lewat dari akhir hari tanggalnya) tidak
+ * dirender; dibandingkan sebagai jam lokal akhir hari agar tanggal berjalan
+ * tetap tampil. Waktu "sekarang" hanya boleh dibaca di dalam scope
+ * "use cache" (Cache Components memblokir new Date() saat prerender), jadi
+ * daftar disegarakan mengikuti siklus cache, bukan tiap permintaan.
+ */
+async function filterActiveHighlights<T extends { date: string }>(
+  highlights: T[]
+): Promise<T[]> {
+  "use cache";
+  cacheLife("hours");
+  const now = new Date();
+  return highlights.filter(
+    (item) => new Date(`${item.date}T23:59:59`) >= now
+  );
+}
+
+/**
  * Layanan selalu terbuka: section statis (bukan CollapsibleSection) agar
  * kalender dan Kabar langsung tampak, dengan judul sebesar section lain.
  * #kabar tetap berfungsi sebagai anchor di dalam #layanan.
  */
-export function ServicesSection({
+export async function ServicesSection({
   dict,
   latest,
   milad,
@@ -31,13 +50,7 @@ export function ServicesSection({
   latest: KabarItem[];
   milad: KabarItem[];
 }) {
-  // Penanda yang sudah kedaluwarsa (lewat dari akhir hari tanggalnya) tidak
-  // dirender; dibandingkan sebagai jam lokal akhir hari agar tanggal berjalan
-  // tetap tampil. Halaman direvalidate tiap 1 jam sehingga daftar ikut segar.
-  const now = new Date();
-  const highlights = dict.highlights.filter(
-    (item) => new Date(`${item.date}T23:59:59`) >= now
-  );
+  const highlights = await filterActiveHighlights(dict.highlights);
 
   return (
     <section id="layanan" className="section scroll-mt-24 bg-bg-soft">
