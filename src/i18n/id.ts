@@ -274,13 +274,13 @@ export const id: Dictionary = {
     tagline: "Bersama Satukan Bangsa",
     description:
       "Situs sebagai antarmuka digital karya lukisan untuk perlombaan PCIM Libya dalam rangka Tanwir dan Milad ke-114 Muhammadiyah.",
-    eventInfo: "Dibuat di PCIM Libya, Tripoli · Oktober 2026 M / Jumadil ula 1448 H",
+    eventInfo: "Dibuat di PCIM Libya, Tripoli, Libya · Oktober 2026 M / Jumadil ula 1448 H",
   },
   aboutPage: {
     title: "Tentang situs ini",
     back: "Kembali ke Beranda",
     intro:
-      "Milad 114 adalah karya digital independen sebagai antarmuka digital karya lukisan untuk perlombaan PCIM Libya dalam rangka Tanwir dan Milad ke-114 Muhammadiyah di Palu: dua jalur sejarah, agenda, peta dunia, dan layanan resminya.",
+      "Karya Untuk Milad 114 Muhammadiyah adalah karya digital independen sebagai antarmuka digital karya lukisan untuk perlombaan PCIM Libya dalam rangka Tanwir dan Milad ke-114 Muhammadiyah di Palu: dua jalur sejarah, agenda, peta dunia, dan layanan resminya.",
     disclaimer:
       "Bukan situs resmi Muhammadiyah",
     sourcesTitle: "Sumber informasi",

@@ -31,6 +31,10 @@ export function ServicesSection({
   latest: KabarItem[];
   milad: KabarItem[];
 }) {
+  const now = new Date();
+const highlights = dict.highlights.filter(
+  (item) => new Date(`${item.date}T23:59:59`) >= now // kartu hilang setelah harinya lewat
+);
   return (
     <section id="layanan" className="section scroll-mt-24 bg-bg-soft">
       <div className="container-page">
@@ -66,7 +70,7 @@ export function ServicesSection({
               </a>
             </div>
             <ul className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-              {dict.highlights.map((item) => (
+              {highlights.map((item) => (
                 <li
                   key={`${item.date}-${item.title}`}
                   className="rounded-sm border border-line bg-surface px-3 py-3"
