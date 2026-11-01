@@ -108,6 +108,68 @@ export const id: Dictionary = {
     shareText:
       "Tanwir dan Milad ke-114 Muhammadiyah — Bersama Satukan Bangsa. Palu, 19–21 November 2026.",
   },
+  heroArtwork: {
+    title: "K.H. Ahmad Dahlan",
+    imageAlt:
+      "Lukisan kaligrafi K.H. Ahmad Dahlan dengan sorban berisi Surah Al-Ma’un, baju berisi Ayat Kursi, lambang kelor, dan matahari Muhammadiyah.",
+    shareLabel: "Bagikan karya",
+    shareStatus: {
+      shared: "Terbagi",
+      copied: "Tautan disalin",
+      manual: "Salin URL di address bar",
+    },
+    actions: {
+      judul: {
+        label: "K.H. Ahmad Dahlan",
+        action: "Bagikan karya",
+      },
+      tanggal: {
+        label: "Tanggal lahir–wafat",
+        action: "Buka Kepemimpinan Pusat Muhammadiyah",
+      },
+    },
+    details: {
+      wajah: {
+        label: "Wajah",
+        action: "Buka sejarah K.H. Ahmad Dahlan",
+      },
+      matahari: {
+        label: "Matahari",
+        action: "Buka sejarah Muhammadiyah",
+      },
+      sorban: {
+        label: "Al-Ma’un",
+        action: "Buka tabel AUM",
+      },
+      baju: {
+        label: "Ayat Kursi",
+        action: "Buka fadhail Ayat Kursi",
+      },
+      janggut: {
+        label: "Janggut",
+        action: "Buka persebaran Muhammadiyah",
+      },
+      telinga: {
+        label: "Telinga",
+        action: "Buka agenda",
+      },
+      mata: {
+        label: "Mata",
+        action: "Buka layanan Muhammadiyah",
+      },
+      kelor: {
+        label: "Kelor",
+        action: "Buka makna logo",
+      },
+    },
+    ayatKursi: {
+      title: "Fadhail Ayat Kursi",
+      close: "Tutup",
+      sourceLabel: "Sumber",
+      gradeLabel: "Derajat",
+      narratorLabel: "Perawi",
+    },
+  },
   countdown: {
     beforeLabel: "Menuju Tanwir & Milad",
     duringLabel: "Tanwir & Milad sedang berlangsung",
@@ -203,7 +265,7 @@ export const id: Dictionary = {
     calendarTitle: "Kalender Hijriah Global Tunggal",
     calendarDescription:
       "Data kalender disinkronkan dari KHGT. Tampilan bulan, hari istimewa, dan konverter Masehi–Hijriah memakai snapshot resmi, bukan library generik.",
-    highlightsTitle: "Penanda Saat Milad",
+    highlightsTitle: "Penanda Milad",
     highlightsLink: "Buka KHGT",
     kabarTitle: "Kabar resmi Muhammadiyah",
     kabarDescription:

@@ -1,4 +1,5 @@
 import type { CalendarHighlight } from "@/data/calendar-highlights";
+import type { HeroActionId, HeroDetailId } from "@/data/hero-artwork";
 import type { HistoryContent } from "@/data/history";
 import type { SITE } from "@/data/site";
 
@@ -69,6 +70,21 @@ export type Dictionary = {
     ctaSecondary: string;
     share: string;
     shareText: string;
+  };
+  heroArtwork: {
+    title: string;
+    imageAlt: string;
+    shareLabel: string;
+    shareStatus: { shared: string; copied: string; manual: string };
+    details: Record<HeroDetailId, { label: string; action: string }>;
+    actions: Record<HeroActionId, { label: string; action: string }>;
+    ayatKursi: {
+      title: string;
+      close: string;
+      sourceLabel: string;
+      gradeLabel: string;
+      narratorLabel: string;
+    };
   };
   countdown: {
     beforeLabel: string;

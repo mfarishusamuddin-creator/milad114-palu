@@ -118,6 +118,68 @@ export const ar: Dictionary = {
     shareText:
       "تنوير والذكرى الـ114 لجمعية المحمدية — معًا نوحّد الأمة. بالو، 19–21 نوفمبر 2026.",
   },
+  heroArtwork: {
+    title: "K.H. Ahmad Dahlan",
+    imageAlt:
+      "لوحة خطية لـ K.H. Ahmad Dahlan، على عمامته سورة الماعون، وعلى ثوبه آية الكرسي، مع رمز المورينغا وشمس المحمدية.",
+    shareLabel: "شارك العمل",
+    shareStatus: {
+      shared: "تمت المشاركة",
+      copied: "تم نسخ الرابط",
+      manual: "انسخ الرابط من شريط العنوان",
+    },
+    actions: {
+      judul: {
+        label: "K.H. Ahmad Dahlan",
+        action: "شارك العمل",
+      },
+      tanggal: {
+        label: "تاريخ الميلاد والوفاة",
+        action: "افتح القيادة المركزية للمحمدية",
+      },
+    },
+    details: {
+      wajah: {
+        label: "الوجه",
+        action: "افتح تاريخ K.H. Ahmad Dahlan",
+      },
+      matahari: {
+        label: "الشمس",
+        action: "افتح تاريخ المحمدية",
+      },
+      sorban: {
+        label: "الماعون",
+        action: "افتح جدول الأعمال الخيرية",
+      },
+      baju: {
+        label: "آية الكرسي",
+        action: "افتح فضائل آية الكرسي",
+      },
+      janggut: {
+        label: "اللحية",
+        action: "افتح انتشار المحمدية",
+      },
+      telinga: {
+        label: "الأذن",
+        action: "افتح جدول الأعمال",
+      },
+      mata: {
+        label: "العين",
+        action: "افتح خدمات المحمدية",
+      },
+      kelor: {
+        label: "المورينغا",
+        action: "افتح معنى الشعار",
+      },
+    },
+    ayatKursi: {
+      title: "فضائل آية الكرسي",
+      close: "إغلاق",
+      sourceLabel: "المصدر",
+      gradeLabel: "الدرجة",
+      narratorLabel: "الراوي",
+    },
+  },
   countdown: {
     beforeLabel: "نحو تنوير والذكرى",
     duringLabel: "تنوير والذكرى جاريان",

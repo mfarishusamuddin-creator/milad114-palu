@@ -119,6 +119,68 @@ export const en: Dictionary = {
     shareText:
       "Tanwir and the 114th Milad of Muhammadiyah — Together, Unite the Nation. Palu, 19–21 November 2026.",
   },
+  heroArtwork: {
+    title: "K.H. Ahmad Dahlan",
+    imageAlt:
+      "A calligraphy painting of K.H. Ahmad Dahlan, with Surah Al-Ma’un on his turban, Ayat al-Kursi on his robe, the moringa emblem, and the Muhammadiyah sun.",
+    shareLabel: "Share the artwork",
+    shareStatus: {
+      shared: "Shared",
+      copied: "Link copied",
+      manual: "Copy the URL from the address bar",
+    },
+    actions: {
+      judul: {
+        label: "K.H. Ahmad Dahlan",
+        action: "Share the artwork",
+      },
+      tanggal: {
+        label: "Birth–death dates",
+        action: "Open the Central Leadership of Muhammadiyah",
+      },
+    },
+    details: {
+      wajah: {
+        label: "Face",
+        action: "Open the history of K.H. Ahmad Dahlan",
+      },
+      matahari: {
+        label: "Sun",
+        action: "Open the history of Muhammadiyah",
+      },
+      sorban: {
+        label: "Al-Ma’un",
+        action: "Open the AUM table",
+      },
+      baju: {
+        label: "Ayat Kursi",
+        action: "Open the virtues of Ayat Kursi",
+      },
+      janggut: {
+        label: "Beard",
+        action: "Open Muhammadiyah’s reach",
+      },
+      telinga: {
+        label: "Ear",
+        action: "Open the agenda",
+      },
+      mata: {
+        label: "Eyes",
+        action: "Open Muhammadiyah services",
+      },
+      kelor: {
+        label: "Moringa",
+        action: "Open the logo meaning",
+      },
+    },
+    ayatKursi: {
+      title: "The Virtues of Ayat Kursi",
+      close: "Close",
+      sourceLabel: "Source",
+      gradeLabel: "Grade",
+      narratorLabel: "Narrator",
+    },
+  },
   countdown: {
     beforeLabel: "Towards Tanwir & the Milad",
     duringLabel: "Tanwir & the Milad are underway",
