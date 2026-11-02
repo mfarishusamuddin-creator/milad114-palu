@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Timeline, type TimelineItem } from "@/components/ui/timeline";
 import type { HistoryContent, HistoryEntry } from "@/data/history";
 import { cn } from "@/lib/cn";
+import { HISTORY_SELECT_EVENT, type HistorySelection } from "@/lib/history-nav";
 
 type Props = {
   content: HistoryContent;
@@ -12,6 +13,25 @@ type Props = {
 export function HistoryTimeline({ content }: Props) {
   const [active, setActive] = useState(0);
   const track = content.tracks[active] ?? content.tracks[0];
+
+  /**
+   * Deep-link ke jalur tertentu (mis. hotspot wajah → Dahlan, matahari →
+   * Muhammadiyah): pilih tab sesuai `detail.track`. Event yang hanya
+   * membawa `table` diabaikan di sini (ditangani pemilik tabel).
+   * Section tidak pernah ditutup dari sini; buka/tutup tetap milik
+   * CollapsibleSection.
+   */
+  useEffect(() => {
+    const onHistorySelect = (event: Event): void => {
+      const detail = (event as CustomEvent<HistorySelection>).detail;
+      if (!detail?.track) return;
+      const index = content.tracks.findIndex((t) => t.id === detail.track);
+      if (index >= 0) setActive(index);
+    };
+    window.addEventListener(HISTORY_SELECT_EVENT, onHistorySelect);
+    return () =>
+      window.removeEventListener(HISTORY_SELECT_EVENT, onHistorySelect);
+  }, [content.tracks]);
 
   const timelineItems: TimelineItem[] = track.entries.map((entry) => ({
     title: entry.year,

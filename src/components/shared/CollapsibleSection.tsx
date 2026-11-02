@@ -81,11 +81,23 @@ export function CollapsibleSection({
 
   useEffect(() => {
     const onAnchorNavigation = (event: Event): void => {
-      const targetId = (event as CustomEvent<{ targetId?: string }>).detail
-        ?.targetId;
+      const detail = (
+        event as CustomEvent<{ targetId?: string; scroll?: boolean }>
+      ).detail;
+      const targetId = detail?.targetId;
       if (!targetId) return;
       const target = document.getElementById(targetId);
-      if (target) revealTarget(target);
+      if (!target) return;
+
+      // `scroll: false` membuka section tanpa menggulir; dipakai deep-link
+      // tabel sejarah yang menggulir sendiri ke #tabel-sejarah.
+      if (detail?.scroll === false) {
+        if (!sectionRef.current?.contains(target)) return;
+        if (!openRef.current) setOpen(true);
+        return;
+      }
+
+      revealTarget(target);
     };
     window.addEventListener("site:anchor-navigation", onAnchorNavigation);
     return () =>

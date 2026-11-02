@@ -125,7 +125,7 @@ export const id: Dictionary = {
       },
       tanggal: {
         label: "Tanggal lahir–wafat",
-        action: "Buka Kepemimpinan Pusat Muhammadiyah",
+        action: "Buka Pimpinan Pusat Muhammadiyah",
       },
     },
     details: {
@@ -139,7 +139,7 @@ export const id: Dictionary = {
       },
       sorban: {
         label: "Al-Ma’un",
-        action: "Buka tabel AUM",
+        action: "Buka tabel Amal Usaha Muhammadiyah",
       },
       baju: {
         label: "Ayat Kursi",

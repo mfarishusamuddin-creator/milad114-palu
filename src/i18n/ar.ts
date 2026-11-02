@@ -119,9 +119,9 @@ export const ar: Dictionary = {
       "تنوير والذكرى الـ114 لجمعية المحمدية — معًا نوحّد الأمة. بالو، 19–21 نوفمبر 2026.",
   },
   heroArtwork: {
-    title: "K.H. Ahmad Dahlan",
+    title: "KH أحمد دهلان",
     imageAlt:
-      "لوحة خطية لـ K.H. Ahmad Dahlan، على عمامته سورة الماعون، وعلى ثوبه آية الكرسي، مع رمز المورينغا وشمس المحمدية.",
+      "لوحة خطية لـ KH أحمد دهلان، على عمامته سورة الماعون، وعلى ثوبه آية الكرسي، مع رمز المورينغا وشمس المحمدية.",
     shareLabel: "شارك العمل",
     shareStatus: {
       shared: "تمت المشاركة",
@@ -130,18 +130,18 @@ export const ar: Dictionary = {
     },
     actions: {
       judul: {
-        label: "K.H. Ahmad Dahlan",
+        label: "KH أحمد دهلان",
         action: "شارك العمل",
       },
       tanggal: {
         label: "تاريخ الميلاد والوفاة",
-        action: "افتح القيادة المركزية للمحمدية",
+        action: "افتح الرئاسة المركزية للجمعية المحمدية",
       },
     },
     details: {
       wajah: {
         label: "الوجه",
-        action: "افتح تاريخ K.H. Ahmad Dahlan",
+        action: "افتح تاريخ KH أحمد دهلان",
       },
       matahari: {
         label: "الشمس",
@@ -149,7 +149,7 @@ export const ar: Dictionary = {
       },
       sorban: {
         label: "الماعون",
-        action: "افتح جدول الأعمال الخيرية",
+        action: "افتح جدول المشروعات الخيرية للمحمدية",
       },
       baju: {
         label: "آية الكرسي",

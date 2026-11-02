@@ -1,4 +1,3 @@
-import { Reveal } from "@/components/animation/Reveal";
 import { CollapsibleSection } from "@/components/shared/CollapsibleSection";
 import { HistoryTables } from "@/components/history/HistoryTables";
 import { HistoryTimeline } from "@/components/history/HistoryTimeline";
@@ -15,9 +14,14 @@ export function HistorySection({ dict }: { dict: Dictionary }) {
     >
       <HistoryTimeline content={history.content} />
 
-      <Reveal className="mt-12">
+      {/*
+        Tabel sengaja tidak dibungkus Reveal: saat deep-link, panel dibuka
+        dari event dan tabel harus langsung terlihat, bukan menunggu
+        intersection observer.
+      */}
+      <div className="mt-12">
         <HistoryTables tables={history.content.tables} labels={history.tables} />
-      </Reveal>
+      </div>
     </CollapsibleSection>
   );
 }

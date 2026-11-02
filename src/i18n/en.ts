@@ -136,7 +136,7 @@ export const en: Dictionary = {
       },
       tanggal: {
         label: "Birth–death dates",
-        action: "Open the Central Leadership of Muhammadiyah",
+        action: "Open the Central Board of Muhammadiyah",
       },
     },
     details: {
@@ -150,7 +150,7 @@ export const en: Dictionary = {
       },
       sorban: {
         label: "Al-Ma’un",
-        action: "Open the AUM table",
+        action: "Open the Muhammadiyah Social Enterprise table",
       },
       baju: {
         label: "Ayat Kursi",

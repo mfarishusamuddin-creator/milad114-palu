@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { HistoryTable } from "@/data/history";
+import { HISTORY_SELECT_EVENT, type HistorySelection } from "@/lib/history-nav";
 
 type Labels = {
   leadership: string;
@@ -17,16 +18,105 @@ type TabKey = "leadership" | "aum" | null;
 
 export function HistoryTables({ tables, labels }: Props) {
   const [active, setActive] = useState<TabKey>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const tableRef = useRef<HTMLDivElement | null>(null);
+  const scrollCleanupRef = useRef<(() => void) | null>(null);
 
   const toggle = (key: Exclude<TabKey, null>): void => {
     setActive((value) => (value === key ? null : key));
   };
 
+  /**
+   * Deep-link tabel (mis. hotspot AUM/leadership): pilih tab tanpa toggle,
+   * lalu scroll ke #tabel-sejarah setelah panel collapsible selesai
+   * terbuka. Klik manual tetap memakai `toggle` (tab aktif menutup tabel).
+   */
+  useEffect(() => {
+    const scrollToTable = (): void => {
+      const target = tableRef.current;
+      if (!target) return;
+      const reduce =
+        window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ??
+        false;
+      target.scrollIntoView({
+        behavior: reduce ? "auto" : "smooth",
+        block: "start",
+      });
+    };
+
+    // Dua frame: menunggu React menempelkan tabel, lalu menggulir.
+    const scheduleScroll = (): void => {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(scrollToTable);
+      });
+    };
+
+    const onHistorySelect = (event: Event): void => {
+      const detail = (event as CustomEvent<HistorySelection>).detail;
+      if (!detail?.table) return;
+
+      setActive(detail.table);
+      scrollCleanupRef.current?.();
+      scrollCleanupRef.current = null;
+
+      const section = containerRef.current?.closest(".collapsible");
+      const panel =
+        section?.querySelector<HTMLElement>(".collapsible__panel") ?? null;
+      const reduce =
+        window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ??
+        false;
+      const alreadyOpen =
+        panel !== null && panel.getAttribute("aria-hidden") === "false";
+
+      if (!panel || reduce || alreadyOpen) {
+        scheduleScroll();
+        return;
+      }
+
+      let done = false;
+      let fallback = 0;
+      let onTransitionEnd: (event: TransitionEvent) => void = () => {};
+
+      const finish = (): void => {
+        if (done) return;
+        done = true;
+        panel.removeEventListener("transitionend", onTransitionEnd);
+        window.clearTimeout(fallback);
+        scrollCleanupRef.current = null;
+        scheduleScroll();
+      };
+
+      onTransitionEnd = (event: TransitionEvent): void => {
+        if (
+          event.target === panel &&
+          event.propertyName === "grid-template-rows"
+        ) {
+          finish();
+        }
+      };
+
+      panel.addEventListener("transitionend", onTransitionEnd);
+      fallback = window.setTimeout(finish, 700);
+      scrollCleanupRef.current = () => {
+        done = true;
+        panel.removeEventListener("transitionend", onTransitionEnd);
+        window.clearTimeout(fallback);
+      };
+    };
+
+    window.addEventListener(HISTORY_SELECT_EVENT, onHistorySelect);
+    return () => {
+      window.removeEventListener(HISTORY_SELECT_EVENT, onHistorySelect);
+      scrollCleanupRef.current?.();
+      scrollCleanupRef.current = null;
+    };
+  }, []);
+
   const visible =
     active === "leadership" ? tables[0] : active === "aum" ? tables[1] : null;
 
   return (
-    <div>
+    <div ref={containerRef}>
       <div className="flex flex-wrap gap-2" role="group" aria-label={labels.leadership}>
         <button
           type="button"
@@ -51,7 +141,11 @@ export function HistoryTables({ tables, labels }: Props) {
       </div>
 
       {visible ? (
-        <div id="tabel-sejarah" className="mt-6">
+        <div
+          ref={tableRef}
+          id="tabel-sejarah"
+          className="mt-6 scroll-mt-24"
+        >
           <h3 className="font-serif text-xl font-bold text-ink">
             {visible.title}
           </h3>
