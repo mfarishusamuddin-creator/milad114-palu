@@ -379,15 +379,24 @@
   border: 0;
   border-radius: 0.25rem;
   color: var(--color-ink);
-  column-gap: 0.6rem;
+  column-gap: 0.55rem;
   cursor: pointer;
   display: grid;
   font-family: var(--font-body), system-ui, sans-serif;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto auto 1fr;
   min-height: 2.75rem;
-  padding: 0.5rem 0.6rem;
+  padding: 0.4rem 0.6rem;
   text-align: start;
   transition: background-color 180ms ease;
+}
+
+.hero-artwork__index-thumb {
+  border: 1px solid var(--color-line);
+  border-radius: 0.2rem;
+  flex: none;
+  height: 2rem;
+  object-fit: cover;
+  width: 2rem;
 }
 
 .hero-artwork__index-btn:hover {

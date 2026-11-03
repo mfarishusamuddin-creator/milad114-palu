@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import { useEffect, useRef, useState, type ReactElement } from "react";
+import Image from "next/image";
 import { AnchorLink } from "@/components/shared/AnchorLink";
 import { AyatKursiDialog } from "@/components/home/AyatKursiDialog";
 import { Countdown } from "@/components/home/Countdown";
@@ -256,6 +257,7 @@ function DetailIndex({
       >
         {DETAIL_ORDER.map((id, index) => {
           const { label, action } = dict.heroArtwork.details[id];
+          const thumb = heroArtwork.details[id];
           return (
             <button
               key={id}
@@ -282,6 +284,15 @@ function DetailIndex({
               >
                 {String(index + 1).padStart(2, "0")}
               </span>
+              <Image
+                src={thumb.src}
+                width={thumb.width}
+                height={thumb.height}
+                sizes="36px"
+                loading="lazy"
+                alt=""
+                className="hero-artwork__index-thumb"
+              />
               <span className="hero-artwork__index-label">{label}</span>
             </button>
           );
