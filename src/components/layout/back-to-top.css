@@ -37,6 +37,48 @@
   visibility: visible;
 }
 
+/* Border gradien animasi; warna mengikuti tema lewat --gt-c1..c4. */
+.back-to-top::after {
+  animation: back-to-top-gradient 12s ease-in-out infinite;
+  animation-play-state: paused;
+  background: linear-gradient(
+    120deg,
+    var(--gt-c1),
+    var(--gt-c2),
+    var(--gt-c3),
+    var(--gt-c4),
+    var(--gt-c1)
+  );
+  background-size: 220% 100%;
+  border-radius: inherit;
+  content: "";
+  inset: 0;
+  padding: 1.5px;
+  pointer-events: none;
+  position: absolute;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box exclude,
+    linear-gradient(#000 0 0);
+}
+
+.back-to-top.is-visible::after {
+  animation-play-state: running;
+}
+
+@keyframes back-to-top-gradient {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
 .back-to-top:hover {
   background: color-mix(in srgb, var(--color-surface) 82%, transparent);
 }
@@ -53,5 +95,9 @@
 @media (prefers-reduced-motion: reduce) {
   .back-to-top {
     transition: none;
+  }
+
+  .back-to-top::after {
+    animation: none;
   }
 }

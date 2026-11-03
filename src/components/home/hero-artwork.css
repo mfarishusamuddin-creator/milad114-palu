@@ -63,6 +63,49 @@
   .hero-layout__cta { order: 4; }
 }
 
+/* Border gradien animasi di sekeliling hero. Animasi hanya berjalan saat
+   hero terlihat (kelas .hero-in-view dari IntersectionObserver). */
+.hero-gradient-border::before {
+  animation: hero-border-gradient 14s ease-in-out infinite;
+  animation-play-state: paused;
+  background: linear-gradient(
+    120deg,
+    var(--gt-c1),
+    var(--gt-c2),
+    var(--gt-c3),
+    var(--gt-c4),
+    var(--gt-c1)
+  );
+  background-size: 220% 100%;
+  content: "";
+  inset: 0;
+  padding: 2px;
+  pointer-events: none;
+  position: absolute;
+  z-index: 30;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box exclude,
+    linear-gradient(#000 0 0);
+}
+
+.hero-gradient-border.hero-in-view::before {
+  animation-play-state: running;
+}
+
+@keyframes hero-border-gradient {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
 /* --- Figure karya ------------------------------------------------------- */
 
 .hero-artwork {
@@ -337,7 +380,7 @@
   align-items: center;
   background: transparent;
   border: 0;
-  border-radius: 0;
+  border-radius: 0.25rem;
   color: var(--color-ink);
   column-gap: 0.45rem;
   cursor: pointer;
@@ -347,12 +390,41 @@
   font-weight: 700;
   letter-spacing: 0.12em;
   min-height: 2.75rem;
-  padding: 0.5rem 0.35rem;
+  padding: 0.5rem 0.65rem;
+  position: relative;
   text-shadow:
     0 1px 2px var(--color-bg),
     0 0 6px var(--color-bg);
   text-transform: uppercase;
   transition: color 180ms ease;
+}
+
+/* Border gradien animasi; warna mengikuti tema lewat --gt-c1..c4. */
+.hero-artwork__index-toggle::after {
+  animation: hero-index-gradient 12s ease-in-out infinite;
+  animation-play-state: paused;
+  background: linear-gradient(
+    120deg,
+    var(--gt-c1),
+    var(--gt-c2),
+    var(--gt-c3),
+    var(--gt-c4),
+    var(--gt-c1)
+  );
+  background-size: 220% 100%;
+  border-radius: inherit;
+  content: "";
+  inset: 0;
+  padding: 1.5px;
+  pointer-events: none;
+  position: absolute;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box exclude,
+    linear-gradient(#000 0 0);
 }
 
 .hero-artwork__index-toggle:hover {
@@ -378,9 +450,9 @@
 }
 
 .hero-artwork__index-menu {
-  background: transparent;
+  background: color-mix(in srgb, var(--color-surface) 50%, transparent);
   border: 0;
-  border-radius: 0;
+  border-radius: 0.25rem;
   bottom: calc(100% + 0.5rem);
   box-shadow: none;
   display: grid;
@@ -455,6 +527,20 @@
   font-weight: 600;
 }
 
+.hero-in-view .hero-artwork__index-toggle::after {
+  animation-play-state: running;
+}
+
+@keyframes hero-index-gradient {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
 /* Aksen gradien halus pada CTA primer hanya di tema gelap. Memakai palet
    GradientText tanpa emas; bukan outline emas. */
 .hero-cta {
@@ -464,6 +550,7 @@
 
 [data-theme="dark"] .hero-cta::after {
   animation: hero-cta-gradient 14s ease-in-out infinite;
+  animation-play-state: paused;
   background: linear-gradient(
     100deg,
     var(--gt-c1),
@@ -485,6 +572,10 @@
   mask:
     linear-gradient(#000 0 0) content-box exclude,
     linear-gradient(#000 0 0);
+}
+
+.hero-in-view .hero-cta::after {
+  animation-play-state: running;
 }
 
 @keyframes hero-cta-gradient {
@@ -537,6 +628,8 @@
     transition: none;
   }
 
+  .hero-gradient-border::before,
+  .hero-artwork__index-toggle::after,
   [data-theme="dark"] .hero-cta::after {
     animation: none;
   }

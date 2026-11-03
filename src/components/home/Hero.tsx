@@ -67,6 +67,21 @@ export function Hero({ dict }: { dict: Dictionary }) {
   /* Pemicu zoom terakhir (item popover) untuk mengembalikan fokus saat
      zoom ditutup; klik shape tidak mengisi ini — fokus kembali ke figure. */
   const triggerRef = useRef<HTMLElement | null>(null);
+  const heroRef = useRef<HTMLElement | null>(null);
+  const [heroInView, setHeroInView] = useState(true);
+
+  /* Semua animasi dekoratif hero di-pause saat hero keluar viewport. */
+  useEffect(() => {
+    const el = heroRef.current;
+    if (!el || typeof IntersectionObserver === "undefined") return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setHeroInView(entry.isIntersecting),
+      { threshold: 0.01 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const endPreview = (): void => setPreviewId(null);
 
@@ -123,7 +138,10 @@ export function Hero({ dict }: { dict: Dictionary }) {
   };
 
   return (
-    <section className="hero-shell">
+    <section
+      ref={heroRef}
+      className={`hero-shell hero-gradient-border${heroInView ? " hero-in-view" : ""}`}
+    >
       <div className="container-page relative z-10">
         <div className="hero-layout py-10 lg:py-14">
           <div className="hero-layout__text">

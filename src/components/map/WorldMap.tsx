@@ -1,6 +1,12 @@
 ﻿"use client";
 
-import { useState, type KeyboardEvent, type PointerEvent } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type KeyboardEvent,
+  type PointerEvent,
+} from "react";
 import { geoNaturalEarth1, geoPath } from "d3-geo";
 import type { FeatureCollection, GeoJsonProperties, Geometry } from "geojson";
 import { feature } from "topojson-client";
@@ -60,6 +66,22 @@ function clampX(x: number): number {
 
 export function WorldMap({ dict }: { dict: Dictionary }) {
   const [activeId, setActiveId] = useState<string | null>(null);
+  const mapRef = useRef<HTMLDivElement | null>(null);
+  const [inView, setInView] = useState(true);
+
+  /* Denyut halo hanya berjalan saat peta benar-benar terlihat. */
+  useEffect(() => {
+    const el = mapRef.current;
+    if (!el || typeof IntersectionObserver === "undefined") return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { threshold: 0.01 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   const projection = geoNaturalEarth1().fitSize(
     [VIEW.width, VIEW.height],
     LAND_FEATURE
@@ -123,7 +145,12 @@ export function WorldMap({ dict }: { dict: Dictionary }) {
   });
 
   return (
-    <div className="map-fullbleed relative overflow-visible border-y border-line bg-bg-soft p-2 sm:p-4">
+    <div
+      ref={mapRef}
+      className={`map-fullbleed relative overflow-visible border-y border-line bg-bg-soft p-2 sm:p-4${
+        inView ? " map-is-visible" : ""
+      }`}
+    >
       <svg
         viewBox={`0 0 ${VIEW.width} ${VIEW.height}`}
         className="map-svg h-auto w-full"

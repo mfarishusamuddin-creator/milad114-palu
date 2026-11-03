@@ -945,18 +945,28 @@
 }
 
 .map-marker-halo {
-  fill: rgba(202, 154, 0, 0.24);
+  fill: rgba(202, 154, 0, 0.32);
   transform-box: fill-box;
   transform-origin: center;
-  animation: map-halo-pulse 3.4s ease-in-out infinite;
+  animation: map-halo-pulse 2s ease-in-out infinite;
+}
+
+/* Denyut hanya berjalan saat panel peta dibuka. Saat tertutup, animasi
+   di-pause agar tidak membebani perangkat. */
+.collapsible .map-marker-halo {
+  animation-play-state: paused;
+}
+
+.collapsible__body[data-open] .map-is-visible .map-marker-halo {
+  animation-play-state: running;
 }
 
 .map-marker--hq .map-marker-halo {
-  animation-duration: 3s;
+  animation-duration: 1.8s;
 }
 
 .map-marker--active .map-marker-halo {
-  animation-duration: 1.5s;
+  animation-duration: 1.2s;
 }
 
 @keyframes map-halo-pulse {
@@ -966,8 +976,8 @@
     opacity: 1;
   }
   50% {
-    transform: scale(1.16);
-    opacity: 0.62;
+    transform: scale(1.28);
+    opacity: 0.45;
   }
 }
 

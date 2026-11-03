@@ -60,6 +60,16 @@ memvalidasi.
     `back-to-top.css`: tombol panah transparan fixed di kanan bawah, muncul
     setelah scroll 480 px, hilang di posisi atas; smooth scroll menghormati
     reduced motion. Dipasang global lewat `SiteShell`.
+14. **Border gradien animasi.** Tombol kembali ke atas dan tombol “Lihat
+    indeks karya” memakai ring gradien 1,5 px dari `--gt-c1..c4` (tema
+    terang/gelap), animasi 12 detik; statis saat reduced motion. Menu indeks
+    tetap memakai isian transparan 50%.
+15. **Border hero.** `.hero-gradient-border` menambahkan ring gradien 2 px
+    di sekeliling hero (14 detik, `--gt-c1..c4`).
+16. **Animasi hanya saat terlihat.** Hero memakai IntersectionObserver
+    (`hero-in-view`) untuk mem-pause border/ring CTA/ring indeks; peta memakai
+    `map-is-visible` + status panel terbuka; tombol kembali ke atas memakai
+    `.is-visible`; GradientText sudah punya observer sendiri.
 
 ## 3. Yang tidak diubah
 
