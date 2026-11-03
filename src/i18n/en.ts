@@ -129,6 +129,8 @@ export const en: Dictionary = {
       copied: "Link copied",
       manual: "Copy the URL from the address bar",
     },
+    indexToggle: "Artwork index",
+    chipClose: "Close",
     actions: {
       judul: {
         label: "K.H. Ahmad Dahlan",

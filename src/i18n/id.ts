@@ -118,6 +118,8 @@ export const id: Dictionary = {
       copied: "Tautan disalin",
       manual: "Salin URL di address bar",
     },
+    indexToggle: "Indeks karya",
+    chipClose: "Tutup",
     actions: {
       judul: {
         label: "K.H. Ahmad Dahlan",

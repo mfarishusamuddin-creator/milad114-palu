@@ -128,6 +128,8 @@ export const ar: Dictionary = {
       copied: "تم نسخ الرابط",
       manual: "انسخ الرابط من شريط العنوان",
     },
+    indexToggle: "فهرس العمل",
+    chipClose: "إغلاق",
     actions: {
       judul: {
         label: "KH أحمد دهلان",

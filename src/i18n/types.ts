@@ -76,6 +76,8 @@ export type Dictionary = {
     imageAlt: string;
     shareLabel: string;
     shareStatus: { shared: string; copied: string; manual: string };
+    indexToggle: string;
+    chipClose: string;
     details: Record<HeroDetailId, { label: string; action: string }>;
     actions: Record<HeroActionId, { label: string; action: string }>;
     ayatKursi: {

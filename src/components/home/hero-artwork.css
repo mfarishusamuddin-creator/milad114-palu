@@ -1,0 +1,422 @@
+/* HeroArtwork — layout karya kaligrafi, zoom-to-element, chip aksi, popover
+   indeks. HANYA layout + ring. Warna seluruhnya dari token globals.css
+   (terang/gelap ikut otomatis). Animasi transform dimatikan saat
+   prefers-reduced-motion. */
+
+/* --- Layout hero --------------------------------------------------------- */
+
+.hero-layout {
+  display: grid;
+  gap: 2rem;
+}
+
+.hero-layout__text,
+.hero-layout__figure,
+.hero-layout__title,
+.hero-layout__intro,
+.hero-layout__index,
+.hero-layout__cta {
+  min-width: 0;
+}
+
+/* Desktop: teks adalah satu kolom yang mengalir natural; figure di kanan.
+   Ini menghindari jarak kosong besar akibat figure yang menempati row 1. */
+@media (min-width: 1024px) {
+  .hero-layout {
+    align-items: start;
+    column-gap: 3rem;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  }
+
+  .hero-layout__text {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .hero-layout__figure {
+    justify-self: center;
+    width: 100%;
+  }
+}
+
+/* Mobile: title → figure → indeks → intro → CTA. `display: contents`
+   membuat anak-anak kolom teks ikut grid tanpa duplikasi markup. */
+@media (max-width: 1023px) {
+  .hero-layout__text {
+    display: contents;
+  }
+
+  .hero-layout__title { order: 1; }
+  .hero-layout__figure { order: 2; }
+  .hero-layout__index { order: 3; }
+  .hero-layout__intro { order: 4; }
+  .hero-layout__cta { order: 5; }
+}
+
+/* --- Figure karya ------------------------------------------------------- */
+
+.hero-artwork {
+  margin: 0 auto;
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+}
+
+/* Desktop: batas tinggi 78vh diejawantahkan sebagai batas lebar
+   (rasio karya 1386/1984 = 0.698 → 78vh tinggi ≈ 54.4vh lebar). */
+@media (min-width: 1024px) {
+  .hero-artwork {
+    max-width: min(560px, 54.4vh);
+  }
+}
+
+/* Pembungkus yang menahan z-index saat zoom (di atas backdrop). */
+.hero-artwork__stage {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-artwork--zoomed .hero-artwork__stage {
+  z-index: 60;
+}
+
+/* Backdrop tipis saat zoom: klik di luar = keluar zoom. */
+.hero-artwork__backdrop {
+  background: var(--color-ink);
+  border: 0;
+  cursor: zoom-out;
+  inset: 0;
+  margin: 0;
+  opacity: 0.38;
+  padding: 0;
+  position: fixed;
+  z-index: 50;
+}
+
+/* Bingkai gambar: tipis seperti mount pameran, bukan kartu UI. */
+.hero-artwork__frame {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 0.25rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-artwork__frame img {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+/* Inner = Image + overlay SVG; di-scale saat zoom. `position: relative`
+   WAJIB agar overlay absolute menempel pada inner (ikut ter-scale),
+   bukan pada frame (tidak ikut ter-scale → ring melenceng). */
+.hero-artwork__inner {
+  position: relative;
+  transform-origin: 50% 50%;
+  transition: transform 420ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* Hanya minta layer GPU selama zoom; jangan promosikan permanen. */
+.hero-artwork--zoomed .hero-artwork__inner {
+  will-change: transform;
+}
+
+/* Overlay SVG hotspot: ukurannya mengikuti gambar persis. */
+.hero-artwork__overlay {
+  display: block;
+  height: 100%;
+  inset: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.hero-artwork__overlay [data-hotspot] {
+  cursor: pointer;
+}
+
+/* Palet gradien ring: versi LEMBUT (pastel) dari palet GradientText, dipakai
+   TETAP di kedua tema agar batas selalu halus (keputusan pemilik — kebalikan
+   dari versi vivid). Nilai = palet pastel GradientText. */
+.hero-artwork {
+  --hero-ring-1: #b9c8f2;
+  --hero-ring-2: #7ab5dd;
+  --hero-ring-3: #9fe07a;
+  --hero-ring-4: #f2c85c;
+}
+
+/* Batas hotspot: garis tipis bergradien (palet GradientText) + halo lembut.
+   Halus dan tidak mengganggu karya; opacity tetap 0 sampai hover/zoom.
+   Filter hanya dipasang saat ring benar-benar terlihat. */
+.hero-artwork__ring {
+  transition: stroke-opacity 180ms ease;
+}
+
+.hero-artwork__ring[data-active] {
+  filter: drop-shadow(
+    0 0 1.2px color-mix(in srgb, var(--hero-ring-4) 60%, transparent)
+  );
+}
+
+/* Label debug ?heroDebug=1 — nomor + id teknis, bukan konten. */
+.hero-artwork__debug-label {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  paint-order: stroke;
+  fill: var(--color-ink);
+  stroke: var(--color-bg);
+  stroke-width: 10px;
+}
+
+/* --- Chip aksi di dalam zoom -------------------------------------------- */
+
+/* Chip melayang (panel bawah tetap) saat zoom: nomor + label + teks aksi +
+   tombol aksi + tutup. Fixed agar tidak pernah menumpuk grup aksi/figure. */
+.hero-artwork__chip {
+  align-items: center;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-top: 2px solid var(--color-gold);
+  border-radius: 0.5rem;
+  bottom: max(1rem, env(safe-area-inset-bottom, 0px));
+  box-shadow: var(--shadow-soft);
+  column-gap: 0.7rem;
+  display: flex;
+  flex-wrap: wrap;
+  inset-inline-start: 50%;
+  justify-content: center;
+  max-width: min(92vw, 30rem);
+  padding: 0.7rem 0.8rem;
+  position: fixed;
+  row-gap: 0.5rem;
+  transform: translateX(-50%);
+  width: max-content;
+  z-index: 70;
+}
+
+.hero-artwork__chip-img {
+  border: 1px solid var(--color-line);
+  border-radius: 0.25rem;
+  flex: none;
+  height: 56px;
+  object-fit: cover;
+  width: 56px;
+}
+
+.hero-artwork__chip-text {
+  flex: 1 1 8rem;
+  min-width: 0;
+}
+
+.hero-artwork__chip-label {
+  align-items: baseline;
+  color: var(--color-ink);
+  column-gap: 0.4rem;
+  display: flex;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.hero-artwork__chip-num {
+  color: var(--color-gold-text);
+  flex: none;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.hero-artwork__chip-action {
+  color: var(--color-ink-soft);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 0.78rem;
+  margin: 0.15rem 0 0;
+}
+
+.hero-artwork__chip-btn {
+  background: var(--color-navy);
+  border: 0;
+  border-radius: 0.25rem;
+  color: #fff;
+  cursor: pointer;
+  flex: none;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  min-height: 2.5rem;
+  padding: 0.5rem 0.9rem;
+  transition: background-color 180ms ease;
+}
+
+.hero-artwork__chip-btn:hover {
+  background: var(--color-navy-deep);
+}
+
+.hero-artwork__chip-close {
+  background: none;
+  border: 0;
+  border-radius: 0.25rem;
+  color: var(--color-ink);
+  cursor: pointer;
+  display: grid;
+  flex: none;
+  height: 2.5rem;
+  place-items: center;
+  transition: background-color 180ms ease;
+  width: 2.5rem;
+}
+
+.hero-artwork__chip-close:hover {
+  background: var(--color-bg-soft);
+}
+
+.hero-artwork__chip-btn:focus-visible,
+.hero-artwork__chip-close:focus-visible {
+  outline: 2px solid var(--color-ocean);
+  outline-offset: 2px;
+}
+
+/* --- Popover indeks 8 detail -------------------------------------------- */
+
+.hero-artwork__index {
+  display: inline-block;
+  position: relative;
+}
+
+.hero-artwork__index-toggle {
+  align-items: center;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 0.25rem;
+  color: var(--color-ink);
+  column-gap: 0.45rem;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.9rem;
+  text-transform: uppercase;
+  transition: border-color 180ms ease, background-color 180ms ease;
+}
+
+.hero-artwork__index-toggle:hover {
+  background: var(--color-bg-soft);
+  border-color: var(--color-gold);
+}
+
+.hero-artwork__index-toggle:focus-visible {
+  outline: 2px solid var(--color-ocean);
+  outline-offset: 2px;
+}
+
+.hero-artwork__chevron {
+  flex: none;
+  transition: transform 180ms ease;
+}
+
+.hero-artwork__index-toggle[aria-expanded="true"] .hero-artwork__chevron {
+  transform: rotate(180deg);
+}
+
+.hero-artwork__index-menu {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow-soft);
+  display: grid;
+  gap: 0.15rem;
+  inset-inline-start: 0;
+  max-height: min(60vh, 26rem);
+  min-width: min(88vw, 18rem);
+  overflow-y: auto;
+  padding: 0.4rem;
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  z-index: 55;
+}
+
+/* `hidden` atribut harus menang atas display: grid di atas. */
+.hero-artwork__index-menu[hidden] {
+  display: none;
+}
+
+/* Di layar sempit, buka daftar ke atas agar tidak keluar viewport. */
+@media (max-width: 1023px) {
+  .hero-artwork__index-menu {
+    bottom: calc(100% + 0.5rem);
+    top: auto;
+  }
+}
+
+.hero-artwork__index-btn {
+  align-items: center;
+  background: none;
+  border: 0;
+  border-radius: 0.25rem;
+  color: var(--color-ink);
+  column-gap: 0.6rem;
+  cursor: pointer;
+  display: grid;
+  font-family: var(--font-body), system-ui, sans-serif;
+  grid-template-columns: auto 1fr;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.6rem;
+  text-align: start;
+  transition: background-color 180ms ease;
+}
+
+.hero-artwork__index-btn:hover {
+  background: var(--color-bg-soft);
+}
+
+.hero-artwork__index-btn:focus-visible {
+  outline: 2px solid var(--color-ocean);
+  outline-offset: 2px;
+}
+
+.hero-artwork__index-num {
+  color: var(--color-gold-text);
+  flex: none;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+}
+
+.hero-artwork__index-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* Arab: hindari letter-spacing yang memutus sambungan huruf; teks Arab
+   memakai El Messiri (display), bukan Familjen Grotesk yang tidak punya
+   glyph Arab. */
+.site-shell[dir="rtl"] .hero-artwork__index-toggle,
+.site-shell[dir="rtl"] .hero-artwork__chip-num {
+  letter-spacing: 0;
+}
+
+.site-shell[dir="rtl"] .hero-artwork__index-toggle,
+.site-shell[dir="rtl"] .hero-artwork__index-btn,
+.site-shell[dir="rtl"] .hero-artwork__chip-action,
+.site-shell[dir="rtl"] .hero-artwork__chip-btn {
+  font-family: var(--font-display), Georgia, serif;
+}
+
+/* --- Reduced motion ------------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-artwork__inner,
+  .hero-artwork__chevron,
+  .hero-artwork__chip-btn,
+  .hero-artwork__chip-close,
+  .hero-artwork__index-toggle {
+    transition: none;
+  }
+}
