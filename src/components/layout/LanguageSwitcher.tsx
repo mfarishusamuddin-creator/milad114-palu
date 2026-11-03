@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import GlideSelect from "@/components/shared/GlideSelect";
-import { isLanguage, languagePath } from "@/i18n";
+import { aboutPath, isLanguage, languagePath } from "@/i18n";
 import type { LanguageCode } from "@/i18n/types";
 import { cn } from "@/lib/cn";
 
@@ -21,10 +21,17 @@ type Props = {
   lang: LanguageCode;
   className?: string;
   large?: boolean;
+  ariaLabel?: string;
 };
 
-export function LanguageSwitcher({ lang, className, large = false }: Props) {
+export function LanguageSwitcher({
+  lang,
+  className,
+  large = false,
+  ariaLabel = "Language",
+}: Props) {
   const router = useRouter();
+  const pathname = usePathname();
   const [value, setValue] = useState(lang);
   const [prevLang, setPrevLang] = useState(lang);
 
@@ -32,6 +39,22 @@ export function LanguageSwitcher({ lang, className, large = false }: Props) {
     setPrevLang(lang);
     setValue(lang);
   }
+
+  const targetPath = (next: LanguageCode): string => {
+    const current = (pathname || "/").replace(/\/+$/, "") || "/";
+    const isAbout =
+      current === "/tentang" ||
+      current === "/en/tentang" ||
+      current === "/ar/tentang";
+
+    if (isAbout) return aboutPath(next);
+
+    const base = languagePath(next);
+    if (typeof window !== "undefined" && window.location.hash) {
+      return `${base}${window.location.hash}`;
+    }
+    return base;
+  };
 
   return (
     <div dir="ltr" className={cn("language-glide", className)}>
@@ -45,9 +68,9 @@ export function LanguageSwitcher({ lang, className, large = false }: Props) {
         onChange={(next) => {
           if (!isLanguage(next)) return;
           setValue(next);
-          if (next !== lang) router.push(languagePath(next));
+          if (next !== lang) router.push(targetPath(next));
         }}
-        ariaLabel="Language"
+        ariaLabel={ariaLabel}
         size={large ? "md" : "sm"}
         accentColor="var(--color-gold)"
         surfaceColor="var(--color-surface)"

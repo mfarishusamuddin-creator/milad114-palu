@@ -79,7 +79,11 @@ export function Navbar({ dict }: { dict: Dictionary }) {
 function PengaturanContent({ dict }: { dict: Dictionary }) {
   return (
     <>
-      <LanguageSwitcher lang={dict.lang} className="w-full" />
+      <LanguageSwitcher
+        lang={dict.lang}
+        className="w-full"
+        ariaLabel={dict.common.language}
+      />
       <ThemeToggle dict={dict} />
       <Link
         href={aboutPath(dict.lang)}

@@ -76,7 +76,7 @@ export const ar: Dictionary = {
     themeLight: "الوضع الفاتح",
     themeDark: "الوضع الداكن",
     themeToggle: "تغيير المظهر",
-    brand: "ميلاد 114 محمدية",
+    brand: "أعمال بمناسبة ميلاد 114 محمدية",
     home: "الرئيسية",
     menuAria: "التنقل الرئيسي",
     about: "حول الموقع",

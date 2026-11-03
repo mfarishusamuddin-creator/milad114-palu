@@ -41,7 +41,7 @@ export const id: Dictionary = {
   dir: "ltr",
   locale: "id-ID",
   meta: {
-    title: "Tanwir dan Milad ke-114 Muhammadiyah — Bersama Satukan Bangsa",
+    title: "Karya Untuk Tanwir dan Milad ke-114 Muhammadiyah — Bersama Satukan Bangsa",
     description:
       "Website interaktif Tanwir dan Milad ke-114 Muhammadiyah. Palu, 19–21 November 2026 M | 10–12 Jumadilakhir 1448 H. Dua jalur sejarah, kalender KHGT, kabar resmi, dan peta PCIM dunia.",
     tagline: "Bersama Satukan Bangsa",
@@ -103,7 +103,7 @@ export const id: Dictionary = {
     titleLine2: "Satukan Bangsa",
     subtitle: "Tanwir dan Milad ke-114 Muhammadiyah",
     intro:
-      "Seratus empat belas tahun, dari Kauman 1912 hingga Palu 2026. Situs digital PCIM Libya untuk Tanwir dan Milad ke-114 Muhammadiyah.",
+      "Seratus empat belas tahun, dari Kauman 1912 hingga Palu 2026. Situs digital Dari Karya untuk Tanwir dan Milad ke-114 Muhammadiyah Di PCIM Libya.",
     ctaPrimary: "Jelajahi Jejak 114 Tahun",
     ctaSecondary: "Buka Layanan",
     share: "Bagikan",
