@@ -56,6 +56,7 @@ export const id: Dictionary = {
     dark: "Gelap",
     skipToContent: "Lewati ke konten",
     skipIntro: "Lewati intro",
+    backToTop: "Kembali ke atas",
   },
   nav: {
     menuOpen: "Buka menu",

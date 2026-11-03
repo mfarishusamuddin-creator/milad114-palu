@@ -1,0 +1,57 @@
+/* Tombol kembali ke atas — transparan, mengikuti tema, muncul setelah scroll. */
+
+.back-to-top {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-radius: 999px;
+  bottom: max(1rem, env(safe-area-inset-bottom, 0px));
+  color: var(--color-ink);
+  cursor: pointer;
+  display: grid;
+  filter: drop-shadow(
+    0 1px 2px color-mix(in srgb, var(--color-bg) 75%, transparent)
+  );
+  height: 2.75rem;
+  inset-inline-end: max(1rem, env(safe-area-inset-right, 0px));
+  opacity: 0;
+  padding: 0;
+  place-items: center;
+  pointer-events: none;
+  position: fixed;
+  transform: translateY(0.4rem);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease,
+    visibility 180ms,
+    background-color 180ms ease;
+  visibility: hidden;
+  width: 2.75rem;
+  z-index: 40;
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+.back-to-top:hover {
+  background: color-mix(in srgb, var(--color-surface) 82%, transparent);
+}
+
+.back-to-top:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+.back-to-top svg {
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .back-to-top {
+    transition: none;
+  }
+}

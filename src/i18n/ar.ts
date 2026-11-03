@@ -67,6 +67,7 @@ export const ar: Dictionary = {
     dark: "داكن",
     skipToContent: "تجاوز إلى المحتوى",
     skipIntro: "تخطي المقدمة",
+    backToTop: "العودة إلى الأعلى",
   },
   nav: {
     menuOpen: "افتح القائمة",

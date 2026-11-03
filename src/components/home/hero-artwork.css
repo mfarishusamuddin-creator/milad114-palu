@@ -331,17 +331,14 @@
   position: relative;
 }
 
-/* Label museum semi-transparan di atas kertas karya. Warna navy tetap
-   terbaca di terang/gelap karena karya sendiri berwarna terang. */
+/* Tombol indeks tanpa isian/border; warna teks mengikuti tema. Halo tipis
+   dari warna background menjaga teks tetap terbaca di atas kertas karya. */
 .hero-artwork__index-toggle {
   align-items: center;
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
-  background: rgb(26 44 111 / 0.78);
-  background: color-mix(in srgb, var(--color-navy-deep) 74%, transparent);
-  border: 1px solid rgb(255 255 255 / 0.28);
-  border-radius: 0.25rem;
-  color: #fff;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  color: var(--color-ink);
   column-gap: 0.45rem;
   cursor: pointer;
   display: inline-flex;
@@ -350,15 +347,19 @@
   font-weight: 700;
   letter-spacing: 0.12em;
   min-height: 2.75rem;
-  padding: 0.5rem 0.9rem;
+  padding: 0.5rem 0.35rem;
+  text-shadow:
+    0 1px 2px var(--color-bg),
+    0 0 6px var(--color-bg);
   text-transform: uppercase;
-  transition: border-color 180ms ease, background-color 180ms ease;
+  transition: color 180ms ease;
 }
 
 .hero-artwork__index-toggle:hover {
-  background: rgb(26 44 111 / 0.9);
-  background: color-mix(in srgb, var(--color-navy-deep) 88%, transparent);
-  border-color: rgb(255 255 255 / 0.48);
+  color: var(--color-ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.35em;
 }
 
 .hero-artwork__index-toggle:focus-visible {
@@ -367,6 +368,7 @@
 }
 
 .hero-artwork__chevron {
+  filter: drop-shadow(0 0 4px var(--color-bg));
   flex: none;
   transition: transform 180ms ease;
 }
@@ -376,11 +378,11 @@
 }
 
 .hero-artwork__index-menu {
-  background: var(--color-surface);
-  border: 1px solid var(--color-line);
-  border-radius: 0.5rem;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
   bottom: calc(100% + 0.5rem);
-  box-shadow: var(--shadow-soft);
+  box-shadow: none;
   display: grid;
   gap: 0.15rem;
   inset-inline-start: auto;
@@ -388,8 +390,11 @@
   max-height: min(60vh, 26rem);
   min-width: min(88vw, 18rem);
   overflow-y: auto;
-  padding: 0.4rem;
+  padding: 0.25rem 0.35rem;
   position: absolute;
+  text-shadow:
+    0 1px 2px var(--color-bg),
+    0 0 6px var(--color-bg);
   top: auto;
   transform: translateX(-50%);
   z-index: 55;
@@ -404,7 +409,7 @@
   align-items: center;
   background: none;
   border: 0;
-  border-radius: 0.25rem;
+  border-radius: 0;
   color: var(--color-ink);
   column-gap: 0.55rem;
   cursor: pointer;
@@ -412,9 +417,9 @@
   font-family: var(--font-body), system-ui, sans-serif;
   grid-template-columns: auto auto 1fr;
   min-height: 2.75rem;
-  padding: 0.4rem 0.6rem;
+  padding: 0.35rem 0.35rem;
   text-align: start;
-  transition: background-color 180ms ease;
+  transition: color 180ms ease;
 }
 
 .hero-artwork__index-thumb {
@@ -427,16 +432,19 @@
 }
 
 .hero-artwork__index-btn:hover {
-  background: var(--color-bg-soft);
+  color: var(--color-ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.3em;
 }
 
 .hero-artwork__index-btn:focus-visible {
-  outline: 2px solid var(--color-ocean);
+  outline: 2px solid var(--color-gold-light);
   outline-offset: 2px;
 }
 
 .hero-artwork__index-num {
-  color: var(--color-gold-text);
+  color: var(--color-ink-soft);
   flex: none;
   font-variant-numeric: tabular-nums;
   font-weight: 700;

@@ -1,4 +1,5 @@
 import { MotionIntro } from "@/components/intro/MotionIntro";
+import { BackToTop } from "@/components/layout/BackToTop";
 import { Footer } from "@/components/layout/Footer";
 import { LocaleEffect } from "@/components/layout/LocaleEffect";
 import { Navbar } from "@/components/layout/Navbar";
@@ -26,6 +27,7 @@ export function SiteShell({
         {children}
       </main>
       <Footer dict={dict} />
+      <BackToTop label={dict.common.backToTop} />
       <LocaleEffect lang={dict.lang} dir={dict.dir} />
     </div>
   );

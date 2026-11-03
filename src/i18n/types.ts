@@ -39,6 +39,7 @@ export type Dictionary = {
     dark: string;
     skipToContent: string;
     skipIntro: string;
+    backToTop: string;
   };
   nav: {
     menuOpen: string;

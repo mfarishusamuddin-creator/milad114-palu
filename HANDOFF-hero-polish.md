@@ -53,6 +53,13 @@ memvalidasi.
 11. **CTA & tema.** Figure dirata-kan ke kanan grid di desktop. CTA primer
     mendapat ring gradien halus (tanpa emas) khusus tema gelap. Foto karya
     diturunkan brightness-nya ±8% di tema gelap.
+12. **Indeks tanpa isian.** Tombol “Lihat indeks karya” dan menu popover-nya
+    kini tanpa background/border/shadow; seluruh teks memakai token tema.
+    Halo tipis dari `--color-bg` menjaga keterbacaan di atas kertas karya.
+13. **Kembali ke atas.** `src/components/layout/BackToTop.tsx` +
+    `back-to-top.css`: tombol panah transparan fixed di kanan bawah, muncul
+    setelah scroll 480 px, hilang di posisi atas; smooth scroll menghormati
+    reduced motion. Dipasang global lewat `SiteShell`.
 
 ## 3. Yang tidak diubah
 

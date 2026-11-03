@@ -67,6 +67,7 @@ export const en: Dictionary = {
     dark: "Dark",
     skipToContent: "Skip to content",
     skipIntro: "Skip intro",
+    backToTop: "Back to top",
   },
   nav: {
     menuOpen: "Open menu",
