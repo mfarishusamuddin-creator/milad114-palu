@@ -62,6 +62,7 @@ export type Dictionary = {
     }>;
   };
   hero: {
+    eyebrow: string;
     titleLine1: string;
     titleLine2: string;
     subtitle: string;

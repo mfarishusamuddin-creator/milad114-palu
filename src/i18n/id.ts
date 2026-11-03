@@ -97,11 +97,12 @@ export const id: Dictionary = {
     ],
   },
   hero: {
+    eyebrow: "PCIM Libya · Tanwir & Milad ke-114 Muhammadiyah",
     titleLine1: "Bersama",
     titleLine2: "Satukan Bangsa",
     subtitle: "Tanwir dan Milad ke-114 Muhammadiyah",
     intro:
-      "Seratus empat belas tahun. Dari Kauman 1912 hingga Palu 2026 — situs digital untuk PCIM Libya dalam rangka Tanwir dan Milad ke-114 Muhammadiyah. Jelajahi dua jalur sejarah ( KH Ahmad Dahlan & Persyarikatan Muhammadiyah ), agenda, peta dunia, dan layanan resminya.",
+      "Seratus empat belas tahun, dari Kauman 1912 hingga Palu 2026. Situs digital PCIM Libya untuk Tanwir dan Milad ke-114 Muhammadiyah.",
     ctaPrimary: "Jelajahi Jejak 114 Tahun",
     ctaSecondary: "Buka Layanan",
     share: "Bagikan",
@@ -118,7 +119,7 @@ export const id: Dictionary = {
       copied: "Tautan disalin",
       manual: "Salin URL di address bar",
     },
-    indexToggle: "Indeks karya",
+    indexToggle: "Lihat indeks karya",
     chipClose: "Tutup",
     actions: {
       judul: {

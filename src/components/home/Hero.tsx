@@ -127,41 +127,34 @@ export function Hero({ dict }: { dict: Dictionary }) {
       <div className="container-page relative z-10">
         <div className="hero-layout py-10 lg:py-14">
           <div className="hero-layout__text">
-            {/* --- Judul + subjudul ------------------------------------ */}
+            {/* --- Eyebrow + judul ------------------------------------- */}
             <div className="hero-layout__title">
-              <h1 className="display-title text-navy">
+              <p className="hero-layout__eyebrow text-ocean">
+                {dict.hero.eyebrow}
+              </p>
+              <h1 className="display-title mt-3 text-navy">
                 <span className="block">{dict.hero.titleLine1}</span>
                 <span className="block">{dict.hero.titleLine2}</span>
               </h1>
-              <p className="mt-4 font-serif text-xl font-semibold text-ocean sm:text-2xl">
-                {dict.hero.subtitle}
-              </p>
             </div>
 
             <p className="hero-layout__intro body-lead max-w-xl">
               {dict.hero.intro}
             </p>
 
-            {/* --- Popover indeks 8 detail ------------------------------ */}
-            <DetailIndex
-              dict={dict}
-              triggerRef={triggerRef}
-              onPreview={setPreviewId}
-              onPreviewEnd={endPreview}
-              onZoom={openZoom}
-              className="hero-layout__index"
-            />
-
             {/* --- CTA primer ------------------------------------------ */}
             <div className="hero-layout__cta">
-              <AnchorLink href="#sejarah" className="btn btn-primary">
+              <AnchorLink
+                href="#sejarah"
+                className="btn btn-primary hero-cta"
+              >
                 {dict.hero.ctaPrimary}
                 <ArrowIcon />
               </AnchorLink>
             </div>
           </div>
 
-          {/* --- Figure karya (zoom + chip) ---------------------------- */}
+          {/* --- Figure karya (zoom + chip + indeks di bawah karya) --- */}
           <HeroArtwork
             className="hero-layout__figure"
             dict={dict}
@@ -173,6 +166,16 @@ export function Hero({ dict }: { dict: Dictionary }) {
             onZoom={openZoom}
             onZoomEnd={() => setZoom(null)}
             onChipAction={handleChipAction}
+            index={
+              <DetailIndex
+                dict={dict}
+                triggerRef={triggerRef}
+                onPreview={setPreviewId}
+                onPreviewEnd={endPreview}
+                onZoom={openZoom}
+                className="hero-artwork__index--overlay"
+              />
+            }
           />
         </div>
 
@@ -212,6 +215,7 @@ function DetailIndex({
 }: DetailIndexProps): ReactElement {
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement | null>(null);
+  const toggleRef = useRef<HTMLButtonElement | null>(null);
 
   /* Esc + klik/tap di luar menutup popover. */
   useEffect(() => {
@@ -240,6 +244,7 @@ function DetailIndex({
   return (
     <div className={`hero-artwork__index ${className ?? ""}`.trim()} ref={rootRef}>
       <button
+        ref={toggleRef}
         type="button"
         className="hero-artwork__index-toggle"
         aria-expanded={open}
@@ -273,7 +278,7 @@ function DetailIndex({
                 }
               }}
               onClick={(event) => {
-                triggerRef.current = event.currentTarget;
+                triggerRef.current = toggleRef.current ?? event.currentTarget;
                 onZoom(id, FIRST_INDEX.get(id) ?? 0);
                 setOpen(false);
               }}

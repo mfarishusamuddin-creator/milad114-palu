@@ -43,6 +43,16 @@ memvalidasi.
    kiri/kanan di desktop maupun HP. Pan dibatasi agar karya tetap menutup
    frame; `touch-action: none` mencegah halaman ikut scroll; drag tidak
    memicu klik hotspot (click suppression).
+9. **Indeks di karya.** Tombol “Lihat indeks karya” dipindah dari kolom teks
+   ke dalam figure, semi-transparan di ruang bawah karya. Posisinya absolut
+   mengikuti figure di semua ukuran; menu terbuka ke atas dan berisi
+   thumbnail 01–08.
+10. **Hierarki teks.** Eyebrow “PCIM Libya · Tanwir & Milad ke-114
+    Muhammadiyah” di atas H1; sub-judul tidak lagi dirender di hero; intro
+    dipangkas tanpa menyebut dua jalur, tetapi “PCIM Libya” dipertahankan.
+11. **CTA & tema.** Figure dirata-kan ke kanan grid di desktop. CTA primer
+    mendapat ring gradien halus (tanpa emas) khusus tema gelap. Foto karya
+    diturunkan brightness-nya ±8% di tema gelap.
 
 ## 3. Yang tidak diubah
 

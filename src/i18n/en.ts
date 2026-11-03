@@ -108,11 +108,12 @@ export const en: Dictionary = {
     ],
   },
   hero: {
+    eyebrow: "PCIM Libya · Tanwir & 114th Milad of Muhammadiyah",
     titleLine1: "Together",
     titleLine2: "Unite the Nation",
     subtitle: "Tanwir and the 114th Milad of Muhammadiyah",
     intro:
-      "One hundred and fourteen years. From Kauman in 1912 to Palu in 2026 — the digital home of the Tanwir and 114th Milad of Muhammadiyah. Explore two historical tracks, the agenda, the world map, and its official services.",
+      "One hundred and fourteen years, from Kauman in 1912 to Palu in 2026. A digital home by PCIM Libya for Tanwir and the 114th Milad of Muhammadiyah.",
     ctaPrimary: "Explore 114 Years",
     ctaSecondary: "Open Services",
     share: "Share",
@@ -129,7 +130,7 @@ export const en: Dictionary = {
       copied: "Link copied",
       manual: "Copy the URL from the address bar",
     },
-    indexToggle: "Artwork index",
+    indexToggle: "View artwork index",
     chipClose: "Close",
     actions: {
       judul: {

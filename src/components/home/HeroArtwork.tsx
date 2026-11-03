@@ -7,6 +7,7 @@ import {
   useState,
   type CSSProperties,
   type ReactElement,
+  type ReactNode,
 } from "react";
 import Image from "next/image";
 import {
@@ -105,6 +106,7 @@ type HeroArtworkProps = {
   onZoom: (id: HeroHotspotId, index: number) => void;
   onZoomEnd: () => void;
   onChipAction: (id: HeroHotspotId) => void;
+  index?: ReactNode;
   className?: string;
 };
 
@@ -118,6 +120,7 @@ export function HeroArtwork({
   onZoom,
   onZoomEnd,
   onChipAction,
+  index,
   className,
 }: HeroArtworkProps): ReactElement {
   const [debugMode, setDebugMode] = useState<"off" | "rings" | "labels">("off");
@@ -441,6 +444,9 @@ export function HeroArtwork({
             </svg>
           </div>
         </div>
+        {index ? (
+          <div className="hero-artwork__index-slot">{index}</div>
+        ) : null}
         {zoom ? (
           <ZoomChip
             dict={dict}
