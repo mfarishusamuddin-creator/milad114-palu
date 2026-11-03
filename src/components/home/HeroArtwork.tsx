@@ -42,6 +42,8 @@ import "./hero-artwork.css";
  * - Keluar zoom: Escape, tombol tutup chip, klik latar tipis (backdrop),
  *   atau klik bagian gambar di luar hotspot. Aksi anchor/section/modal
  *   menutup zoom dulu (Hero.tsx) sebelum dijalankan.
+ * - Saat zoom, gambar bisa di-pan (drag) atas/bawah/kiri/kanan; pan dibatasi
+ *   agar karya tetap menutup frame, dan drag tidak memicu klik hotspot.
  * - Shape TIDAK focusable: kontrol aksesibelnya adalah popover indeks
  *   (Hero.tsx) + chip.
  * - Debug ?heroDebug=1 (hanya non-produksi): semua ring menyala + label
@@ -57,14 +59,11 @@ const VIEW_H = heroArtwork.height;
 const HERO_IMAGE_SRC = "/media/hero/hero-artwork-hi.webp";
 
 /* Padding hit area tak terlihat (px viewBox, bukan px layar) untuk ring mata
-   yang memang kecil (07a ≈ 32 px, 07b ≈ 27 px). Nilainya sengaja kecil:
-   lubang evenodd wajah hanya ±3 px lebih besar dari ring mata, dan jarak
-   antarmata (pusat ke pusat) ±104 px — padding ≥44px layar pasti menabrak
-   area wajah/mata pasangannya, jadi presisi didahulukan; jalur sentuh
-   andalannya tetap popover item 07 (≥44px). Dicatat di
-   HANDOFF-hero-component.md. */
-const EYE_PAD_X = 10;
-const EYE_PAD_Y = 4;
+   yang memang kecil. Padding ini dipakai setelah wajah di-zoom; pada zoom
+   wajah 3,5× tinggi area sentuh ±50 px layar. Padding tidak boleh menabrak
+   mata pasangannya (jarak pusat ±104 px viewBox). */
+const EYE_PAD_X = 18;
+const EYE_PAD_Y = 12;
 
 const ACTION_ID_LIST: ReadonlyArray<string> = ["judul", "tanggal"];
 
@@ -81,17 +80,16 @@ const DETAIL_NUMBER: Record<HeroDetailId, string> = {
 
 const SUFFIX = "abcdefghijkl";
 
-/* Zona yang konturnya "kurang presisi" (wajah, mata, janggut, telinga) TIDAK
+/* Zona yang konturnya "kurang presisi" (wajah, mata, janggut) TIDAK
    digambar bergaris penuh agar lebih elegan; hanya disisakan 2-4 potong garis
    yang tetap MENGIKUTI kontur aslinya (memakai pathLength=100 + dash), sehingga
-   terlihat seperti aksen, bukan kotak/garis acak. Zona presisi (baju, sorban,
-   matahari, kelor) tetap bergaris penuh. Permintaan pemilik. */
+   terlihat seperti aksen, bukan kotak/garis acak. Zona presisi (telinga, baju,
+   sorban, matahari, kelor) tetap bergaris penuh. Permintaan pemilik. */
 const PARTIAL_RING: Partial<
   Record<HeroDetailId, { dash: string; offset: number }>
 > = {
   wajah: { dash: "11 22.33", offset: 8 },   // 3 potong garis
   janggut: { dash: "12 38", offset: 34 },   // 2 potong garis
-  telinga: { dash: "14 36", offset: 22 },   // 2 potong garis
   mata: { dash: "24 76", offset: 40 },      // 1 potong per mata (2 total)
 };
 
@@ -123,8 +121,20 @@ export function HeroArtwork({
   className,
 }: HeroArtworkProps): ReactElement {
   const [debugMode, setDebugMode] = useState<"off" | "rings" | "labels">("off");
+  const [pan, setPan] = useState({ x: 0, y: 0 });
+  const [dragging, setDragging] = useState(false);
   const frameRef = useRef<HTMLDivElement | null>(null);
   const chipActionRef = useRef<HTMLButtonElement | null>(null);
+  const dragRef = useRef<{
+    pointerId: number;
+    startX: number;
+    startY: number;
+    startPanX: number;
+    startPanY: number;
+    moved: boolean;
+    captured: boolean;
+  } | null>(null);
+  const suppressClickRef = useRef(false);
 
   /* Aliran gradien ring (mengikuti GradientText): aktif hanya bila pengguna
      tidak meminta reduced motion. Dibaca lewat setTimeout agar tidak
@@ -194,9 +204,108 @@ export function HeroArtwork({
   }, [zoom]);
 
   const zoomEntry = zoom ? heroArtwork.hotspots[zoom.index] : undefined;
+
+  /* Reset pan setiap kali zoom berpindah zona (wajah → mata, dst.).
+     setState ditunda ke timer agar tidak melanggar aturan lint proyek
+     (setState sinkron di dalam efek). */
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      setPan({ x: 0, y: 0 });
+      setDragging(false);
+      dragRef.current = null;
+      suppressClickRef.current = false;
+    }, 0);
+    return () => {
+      window.clearTimeout(timer);
+    };
+  }, [zoom]);
+
+  /* Batasi geser agar karya yang diperbesar tetap menutup frame. */
+  const clampPan = (x: number, y: number): { x: number; y: number } => {
+    const frame = frameRef.current;
+    if (!frame || !zoomEntry) return { x, y };
+    const W = frame.clientWidth;
+    const H = frame.clientHeight;
+    const s = zoomScale(zoomEntry);
+    const ox = ((zoomEntry.x + zoomEntry.w / 2) / 100) * W;
+    const oy = ((zoomEntry.y + zoomEntry.h / 2) / 100) * H;
+    const minX = W - W * s - ox * (1 - s);
+    const maxX = -ox * (1 - s);
+    const minY = H - H * s - oy * (1 - s);
+    const maxY = -oy * (1 - s);
+    return {
+      x: Math.min(maxX, Math.max(minX, x)),
+      y: Math.min(maxY, Math.max(minY, y)),
+    };
+  };
+
+  const onFramePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (!zoom) return;
+    if (event.pointerType === "mouse" && event.button !== 0) return;
+    dragRef.current = {
+      pointerId: event.pointerId,
+      startX: event.clientX,
+      startY: event.clientY,
+      startPanX: pan.x,
+      startPanY: pan.y,
+      moved: false,
+      captured: false,
+    };
+  };
+
+  const onFramePointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
+    const drag = dragRef.current;
+    if (!drag || drag.pointerId !== event.pointerId) return;
+    const dx = event.clientX - drag.startX;
+    const dy = event.clientY - drag.startY;
+
+    if (!drag.moved) {
+      if (Math.hypot(dx, dy) < 6) return;
+      drag.moved = true;
+      suppressClickRef.current = true;
+      setDragging(true);
+      try {
+        frameRef.current?.setPointerCapture(event.pointerId);
+        drag.captured = true;
+      } catch {
+        // Pointer capture tidak tersedia; tetap lanjut dengan event biasa.
+      }
+    }
+
+    setPan(clampPan(drag.startPanX + dx, drag.startPanY + dy));
+  };
+
+  const endFrameDrag = (event: React.PointerEvent<HTMLDivElement>) => {
+    const drag = dragRef.current;
+    if (!drag || drag.pointerId !== event.pointerId) return;
+    dragRef.current = null;
+    setDragging(false);
+    if (drag.captured) {
+      try {
+        frameRef.current?.releasePointerCapture(event.pointerId);
+      } catch {
+        // Abaikan bila capture sudah dilepas browser.
+      }
+    }
+    if (drag.moved) {
+      window.setTimeout(() => {
+        suppressClickRef.current = false;
+      }, 0);
+    } else {
+      suppressClickRef.current = false;
+    }
+  };
+
+  const handleHotspotZoom = (id: HeroHotspotId, index: number): void => {
+    setPan({ x: 0, y: 0 });
+    onZoom(id, index);
+  };
+
   const zoomStyle: CSSProperties | undefined = zoomEntry
     ? {
-        transform: `scale(${zoomScale(zoomEntry)})`,
+        transform: `translate3d(${pan.x}px, ${pan.y}px, 0) scale(${zoomScale(
+          zoomEntry,
+        )})`,
         transformOrigin: `${zoomEntry.x + zoomEntry.w / 2}% ${
           zoomEntry.y + zoomEntry.h / 2
         }%`,
@@ -221,7 +330,8 @@ export function HeroArtwork({
     <figure
       className={
         `hero-artwork ${className ?? ""}`.trim() +
-        (zoom ? " hero-artwork--zoomed" : "")
+        (zoom ? " hero-artwork--zoomed" : "") +
+        (dragging ? " hero-artwork--dragging" : "")
       }
     >
       {zoom ? (
@@ -237,7 +347,18 @@ export function HeroArtwork({
           className="hero-artwork__frame"
           ref={frameRef}
           tabIndex={-1}
+          onPointerDown={onFramePointerDown}
+          onPointerMove={onFramePointerMove}
+          onPointerUp={endFrameDrag}
+          onPointerCancel={endFrameDrag}
           onPointerLeave={onPreviewEnd}
+          onClickCapture={(event) => {
+            /* Drag yang sudah bergerak tidak boleh memicu klik hotspot. */
+            if (!suppressClickRef.current) return;
+            event.preventDefault();
+            event.stopPropagation();
+            suppressClickRef.current = false;
+          }}
           onClick={(event) => {
             /* Klik bagian gambar di luar hotspot juga keluar zoom. */
             if (!zoom) return;
@@ -314,7 +435,7 @@ export function HeroArtwork({
                   debug={heroDebug}
                   label={showLabels ? debugLabels[index] : undefined}
                   onPreview={onPreview}
-                  onZoom={onZoom}
+                  onZoom={handleHotspotZoom}
                 />
               ))}
             </svg>
@@ -527,8 +648,11 @@ function HotspotShape({
           {...pointerProps}
         />
         {hotspot.id === "mata" ? (
-          /* Hit area diperlebar tanpa menggambar apa pun: lihat EYE_PAD_*. */
+          /* Hit area diperlebar tanpa menggambar apa pun: lihat EYE_PAD_*.
+             `data-hotspot` wajib agar klik di padding tidak dianggap klik
+             latar oleh frame (yang akan menutup zoom). */
           <ellipse
+            data-hotspot=""
             cx={x + w / 2}
             cy={y + h / 2}
             rx={w / 2 + EYE_PAD_X}

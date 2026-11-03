@@ -109,6 +109,18 @@
   width: 100%;
 }
 
+/* Saat zoom: gambar bisa digeser (pan), bukan freeze. `touch-action: none`
+   mencegah halaman ikut scroll saat pengguna menggeser karya di ponsel. */
+.hero-artwork--zoomed .hero-artwork__frame {
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+
+.hero-artwork--zoomed .hero-artwork__frame:active {
+  cursor: grabbing;
+}
+
 /* Inner = Image + overlay SVG; di-scale saat zoom. `position: relative`
    WAJIB agar overlay absolute menempel pada inner (ikut ter-scale),
    bukan pada frame (tidak ikut ter-scale → ring melenceng). */
@@ -121,6 +133,11 @@
 /* Hanya minta layer GPU selama zoom; jangan promosikan permanen. */
 .hero-artwork--zoomed .hero-artwork__inner {
   will-change: transform;
+}
+
+/* Saat jari/mouse menggeser, matikan transisi agar pan mengikuti pointer. */
+.hero-artwork--dragging .hero-artwork__inner {
+  transition: none;
 }
 
 /* Overlay SVG hotspot: ukurannya mengikuti gambar persis. */

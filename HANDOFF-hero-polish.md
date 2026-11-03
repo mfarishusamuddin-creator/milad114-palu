@@ -33,6 +33,16 @@ memvalidasi.
 5. **Optimasi.** `will-change` hanya saat zoom; animasi gradien ring hanya saat
    preview/zoom; filter drop-shadow hanya pada ring aktif; detail crop tetap
    lazy; menu indeks dibatasi tinggi + scroll.
+6. **Perbaikan telinga.** `telinga` dikeluarkan dari `PARTIAL_RING`; ring-nya
+   kini penuh sehingga batas gradien selalu terlihat saat diklik.
+7. **Perbaikan mata di mobile.** Padding hit-area mata diperbesar
+   (`EYE_PAD_X/Y = 18/12` viewBox) dan diberi `data-hotspot` agar klik di area
+   padding tidak dianggap klik latar (yang sebelumnya menutup zoom). Alur
+   wajah → zoom wajah → mata → zoom mata sekarang bekerja.
+8. **Pan saat zoom.** Setelah zoom, frame bisa digeser (drag) atas/bawah/
+   kiri/kanan di desktop maupun HP. Pan dibatasi agar karya tetap menutup
+   frame; `touch-action: none` mencegah halaman ikut scroll; drag tidak
+   memicu klik hotspot (click suppression).
 
 ## 3. Yang tidak diubah
 
