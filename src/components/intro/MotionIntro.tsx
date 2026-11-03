@@ -75,9 +75,7 @@ export function MotionIntro({ dict }: { dict: Dictionary }) {
     const playPromise = video.play();
     if (playPromise) playPromise.catch(() => undefined);
 
-    const fallback = window.setTimeout(() => finish(), 8000);
     return () => {
-      window.clearTimeout(fallback);
       if (videoFrameId) video.cancelVideoFrameCallback(videoFrameId);
     };
   }, [playing, finish]);
@@ -121,7 +119,6 @@ export function MotionIntro({ dict }: { dict: Dictionary }) {
             playsInline
             preload="auto"
             onEnded={finish}
-            onError={finish}
             onPlaying={() => setVideoReady(true)}
             onLoadedMetadata={(event) => {
               const video = event.currentTarget;

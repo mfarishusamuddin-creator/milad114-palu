@@ -1243,12 +1243,6 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .motion-intro {
-    display: none !important;
-  }
-}
-
 .hero-logo-area {
   background: #ffffff;
 }
