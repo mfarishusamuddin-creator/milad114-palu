@@ -140,7 +140,7 @@ export function Hero({ dict }: { dict: Dictionary }) {
   return (
     <section
       ref={heroRef}
-      className={`hero-shell hero-gradient-border${heroInView ? " hero-in-view" : ""}`}
+      className={`hero-shell${heroInView ? " hero-in-view" : ""}`}
     >
       <div className="container-page relative z-10">
         <div className="hero-layout py-10 lg:py-14">

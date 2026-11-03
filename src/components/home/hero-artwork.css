@@ -63,49 +63,6 @@
   .hero-layout__cta { order: 4; }
 }
 
-/* Border gradien animasi di sekeliling hero. Animasi hanya berjalan saat
-   hero terlihat (kelas .hero-in-view dari IntersectionObserver). */
-.hero-gradient-border::before {
-  animation: hero-border-gradient 14s ease-in-out infinite;
-  animation-play-state: paused;
-  background: linear-gradient(
-    120deg,
-    var(--gt-c1),
-    var(--gt-c2),
-    var(--gt-c3),
-    var(--gt-c4),
-    var(--gt-c1)
-  );
-  background-size: 220% 100%;
-  content: "";
-  inset: 0;
-  padding: 2px;
-  pointer-events: none;
-  position: absolute;
-  z-index: 30;
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask:
-    linear-gradient(#000 0 0) content-box exclude,
-    linear-gradient(#000 0 0);
-}
-
-.hero-gradient-border.hero-in-view::before {
-  animation-play-state: running;
-}
-
-@keyframes hero-border-gradient {
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
 /* --- Figure karya ------------------------------------------------------- */
 
 .hero-artwork {
@@ -170,6 +127,50 @@
   border-radius: 0.25rem;
   overflow: hidden;
   position: relative;
+}
+
+/* Border gradien animasi pada lukisan saja. Memakai palet pastel tema
+   gelap (--hero-ring-*) di kedua tema agar tetap halus. */
+.hero-artwork__frame::after {
+  animation: hero-frame-gradient 14s ease-in-out infinite;
+  animation-play-state: paused;
+  background: linear-gradient(
+    120deg,
+    var(--hero-ring-1),
+    var(--hero-ring-2),
+    var(--hero-ring-3),
+    var(--hero-ring-4),
+    var(--hero-ring-1)
+  );
+  background-size: 220% 100%;
+  border-radius: inherit;
+  content: "";
+  inset: 0;
+  padding: 2px;
+  pointer-events: none;
+  position: absolute;
+  z-index: 2;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box exclude,
+    linear-gradient(#000 0 0);
+}
+
+.hero-in-view .hero-artwork__frame::after {
+  animation-play-state: running;
+}
+
+@keyframes hero-frame-gradient {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 .hero-artwork__frame img {
@@ -415,9 +416,11 @@
   border-radius: inherit;
   content: "";
   inset: 0;
+  opacity: 0;
   padding: 1.5px;
   pointer-events: none;
   position: absolute;
+  transition: opacity 180ms ease;
   -webkit-mask:
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
@@ -425,6 +428,14 @@
   mask:
     linear-gradient(#000 0 0) content-box exclude,
     linear-gradient(#000 0 0);
+}
+
+/* Ring hanya tampil/berjalan saat hover, fokus, atau menu terbuka. */
+.hero-in-view .hero-artwork__index-toggle:hover::after,
+.hero-in-view .hero-artwork__index-toggle:focus-visible::after,
+.hero-in-view .hero-artwork__index-toggle[aria-expanded="true"]::after {
+  animation-play-state: running;
+  opacity: 1;
 }
 
 .hero-artwork__index-toggle:hover {
@@ -527,10 +538,6 @@
   font-weight: 600;
 }
 
-.hero-in-view .hero-artwork__index-toggle::after {
-  animation-play-state: running;
-}
-
 @keyframes hero-index-gradient {
   0%,
   100% {
@@ -628,9 +635,13 @@
     transition: none;
   }
 
-  .hero-gradient-border::before,
+  .hero-artwork__frame::after,
   .hero-artwork__index-toggle::after,
   [data-theme="dark"] .hero-cta::after {
     animation: none;
+  }
+
+  .hero-artwork__index-toggle::after {
+    transition: none;
   }
 }
