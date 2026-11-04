@@ -32,7 +32,7 @@ export type HeroArtworkData = {
  * Cara mengukur koordinat (revisi v4 - presisi antar-hotspot, tanpa irisan;
  * penajaman v4.1-v4.3, lihat butir 5/6b):
  * 1. Gambar hero final (hero-artwork.jpg, 1386 × 1984) TIDAK diubah; semua
- *    koordinat diukur padanya (turunan foto PXL_20261030_053757743.MP.jpg.jpeg).
+ *    koordinat diukur padanya (turunan foto sumber; tidak disertakan di repo).
  * 2. Metode objektif: mask tinta (g < 138) diprofil per kolom/baris (langkah
  *    0,5–1%) untuk batas sorban/hairline/wajah; mask warna biru
  *    (B − max(R,G) > 15) untuk lambang kelor & matahari; mask biru-gelap
@@ -42,8 +42,8 @@ export type HeroArtworkData = {
  *    wajah tidak menumpuk hotspot mata.
  * 4. 03 `sorban` = path evenodd: poligon batas sorban/hairline (78 titik,
  *    hasil profil tinta) dengan LUBANG telinga (06 + ~2 px).
- * 5. 04 `baju` = DUA entri `path` (revisi v4.1, contoh anotasi pemilik pada
- *    "Hero Image/Contoh pada baju.jpg"): poligon KETAT mengikuti kontur teks
+ * 5. 04 `baju` = DUA entri `path` (revisi v4.1, contoh anotasi pemilik):
+ *    poligon KETAT mengikuti kontur teks
  *    (bukan kotak/trapesium besar — tanpa kertas kosong, tanpa kelor):
  *    04a = blok Ayat Kursi (2 subpath disjoint); 04b = gugus kaligrafi di
  *    sekeliling logo matahari (4 subpath; v4.3: fragmen kecil yang jatuh di
@@ -65,7 +65,7 @@ export type HeroArtworkData = {
  *     DP. Kaligrafi cakram, pita teks, dan isi bintang berada di dalam
  *     poligon tanpa dipotong (disengaja); teks biru lepas tidak ikut.
  * 7. Bukti presisi (skrip rasterisasi, 1386 × 1984): intersection 66 pasangan
- *    entri = 0 px; jarak minimum antar entri ≥ 2,0 px (lihat HERO-ASSETS.md §8).
+ *    entri = 0 px; jarak minimum antar entri ≥ 2,0 px.
  * 9. Hit area: semua ≥ 44 px KECUALI ring mata 07a (≈ 32 px) & 07b (≈ 27 px)
  *    — sengaja, presisi didahulukan; P2/P3 diminta menambah padding sentuh
  *    tak terlihat ≥ 44 px di komponen.

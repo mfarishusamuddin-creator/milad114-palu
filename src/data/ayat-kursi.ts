@@ -28,7 +28,7 @@ export type AyatKursiContent = {
 /**
  * Tiga poin keutamaan Ayat Kursi.
  *
- * Teks di bawah sudah disetujui pemilik (lihat AYAT-KURSI-CONTENT.md).
+ * Teks di bawah sudah disetujui pemilik.
  * Tidak ada teks ayat maupun teks hadits lengkap yang ditampilkan di
  * dialog.
  *

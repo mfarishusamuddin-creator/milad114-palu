@@ -91,16 +91,16 @@ public/                  logo, pattern, og, licenses
 
 ## Referensi dan lisensi
 
-- **Timeline Aceternity** (pola komponen Timeline) — diadaptasi ulang di `src/components/ui/timeline.tsx` (tanpa gambar, palet proyek, progres scroll `motion`). Komponen demo asli tersimpan sebagai referensi di `src/Contoh Timeline.tsx`.
+- **Timeline Aceternity** (pola komponen Timeline) — diadaptasi ulang di `src/components/ui/timeline.tsx` (tanpa gambar, palet proyek, progres scroll `motion`).
 - **world-atlas** (ISC) dan **Natural Earth** (public domain) — geometri peta dunia.
 - **GSAP** (Standard License "no charge") — AnimatedContent/ScrollTrigger untuk animated content sekali per viewport. **folio-2019** tidak dipakai; WebGL tidak sepadan dengan target performa mobile.
 - **Motion** (MIT, paket `motion`) — useScroll/useTransform untuk progres garis timeline sejarah.
 
 ## Keamanan
 
-Header keamanan (CSP, HSTS, `nosniff`, anti-framing, Permissions-Policy),
-penanganan data Kabar eksternal, dan hasil audit dependensi dijelaskan di
-[`SECURITY.md`](./SECURITY.md).
+Header keamanan (CSP, HSTS, `nosniff`, anti-framing, Permissions-Policy)
+diatur di `next.config.ts`; validasi data Kabar eksternal ada di
+`src/lib/kabar.ts`.
 
 ## Kredit
 
