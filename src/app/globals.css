@@ -751,6 +751,88 @@
     margin-bottom: 0;
   }
 
+  /* Kutipan ayat pada #tentang: satu panel penuh agar ayat menjadi
+     pijakan visual, bukan sisipan di tengah paragraf. */
+  .verse-quote {
+    position: relative;
+    overflow: hidden;
+    padding: 2rem 1.6rem;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-card);
+    background:
+      radial-gradient(120% 150% at 100% 0%, rgba(28, 70, 158, 0.07) 0%, rgba(255, 255, 255, 0) 62%),
+      var(--color-bg-soft);
+    text-align: center;
+  }
+
+  .verse-quote::before {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+    opacity: 0.75;
+  }
+
+  .verse-quote__eyebrow {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-ocean);
+  }
+
+  .verse-quote__body {
+    margin: 0;
+  }
+
+  .verse-quote__arabic {
+    margin-top: 1rem;
+    font-family: var(--font-display), Georgia, serif;
+    font-size: clamp(1.35rem, 2.6vw, 1.95rem);
+    line-height: 2.05;
+    color: var(--color-ink);
+  }
+
+  .verse-quote__translation {
+    max-width: 44rem;
+    margin: 1.1rem auto 0;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--color-ink-soft);
+  }
+
+  .verse-quote__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    margin-top: 1.25rem;
+    font-size: 0.78rem;
+    color: var(--color-ink-soft);
+  }
+
+  .verse-quote__reference {
+    font-weight: 700;
+    color: var(--color-ink);
+  }
+
+  .verse-quote__dot {
+    opacity: 0.6;
+  }
+
+  .verse-quote__note {
+    max-width: 44rem;
+    margin: 0.85rem auto 0;
+    padding-top: 0.85rem;
+    border-top: 1px solid var(--color-line);
+    font-size: 0.86rem;
+    line-height: 1.7;
+    color: var(--color-ink-soft);
+  }
+
   .collapsible {
     overflow: visible;
   }
@@ -943,6 +1025,16 @@
   color: #f2c85c;
 }
 
+[data-theme="dark"] .verse-quote {
+  background:
+    radial-gradient(120% 150% at 100% 0%, rgba(25, 92, 141, 0.22) 0%, rgba(8, 18, 38, 0) 62%),
+    var(--color-bg-soft);
+}
+
+[data-theme="dark"] .verse-quote__eyebrow {
+  color: #f2c85c;
+}
+
 /* Varian hover/group-hover memakai warna navy/ocean langsung, sehingga tidak
    ikut ter- override oleh aturan di atas. */
 [data-theme="dark"] .hover\:text-navy:hover,
@@ -1076,6 +1168,11 @@
 .site-shell[dir="rtl"] .prose-milad,
 .site-shell[dir="rtl"] .body-lead {
   line-height: 1.95;
+}
+
+.site-shell[dir="rtl"] .verse-quote__translation,
+.site-shell[dir="rtl"] .verse-quote__note {
+  text-align: right;
 }
 
 [data-animated-content] {

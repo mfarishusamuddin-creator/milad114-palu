@@ -37,6 +37,30 @@ export function AboutMilad({ dict }: { dict: Dictionary }) {
           </dl>
         </div>
       </Reveal>
+
+      <Reveal className="mt-12" delay={0.08}>
+        <figure className="verse-quote">
+          <p className="verse-quote__eyebrow">{dict.about.verse.eyebrow}</p>
+          <blockquote className="verse-quote__body">
+            <p className="verse-quote__arabic" lang="ar" dir="rtl">
+              {dict.about.verse.arabic}
+            </p>
+            <p className="verse-quote__translation">
+              {dict.about.verse.translation}
+            </p>
+          </blockquote>
+          <figcaption className="verse-quote__meta">
+            <span className="verse-quote__reference">
+              {dict.about.verse.reference}
+            </span>
+            <span className="verse-quote__dot" aria-hidden="true">
+              ·
+            </span>
+            <span>{dict.about.verse.source}</span>
+          </figcaption>
+          <p className="verse-quote__note">{dict.about.verse.note}</p>
+        </figure>
+      </Reveal>
     </CollapsibleSection>
   );
 }

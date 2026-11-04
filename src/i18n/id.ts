@@ -225,6 +225,17 @@ export const id: Dictionary = {
     ],
     posterAlt:
       "Poster Tanwir dan Milad ke-114 Muhammadiyah — Bersama Satukan Bangsa",
+    verse: {
+      eyebrow: "Pijakan gerakan",
+      reference: "QS. Ali Imran 104",
+      arabic:
+        "وَلْتَكُن مِّنكُمْ أُمَّةٌ يَدْعُونَ إِلَى الْخَيْرِ وَيَأْمُرُونَ بِالْمَعْرُوفِ وَيَنْهَوْنَ عَنِ الْمُنكَرِ ۚ وَأُولَٰئِكَ هُمُ الْمُفْلِحُونَ",
+      translation:
+        "Dan hendaklah ada di antara kamu segolongan orang yang menyeru kepada kebajikan, menyuruh (berbuat) yang makruf, dan mencegah dari yang mungkar. Mereka itulah orang-orang yang beruntung.",
+      source: "Terjemahan Kemenag RI",
+      note:
+        "Ayat ini menjadi landasan dakwah Muhammadiyah: menyeru kebaikan, menegakkan makruf, dan mencegah kemungkaran.",
+    },
   },
   agenda: {
     title: "Dari Tanwir Palu menuju Muktamar Medan",

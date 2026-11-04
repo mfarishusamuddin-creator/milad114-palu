@@ -125,6 +125,14 @@ export type Dictionary = {
     paragraphs: string[];
     facts: FactItem[];
     posterAlt: string;
+    verse: {
+      eyebrow: string;
+      reference: string;
+      arabic: string;
+      translation: string;
+      source: string;
+      note: string;
+    };
   };
   agenda: {
     title: string;

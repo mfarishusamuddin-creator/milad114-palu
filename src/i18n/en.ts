@@ -236,6 +236,17 @@ export const en: Dictionary = {
     ],
     posterAlt:
       "Poster of Tanwir and the 114th Milad of Muhammadiyah — Together, Unite the Nation",
+    verse: {
+      eyebrow: "The movement's footing",
+      reference: "Qur'an, Ali 'Imran 104",
+      arabic:
+        "وَلْتَكُن مِّنكُمْ أُمَّةٌ يَدْعُونَ إِلَى الْخَيْرِ وَيَأْمُرُونَ بِالْمَعْرُوفِ وَيَنْهَوْنَ عَنِ الْمُنكَرِ ۚ وَأُولَٰئِكَ هُمُ الْمُفْلِحُونَ",
+      translation:
+        "And let there be among you a group calling to goodness, enjoining what is right, and forbidding what is wrong. It is they who are the successful.",
+      source: "English translation",
+      note:
+        "This verse grounds Muhammadiyah's da'wah: calling to good, upholding right, and preventing wrong.",
+    },
   },
   agenda: {
     title: "From Tanwir Palu to the Medan Muktamar",
