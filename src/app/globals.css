@@ -936,6 +936,11 @@
   color: #1a2138;
 }
 
+/* Angka tanggal: navy gelap tidak terbaca di sel gelap, jadi diputihkan. */
+[data-theme="dark"] .calendar-day-number {
+  color: #ffffff;
+}
+
 [data-theme="dark"] .calendar-cell--event {
   border-color: rgba(234, 183, 73, 0.35);
 }
