@@ -347,11 +347,14 @@ export const en: Dictionary = {
     info: "About the map and sources",
   },
   footer: {
-    brand: "Creative Works Celebrating Muhammadiyah's 114th Anniversary",
+    brand: "Milad 114 Muhammadiyah",
     tagline: "Together, Unite the Nation",
     description:
-      "An independent site for the Tanwir and 114th Milad of Muhammadiyah.",
-    eventInfo: "Palu, Central Sulawesi · 19–21 November 2026",
+      "A digital interface for the artwork of the Tanwir and 114th Milad of Muhammadiyah.",
+    eventDate: "Palu · 19–21 November 2026",
+    madeIn: "Made at PCIM Libya, Tripoli, Libya",
+    period:
+      "Mid-October – early November 2026 CE | Jumada al-Awwal 1448 AH",
   },
   aboutPage: {
     title: "About this site",
@@ -360,6 +363,27 @@ export const en: Dictionary = {
       "Milad 114 is an independent digital work for the Tanwir and 114th Milad of Muhammadiyah in Palu: two historical tracks, the agenda, the world map, and its official services.",
     disclaimer:
       "Not an official Muhammadiyah website — the official links below are the primary reference for every piece of content.",
+    creditsTitle: "Credits & Contact",
+    contact: "Contact",
+    opensInNewTab: "opens in a new tab",
+    channels: {
+      email: "Email",
+      whatsapp: "WhatsApp",
+      instagram: "Instagram",
+      facebook: "Facebook",
+      linkedin: "LinkedIn",
+    },
+    artwork: {
+      title: "About the painting",
+      name: "KH. Ahmad Dahlan",
+      sizeLabel: "Size",
+      size: "98.5 × 78.5 cm",
+      yearLabel: "Year",
+      year: "2026",
+      credit: "Artwork: Muhammad Ghusan Azry.",
+      view: "View interactive artwork",
+      alt: "KH. Ahmad Dahlan, painting by Muhammad Ghusan Azry",
+    },
     sourcesTitle: "Information sources",
     sources: [
       { label: "Muhammadiyah.or.id", link: "muhammadiyah" },
@@ -375,7 +399,16 @@ export const en: Dictionary = {
       { label: "Forum and Muktamar preparation", link: "muktamar2027" },
       { label: "Planting 114 moringa trees in Palu", link: "tanamKelor" },
     ],
-    copyright: "© 2026 Faris Husamuddin. All rights reserved.",
+    assets: {
+      title: "Assets & licenses",
+      elMessiri: "El Messiri font",
+      familjenGrotesk: "Familjen Grotesk font",
+      fontLicense: "SIL Open Font License",
+      worldMap: "World map",
+      mapLicense: "Natural Earth / world-atlas (ISC)",
+    },
+    copyright:
+      "Painting © 2026 Muhammad Ghusan Azry · Digital interface © 2026 Faris Husamuddin",
   },
   notFound: {
     title: "This page is not available yet.",

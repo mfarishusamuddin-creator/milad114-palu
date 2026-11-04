@@ -202,15 +202,46 @@ export type Dictionary = {
     brand: string;
     tagline: string;
     description: string;
-    eventInfo: string;
+    eventDate: string;
+    madeIn: string;
+    period: string;
   };
   aboutPage: {
     title: string;
     back: string;
     intro: string;
     disclaimer: string;
+    creditsTitle: string;
+    contact: string;
+    opensInNewTab: string;
+    channels: {
+      email: string;
+      whatsapp: string;
+      instagram: string;
+      facebook: string;
+      linkedin: string;
+    };
+    artwork: {
+      title: string;
+      name: string;
+      sizeLabel: string;
+      size: string;
+      yearLabel: string;
+      year: string;
+      credit: string;
+      view: string;
+      alt: string;
+    };
     sourcesTitle: string;
     sources: Array<{ label: string; link: keyof typeof SITE.links }>;
+    assets: {
+      title: string;
+      elMessiri: string;
+      familjenGrotesk: string;
+      fontLicense: string;
+      worldMap: string;
+      mapLicense: string;
+    };
     copyright: string;
   };
   notFound: {

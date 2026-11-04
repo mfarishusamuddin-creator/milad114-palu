@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, type ReactElement } from "react";
 import Image from "next/image";
 import { AnchorLink } from "@/components/shared/AnchorLink";
+import GradientText from "@/components/shared/GradientText";
 import { AyatKursiDialog } from "@/components/home/AyatKursiDialog";
 import { Countdown } from "@/components/home/Countdown";
 import { HeroArtwork } from "@/components/home/HeroArtwork";
@@ -150,9 +151,13 @@ export function Hero({ dict }: { dict: Dictionary }) {
               <p className="hero-layout__eyebrow text-ocean">
                 {dict.hero.eyebrow}
               </p>
-              <h1 className="display-title mt-3 text-navy">
-                <span className="block">{dict.hero.titleLine1}</span>
-                <span className="block">{dict.hero.titleLine2}</span>
+              <h1 className="display-title mt-3">
+                <GradientText block start animationSpeed={12}>
+                  {dict.hero.titleLine1}
+                </GradientText>
+                <GradientText block start animationSpeed={12}>
+                  {dict.hero.titleLine2}
+                </GradientText>
               </h1>
             </div>
 

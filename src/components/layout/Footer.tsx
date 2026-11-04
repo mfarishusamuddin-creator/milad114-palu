@@ -25,7 +25,7 @@ export function Footer({ dict }: { dict: Dictionary }) {
               <p className="font-serif text-lg font-bold leading-snug text-white">
                 {dict.footer.brand}
               </p>
-              <p className="mt-1 text-[0.72rem] font-bold uppercase tracking-[0.14em] text-gold-light">
+              <p className="mt-1 text-[0.72rem] font-bold uppercase tracking-[0.14em] text-gold-light rtl:tracking-normal">
                 {dict.footer.tagline}
               </p>
               <p className="mt-3 text-sm leading-relaxed text-white/65">
@@ -35,9 +35,15 @@ export function Footer({ dict }: { dict: Dictionary }) {
           </div>
 
           <div className="flex flex-col items-start gap-4 md:items-end md:text-end">
-            <p className="text-sm font-semibold text-white/85">
-              {dict.footer.eventInfo}
-            </p>
+            <div className="max-w-sm">
+              <p className="text-sm font-semibold text-white/90">
+                {dict.footer.eventDate}
+              </p>
+              <p className="mt-1.5 text-[0.8rem] leading-relaxed text-white/65">
+                {dict.footer.madeIn}
+                <span className="mt-0.5 block">{dict.footer.period}</span>
+              </p>
+            </div>
             <Link
               href={aboutPath(dict.lang)}
               className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-gold-light underline decoration-gold/60 decoration-2 underline-offset-4 transition-colors hover:text-white"

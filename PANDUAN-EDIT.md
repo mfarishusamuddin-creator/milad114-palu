@@ -185,7 +185,7 @@ Bagian penting:
 | `calendar` | label kalender, nama bulan, hari, event |
 | `kabar` | label kabar |
 | `map` | judul peta, label markas, tombol info |
-| `footer` | footer: `brand`, `tagline`, `description`, `eventInfo` |
+| `footer` | footer: `brand`, `tagline`, `description`, `eventDate`, `madeIn`, `period` |
 | `aboutPage` | halaman Tentang: `title`, `back`, `intro`, `disclaimer`, `sourcesTitle`, `sources[]`, `copyright` |
 | `notFound` | halaman 404 |
 
@@ -397,7 +397,7 @@ Kontainer utama `.container-page` (di `globals.css`): `max-width: 76rem`, paddin
 
 - `src/components/layout/Navbar.tsx` — header sticky (`z-50`): logo + nama situs di kiri, `CardNav` (mode compact) di kanan. Pemilih bahasa, ThemeToggle, dan tautan "Tentang" hidup di dalam kartu **Pengaturan** pada panel CardNav — bukan di header.
 - `src/components/shared/CardNav.tsx` + `card-nav.css` — menu kartu (adaptasi ReactBits). Tema panel mengikuti token terang/gelap otomatis. Label menu dari `dict.nav.menuOpen/menuClose`; kartu dari `dict.nav.cards`. Lebar panel terbuka: `min(720px, 100vw - 2rem)` — diatur lewat prop `compactWidth={720}` dan CSS `.card-nav--compact[data-open] .card-nav__panel`.
-- `src/components/layout/Footer.tsx` — footer minimalis dua kolom: kiri logo + wordmark + tagline + deskripsi; kanan info acara + tautan Tentang. Sumber/kredit/hak cipta panjang tidak ada di footer (semuanya di halaman Tentang). Copy diambil dari `dict.footer` (`brand`, `tagline`, `description`, `eventInfo`).
+- `src/components/layout/Footer.tsx` — footer minimalis dua kolom: kiri logo + wordmark + tagline + deskripsi; kanan tanggal acara, info pembuatan, dan tautan Tentang. Sumber/kredit/hak cipta panjang tidak ada di footer (semuanya di halaman Tentang). Copy diambil dari `dict.footer` (`brand`, `tagline`, `description`, `eventDate`, `madeIn`, `period`).
 - `src/components/pages/SiteShell.tsx` — pembungkus navbar + main + footer; memastikan halaman setinggi viewport (`min-height: 100vh/100dvh` di `.site-shell`).
 
 Untuk menambah menu kartu di header:

@@ -348,8 +348,12 @@ export const ar: Dictionary = {
   footer: {
     brand: "الميلاد 114 للمحمدية",
     tagline: "معًا نوحّد الأمة",
-    description: "موقع مستقل لتنوير والذكرى الـ114 للمحمدية.",
-    eventInfo: "بالو، سولاوسي الوسطى · 19–21 نوفمبر 2026",
+    description:
+      "واجهة رقمية للعمل الفني لتنوير والذكرى الـ114 للمحمدية.",
+    eventDate: "بالو · 19–21 نوفمبر 2026",
+    madeIn: "أُنجز في PCIM ليبيا، طرابلس، ليبيا",
+    period:
+      "منتصف أكتوبر – أوائل نوفمبر 2026 م | جمادى الأولى 1448 هـ",
   },
   aboutPage: {
     title: "حول هذا الموقع",
@@ -358,6 +362,27 @@ export const ar: Dictionary = {
       "«ميلاد 114» عمل رقمي مستقل لإعداد تنوير والذكرى الـ114 للمحمدية في بالو: مساران تاريخيان، وجدول أعمال، وخريطة عالمية، وخدماتها الرسمية.",
     disclaimer:
       "ليس موقعًا رسميًا للمحمدية — الروابط الرسمية أدناه هي المرجع الرئيسي لكل مادة.",
+    creditsTitle: "الاعتمادات والتواصل",
+    contact: "تواصل",
+    opensInNewTab: "يفتح في تبويب جديد",
+    channels: {
+      email: "البريد الإلكتروني",
+      whatsapp: "واتساب",
+      instagram: "إنستغرام",
+      facebook: "فيسبوك",
+      linkedin: "لينكدإن",
+    },
+    artwork: {
+      title: "عن اللوحة",
+      name: "KH أحمد دهلان",
+      sizeLabel: "المقاس",
+      size: "98.5 × 78.5 سم",
+      yearLabel: "السنة",
+      year: "2026",
+      credit: "العمل: محمد غسان أزري.",
+      view: "شاهد العمل التفاعلي",
+      alt: "لوحة KH أحمد دهلان للفنان محمد غسان أزري",
+    },
     sourcesTitle: "مصادر المعلومات",
     sources: [
       { label: "Muhammadiyah.or.id", link: "muhammadiyah" },
@@ -373,7 +398,16 @@ export const ar: Dictionary = {
       { label: "منتدى وتحضير المؤتمر 2027", link: "muktamar2027" },
       { label: "غرس 114 شجرة مورينغا في بالو", link: "tanamKelor" },
     ],
-    copyright: "© 2026 فارس حسام الدين. جميع الحقوق محفوظة.",
+    assets: {
+      title: "الأصول والتراخيص",
+      elMessiri: "خط El Messiri",
+      familjenGrotesk: "خط Familjen Grotesk",
+      fontLicense: "SIL Open Font License",
+      worldMap: "خريطة العالم",
+      mapLicense: "Natural Earth / world-atlas (ISC)",
+    },
+    copyright:
+      "اللوحة © 2026 محمد غسان أزري · الواجهة الرقمية © 2026 فارس حسام الدين",
   },
   notFound: {
     title: "هذه الصفحة غير متاحة بعد.",

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
 import CardNav from "@/components/shared/CardNav";
+import GradientText from "@/components/shared/GradientText";
 import { BrandLogo } from "@/components/theme/BrandLogo";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { aboutPath, languagePath } from "@/i18n";
@@ -52,9 +53,13 @@ export function Navbar({ dict }: { dict: Dictionary }) {
             height={40}
             className="h-0 w-0 shrink-0 object-contain md:h-0 md:w-0"
           />
-          <span className="navbar-brand min-w-0 min-[400px]:whitespace-nowrap font-serif font-bold tracking-tight text-navy">
+          <GradientText
+            start
+            animationSpeed={12}
+            className="navbar-brand min-w-0 min-[400px]:whitespace-nowrap font-serif font-bold tracking-tight"
+          >
             {dict.nav.brand}
-          </span>
+          </GradientText>
         </Link>
 
         <CardNav
