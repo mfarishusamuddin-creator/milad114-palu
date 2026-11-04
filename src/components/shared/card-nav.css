@@ -474,3 +474,26 @@
 [dir="rtl"] .card-nav__link:focus-visible .card-nav__arrow-icon--out {
   transform: translate(-110%, -110%);
 }
+
+/* ---- Header situs: bar navy transparan (senada footer) ---- */
+
+/* Saat panel tertutup, tombol menu menyatu dengan header navy: kaca tipis,
+   ikon putih, cincin fokus emas. Saat panel terbuka, token permukaan tema
+   dikembalikan (bawaan CardNav) agar kartu menu tetap terbaca.
+   `!important` diperlukan karena token --cn-* juga ditulis inline oleh
+   komponen (style root). */
+.site-header .card-nav--compact:not([data-open]) {
+  --cn-panel: rgba(255, 255, 255, 0.08) !important;
+  --cn-edge: rgba(255, 255, 255, 0.22) !important;
+  --cn-highlight: rgba(255, 255, 255, 0.3) !important;
+  --cn-shadow: 0 8px 20px -14px rgba(4, 10, 30, 0.65) !important;
+  --cn-text: #ffffff !important;
+  --cn-hover: rgba(255, 255, 255, 0.14) !important;
+  --cn-ring: var(--color-gold-light) !important;
+}
+
+/* Panel terbuka: bingkai tipis emas agar transisi dari bar navy terasa
+   menyatu dengan footer. */
+.site-header .card-nav[data-open] {
+  --cn-ring: var(--color-gold-light) !important;
+}

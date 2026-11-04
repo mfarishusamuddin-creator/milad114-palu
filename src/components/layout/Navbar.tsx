@@ -39,7 +39,7 @@ export function Navbar({ dict }: { dict: Dictionary }) {
   }));
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line/80 bg-surface/90 backdrop-blur-xl">
+    <header className="site-header sticky top-0 z-50 border-b border-white/10 bg-navy-deep/90 text-white shadow-[inset_0_-1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl">
       <div className="container-page flex min-h-14 items-center justify-between gap-3 py-2">
         <Link
           href={languagePath(dict.lang)}

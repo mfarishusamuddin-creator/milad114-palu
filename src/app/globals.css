@@ -296,6 +296,44 @@
     opacity: 0.14;
   }
 
+  /* Pola kelor di footer: strip bersambung dengan skala besar (60rem) sehingga
+     pengulangannya tidak mencolok, berakar di dasar footer lalu memudar ke
+     atas lewat mask sehingga teks dan tautan tetap terbaca. Opacity rendah
+     menjaga kesan profesional;
+     navy pada gambar sangat dekat dengan --color-navy-deep sehingga yang
+     menonjol hanya dedaunan hijau. */
+  .footer-pattern {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: image-set(
+      url("/pattern/kelor-strip.webp") type("image/webp"),
+      url("/pattern/kelor-strip.png") type("image/png")
+    );
+    background-repeat: repeat-x;
+    background-position: center bottom;
+    background-size: 60rem auto;
+    opacity: 0.14;
+    -webkit-mask-image: linear-gradient(
+      to top,
+      #000 0%,
+      rgba(0, 0, 0, 0.72) 48%,
+      transparent 94%
+    );
+    mask-image: linear-gradient(
+      to top,
+      #000 0%,
+      rgba(0, 0, 0, 0.72) 48%,
+      transparent 94%
+    );
+  }
+
+  @media (max-width: 640px) {
+    .footer-pattern {
+      background-size: 42rem auto;
+    }
+  }
+
   .hero-shell {
     position: relative;
     overflow: hidden;
@@ -1055,6 +1093,16 @@
 
 [data-theme="dark"] .map-label--hq {
   fill: var(--color-gold-light);
+}
+
+/* Header situs (Navbar) — navy transparan seperti footer, dipakai di kedua
+   tema. Brand memakai palet gradien pastel agar tetap terbaca di atas navy
+   (palet terang #1c469f tidak akan terlihat). */
+.site-header {
+  --gt-c1: #b9c8f2;
+  --gt-c2: #7ab5dd;
+  --gt-c3: #9fe07a;
+  --gt-c4: #f2c85c;
 }
 
   .navbar-brand {

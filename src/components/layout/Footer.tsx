@@ -11,6 +11,9 @@ import type { Dictionary } from "@/i18n/types";
 export function Footer({ dict }: { dict: Dictionary }) {
   return (
     <footer className="relative mt-auto overflow-hidden bg-navy-deep text-white">
+      {/* Tekstur pola kelor: halus, tumbuh dari dasar footer, dan memudar ke
+          atas agar teks tetap dominan. */}
+      <div aria-hidden="true" className="footer-pattern" />
       <div className="container-page relative z-10 py-10 md:py-12">
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between md:gap-12">
           <div className="flex max-w-md items-start gap-4">
