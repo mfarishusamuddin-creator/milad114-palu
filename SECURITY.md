@@ -81,6 +81,29 @@ tepercaya:
 - Semua tautan `target="_blank"` memakai `rel="noopener noreferrer"`.
 - Teks Kabar dirender sebagai teks (HTML dari API sudah dilucuti).
 
+### Deterrent inspect/download — `src/components/security/ContentGuard.tsx`
+
+Lapisan ini hanya **mempersulit**, bukan mencegah. Situs statis selalu bisa
+diperiksa atau diunduh oleh pengguna yang bertekad (menu browser, JavaScript
+dimatikan, atau permintaan jaringan langsung).
+
+Yang dilakukan:
+
+- Menu konteks (klik kanan/long-press) diblokir, kecuali pada `input`,
+  `textarea`, `select`, dan elemen `contenteditable`.
+- Pintasan DevTools diblokir: `F12`, `Ctrl/Cmd+Shift+I/J/C/K/E/M`.
+- Pintasan simpan/cetak/sumber diblokir: `Ctrl/Cmd+S`, `Ctrl/Cmd+P`,
+  `Ctrl/Cmd+U`.
+- Gambar, video, dan kanvas tidak bisa diseret; klik tengah pada media tidak
+  membuka tab baru; long-press callout iOS dimatikan lewat CSS.
+- Teks tetap bisa dipilih dan disalin; kolom isian tetap bisa memakai menu
+  konteks.
+
+Yang **tidak** bisa dijamin: penyimpanan gambar lewat menu browser, unduhan
+langsung URL aset, pembacaan HTML/CSS/JS dari jaringan, atau DevTools yang
+dibuka lewat menu. Untuk materi yang benar-benar sensitif, lindungi di sisi
+server/akses, bukan dengan JavaScript klien.
+
 ### Data dan rahasia
 
 - Tidak ada autentikasi, database, cookie sesi, atau form yang dikirim ke

@@ -375,12 +375,12 @@ export function Countdown({ dict }: { dict: Dictionary }) {
         <TimeCell value={values.seconds} locale={dict.locale} label={dict.countdown.seconds} />
       </div>
 
-      <p className="countdown-target mt-3 text-xs text-white/60">
+      <p className="countdown-target countdown-note mt-3 text-xs text-white/60">
         <span className="countdown-target-label">{dict.countdown.targetTime}</span>
         <span>{targetTime}</span>
       </p>
 
-      <p className="mt-3 text-xs text-white/60">{labels.note}</p>
+      <p className="countdown-note mt-3 text-xs text-white/60">{labels.note}</p>
 
       <p className="sr-only" aria-live="polite">
         {remaining

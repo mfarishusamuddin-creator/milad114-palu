@@ -38,7 +38,9 @@ export function SectionHeading({
         <p
           className={cn(
             "body-lead mt-4",
-            light ? "text-white/70" : "text-ink-soft"
+            light
+              ? "section-heading-desc--light text-white/75"
+              : "text-ink-soft"
           )}
         >
           {description}

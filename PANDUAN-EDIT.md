@@ -115,6 +115,7 @@ src/components/
   shared/AnchorLink.tsx   tautan #… yang membuka section tujuan
   shared/CountUp.tsx      animasi angka ReactBits (stempel hero 114, statistik peta 29)
   shared/Counter.tsx      mesin angka Counter ReactBits (dipakai Countdown)
+  security/ContentGuard.tsx  deterrent klik kanan/pintasan DevTools/simpan (bukan pengaman data)
 src/lib/
   anchor.ts               scrollToAnchor: logika navigasi hash + auto-open section
   metadata.ts             metadata per bahasa
@@ -679,6 +680,12 @@ Cara mengubah warna gelap:
 2. Ubah `--color-bg`, `--color-bg-soft`, `--color-surface`, `--color-ink`, `--color-ink-soft`, `--color-line`.
 3. Untuk warna teks brand di atas permukaan gelap, ubah aturan `.text-navy`, `.text-ocean`, `.text-gold-text`, `.text-kelor-deep`.
 4. Uji di `/`, `/en`, `/ar`.
+
+Aturan keterbacaan tema gelap (jangan dilanggar saat mengedit):
+
+- Tidak ada teks biru: `.text-navy` menjadi putih, `.text-ocean` dan label aksen (`.eyebrow`, `.kabar-date`, `.map-stat-label`) menjadi emas terang `#f2c85c`.
+- Tidak ada putih redup: `--color-ink-soft` memakai `#d9e0ee`, dan teks di panel navy (`.footer-description`, `.footer-meta`, `.countdown-note`, `.countdown-label`, `.glide-select__tag`) minimal 0.8 opasitas. Aturan ini dibatasi `[data-theme="dark"]` agar tema terang tidak berubah.
+- Teks yang memakai `text-navy`/`text-ocean` lewat hover atau `group-hover` perlu pasangan gelapnya (lihat blok `.hover\:text-navy` di `globals.css`).
 
 Aturan khusus gelap yang perlu dijaga pasangannya: `.map-land`/`.map-country--*`/`.map-label`, `.tables-tab.is-active`, `.calendar-cell--event`/`--milestone`, `.motion-intro*`, `.about-back`. Setiap perubahan token terang yang berdampak kontras harus diperiksa pasangan gelapnya.
 

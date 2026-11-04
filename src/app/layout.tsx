@@ -2,6 +2,7 @@
 import Script from "next/script";
 import localFont from "next/font/local";
 import "./globals.css";
+import { ContentGuard } from "@/components/security/ContentGuard";
 import { SITE } from "@/data/site";
 import { getDictionary } from "@/i18n";
 
@@ -147,6 +148,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <noscript>
           <style>{`.motion-intro{display:none!important}[data-animated-content]{visibility:visible!important}`}</style>
         </noscript>
+        <ContentGuard />
         {children}
         <script
           type="application/ld+json"
