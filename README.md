@@ -96,6 +96,12 @@ public/                  logo, pattern, og, licenses
 - **GSAP** (Standard License "no charge") — AnimatedContent/ScrollTrigger untuk animated content sekali per viewport. **folio-2019** tidak dipakai; WebGL tidak sepadan dengan target performa mobile.
 - **Motion** (MIT, paket `motion`) — useScroll/useTransform untuk progres garis timeline sejarah.
 
+## Keamanan
+
+Header keamanan (CSP, HSTS, `nosniff`, anti-framing, Permissions-Policy),
+penanganan data Kabar eksternal, dan hasil audit dependensi dijelaskan di
+[`SECURITY.md`](./SECURITY.md).
+
 ## Kredit
 
 ©️ 2026 Faris Husamuddin. Logo dan identitas visual milik Pimpinan Pusat Muhammadiyah. Font El Messiri dan Familjen Grotesk berlisensi SIL Open Font License. Data kalender milik KHGT; data kabar milik Muhammadiyah.or.id.
