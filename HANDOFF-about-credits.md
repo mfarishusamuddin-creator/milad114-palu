@@ -19,7 +19,7 @@ Tidak menyentuh: `Hero.tsx`, MotionIntro, `MapSection`/`WorldMap`, `Footer.tsx`,
 
 | File | Perubahan |
 |---|---|
-| `src/components/pages/AboutPage.tsx` | Urutan baru: disclaimer (kotak) → `CreditsSection` → Tentang lukisan → Sumber Informasi → Aset & lisensi → copyright ganda. Label section 0,8 rem, ikon eksternal 15 px. `aria-label` sumber & lisensi menyebut “buka di tab baru”. JSON-LD `VisualArtwork` + escape `<`. |
+| `src/components/pages/AboutPage.tsx` | Urutan baru: `CreditsSection` → Tentang lukisan → Sumber Informasi → Aset & lisensi → copyright ganda. Label section 0,8 rem, ikon eksternal 15 px. `aria-label` sumber & lisensi menyebut “buka di tab baru”. JSON-LD `VisualArtwork` + escape `<`. |
 | `src/i18n/types.ts` | Tambahan `aboutPage.creditsTitle`, `contact`, `opensInNewTab`, `channels`, `artwork`, `assets`. |
 | `src/i18n/id.ts` | String ID baru + copyright ganda. |
 | `src/i18n/en.ts` | String EN baru + copyright ganda. |

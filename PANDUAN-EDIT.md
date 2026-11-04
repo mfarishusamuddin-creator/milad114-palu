@@ -85,7 +85,7 @@ src/app/
 src/components/
   pages/SiteShell.tsx     navbar + main + footer + locale (flex column setinggi viewport)
   pages/HomePage.tsx      urutan seluruh section di satu index
-  pages/AboutPage.tsx     halaman Tentang (disclaimer, sumber, hak cipta)
+  pages/AboutPage.tsx     halaman Tentang (kredit, sumber, hak cipta)
   layout/Navbar.tsx       header: logo + nama, CardNav (menu kartu, di kanan)
   layout/Footer.tsx       footer minimalis dua kolom (identitas + acara/Tentang)
   layout/LanguageSwitcher.tsx
@@ -186,7 +186,7 @@ Bagian penting:
 | `kabar` | label kabar |
 | `map` | judul peta, label markas, tombol info |
 | `footer` | footer: `brand`, `tagline`, `description`, `eventDate`, `madeIn`, `period` |
-| `aboutPage` | halaman Tentang: `title`, `back`, `intro`, `disclaimer`, `sourcesTitle`, `sources[]`, `copyright` |
+| `aboutPage` | halaman Tentang: `title`, `back`, `intro`, `sourcesTitle`, `sources[]`, `copyright` |
 | `notFound` | halaman 404 |
 
 ### 3.2 Konten sejarah

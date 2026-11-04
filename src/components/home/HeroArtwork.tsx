@@ -68,6 +68,12 @@ const EYE_PAD_Y = 12;
 
 const ACTION_ID_LIST: ReadonlyArray<string> = ["judul", "tanggal"];
 
+/* Ketebalan garis batas hotspot (px layar — ring memakai
+   vectorEffect="non-scaling-stroke"). Ditebalkan agar aliran gradien lebih
+   terlihat; nilainya sama di semua tema. */
+const RING_STROKE = 2;
+const ACTION_RING_STROKE = 2.4;
+
 const DETAIL_NUMBER: Record<HeroDetailId, string> = {
   wajah: "01",
   matahari: "02",
@@ -606,7 +612,7 @@ function HotspotShape({
   };
 
   /* A1/A2 (shape rect) TIDAK digambar sebagai kotak — hanya garis bawah
-     tipis bergradien, baik normal maupun saat debug (permintaan pemilik:
+     bergradien, baik normal maupun saat debug (permintaan pemilik:
      hapus semua batas berbentuk kotak). */
   const underline: ReactElement | null =
     hotspot.shape === "rect" ? (
@@ -617,7 +623,7 @@ function HotspotShape({
         x2={x + w}
         y2={y + h}
         stroke="url(#hero-ring-gradient)"
-        strokeWidth={isAction ? 1.6 : 1.2}
+        strokeWidth={isAction ? ACTION_RING_STROKE : RING_STROKE}
         strokeLinecap="round"
         vectorEffect="non-scaling-stroke"
         strokeOpacity={active || debug ? 1 : 0}
@@ -676,7 +682,7 @@ function HotspotShape({
           ry={h / 2}
           fill="transparent"
           stroke="url(#hero-ring-gradient)"
-          strokeWidth={1.2}
+          strokeWidth={RING_STROKE}
           vectorEffect="non-scaling-stroke"
           strokeOpacity={strokeOpacity}
           data-active={active || debug ? "true" : undefined}
@@ -694,7 +700,7 @@ function HotspotShape({
         fill="transparent"
         pointerEvents="all"
         stroke="url(#hero-ring-gradient)"
-        strokeWidth={1.2}
+        strokeWidth={RING_STROKE}
         strokeLinejoin="round"
         vectorEffect="non-scaling-stroke"
         strokeOpacity={strokeOpacity}
@@ -712,7 +718,7 @@ function HotspotShape({
         fill="transparent"
         pointerEvents="all"
         stroke="url(#hero-ring-gradient)"
-        strokeWidth={1.2}
+        strokeWidth={RING_STROKE}
         strokeLinejoin="round"
         vectorEffect="non-scaling-stroke"
         strokeOpacity={strokeOpacity}

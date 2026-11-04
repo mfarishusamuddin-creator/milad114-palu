@@ -361,8 +361,6 @@ export const en: Dictionary = {
     back: "Back to Home",
     intro:
       "Milad 114 is an independent digital work for the Tanwir and 114th Milad of Muhammadiyah in Palu: two historical tracks, the agenda, the world map, and its official services.",
-    disclaimer:
-      "Not an official Muhammadiyah website — the official links below are the primary reference for every piece of content.",
     creditsTitle: "Credits & Contact",
     contact: "Contact",
     opensInNewTab: "opens in a new tab",

@@ -233,16 +233,17 @@
   --hero-ring-4: #f2c85c;
 }
 
-/* Batas hotspot: garis tipis bergradien (palet GradientText) + halo lembut.
-   Halus dan tidak mengganggu karya; opacity tetap 0 sampai hover/zoom.
-   Filter hanya dipasang saat ring benar-benar terlihat. */
+/* Batas hotspot: garis bergradien (palet GradientText) + halo lembut.
+   Tebal garis diatur di HeroArtwork.tsx (RING_STROKE / ACTION_RING_STROKE)
+   dan sama untuk semua tema. Opacity tetap 0 sampai hover/zoom; filter hanya
+   dipasang saat ring benar-benar terlihat. */
 .hero-artwork__ring {
   transition: stroke-opacity 180ms ease;
 }
 
 .hero-artwork__ring[data-active] {
   filter: drop-shadow(
-    0 0 1.2px color-mix(in srgb, var(--hero-ring-4) 60%, transparent)
+    0 0 2px color-mix(in srgb, var(--hero-ring-4) 72%, transparent)
   );
 }
 

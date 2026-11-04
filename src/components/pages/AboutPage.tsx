@@ -79,10 +79,6 @@ export function AboutPage({ dict }: { dict: Dictionary }) {
             className="mt-8"
           />
 
-          <p className="mt-6 max-w-2xl rounded-lg border border-line bg-bg-soft px-5 py-4 text-sm leading-relaxed text-ink-soft sm:text-[0.95rem]">
-            {t.disclaimer}
-          </p>
-
           <CreditsSection dict={dict} />
 
           <div className="mt-14">

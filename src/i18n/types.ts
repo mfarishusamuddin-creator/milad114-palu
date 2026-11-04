@@ -210,7 +210,6 @@ export type Dictionary = {
     title: string;
     back: string;
     intro: string;
-    disclaimer: string;
     creditsTitle: string;
     contact: string;
     opensInNewTab: string;

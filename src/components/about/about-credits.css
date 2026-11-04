@@ -41,6 +41,11 @@
   background: #000000;
 }
 
+/* Tema gelap: lingkaran putih agar tidak menyatu dengan latar gelap. */
+[data-theme="dark"] .credit-card__avatar-fallback {
+  background: #ffffff;
+}
+
 .credit-card__role {
   margin: 0 0 0.3rem;
   color: var(--color-ocean);
